@@ -36,7 +36,7 @@ print(nextClosestTime(time))
 
 ######################################################################
 https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/next-closest-time.py
-
+# Line 53 means set(result) is a subset of set(time) according to:https://stackoverflow.com/questions/49677114/comparing-two-sets-in-python
 class Solution(object):
     def nextClosestTime(self, time):
         """
