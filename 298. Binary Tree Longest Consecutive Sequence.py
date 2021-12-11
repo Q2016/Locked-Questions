@@ -22,7 +22,7 @@ Longest consecutive sequence path is 3-4-5, so return 3.
  1
 Longest consecutive sequence path is 2-3,not3-2-1, so return 2.
 
-My solution:
+My first solution: won't work because if you want to do top down, you need to do backtracking
    
 class Solution:
     # your task is to complete this function
@@ -43,7 +43,9 @@ class Solution:
             self.sequence.append(value_pre)
             return longestConsecutive(root.left)
          
-
+My second solution: Tree Traversal bottom up
+         
+         
          
  https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/binary-tree-longest-consecutive-sequence-ii.py        
  class Solution(object):
