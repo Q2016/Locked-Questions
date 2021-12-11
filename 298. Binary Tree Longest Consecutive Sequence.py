@@ -43,45 +43,34 @@ class Solution:
             self.sequence.append(value_pre)
             return longestConsecutive(root.left)
          
-https://www.geeksforgeeks.org/longest-consecutive-sequence-binary-tree/         
-class newNode:
-    def __init__(self, data):
-        self.data = data
-        self.left = self.right = None
- 
-# Utility method to return length of
-# longest consecutive sequence of tree
-def longestConsecutiveUtil(root, curLength,
-                           expected, res):
-    if (root == None):
-        return
- 
-    # if root data has one more than its
-    # parent then increase current length
-    if (root.data == expected):
-        curLength += 1
-    else:
-        curLength = 1
- 
-    # update the maximum by current length
-    res[0] = max(res[0], curLength)
- 
-    # recursively call left and right subtree
-    # with expected value 1 more than root data
-    longestConsecutiveUtil(root.left, curLength,
-                           root.data + 1, res)
-    longestConsecutiveUtil(root.right, curLength,
-                           root.data + 1, res)
- 
-# method returns length of longest consecutive
-# sequence rooted at node root
-def longestConsecutive(root):
-    if (root == None):
-        return 0
- 
-    res = [0]
- 
-    # call utility method with current length 0
-    longestConsecutiveUtil(root, 0, root.data, res)
- 
-    return res[0]
+
+         
+ https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/binary-tree-longest-consecutive-sequence-ii.py        
+ class Solution(object):
+    def longestConsecutive(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        def longestConsecutiveHelper(root):
+            if not root:
+                return 0, 0
+            left_len = longestConsecutiveHelper(root.left)
+            right_len = longestConsecutiveHelper(root.right)
+            cur_inc_len, cur_dec_len = 1, 1
+            if root.left:
+                if root.left.val == root.val + 1:
+                    cur_inc_len = max(cur_inc_len, left_len[0] + 1)
+                elif root.left.val == root.val - 1:
+                    cur_dec_len = max(cur_dec_len, left_len[1] + 1)
+            if root.right:
+                if root.right.val == root.val + 1:
+                    cur_inc_len = max(cur_inc_len, right_len[0] + 1)
+                elif root.right.val == root.val - 1:
+                    cur_dec_len = max(cur_dec_len, right_len[1] + 1)
+            self.max_len = max(self.max_len, cur_dec_len + cur_inc_len - 1)
+            return cur_inc_len, cur_dec_len
+
+        self.max_len = 0
+        longestConsecutiveHelper(root)
+        return self.max_len
