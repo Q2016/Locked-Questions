@@ -29,7 +29,32 @@ Worker 0 grabs Bike 0 at first. Worker 1 and Worker 2 share the same distance to
 
 
 My solution:
+def assignBikes(workers, bikes):
+    """
+    :type workers: List[List[int]]
+    :type bikes: List[List[int]]
+    :rtype: List[int]
+    """
+    
+    distances = []
+    for i, worker in enumerate(workers):
+        for j, bike in enumerate(bikes):
+            distance = abs(worker[0] - bike[0]) + abs(worker[1] - bike[1])
+            distances.append((distance, i, j))
+    
+    
+    distances=sorted(distances, key=lambda element: (element[0], element[1]))
 
+    result=[]
+
+    while distances:
+        d,w,b=distances[0]
+        result.append(b)
+        # removing cases that are already used i.e if worker or biker are already assigned
+        distances = [(d1,w1,b1) for d1,w1,b1 in distances if w1 != w and b1 != b] 
+        
+
+    return result
 
 
 
