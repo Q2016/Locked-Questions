@@ -1,1 +1,1 @@
-# Locked-Questions (Medium)
+# Medium Questions
