@@ -65,15 +65,15 @@ class Solution:
                 # path finding for node with numbering with mid
                 for h in range(height-2, -1, -1):
                     
-                    mask =  1 << h
+                    mask =  1 << h # creating the mask to compare with the value of mid
                     
-                    if mid & mask :
+                    if mid & mask : # if non-zero
                         cur = cur.right
                         
                     else:
                         cur = cur.left
                     
-                    mask >>= 1
+                    mask >>= 1 # halve it //2
                     
                 if cur is not None:
                     # update latest finding on last level
