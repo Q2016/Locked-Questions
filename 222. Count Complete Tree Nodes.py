@@ -21,6 +21,7 @@ My solution:
   
   
  https://leetcode.com/problems/count-complete-tree-nodes/discuss/533887/Python-sol-by-binary-search.-90%2B-w-Visualization 
+ https://www.quora.com/How-does-bitwise-optimized-binary-search-work
 class Solution:
     def countNodes(self, root: TreeNode) -> int:
         
