@@ -69,3 +69,38 @@ What is the number of islands?
 
 You can show all your skills on a DFS implementation,
 and solve this problem as a normal one.
+
+
+
+
+
+
+
+# from my C++ solution
+
+class Solution:
+    def removeStones(self, stones: List[List[int]]) -> int:
+         
+        def dfs(indx, visited):
+            visited[indx]=1
+            
+            for i in range(len(stones)):
+                if vistited[i]:
+                    continue
+                if stones[indx][0]==stones[i][0] or stones[indx][1]==stones[i][1]:
+                    dfs(i, visited)      
+            return
+
+        
+        numIslands=0
+        numStones=len(stones)
+        visited=[0]*numStones
+        
+        for i in range(numStones):
+            if visited[i] :
+                continue
+            numIslands+=1 # makes sense since in dfs all part of one island is already discovered
+            
+            dfs(i, visited)
+          
+        return numStones-numIslands
