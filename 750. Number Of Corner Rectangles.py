@@ -32,3 +32,36 @@
 # - The number of rows and columns of grid will each be in the range [1, 200].
 # - Each grid[i][j] will be either 0 or 1.
 # - The number of 1s in the grid will be at most 6000.
+
+https://sugarac.gitbooks.io/facebook-interview-handbook/content/number-of-corner-rectangles.html
+public int countCornerRectangles(int[][] grid) {
+        int ans = 0;
+        for (int i = 0; i < grid.length - 1; i++) {
+            for (int j = i + 1; j < grid.length; j++) {
+                int counter = 0;
+                for (int k = 0; k < grid[0].length; k++) {
+                    if (grid[i][k] == 1 && grid[j][k] == 1) counter++;
+                }
+                if (counter > 0) ans += counter * (counter - 1) / 2;
+            }
+        }
+        return ans;
+    }
+
+
+https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/number-of-corner-rectangles.py
+class Solution(object):
+    def countCornerRectangles(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        rows = [[c for c, val in enumerate(row) if val]
+                for row in grid]
+        result = 0
+        for i in xrange(len(rows)):
+            lookup = set(rows[i])
+            for j in xrange(i):
+                count = sum(1 for c in rows[j] if c in lookup)
+                result += count*(count-1)/2
+        return result
