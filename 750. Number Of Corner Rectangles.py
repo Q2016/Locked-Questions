@@ -33,6 +33,14 @@
 # - Each grid[i][j] will be either 0 or 1.
 # - The number of 1s in the grid will be at most 6000.
 
+
+One straight-forward solution is: we can iterate any two rows, say r1 and r2, 
+and for every column, we check if grid[r1][c] == grid[r2][c]. IF yes, we increate 
+the count by 1. Then the number of rentangles formed by these two rows are
+count * (count - 1) / 2.
+
+
+
 https://sugarac.gitbooks.io/facebook-interview-handbook/content/number-of-corner-rectangles.html
 public int countCornerRectangles(int[][] grid) {
         int ans = 0;
