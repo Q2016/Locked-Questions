@@ -1,4 +1,15 @@
 
+The question wants to arrange the input queue such that the number of people infront of a person matches with heights of everybody else:
+ nput: people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]
+Output: [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]
+ 
+ Element in queue:
+ #1 is placed at the begining so nobody has higher heigh than him
+ #2 is placed there since nobody infront(hight 5) is taller
+ #3 two people (hight 5 and 7) are infront of him
+ #4 only (hight 7) is taller than him
+ #5 4 people have hights higher
+ #6 one person (hight 7) infront of him
 
 
 """        
