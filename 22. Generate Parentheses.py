@@ -1,0 +1,48 @@
+
+
+
+/*
+public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<String>();
+        backtrack(list, "", 0, 0, n);
+        return list;
+    }
+    
+    public void backtrack(List<String> list, String str, int open, int close, int max){
+        
+        if(str.length() == max*2){
+            list.add(str);
+            return;
+        }
+        
+        if(open < max)
+            backtrack(list, str+"(", open+1, close, max);
+        if(close < open)
+            backtrack(list, str+")", open, close+1, max);
+    }
+*/
+
+
+
+
+class Solution {
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> list;
+        backtrack(list, "", 0, 0, n);
+        
+        return list;
+    }
+    
+    void backtrack(vector<string>& list, string str, int open, int close, int max){
+        if (str.size()==max*2){list.push_back(str); cout<<str<<endl;}
+        
+        if (open<max){
+            
+            backtrack(list, str+"(", open+1, close, max);
+        }
+        if (close<open){
+            backtrack(list, str+")", open, close+1, max);
+        }
+    }
+};
