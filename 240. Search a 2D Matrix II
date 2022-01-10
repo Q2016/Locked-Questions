@@ -1,0 +1,114 @@
+The first one is Python O( m log n ) solution by variant binary search,
+and second one is Python O( m+n ) solution by adaptive search.
+
+Hint:
+
+Method_#1:
+
+Take advantage of the property with sorted ordering in row and column respectively.
+
+"Searching in sorted element" usually has strong connection with binary search framework.
+
+Think of classical 1D binary search, and built a element search algorithm with range check and 1D binary search.
+
+First, use range check to locate possible candidate row.
+
+Second, launch 1D binary search on each possible candidate row.
+
+Method_#2:
+
+Again, utilize the property with sorted ordering.
+
+Start iteration from bottom left corner.
+
+If target is larger then current element, then go right next time.
+If target is smaller than current element, then go up next time.
+
+If target is current element, then return True
+
+When next move is out of boundary of matrix, return False ( i.e., target does Not exist in matrix)
+
+Abstract Model of Method_#2:
+image
+
+Example demo of Method_#2:
+
+image
+
+Note:
+There is another twin algorithm, which starts iteration from top right corner, then compare and update next move by either going down or going left.
+
+Implementation_#1:
+
+By range check and 1D binary search
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int)-> bool:
+        
+        
+        if not len(matrix) or not len(matrix[0]):
+            # Quick response for empty matrix
+            return False
+        
+        h, w = len(matrix), len(matrix[0])
+        
+        for row in matrix:
+			
+			# range check
+            if row[0] <= target <= row[-1]:
+                
+				# launch binary search on current possible row
+				
+                left, right = 0, w-1
+                
+                while left <= right:
+                    
+                    mid = left + (right - left) // 2
+                    
+                    mid_value = row[mid]
+                    
+                    if target > mid_value:
+                        left = mid+1
+                    elif target < mid_value:
+                        right = mid-1
+                    else:
+                        return True
+                
+        return False
+Implementation_#2:
+
+By value check and adaptive search
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int)-> bool:
+
+        
+        if not len(matrix) or not len(matrix[0]):
+			# Quick response for empty matrix
+            return False
+        
+        h, w = len(matrix), len(matrix[0])
+        
+        # Start adaptive search from bottom left corner
+        y, x = h-1, 0
+        
+        while True:
+            
+            if y < 0 or x >= w:
+                break
+            
+            current = matrix[y][x]
+            
+            if target < current:
+                # target is smaller, then go up
+                y -= 1
+            
+            elif target > current:
+                # target is larger, then go right
+                x += 1
+            
+            else:
+                # hit target
+                return True
+            
+        return False
