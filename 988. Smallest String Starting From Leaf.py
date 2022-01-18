@@ -1,3 +1,6 @@
+https://leetcode.com/problems/smallest-string-starting-from-leaf/discuss/328119/Simple-Python-Solution%3A-top-down-DFS
+
+
 Please see and vote for my solutions for these similar problems.
 
 257. Binary Tree Paths
