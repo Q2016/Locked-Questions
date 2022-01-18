@@ -1,3 +1,7 @@
+https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n/discuss/260847/JavaC%2B%2BPython-O(S)
+
+
+
 Intuition:
 The construction of S is a NP problem,
 it's time consuming to construct a short S.
