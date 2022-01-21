@@ -10,11 +10,13 @@ Intuition
 
 The two key observations are:
 
-Preorder traversal follows Root -> Left -> Right, therefore, given the preorder array preorder, 
+-Preorder traversal follows Root -> Left -> Right, therefore, given the preorder array preorder, 
 we have easy access to the root which is preorder[0].
 
-Inorder traversal follows Left -> Root -> Right, therefore if we know the position of Root, we 
+-Inorder traversal follows Left -> Root -> Right, therefore if we know the position of Root, we 
 can recursively split the entire array into two subtrees.
+    
+    
     
 Now the idea should be clear enough. We will design a recursion function: it will set the first 
 element of preorder as the root, and then construct the entire tree. To find the left and right subtrees, 
