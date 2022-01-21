@@ -1,3 +1,20 @@
+Question:
+Given the root of a binary tree, return the level order traversal of its nodes' 
+values. (i.e., from left to right, level by level).
+
+ 
+
+Example 1:
+    3
+  /   \
+9     20
+    /   \
+   15    7
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[9,20],[15,7]]    
+
+Solution: --
+
 level is a list of the nodes in the current level. Keep appending a list of the 
 values of these nodes to ans and then updating level with all the nodes in the next 
 level (kids) until it reaches an empty level. Python's list comprehension makes it 
