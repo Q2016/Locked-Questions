@@ -1,3 +1,15 @@
+Given a binary string s and a positive integer n, return true if the binary representation of all the integers in the range [1, n] are substrings of s, or false otherwise.
+
+A substring is a contiguous sequence of characters within a string.
+
+ 
+
+Example 1:
+
+Input: s = "0110", n = 3
+Output: true
+
+
 https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n/discuss/260847/JavaC%2B%2BPython-O(S)
 
 
