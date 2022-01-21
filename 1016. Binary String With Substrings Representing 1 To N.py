@@ -10,7 +10,7 @@ Input: s = "0110", n = 3
 Output: true
 
 
- Solution:
+ Solution: (not a good answer)
  
  
 https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n/discuss/260847/JavaC%2B%2BPython-O(S)
