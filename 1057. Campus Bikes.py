@@ -1,3 +1,5 @@
+Question:
+    
 On a campus represented as a 2D grid, there are Nworkers and Mbikes, with N <= M. 
 Each worker and bike is a 2D coordinate on this grid.
 Our goal is to assign a bike to each worker. Among the available bikes and workers, 
@@ -25,16 +27,13 @@ bikes = [[1,0],[2,2],[2,1]]
 Output: 
 [0,2,1]
 Explanation: 
-Worker 0 grabs Bike 0 at first. Worker 1 and Worker 2 share the same distance to Bike 2, thus Worker 1 is assigned to Bike 2, and Worker 2 will take Bike 1. So the output is [0,2,1].
+Worker 0 grabs Bike 0 at first. Worker 1 and Worker 2 share the same distance to Bike 2, thus Worker 1 is assigned 
+to Bike 2, and Worker 2 will take Bike 1. So the output is [0,2,1].
 
 
-My solution:
-def assignBikes(workers, bikes):
-    """
-    :type workers: List[List[int]]
-    :type bikes: List[List[int]]
-    :rtype: List[int]
-    """
+Solution: sorting
+
+    def assignBikes(workers, bikes):
     
     distances = []
     for i, worker in enumerate(workers):
