@@ -14,10 +14,7 @@ Solution: DFS + Set
 
 class Solution(object):
     def numTilePossibilities(self, tiles):
-        """
-        :type tiles: str
-        :rtype: int
-        """
+
         res = set()
         
         def dfs(path, t):
