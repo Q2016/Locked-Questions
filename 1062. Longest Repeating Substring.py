@@ -1,3 +1,4 @@
+Question:
 Given a string S, find out the length of the longest repeating substring(s). Return 0 if no repeating substring exists.
 
 
@@ -15,14 +16,11 @@ Example 3:
 
 Input: "aabcaabdaab"
 Output: 3
-Explanation: The longest repeating substring is "aab", which occurs <wyn>3</wyn> times.
-Example 4:
+Explanation: The longest repeating substring is "aab", which occurs 3 times.
 
-Input: "aaaaa"
-Output: 4
-Explanation: The longest repeating substring is "aaaa", which occurs twice.
   
   
+Solution:
   
 class Solution:
     def longestRepeatingSubstring(self, S: str) -> int:
