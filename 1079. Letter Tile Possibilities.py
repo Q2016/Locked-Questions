@@ -1,4 +1,15 @@
-Python DFS + Set
+Question:
+You have n  tiles, where each tile has one letter tiles[i] printed on it.
+Return the number of possible non-empty sequences of letters you can make using the letters printed on those tiles.
+
+ 
+Example 1:
+Input: tiles = "AAB"
+Output: 8
+Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA".
+
+
+Solution: DFS + Set
 
 
 class Solution(object):
@@ -8,6 +19,7 @@ class Solution(object):
         :rtype: int
         """
         res = set()
+        
         def dfs(path, t):
             if path:
                 res.add(path)
