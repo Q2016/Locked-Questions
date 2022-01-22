@@ -2,23 +2,26 @@ Question:
 Given a matrix of integers A with R rows and C columns, find the maximum score of a 
 path starting at [0, 0] and ending at [R-1, C-1].
 
-The score of a path is the minimum value in that path. 
- 5,4,5
- 1,2,6
- 7,4,6
+The score of a path is the minimum value in that path. In below path the the minimum value is 4.
+ 5->4->5
+       | 
+ 1, 2, 6
+       |
+ 7, 4, 6
 
 A path moves some number of times from one visited cell to any neighbouring unvisited cell 
 in one of the 4 cardinal directions (north, east, west, south).
 
 
-Solution:
+Solution: Heap
 
 
 from heapq import heappush, heappop
 class Solution:
     def maximumMinimumPath(self, A: List[List[int]]) -> int:
-    #max(t, -matrix[nx][ny] for storing min on each path
-    #heappush to guarantee the heap top is the max of "mins on each path"
+        
+        #max(t, -matrix[nx][ny] for storing min on each path
+        #heappush to guarantee the heap top is the max of "mins on each path"
         if not A:
             return -1
 
