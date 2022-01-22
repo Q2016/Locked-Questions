@@ -20,7 +20,7 @@ Explanation: The longest repeating substring is "aab", which occurs 3 times.
 
   
   
-Solution:
+Solution:----
   
 class Solution:
     def longestRepeatingSubstring(self, S: str) -> int:
