@@ -1,3 +1,13 @@
+Question:
+You are given an array books where books[i] = [thicknessi, heighti] indicates the thickness 
+and height of the ith book. You are also given an integer shelfWidth.
+We want to place these books in order onto bookcase shelves that have a total width shelfWidth.
+Return the minimum possible height that the total bookshelf can be after placing shelves in this manner.	
+
+
+
+Solution: 2D knapsack problem
+	
 It's a kind of 2D knapsack problem.
 The core recurrence function is dp[i+1] = min(dp[k] + h for k in {j+1,...,i}).
 
