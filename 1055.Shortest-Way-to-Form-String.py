@@ -23,7 +23,7 @@ Explanation: The target string can be constructed as follows "xz" + "y" + "xz".
 
 
 
-Solution:
+Solution: first solution is simple
 
 
 https://medium.com/swlh/google-interview-question-leetcode-1055-7670fbaf5bd3
