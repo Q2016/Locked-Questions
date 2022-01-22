@@ -16,7 +16,6 @@ workers =
 Output: 
 6
 Explanation: 
-
 We assign bike 0 to worker 0, bike 1 to worker 1. The Manhattan distance of both assignments is 3, so the output is 6.
 
 Ex2:
@@ -28,17 +27,12 @@ workers =
 Output: 
 4
 Explanation: 
-
 We first assign bike 0 to worker 0, then assign bike 1 to worker 1 or worker 2, bike 2 to worker 2 or worker 1. 
 Both assignments lead to sum of the Manhattan distances as 4.
 
 
 
-
-Thoughts:
-
--Number of workers and bikes is bounded -> Bucket sort Pigeonhole sort: buckets[i]: a list with <worker id, bike id> pair with distance i
--Priority queue when number of workers and bikes is not bounded 
+Solution: Dijkstra? --->heap
 
 
 
@@ -69,6 +63,7 @@ def assignBikes(self, workers, bikes):
       
       
       
+      O(n^2)
       
       class Solution:
     def assignBikes(self, W: List[List[int]], B: List[List[int]]) -> List[int]:
