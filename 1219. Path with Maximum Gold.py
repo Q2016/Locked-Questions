@@ -7,7 +7,6 @@ From your position, you can walk one step to the left, right, up, or down.
 You can't visit the same cell more than once and Never visit a cell with 0 gold.
 You can start and stop collecting gold from any position in the grid that has some gold.
  
-
 Example 1:
 Input: grid = [[0,6,0],[5,8,7],[0,9,0]]
 Output: 24
@@ -22,8 +21,6 @@ Path to get the maximum gold, 9 -> 8 -> 7.
 Solution: DFS
 
 
-class Solution {
-public:
 int dfs(vector<vector<int>>& g, int i, int j) {
   if (i < 0 || j < 0 || i >= g.size() || j >= g[i].size() || g[i][j] <= 0)  return 0;
   g[i][j] = -g[i][j];//mark as visited
@@ -40,5 +37,4 @@ int getMaximumGold(vector<vector<int>>& grid, int res = 0) {
 }
 
         
-    
-};
+
