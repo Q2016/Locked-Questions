@@ -1,3 +1,12 @@
+Question:
+Given two arrays of integers with equal lengths, return the maximum value of:
+|arr1[i] - arr1[j]| + |arr2[i] - arr2[j]| + |i - j|    
+
+
+
+Solution: ---
+
+
 Intuition
 
 Take |x[i] - x[j]| + |y[i] - y[j]| as Manhattan distance of two points.
