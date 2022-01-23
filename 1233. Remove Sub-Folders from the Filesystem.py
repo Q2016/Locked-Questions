@@ -1,3 +1,17 @@
+Question:
+Given a list of folders folder, return the folders after removing all sub-folders in those folders. 
+ 
+Example 1:
+Input: folder = ["/a","/a/b","/c/d","/c/d/e","/c/f"]
+Output: ["/a","/c/d","/c/f"]
+Explanation: Folders "/a/b/" is a subfolder of "/a" and "/c/d/e" is inside of folder "/c/d" in our filesystem.   
+    
+    
+    
+    
+Solution: Trie
+
+
 Please see and vote for my solutions for
 208. Implement Trie (Prefix Tree)
 1233. Remove Sub-Folders from the Filesystem
