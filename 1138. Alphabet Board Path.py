@@ -4,14 +4,14 @@ On an alphabet board, we start at position (0, 0), corresponding to character bo
 Here, board = ["abcde", "fghij", "klmno", "pqrst", "uvwxy", "z"], as shown in the diagram below.
 We may make the following moves:
 
-'U' moves our position up one row, if the position exists on the board;
-'D' moves our position down one row, if the position exists on the board;
-'L' moves our position left one column, if the position exists on the board;
-'R' moves our position right one column, if the position exists on the board;
+'U' moves up, if the position exists on the board;
+'D' moves down
+'L' moves left
+'R' moves right
 '!' adds the character board[r][c] at our current position (r, c) to the answer.
-(Here, the only positions that exist on the board are positions with letters on them.)
 
-Return a sequence of moves that makes our answer equal to target in the minimum number of moves.  You may return any path that does so.
+
+Return a sequence of moves that makes our answer equal to target in the minimum number of moves.
 
 Example 1:
 
