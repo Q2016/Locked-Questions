@@ -1,3 +1,16 @@
+Question:
+You have d dice, and each die has f faces numbered 1, 2, ..., f.
+Return the number of possible ways (out of f^d total ways) to roll the dice so the sum of the face up numbers equals target.
+
+Example 1:
+Input: d = 1, f = 6, target = 3
+Output: 1
+Explanation: 
+You throw one die with 6 faces.  There is only one way to get a sum of 3.  
+  
+  
+Solution:  DP
+
 Solution from:
   https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/discuss/355940/C%2B%2B-Coin-Change-2
 
@@ -5,12 +18,14 @@ Solution from:
 This problem is like 518. Coin Change 2, with the difference that the total number of coins (dices) should be equal to d.
 
 Basic Solution (TLE)
-A basic brute-force solution could be to try all combinations of all faces for all dices, and count the ones that give a total sum of target.
+A basic brute-force solution could be to try all combinations of all faces for all dices, 
+and count the ones that give a total sum of target.
+
 
 int numRollsToTarget(int d, int f, int target, int res = 0) {
   if (d == 0 || target <= 0) return d == target;
   for (auto i = 1; i <= f; ++i)
-    res = (res + numRollsToTarget(d - 1, f, target - i)) % 1000000007;
+    res = (res + numRollsToTarget(d - 1, f, target - i)) 
   return res;
 }
 d == target is the shorthand for d == 0 && target == 0.
@@ -19,17 +34,19 @@ Complexity Analysis
 Runtime: O(f ^ d).
 Memory: O(d) for the stack.
 
+  
 Top-down DP
-We memoise the previously computed results for dice i and and target.
+We memoise the previously computed results for dice i and target.
 
-Since dp is initialized with zeros, we store there res + 1 to check if the result has been pre-computed. This is an optimization for brevity and speed.
+Since dp is initialized with zeros, we store there res + 1 to check if the result has been 
+pre-computed. This is an optimization for brevity and speed.
 
 int dp[31][1001] = {};
 int numRollsToTarget(int d, int f, int target, int res = 0) {
   if (d == 0 || target <= 0) return d == target;
   if (dp[d][target]) return dp[d][target] - 1;
   for (auto i = 1; i <= f; ++i)
-    res = (res + numRollsToTarget(d - 1, f, target - i)) % 1000000007;
+    res = (res + numRollsToTarget(d - 1, f, target - i)) 
   dp[d][target] = res + 1;
   return res;
 }
@@ -51,7 +68,7 @@ int numRollsToTarget(int d, int f, int target) {
     vector<int> dp1(target + 1);
     for (int j = 1; j <= f; ++j)
       for (auto k = j; k <= target; ++k)
-        dp1[k] = (dp1[k] + dp[k - j]) % 1000000007;
+        dp1[k] = (dp1[k] + dp[k - j]) 
     swap(dp, dp1);
   }
   return dp[target];
@@ -61,9 +78,11 @@ Runtime: O(d * f * target).
 Memory: O(target) as we only store counts for the last dice.
 
 Further Optimizations
-We can re-use the same array if we process our targets backwards. Just be sure to clear the previous target count (dp[k]) - this value is for the previous dice and we do not need it anymore.
+We can re-use the same array if we process our targets backwards. Just be sure to clear the previous 
+target count (dp[k]) - this value is for the previous dice and we do not need it anymore.
 
-Note that we need to flip the order of processing - we iterate though targets first (k), and then through the faces (j). I left the variable names the same as for the previous solution.
+Note that we need to flip the order of processing - we iterate though targets first (k), and then through 
+the faces (j). I left the variable names the same as for the previous solution.
 
 Thanks dylan20 for this memory optimization tip!
 
@@ -74,6 +93,6 @@ int numRollsToTarget(int d, int f, int target) {
   for (i = 1; i <= d; ++i)
     for (k = target; k >= (i == d ? target : 0); --k)
       for (j = k - 1, dp[k] = 0; j >= max(0, k - f); --j)
-        dp[k] = (dp[k] + dp[j]) % 1000000007;
+        dp[k] = (dp[k] + dp[j]) 
   return dp[target];
 }
