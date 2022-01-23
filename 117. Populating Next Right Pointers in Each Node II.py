@@ -1,39 +1,41 @@
+Question:
+
+Given a binary tree Populate each next pointer to point to its next right node. 
+        
+        
+Solution: similar to 116       
 If you have solved [https://leetcode.com/problems/populating-next-right-pointers-in-each-node/] 
 this question this is exactly same as this one except for one change.
 
-Basically this is purely level order travsersal code with slight modification for the root -> next value
+I spend some time for this problem, because my solution for problem 116 is quite different and can not be applied here.
 
-You just have to think 2 things in this question.
+The main idea is to go level by level and use already existing .next connections: if you will not do it, problem will be quite painful. 
+So, idea is the following:
+We will keep two nodes: node and curr: first one is for parent level and curr for next level.
+We check if we have node.left and if we have, we create connection curr.next = node.left and also move our curr to the right, 
+so it always will be the rightest visited node in level.
+In similar way we check if we have node.right and do the same for it.
+When we finished with node, we move it to right: node = node.next.
+Finally, we need to go to the next level: we update node = dummy.next.
+Note, that in this place we will have some extra connections from dummy variables to left side of our tree, 
+but there is no way testing system can detect it, because it is one-way connections. 
+If you want to be completely honest, you need to add just one more line dummy.next = None after the line node = dummy.next.
 
-1.How to get the last val to NULL ?.
-2.How to get connect with the current node to previous one ?.
+Complexity: time complexity is O(n): we visit each node of our tree only once. Space complexity is O(1)
 
-If you are able to find the ans of these two questions mentioned above then you will reach the solution
-also if you are here to see the solution i would recommend you to pause for a while
-and think about these questions i am sure you willl find the ans otherwise ans
-is just right below you can see anytime you want just give it a though for a whlle.
-
-
-
-if(root == NULL) return NULL;
-        queue<Node*> q;
-        q.push(root);
-        while(!q.empty()){
-            int size = q.size(); // get size of queue 
-            for(int i=0 ; i < size ; i++){
-                Node* item = q.front(); 
-                if(size - 1 == i) // checking the last value of the level
-                     item -> next = NULL; 
-                
-                q.pop();
-                
-                if(size - 1 != i) // if this is not the last value then previous value will point to next one
-                     item -> next = q.front(); 
-                
-                if(item -> left != NULL)
-                    q.push(item -> left);
-                if(item -> right != NULL)
-                    q.push(item -> right);
-            }
-        } 
-        return root;
+class Solution:
+    def connect(self, root):
+        node = root
+        while node:
+            curr = dummy = Node(0)
+            while node:
+                if node.left:
+                    curr.next = node.left
+                    curr = curr.next
+                if node.right:
+                    curr.next = node.right
+                    curr = curr.next
+                node = node.next
+            node = dummy.next
+               
+        return root
