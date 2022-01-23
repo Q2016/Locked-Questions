@@ -1,21 +1,18 @@
+Question:
 Design a Leaderboard class, which has 3 functions:
-
-    addScore(playerId, score): Update the leaderboard by adding score to the given player's score. If there is no player with such id in the leaderboard, add him to the leaderboard with the given score.
-    top(K): Return the score sum of the top K players.
-    reset(playerId): Reset the score of the player with the given id to 0. It is guaranteed that the player was added to the leaderboard before calling this function.
-
+-addScore(playerId, score): Update the leaderboard by adding score to the given player's score. 
+ If there is no player with such id in the leaderboard, add him to the leaderboard with the given score.
+-top(K): Return the score sum of the top K players.
+-reset(playerId): Reset the score of the player with the given id to 0. It is guaranteed that the player 
+ was added to the leaderboard before calling this function.
 Initially, the leaderboard is empty.
 
-
-
 Example 1:
-
 Input:
 ["Leaderboard","addScore","addScore","addScore","addScore","addScore","top","reset","reset","addScore","top"]
 [[],[1,73],[2,56],[3,39],[4,51],[5,4],[1],[1],[2],[2,51],[3]]
 Output:
 [null,null,null,null,null,null,73,null,null,null,141]
-
 Explanation:
 Leaderboard leaderboard = new Leaderboard ();
 leaderboard.addScore(1,73);   // leaderboard = [[1,73]];
@@ -30,8 +27,11 @@ leaderboard.addScore(2,51);   // leaderboard = [[2,51],[3,39],[4,51],[5,4]];
 leaderboard.top(3);           // returns 141 = 51 + 51 + 39;
 
 
-time complexity O(K) + O(NlogK) = O(NlogK)
 
+Solution: Heap+Hashing
+
+
+time complexity O(K) + O(NlogK) = O(NlogK)
 
 class Leaderboard:
 
