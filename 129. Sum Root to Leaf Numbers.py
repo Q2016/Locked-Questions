@@ -12,7 +12,7 @@ The root-to-leaf path 1->2 represents the number 12.
 The root-to-leaf path 1->3 represents the number 13.
 Therefore, sum = 12 + 13 = 25.
     
-Solution: Recursive DFS   
+Solution: Preorder?  
 
 
 Python solutions (dfs+stack, bfs+queue, dfs recursively).
