@@ -1,19 +1,17 @@
-https://programmerall.com/article/64621125882/
-
-
+Question:
 Given an undirected tree, return its diameter: the number of edges in a longest path in that tree.
-
 The tree is given as an array of edges where edges[i] = [u, v] is a bidirectional edge between nodes u and v.  
 Each node has labels in the set {0, 1, ..., edges.length}.
 
 
+
+Solution: DP
+
+https://programmerall.com/article/64621125882/
+
 Intuition
-For all nodes in the diameter, only one node is allowed that both left edge and right edge are used. So we could use a DFS to get this diameter.
-
-Solution
-
-from collections import defaultdict
-
+For all nodes in the diameter, only one node is allowed that both left edge 
+and right edge are used. So we could use a DFS to get this diameter.
 
 class Solution:
     def treeDiameter(self, edges: List[List[int]]) -> int:
