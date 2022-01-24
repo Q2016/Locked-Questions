@@ -5,7 +5,7 @@ where 1 means that on that cell there is a server and 0 means that it is no serv
 Two servers are said to communicate if they are on the same row or on the same column.
 Return the number of servers that communicate with any other server.    
 
-Solution:
+Solution: Counting
 
 class Solution:
     def countServers(self, grid: List[List[int]]) -> int:
