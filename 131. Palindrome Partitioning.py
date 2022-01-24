@@ -9,8 +9,6 @@ Output: [["a","a","b"],["aa","b"]]
 
 
 Solution: Backtracking
-
-
 Intuition:
 https://leetcode.com/problems/palindrome-partitioning/solution/  
 
