@@ -1,8 +1,15 @@
+Question:
+Given an array of integers nums and a positive integer k, check whether it is possible to 
+divide this array into sets of k consecutive numbers.
+Return true if it is possible. Otherwise, return false.
 
-
-Intuition: Greedy Algo
-Exactly same as 846. Hand of Straights
-
+Example 1:
+Input: nums = [1,2,3,3,4,4,5,6], k = 4
+Output: true
+Explanation: Array can be divided into [1,2,3,4] and [3,4,5,6].
+    
+    
+Solution: Greedy Algo
 
 Solution 1
 Count number of different cards to a map c
@@ -12,9 +19,6 @@ Everytime we meet a new card i, we cut off i - i + k - 1 from the counter.
 Complexity:
 Time O(MlogM + MK), where M is the number of different cards.
 In Cpp and Java it's O(NlogM), which can also be improved.
-
-
-Python:
 
     def isPossibleDivide(self, A, k):
         c = collections.Counter(A)
@@ -26,6 +30,7 @@ Python:
                         return False
         return True
         
+
 Follow Up
 We just got lucky AC solution. Because k <= 10000.
 What if k is huge, should we cut off card on by one?
@@ -54,11 +59,6 @@ Complexity
 O(N+MlogM), where M is the number of different cards.
 Because I count and sort cards.
 In Cpp and Java it's O(NlogM), which can also be improved.
-
-
-
-
-Python:
 
     def isPossibleDivide(self, A, k):
         c = collections.Counter(A)
