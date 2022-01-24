@@ -1,46 +1,26 @@
-Given a sorted list of disjoint intervals, each interval intervals[i] = [a, b] represents the set of real numbers x such that a <= x < b.
-
+Question:
+Given a sorted list of disjoint intervals, each interval intervals[i] = [a, b] represents 
+the set of real numbers x such that a <= x < b.
 We remove the intersections between any interval in intervals and the interval toBeRemoved.
-
 Return a sorted list of intervals after all such removals.
 
 Example 1:
-
-Input: intervals = [[0,2],[3,4],[5,7]], toBeRemoved = [1,6] Output: [[0,1],[6,7]] Example 2:
-
-Input: intervals = [[0,5]], toBeRemoved = [2,3] Output: [[0,2],[3,5]]
+Input: intervals = [[0,2],[3,4],[5,7]], toBeRemoved = [1,6] Output: [[0,1],[6,7]] 
     
+Solution:
     
-class Solution {
-public:
-    vector<vector<int>> removeInterval(vector<vector<int>>& intervals, vector<int>& toBeRemoved) {
-        vector<vector<int>> res;
-        res.reserve(intervals.size());
-        int a = toBeRemoved[0];
-        int b = toBeRemoved[1];
-        for (int i = 0; i < intervals.size(); i++) {
-            const auto& pp = intervals[i];
-            if (pp[0] >= b) {
-                res.insert(res.end(), intervals.begin() + i, intervals.end());
-                break;
-            }
-            if (pp[1] <= a) {
-                res.push_back(pp);
-                continue;
-            }
-            // fully included
-            if (pp[0] >= a && pp[1] <= b)
-                continue;
+def removeInterval(self, intervals, toBeRemoved):
 
-            // tail included
-            if (pp[0] < a) {
-                res.push_back({pp[0], a});
-            }
-            // head included
-            if (pp[1] > b) {
-                res.push_back({b, pp[1]});
-            }
-        }
-        return res;
-    }
-};    
+        removeStart, removeEnd = toBeRemoved
+        output = []
+        for start, end in intervals:
+            if end <= removeStart or start >= removeEnd:
+                output.append([start, end])
+            elif start < removeStart and end > removeEnd:
+                output.append([start, removeStart])
+                output.append([removeEnd, end])
+            elif start < removeStart and end <= removeEnd:
+                output.append([start, removeStart])
+            elif start >= removeStart and end > removeEnd:
+                output.append([removeEnd, end])
+        return output
