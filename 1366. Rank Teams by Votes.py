@@ -7,7 +7,6 @@ we rank them alphabetically based on their team letter. Given an array of string
 the ranking systems. Sort all teams according to the ranking system described above.
 Return a string of all teams sorted by the ranking system.
  
-
 Example 1:
 Input: votes = ["ABC","ACB","ABC","ACB","ACB"]
 Output: "ACB"
