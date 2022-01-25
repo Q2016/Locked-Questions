@@ -1,37 +1,22 @@
-class Solution {
-public:
-    TreeNode* removeLeafNodes(TreeNode* root, int target) {
-        if(root==NULL)
-            return NULL;
-        root->left = removeLeafNodes(root->left, target);
-        root->right = removeLeafNodes(root->right, target);
-        
-        if(root->left == NULL && root->right == NULL && root->val == target)
-            return NULL;
-        return root;
-    }
-};
+Question:
+    
+Given a binary tree root and an integer target, delete all the leaf nodes with value target.
+Note that once you delete a leaf node with value target, if its parent node becomes a leaf node 
+and has the value target, it should also be deleted (you need to continue doing that until you cannot).
+
+Example 1:
+Input: root = [1,2,3,2,null,2,4], target = 2
+Output: [1,null,3,null,4]
+Explanation: Leaf nodes in green with value (target = 2) are removed. 
+After removing, new nodes become leaf nodes with value (target = 2) 
 
 
-/*
-Iterate the tree in postorder manner and whenever we reach a leaf node, checks if its same as target, if yes then return NULL i.e. delete this leaf node. Do update the left and right subtrees returned.
+Solution: Recursive
 
-Analysis :
+    def removeLeafNodes(self, root, target):
+        if root:
+            root.left = self.removeLeafNodes(root.left, target)
+            root.right = self.removeLeafNodes(root.right, target)
+            if root.val != target or root.left or root.right:
+                return root    
 
-Time complexity : O(N) ,where N is the number of nodes
-Space complexity : O(h), the height of the tree is the max level the recursion can go! In worst case it can be O(N).
-
-class Solution {
-public:
-    TreeNode* removeLeafNodes(TreeNode* root, int target) {
-        if(root==NULL)
-            return NULL;
-        root->left = removeLeafNodes(root->left, target);
-        root->right = removeLeafNodes(root->right, target);
-        
-        if(root->left == NULL && root->right == NULL && root->val == target)
-            return NULL;
-        return root;
-    }
-};
-*/
