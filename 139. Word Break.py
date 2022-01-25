@@ -1,24 +1,18 @@
-# Time:  O(n * l^2)
-# Space: O(n)
-
+Question:
 # Given a string s and a dictionary of words dict, 
 # determine if s can be segmented into a space-separated sequence of one or more dictionary words.
 # 
-# For example, given
+# Example1:
 # s = "leetcode",
-# dict = ["leet", "code"].
-# 
+# dict = ["leet", "code"]. 
 # Return true because "leetcode" can be segmented as "leet code".
 
-class Solution(object):
-    def wordBreak(self, s, wordDict):
-        """
-        :type s: str
-        :type wordDict: Set[str]
-        :rtype: bool
-        """
-        n = len(s)
 
+Solution: ---
+    
+    
+    def wordBreak(self, s, wordDict):
+        n = len(s)
         max_len = 0
         for string in wordDict:
             max_len = max(max_len, len(string))
@@ -33,6 +27,7 @@ class Solution(object):
 
         return can_break[-1]
 
+  
     
-if __name__ == "__main__":
-    print Solution().wordBreak("leetcode", ["leet", "code"])
+# Time:  O(n * l^2)
+# Space: O(n)    
