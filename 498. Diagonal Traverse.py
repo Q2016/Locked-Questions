@@ -9,7 +9,7 @@ Output: [1,2,4,7,5,3,6,8,9]
     
     
     
-Solution:---    
+Solution: Dictionary 
 
 The key here is to realize that the sum of indices on all diagonals are equal.
 
