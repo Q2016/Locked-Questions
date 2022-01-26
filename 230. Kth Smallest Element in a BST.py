@@ -1,19 +1,13 @@
-class Solution {
-public:
-    void inorder(TreeNode* root, vector<int> &res){
-        if(!root)
-            return;
-        inorder(root->left, res);
-        res.push_back(root->val);
-        inorder(root->right,res);
-        
-    }
-    int kthSmallest(TreeNode* root, int k) {
-        if(!root)
-            return -1;
-        vector<int> arr;
-        inorder(root, arr);
-        return arr[k-1];
+Question:
+Given the root of a binary search tree, and an integer k, return the kth smallest value 
+(1-indexed) of all the values of the nodes in the tree.    
 
-    }
-};
+
+Solution: Inorder
+    
+    def kthSmallest(self, root, k):
+        
+        def inorder(r):
+            return inorder(r.left) + [r.val] + inorder(r.right) if r else []
+    
+        return inorder(root)[k - 1]    
