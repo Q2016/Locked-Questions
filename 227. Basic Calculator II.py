@@ -1,8 +1,17 @@
+Question:
+Given a string s which represents an expression, evaluate this expression and return its value. 
+The integer division should truncate toward zero.
+
+Example 1:
+Input: s = "3+2*2"
+Output: 7    
+
+
+Solution:    
+    
 https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/basic-calculator-ii.py
 
-class Solution:
-    # @param {string} s
-    # @return {integer}
+
     def calculate(self, s):
         operands, operators = [], []
         operand = ""
