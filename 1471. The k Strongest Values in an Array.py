@@ -16,7 +16,7 @@ elements are [5, 1]. [1, 5] is also accepted answer.
 Please note that although |5 - 3| == |1 - 3| but 5 is stronger than 1 because 5 > 1.    
 
 
-Solution:
+Solution: ---
 
 https://leetcode.com/problems/the-k-strongest-values-in-an-array/discuss/674566/Python3-straightforward-2-lines-with-custom-sort
 
