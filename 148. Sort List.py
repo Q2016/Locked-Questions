@@ -1,22 +1,10 @@
-# Time:  O(nlogn)
-# Space: O(logn) for stack call
-#
-# Sort a linked list in O(n log n) time using constant space complexity.
-#
+Question:
+Given the head of a linked list, return the list after sorting it in ascending order.
 
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-            
-    def __repr__(self):
-        if self:
-            return "{} -> {}".format(self.val, repr(self.next))
 
-class Solution:
-    # @param head, a ListNode
-    # @return a ListNode 
+
+Solution:
+
     def sortList(self, head):
         if head == None or head.next == None:
             return head
@@ -47,3 +35,8 @@ class Solution:
             cur.next = l2
             
         return dummy.
+    
+# Time:  O(nlogn)
+# Space: O(logn) for stack call
+
+
