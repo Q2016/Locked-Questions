@@ -1,24 +1,4 @@
-My solution:
-
-class LRUCache:
-
-    def __init__(self, capacity: int):
-        self.mydic={}
-
-    def get(self, key: int) -> int:
-        return self.mydic[key]
-
-    def put(self, key: int, value: int) -> None:
-        self.mydic[key]=value
-        
-        
-        
-
-https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/lru-cache.py
-  
-# Time:  O(1), per operation.
-# Space: O(k), k is the capacity of cache.
-
+Question:
 # Design and implement a data structure for Least Recently Used (LRU) cache.
 # It should support the following operations: get and put.
 #
@@ -42,7 +22,32 @@ https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/lru-cache.py
 # cache.get(2);       // returns -1 (not found)
 # cache.put(4, 4);    // evicts key 1
 # cache.get(1);       // returns -1 (not found)
-# cache.get(3);       // returns 3
+# cache.get(3);       // returns 3    
+
+Solution:
+
+My solution:
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.mydic={}
+
+    def get(self, key: int) -> int:
+        return self.mydic[key]
+
+    def put(self, key: int, value: int) -> None:
+        self.mydic[key]=value
+        
+        
+        
+
+https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/lru-cache.py
+  
+# Time:  O(1), per operation.
+# Space: O(k), k is the capacity of cache.
+
+
 
 class ListNode(object):
     def __init__(self, key, val):
