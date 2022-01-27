@@ -1,32 +1,38 @@
-Maybe in general for the lexigraphical permutation:
-https://aakash01.github.io/programming/2014/03/11/permutations-of-a-given-string-in-lexicographic-order
+Question:
+The next permutation of an array of integers is the next lexicographically greater permutation of its integer. 
+If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
+For example, the next permutation of arr = [1,2,3] is [1,3,2]. Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
+While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
+Given an array of integers nums, find the next permutation of nums. The replacement must be in place and use only constant extra memory.
 
+Example 1:
+Input: nums = [1,2,3]
+Output: [1,3,2]    
+    
+    
+    
+Solution:    
 
+According to Wikipedia, a man named Narayana Pandita presented the following simple algorithm to solve this problem in the 14th century.
+- Find the largest index k such that nums[k] < nums[k + 1]. If no such index exists, just reverse nums and done.
+- Find the largest index l > k such that nums[k] < nums[l].
+- Swap nums[k] and nums[l].
+- Reverse the sub-array nums[k + 1:].
 
-https://leetcode.com/problems/next-permutation/
-
-
-public class Solution {
-    public void nextPermutation(int[] nums) {
-        int i = nums.length - 2;
-        while (i >= 0 && nums[i + 1] <= nums[i]) {
-            i--;
-        }
-        if (i >= 0) {
-            int j = nums.length - 1;
-            while (nums[j] <= nums[i]) {
-                j--;
-            }
-            swap(nums, i, j);
-        }
-        reverse(nums, i + 1);
-    }
-
-    private void reverse(int[] nums, int start) {
-        int i = start, j = nums.length - 1;
-        while (i < j) {
-            swap(nums, i, j);
-            i++;
-            j--;
-        }
-    }
+    def nextPermutation(self, nums):
+        i = j = len(nums)-1
+        while i > 0 and nums[i-1] >= nums[i]:
+            i -= 1
+        if i == 0:   # nums are in descending order
+            nums.reverse()
+            return 
+        k = i - 1    # find the last "ascending" position
+        while nums[j] <= nums[k]:
+            j -= 1
+        nums[k], nums[j] = nums[j], nums[k]  
+        l, r = k+1, len(nums)-1  # reverse the second part
+        while l < r:
+            nums[l], nums[r] = nums[r], nums[l]
+            l +=1 ; r -= 1
+        
+The above algorithm can also handle duplicates and thus can be further used to solve Permutations and Permutations II.
