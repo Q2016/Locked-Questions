@@ -14,11 +14,6 @@ Explanation: There are two paths from start to end, one having a probability of 
             1 ----- 2       	
 	       0.5
 	
-
-
-
-
-
 Solutioin: Bellman Ford (first) or Dijkstra (second):
 
     def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
