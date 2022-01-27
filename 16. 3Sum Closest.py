@@ -1,7 +1,13 @@
+Question:
+Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.
+Return the sum of the three integers. You may assume that each input would have exactly one solution.
 
-# Time:  O(n^2)
-# Space: O(1)
+Example 1:
+Input: nums = [-1,2,1,-4], target = 1
+Output: 2
+Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).    
 
+Solution: 3 Pointers
 Similar to 3 Sum problem, use 3 pointers to point current element, next element and the last element. 
 If the sum is less than target, it means we have to add a larger element so next element move to the next. 
 If the sum is greater, it means we have to add a smaller element so last element move to the second 
@@ -9,13 +15,8 @@ last element. Keep doing this until the end. Each time compare the difference be
 if it is less than minimum difference so far, then replace result with it, otherwise keep iterating.
 
 
-class Solution(object):
     def threeSumClosest(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
+
         nums, result, min_diff, i = sorted(nums), float("inf"), float("inf"), 0
         while i < len(nums) - 2:
             if i == 0 or nums[i] != nums[i - 1]:
@@ -33,3 +34,8 @@ class Solution(object):
                         return target
             i += 1
         return result
+
+    
+    
+# Time:  O(n^2)
+# Space: O(1)    
