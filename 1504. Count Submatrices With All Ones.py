@@ -1,97 +1,64 @@
-Solution from to see the images:
-  https://leetcode.com/problems/count-submatrices-with-all-ones/discuss/720265/Java-Detailed-Explanation-From-O(MNM)-to-O(MN)-by-using-Stack
-    
+Question:
+Given an m x n binary matrix mat, return the number of submatrices that have all ones.
+
+Example 1:
+Input: mat = [[1,0,1],
+	      [1,1,0],
+	      [1,1,0]]
+Output: 13
+Explanation: 
+There are 6 rectangles of side 1x1.
+There are 2 rectangles of side 1x2.
+There are 3 rectangles of side 2x1.
+There is 1 rectangle of side 2x2. 
+There is 1 rectangle of side 3x1.
+Total number of rectangles = 6 + 2 + 3 + 1 + 1 = 13.	
+
+
+Solution: Histogram model (Hard)
+
+In the first step, stack mat row by row to get the "histogram model". For example,
+mat = [[1,0,1],    =>   mat = [[1,0,1],
+       [1,1,0],                [2,1,0],
+       [1,1,0]]                [3,2,0]]
+
+In the second step, traverse the stacked matrix row by row. At each position i, j, compute the number of all-1 submatrices like below.
+Define a stack to store indices of non-decreasing height, and a variable cnt for the number of all-1 submatrices at given position (i, j). 
+Take the height of row i as an example, say h = mat[i]. At column j, if h[j-1] <= h[j], it is apparent that cnt[j] = cnt[j-1] + h[j], 
+since every case that contributes to cnt[j-1] could be added a new column of 1's from the jth column to contribute to cnt[j].
+The tricky part is when h[j-1] > h[j]. In this case, we need to "hypothetically" lower h[j-1] to h[j] to get an updated cnt*[j-1] 
+before adding h[j] to get cnt[j]. Suppose that the histogram is like below to reflect 3,3,3,2. To compute cnt[3], we have to adjust cnt[2] 
+to a hypothetical height of 2 by removing top row before adding the new column to get cnt[3]. The specific operation is done using a 
+mono-stack which stores indices of non-decreasing height. Whenever a new height comes in, pop out the heights in the stack that are 
+higher than the new height while removing the quota contributed by the extra height (between poped height and new height).
+
+* * * 
+* * * * 
+* * * *
+class Solution:
+    def numSubmat(self, mat: List[List[int]]) -> int:
+        m, n = len(mat), len(mat[0])
+        #precipitate mat to histogram 
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j] and i > 0: 
+                    mat[i][j] += mat[i-1][j] #histogram 
+        ans = 0
+        for i in range(m):
+            stack = [] #mono-stack of indices of non-decreasing height
+            cnt = 0
+            for j in range(n):
+                while stack and mat[i][stack[-1]] > mat[i][j]: 
+                    jj = stack.pop()                          #start
+                    kk = stack[-1] if stack else -1           #end
+                    cnt -= (mat[i][jj] - mat[i][j])*(jj - kk) #adjust to reflect lower height
+
+                cnt += mat[i][j] #count submatrices bottom-right at (i, j)
+                ans += cnt
+                stack.append(j)
+        return ans
+
+
 Similar questions:
 https://leetcode.com/problems/maximal-rectangle/
 https://leetcode.com/problems/largest-rectangle-in-histogram  
-    
-    
-O(M * N * M):
-Imagine you have an one-dimension array, how to count number of all 1 submatrices (size is 1 * X). It's pretty simple right?
-
-int res = 0, length = 0;
-for (int i = 0; i < A.length; ++i) {
-	length = (A[i] == 0 ? 0 : length + 1);
-	res += length;
-}
-return res;
-Now, Let's solve 2D matrix by finding all 1 submatrices from row "up" to row "down". And apply above 1D helper function. Note: the array h[k] == 1 means all values in column k from row "up" to "down" are 1 (that's why we use &). So overall, the idea is to "compress" the 2D array to the 1D array, and apply 1D array method on it, while trying all heights up to down.
-
-public int numSubmat(int[][] mat) {
-        
-	int M = mat.length, N = mat[0].length;
-
-	int res = 0;
-	for (int up = 0; up < M; ++up) {
-		int[] h = new int[N];
-		Arrays.fill(h, 1);
-		for (int down = up; down < M; ++down) {
-			for (int k = 0; k < N; ++k) h[k] &= mat[down][k];
-			res += countOneRow(h);
-		}
-	}
-
-	return res;
-}
-
-private int countOneRow(int[] A) {
-
-	int res = 0, length = 0;
-	for (int i = 0; i < A.length; ++i) {
-		length = (A[i] == 0 ? 0 : length + 1);
-		res += length;
-	}
-	return res;
-}
-O(M * N) by Using Stack
-Now in the code, the h[j] means: number of continius 1 in column j from row i up to row 0. By using mono-stack, what we want to achieve is to find the first previous index "preIndex", whose number of continuous 1 is less than current column index i. And the value of index between preIndex and i are all equal or larger than index i. So it can form a big sub-matrix.
-
-Note: sum[i] means the number of submatrices with the column "i" as the right border.
-
-If stack is empty, meaning: all previous columns has more/equal ones than current column. So, the number of matrixs can form is simply A[i] * (i + 1); (0-index)
-If stack is not empty, meaning: there is a shorter column which breaks our road. Now, the number of matrixs can form is sum[i] += A[i] * (i - preIndex). And plus, we can form a longer submatrices with that previou shorter column sum[preIndex].
-The best way to understand is to draw a graph.
-image
-
-public int numSubmat(int[][] mat) {
-        
-	int M = mat.length, N = mat[0].length;
-
-	int res = 0;
-
-	int[] h = new int[N];
-	for (int i = 0; i < M; ++i) {
-		for (int j = 0; j < N; ++j) {
-			h[j] = (mat[i][j] == 0 ? 0 : h[j] + 1);
-		}
-		res += helper(h);
-	}
-
-	return res;
-}
-
-private int helper(int[] A) {
-
-	int[] sum = new int[A.length];
-	Stack<Integer> stack = new Stack<>();
-
-	for (int i = 0; i < A.length; ++i) {
-
-		while (!stack.isEmpty() && A[stack.peek()] >= A[i]) stack.pop();
-
-		if (!stack.isEmpty()) {
-			int preIndex = stack.peek();
-			sum[i] = sum[preIndex];
-			sum[i] += A[i] * (i - preIndex);
-		} else {
-			sum[i] = A[i] * (i + 1);
-		}
-
-		stack.push(i);
-	}
-
-	int res = 0;
-	for (int s : sum) res += s;
-
-	return res;
-}    
