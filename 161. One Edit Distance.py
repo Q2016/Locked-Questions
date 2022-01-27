@@ -1,48 +1,24 @@
-
-
-
-Given two strings s and t, determine if they are both one edit distance apart.
-
-Note: 
+Question:
+Given two strings s and t, determine if they are both one edit distance apart. 
 There are 3 possiblities to satisify one edit distance apart:
+-Insert a character into s to get t -Delete a character from s to get t -Replace a character of s to get t
 
-Insert a character into s to get t
-Delete a character from s to get t
-Replace a character of s to get t
 Example 1:
-
 Input: s = "ab", t = "acb"
 Output: true
 Explanation: We can insert 'c' into s to get t.
-Example 2:
-
-Input: s = "cab", t = "ad"
-Output: false
-Explanation: We cannot get t from s by only one step.
-Example 3:
-
-Input: s = "1203", t = "1213"
-Output: true
-Explanation: We can replace '0' with '1' to get t.
 
 
-Methodology
-First We need to confirm that if case senstive matters, if blank space included. 
-(Others like empty string, order and so on …)
-
-Then if two strings are equal or both empty we return false; if one string’s length is more 
-than 1 unit longer than the other one’s length we return false.
-
-At last, Compare two strings (s, t) have three conditions.
-
-Two strings length are equal. We only need to focus on the replacement edit. Since order matters, 
-we can iterate both string based on same index, if the different character are more than 1 then 
-return false else return true.
-Two strings length are not equal. We only focus on add or delete. We iterate the shorter length string, 
-if the current characters in same index of both string are different then we kown the current character 
-should be the one need to add or delete. So we just have to make sure the rest characters of both 
-strings have to be same, otherwise there are more than 1 edit. In fact, since order matters, we do 
-not have to compare the whole rest string, we only need to confirm if next character of longer string 
+Solution: ---
+     
+First We need to confirm that if case senstive matters, if blank space included. Then if two strings are equal or both empty 
+we return false; if one string’s length is more than 1 unit longer than the other one’s length we return false. At last, 
+Compare two strings (s, t) have three conditions. -Two strings length are equal. We only need to focus on the replacement edit. 
+Since order matters, we can iterate both string based on same index, if the different character are more than 1 then 
+return false else return true. -Two strings length are not equal. We only focus on add or delete. We iterate the shorter length string, 
+if the current characters in same index of both string are different then we kown the current character should be the one need to add or
+delete. So we just have to make sure the rest characters of both strings have to be same, otherwise there are more than 1 edit. 
+In fact, since order matters, we do not have to compare the whole rest string, we only need to confirm if next character of longer string 
 is equal to the current character of short string. If they are different then we return false.
 
 
