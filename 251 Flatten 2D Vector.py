@@ -1,19 +1,12 @@
+Question:
 Implement an iterator to flatten a 2d vector.
 
-For example, Given 2d vector =
-
-[
-  [1,2],
-  [3],
-  [4,5,6]
-]
-By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,2,3,4,5,6].
+Example, Given 2d vector =[[1,2],[3],[4,5,6]]. By calling next repeatedly until hasNext returns false, the order of elements 
+returned by next should be: [1,2,3,4,5,6].
 
 
-
-# Time:  O(1)
-# Space: O(1)
-
+Solution:
+  
 class Vector2D:
     x, y = 0, 0
     vec = None
@@ -43,3 +36,6 @@ class Vector2D:
             self.x += 1
             if self.x != len(self.vec):
                 self.y = 0
+
+# Time:  O(1)
+# Space: O(1)                
