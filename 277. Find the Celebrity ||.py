@@ -1,23 +1,14 @@
-Suppose you are at a party withnpeople (labeled from0ton - 1) and among them, there may 
-exist one celebrity. The definition of a celebrity is that all the othern - 1people know 
-him/her but he/she does not know any of them.
-
-Now you want to find out who the celebrity is or verify that there is not one. The only thing 
-you are allowed to do is to ask questions like: "Hi, A. Do you know B?" to get information of 
-whether A knows B. You need to find out the celebrity (or verify there is not one) by asking 
-as few questions as possible (in the asymptotic sense).
-
-You are given a helper functionbool knows(a, b)which tells you whether A knows B. Implement a 
-functionint findCelebrity(n), your function should minimize the number of calls toknows.
+Question:
+Suppose you are at a party with n people and one celebrity. The definition of a celebrity is that all the other n - 1 people know 
+him but he does not know any of them. You are given a helper function bool knows(a, b) which tells you whether A knows B. Implement a 
+functionint findCelebrity(n), your function should minimize the number of calls to knows.
 
 
-
+Solution:
 One way to solve this problem is by taking each node, check if other nodes know this node, and 
 check if this node does not know any other nodes. If yes, this is the required celebrity. 
 Otherwise, continue checking the other nodes.
-Let us look into the code snippet.
 
-class CelebrityFinder:
     def findCelebrity(self, n: int) -> int:
         def is_celeb(celeb):
             for other in range(n):
@@ -48,7 +39,6 @@ and current candidate node is not aware of other nodes. If the above condition i
 -1 else we will return the candidate.
 Let us look into the code snippet.
 
-class CelebrityFinder:
     def findCelebrity(self, n: int) -> int:
         candidate = 0
         for i in range(1, n):
