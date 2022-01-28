@@ -1,9 +1,7 @@
-DFS
-
+Question:
 Given a binary tree, collect a tree's nodes as if you were doing this: Collect and remove all leaves, repeat until the tree is empty.
 
 Example: Given binary tree
-
           1
          / \
         2   3
@@ -11,41 +9,15 @@ Example: Given binary tree
       4   5
 Returns [4, 5, 3], [2], [1].
 
-Explanation:
 
-Removing the leaves [4, 5, 3] would result in this tree:
+Solution: DFS
 
-
-       1
-      / 
-     2
-Now removing the leaf [2] would result in this tree:
-       1
-Now removing the leaf [1] would result in the empty tree:
-          []
-Returns [4, 5, 3], [2], [1].
-
-# Time:  O(n)
-# Space: O(h)
-
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution(object):
     def findLeaves(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[List[int]]
-        """
+
         def findLeavesHelper(node, result):
             if not node:
                 return -1
-            level = 1 + max(findLeavesHelper(node.left, result), \
-                            findLeavesHelper(node.right, result))
+            level = 1 + max(findLeavesHelper(node.left, result), findLeavesHelper(node.right, result))
             if len(result) < level + 1:
                 result.append([])
             result[level].append(node.val)
@@ -54,3 +26,7 @@ class Solution(object):
         result = []
         findLeavesHelper(root, result)
         return result
+
+
+# Time:  O(n)
+# Space: O(h)
