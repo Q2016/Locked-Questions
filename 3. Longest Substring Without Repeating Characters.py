@@ -1,21 +1,31 @@
-# Time:  O(n)
-# Space: O(1)
+Question:
+Given a string s, find the length of the longest substring without repeating characters.
+
+Example 1:
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.    
 
 
-class Solution:
-    # @return an integer
+    
+    
+Solution: set
+    
     def lengthOfLongestSubstring(self, s):
-        longest, start, visited = 0, 0, [False for _ in xrange(256)]
-        for i, char in enumerate(s):
-            if visited[ord(char)]:
-                while char != s[start]:
-                    visited[ord(s[start])] = False
-                    start += 1
-                start += 1
+        start = maxLength = 0
+        usedChar = {}
+        
+        for i in range(len(s)):
+            if s[i] in usedChar and start <= usedChar[s[i]]:
+                start = usedChar[s[i]] + 1
             else:
-                visited[ord(char)] = True
-            longest = max(longest, i - start + 1)
-        return longest
+                maxLength = max(maxLength, i - start + 1)
 
-if __name__ == "__main__":
-    print Solution().lengthOfLongestSubstring("abcabcbb")
+            usedChar[s[i]] = i
+
+        return maxLength
+
+
+    
+# Time:  O(n)
+# Space: O(1)    
