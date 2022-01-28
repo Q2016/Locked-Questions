@@ -1,27 +1,17 @@
-Solution — Dynamic Programming
+Question:
+Given an integer n, return the least number of perfect square numbers that sum to n. A perfect square is an integer that 
+is the square of an integer; in other words, it is the product of some integer with itself. For example, 1, 4, 9, and 16 
+are perfect squares while 3 and 11 are not.    
+
+
+Solution : Dynamic Programming
 This problem is a classic dynamic programming problem that we can use previous information to construct current value by following formula:
 For any integer 0 < k ≤ n, D[k] = min(1 + D[k-l²]),
 where l is an integer and 0 < l < SQRT(k)
 Then our answer will be at D[n].
 
 
-
-https://lenchen.medium.com/leetcode-279-perfect-squares-d83cac919604
-
-# Python3
-
-class Solution:
     def numSquares(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-
-        # approach: use dynamic programming for finding minimum 
-        #           distance by previous information:
-        #           for each k <= n,
-        #               d[k] = min(1 + d[k-(l**2)]),
-        #               where 0 < l < sqrt(k) and l is an integer
 
         # d[0] = 0 because n is a positive integer
         distance = [0 for i in range(n+1)]
