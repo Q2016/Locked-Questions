@@ -27,7 +27,7 @@ snake.move("L"); -> Returns 2 (Snake eats the second food)
 snake.move("U"); -> Returns -1 (Game over because snake collides with border)
 
 
-
+Solution:
 
 class SnakeGame(object):
 
