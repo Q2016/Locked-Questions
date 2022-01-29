@@ -1,16 +1,15 @@
-Given a binary tree, find the largest subtree which is a Binary Search Tree (BST), 
-where largest means subtree with largest number of nodes in it.
+Question:
+Given a binary tree, find the largest subtree which is a Binary Search Tree (BST), where largest means subtree with largest number of nodes in it.
+Note: A subtree must include all of its descendants. Follow up: Can you figure out ways to solve it with O(n) time complexity?
 
-Note: A subtree must include all of its descendants. Here's an example:
-
-    10
+Example:
+     10
     / \
    5  15
   / \   \ 
  1   8   7
 The Largest BST Subtree in this case is 5. The return value is the subtree's size, which is 3.
-Follow up:
-Can you figure out ways to solve it with O(n) time complexity?
+
 Hint:
 
 You can recursively use algorithm similar to 98. Validate Binary Search Tree at each 
@@ -21,7 +20,7 @@ This question asks us to find the largest binary search subtree of a binary tree
 The so-called binary search tree is a binary tree that satisfies left < root < right, 
 and we need to return the number of nodes in this binary search subtree. The hint given 
 in the title says that it can be done with the previous  method of Validate Binary Search Tree  , 
-with a time complexity of O(n 2 ). This method treats each node as a root node to verify whether 
+with a time complexity of O(n^2 ). This method treats each node as a root node to verify whether 
 it is binary. Search the number and record the number of nodes. If it is a binary search tree, 
 update the final result. See the code as follows:
 
