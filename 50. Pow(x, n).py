@@ -1,6 +1,10 @@
+Question:
+Implement pow(x, n), which calculates x raised to the power n.    
+
+Solution: Recursive, Iterative
+
 Recursive:
 
-class Solution:
     def myPow(self, x, n):
         if not n:
             return 1
@@ -9,9 +13,9 @@ class Solution:
         if n % 2:
             return x * self.myPow(x, n-1)
         return self.myPow(x*x, n/2)
+
 Iterative:
 
-class Solution:
     def myPow(self, x, n):
         if n < 0:
             x = 1 / x
