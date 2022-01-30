@@ -10,7 +10,7 @@ Input: strs = ["aba","cdc","eae"]
 Output: 3
 
     
-Solution:    
+Solution:  Sort  
 https://leetcode.com/problems/longest-uncommon-subsequence-ii/discuss/99453/Python-Simple-Explanation
 
 When we add a letter Y to our candidate longest uncommon subsequence answer of X, it only makes it strictly harder to find a 
