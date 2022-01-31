@@ -7,6 +7,8 @@ Input: strs = ["eat","tea","tan","ate","nat","bat"]
 Output: [["bat"],["nat","tan"],["ate","eat","tea"]]    
 
 
+Question:
+    
     def groupAnagrams(self, strs):
 
         anagrams_map, result = collections.defaultdict(list), []
