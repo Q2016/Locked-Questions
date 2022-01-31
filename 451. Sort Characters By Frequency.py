@@ -1,44 +1,18 @@
-# Time:  O(n)
-# Space: O(n)
+Question:
+Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number 
+of times it appears in the string. Return the sorted string. If there are multiple answers, return any of them.
 
-# Input:
-# "tree"
-#
-# Output:
-# "eert"
-#
-# Explanation:
-# 'e' appears twice while 'r' and 't' both appear once.
-# So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.
-# Example 2:
-#
-# Input:
-# "cccaaa"
-#
-# Output:
-# "cccaaa"
-#
-# Explanation:
-# Both 'c' and 'a' appear three times, so "aaaccc" is also a valid answer.
-# Note that "cacaca" is incorrect, as the same characters must be together.
-# Example 3:
-#
-# Input:
-# "Aabb"
-#
-# Output:
-# "bbAa"
-#
-# Explanation:
-# "bbaA" is also a valid answer, but "Aabb" is incorrect.
-# Note that 'A' and 'a' are treated as two different characters.
+Example 1:
+Input: s = "tree"
+Output: "eert"
+Explanation: 'e' appears twice while 'r' and 't' both appear once.
+So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.    
 
-class Solution(object):
+
+Solution:
+
     def frequencySort(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+
         freq = collections.defaultdict(int)
         for c in s:
             freq[c] += 1
@@ -53,3 +27,7 @@ class Solution(object):
                 result += c * count
         
         return result
+
+    
+# Time:  O(n)
+# Space: O(n)    
