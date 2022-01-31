@@ -16,6 +16,7 @@ Explanation:
 There is a cycle from index 0 -> 2 -> 3 -> 0 -> ...
 The cycle's length is 3.
 
+
 Solution:
 Just think it as finding a loop in Linkedlist, except that loops with only 1 element do not count. Use a slow and fast pointer, 
 slow pointer moves 1 step a time while fast pointer moves 2 steps a time. If there is a loop (fast == slow), we return true, 
@@ -32,7 +33,8 @@ fail for sure so when later search meet 0 we know the search will fail.
         for i, val in enumerate(nums):
             if val == 0:
                 continue
-
+                
+            #slow/fast pointer
             j = i
             k = getIndex(i)
 
@@ -44,7 +46,8 @@ fail for sure so when later search meet 0 we know the search will fail.
 
                 j = getIndex(j)
                 k = getIndex(getIndex(k))
-
+                
+            # loop not found, set all element along the way to 0
             j = i
             while nums[j] * val > 0:
                 next = getIndex(j)
