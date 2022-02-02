@@ -17,7 +17,6 @@ Pacific	[3,2,3,$4,$4],  Atlantic
 Output: [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]], shown with '$' above	
 
 
-
 Solution: DFS
 https://leetcode.com/problems/pacific-atlantic-water-flow/discuss/1126938/Short-and-Easy-w-Explanation-and-diagrams-or-Simple-Graph-traversals-DFS-and-BFS
   
@@ -27,8 +26,7 @@ Now, if we start from the cells connected to altantic ocean and visit all cells 
 (water can only flow from a cell to another one with height equal or lower), we are able to reach some subset of cells (let's call them A).
 Next, we start from the cells connected to pacific ocean and repeat the same process, we find another subset (let's call this one B).
 The final answer we get will be the intersection of sets A and B (A ∩ B).
-                                                                                                              
-                                                                                                              
+                                                                                                                                                                                                                        
     # denotes cells reachable starting from atlantic and pacific edged cells respectively
     # atlantic: bool vector intitalize with False
     # pacific: bool vector intitalize with False
@@ -47,8 +45,7 @@ The final answer we get will be the intersection of sets A and B (A ∩ B).
 		dfs(mat, pacific, 0, i) 
 		dfs(mat, atlantic, m - 1, i)           
         return ans
-    
-													      
+    													      
     def dfs(mat, visited, i, j):        
         if (visited[i][j]):
 		return
@@ -62,6 +59,7 @@ The final answer we get will be the intersection of sets A and B (A ∩ B).
         if(j + 1 <  n and mat[i][j + 1] >= mat[i][j]) dfs(mat, visited, i, j + 1)  #➡️
         if(j - 1 >= 0 and mat[i][j - 1] >= mat[i][j]) dfs(mat, visited, i, j - 1)  #⬅️
 
+													      
 													      
 Time Complexity : O(M*N), in worst case, all cells are reachable to both oceans and would be visited twice. This case can occur when all elements are equal.
 Space Complexity : O(M*N), to mark the atlantic and pacific visited cells.
