@@ -1,4 +1,14 @@
-//1's in the leftmost positions impacts the final value more than any other position. In other words, we want to get as close to the binary complement of the number as possible and when we can't get it exact, we want to match the complement in the leftmost bits. That is, in the "prefix" of the binary string.
+Question:
+Given an integer array nums, return the maximum result of nums[i] XOR nums[j], where 0 <= i <= j < n.
+
+Example 1:
+Input: nums = [3,10,5,25,2,8], Output: 28
+Explanation: The maximum result is 5 XOR 25 = 28.    
+
+
+//1's in the leftmost positions impacts the final value more than any other position. In other words, we want to get as close to 
+the binary complement of the number as possible and when we can't get it exact, we want to match the complement in the leftmost bits. 
+That is, in the "prefix" of the binary string.
 
 
 
