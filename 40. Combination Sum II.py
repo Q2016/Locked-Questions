@@ -1,14 +1,15 @@
+Question:
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in 
+candidates where the candidate numbers sum to target. Each number in candidates may only be used once in the combination.
 
-
-for solution see :
-  https://leetcode.com/problems/combination-sum-ii/solution/
+Example 1:
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: [[1,1,6], [1,2,5], [1,7], [2,6]]  
 
     
-    
-Approach 1: Backtracking with Counters    
+Solution: Backtracking with Counters    
 
 
-class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
 
         def backtrack(comb, remain, curr, counter, results):
@@ -42,7 +43,6 @@ class Solution:
         # convert the counter table to a list of (num, count) tuples
         counter = [(c, counter[c]) for c in counter]
 
-        backtrack(comb = [], remain = target, curr = 0,
-                  counter = counter, results = results)
+        backtrack(comb = [], remain = target, curr = 0, counter = counter, results = results)
 
         return results
