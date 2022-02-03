@@ -1,48 +1,77 @@
-https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Solution-with-Graph-Explanation
+Question:
+Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.
+
+Example 1:
+Input: num1 = "2", num2 = "3"
+Output: "6"  
+
   
-  
+Solution:
+For the animation: https://leetcode.com/problems/multiply-strings/solution/
 
-class Solution {
-public:
-string multiply(string num1, string num2) {
-    string sum(num1.size() + num2.size(), '0');
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        if num1 == "0" or num2 == "0": 
+            return "0"
+        
+        # Reverse both numbers.
+        first_number = num1[::-1]
+        second_number = num2[::-1]
+        
+        # For each digit in second_number, multipy the digit by first_number and then
+        # store the multiplication result (reversed) in the results array.
+        results = []
+        for index, digit in enumerate(second_number):
+            results.append(self.multiply_one_digit(digit, index, first_number))
+        
+        # Add all of the results together to get our final answer (in reverse order)
+        answer = self.sum_results(results)
+
+        # Reverse answer and join the digits to get the final answer.
+        return ''.join(str(digit) for digit in reversed(answer))
+
+    def multiply_one_digit(self, digit2: str, num_zeros: int, first_number: List[str]) -> List[int]:
+        """Multiplies first_number by a digit from second_number (digit2)."""
+        # Insert zeros at the beginning of the current result based on the current digit's place.
+        current_result = [0] * num_zeros
+        carry = 0
+
+        # Multiply each digit in first_number with the current digit of the second_number.
+        for digit1 in first_number:
+            multiplication = int(digit1) * int(digit2) + carry
+            # Set carry equal to the tens place digit of multiplication.
+            carry = multiplication // 10
+            # Append last digit to the current result.
+            current_result.append(multiplication % 10)
+
+        if carry != 0:
+            current_result.append(carry)
+        return current_result
     
-    for (int i = num1.size() - 1; 0 <= i; --i) {
-        int carry = 0;
-        for (int j = num2.size() - 1; 0 <= j; --j) {
-            int tmp = (sum[i + j + 1] - '0') + (num1[i] - '0') * (num2[j] - '0') + carry;
-            sum[i + j + 1] = tmp % 10 + '0';
-            carry = tmp / 10;
-        }
-        sum[i] += carry;
-    }
-    
-    size_t startpos = sum.find_first_not_of("0");
-    if (string::npos != startpos) {
-        return sum.substr(startpos);
-    }
-    return "0";
-}
-};
+    def sum_results(self, results: List[List[int]]) -> List[int]:
+        # Initialize answer as a number from results.
+        answer = results.pop()
 
-// from Easiest JAVA Solution with Graph Explanation
+        # Add each result to answer one at a time.
+        for result in results:
+            new_answer = []
+            carry = 0
 
-public String multiply(String num1, String num2) {
-    int m = num1.length(), n = num2.length();
-    int[] pos = new int[m + n];
-   
-    for(int i = m - 1; i >= 0; i--) {
-        for(int j = n - 1; j >= 0; j--) {
-            int mul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0'); 
-            int p1 = i + j, p2 = i + j + 1;
-            int sum = mul + pos[p2];
+            # Sum each digit from answer and result. Note: zip_longest is the
+            # same as zip, except that it pads the shorter list with fillvalue.
+            for digit1, digit2 in zip_longest(result, answer, fillvalue=0):
+                # Add current digit from both numbers.
+                curr_sum = digit1 + digit2 + carry
+                # Set carry equal to the tens place digit of curr_sum.
+                carry = curr_sum // 10
+                # Append the ones place digit of curr_sum to the new answer.
+                new_answer.append(curr_sum % 10)
 
-            pos[p1] += sum / 10;
-            pos[p2] = (sum) % 10;
-        }
-    }  
-    
-    StringBuilder sb = new StringBuilder();
-    for(int p : pos) if(!(sb.length() == 0 && p == 0)) sb.append(p);
-    return sb.length() == 0 ? "0" : sb.toString();
-}
+            if carry != 0:
+                new_answer.append(carry)
+
+            # Update answer to new_answer which equals answer + result
+            answer = new_answer
+
+        return answer
