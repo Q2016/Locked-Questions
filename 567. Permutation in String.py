@@ -1,14 +1,18 @@
-Solution:
-  https://leetcode.com/problems/permutation-in-string/discuss/102594/Python-Simple-with-Explanation
+Question:
+Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+In other words, return true if one of s1's permutations is the substring of s2.
+
+Example 1:
+Input: s1 = "ab", s2 = "eidbaooo", Output: true
+Explanation: s2 contains one permutation of s1 ("ba").  
 
 
-This problem has many solutions but only sliding window passes all the tests
+Solution: Sliding window
 
-Intuition:
-
-For each window representing a substring of s2 of length len(s1), we want to check if the count of the window is equal to the count of s1. Here, the count of a string is the list of: [the number of a's it has, the number of b's,... , the number of z's.]
-
-We can maintain the window by deleting the value of s2[i - len(s1)] when it gets larger than len(s1). After, we only need to check if it is equal to the target. Working with list values of [0, 1,..., 25] instead of 'a'-'z' makes it easier to count later.
+For each window representing a substring of s2 of length len(s1), we want to check if the count of the window is equal to 
+the count of s1. Here, the count of a string is the list of: [the number of a's it has, the number of b's,... , the number of z's.]
+We can maintain the window by deleting the value of s2[i - len(s1)] when it gets larger than len(s1). After, we only need to 
+check if it is equal to the target. Working with list values of [0, 1,..., 25] instead of 'a'-'z' makes it easier to count later.
 
 def checkInclusion(self, s1, s2):
     A = [ord(x) - ord('a') for x in s1]
