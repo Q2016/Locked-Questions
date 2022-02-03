@@ -8,7 +8,6 @@ Input:     , Output: 3
  [0,0,0,1]]
 
 Solution: DP
-
 We use DP solution, we build a three-dimensional DP array, where DP[i][j][k] is used to traverse 
 the matrix M[i][j]. Value of K is 0, 1, 2, 3. The four situations corresponding to level, vertical, diagonal, and reverse angle. 
 
