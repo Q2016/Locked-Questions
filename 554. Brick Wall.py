@@ -16,7 +16,6 @@ Input:      Output: 2
 
 Solution: Hashmap
 
-
     def leastBricks(self, wall):
 
         widths = collections.defaultdict(int)
