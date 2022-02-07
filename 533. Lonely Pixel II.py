@@ -1,19 +1,12 @@
+Question:
 Given a picture consisting of black and white pixels, and a positive integer N, find the number 
 of black pixels located at some specific row R and column C that align with all the following rules:
-
 Row R and column C both contain exactly N black pixels.
 For all rows that have a black pixel at column C, they should be exactly the same as row R
 The picture is represented by a 2D char array consisting of 'B' and 'W', which means black and 
 white pixels respectively.
 
 Example:
-
-Input:                                            
-[['W', 'B', 'W', 'B', 'B', 'W'],    
- ['W', 'B', 'W', 'B', 'B', 'W'],    
- ['W', 'B', 'W', 'B', 'B', 'W'],    
- ['W', 'W', 'B', 'W', 'B', 'W']] 
-
 N = 3
 Output: 6
 Explanation: All the bold 'B' are the black pixels we need (all 'B's at column 1 and 3).
@@ -28,33 +21,27 @@ Take 'B' at row R = 0 and column C = 1 as an example:
 Rule 1, row R = 0 and column C = 1 both have exactly N = 3 black pixels. 
 Rule 2, the rows have black pixel at column C = 1 are row 0, row 1 and row 2. They are exactly the same as row R = 0.
 
-class Solution(object):
-    def findBlackPixel(self, picture, N):
-        """
-        :type picture: List[List[str]]
-        :type N: int
-        :rtype: int
-        """
-        w, h = len(picture), len(picture[0])
-        rows, cols = [0] * w, [0] * h
-        for x in range(w):
-            for y in range(h):
-                if picture[x][y] == 'B':
-                    rows[x] += 1
-                    cols[y] += 1
 
-        sdict = collections.defaultdict(int)
-        for idx, row in enumerate(picture):
-            sdict[''.join(row)] += 1
+Solution:
+Instead of MAP with two List, RowCountMap [N] indicates the number of rows having n 'b' plaids, and colcount [i] represents 
+the number of 'b' lattice having the column. n ^ 2 Trailed to initialize these two Lists, then compare the MAP according to 
+colcount, if value is not 0, the description is found, accumulating the number. 
 
-        ans = 0
-        for x in range(w):
-            row = ''.join(picture[x])
-            if sdict[row] != N:
-                continue
-            for y in range(h):
-                if picture[x][y] == 'B':
-                    if rows[x] == N:
-                        if cols[y] == N:
-                            ans += 1
-        return ans
+def lonelyPixel2(self, grid):
+    rows, cols = len(grid), len(grid[0])
+    rowCountMap = colCount = [0 for i in range(cols)]
+    for i in range(rows):
+        rowCount = 0
+        for j in range(cols):
+            if grid[i][j] == 'W': continue
+            rowCount += 1
+            colCount[j] += 1
+        rowCountMap[rowCount] += 1
+
+    count = 0
+    for blackCount in colCount:
+        count += rowCountMap[count]
+    return count
+
+ 
+ 
