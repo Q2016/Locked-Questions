@@ -1,13 +1,19 @@
 Question:
-  
-  
+Given an m x n matrix, return all elements of the matrix in spiral order.
+
+Example 1:
+Input: matrix = [[1->2->3],
+                        | 
+                 [4->5->6],
+                  |     |
+                 [7<-8<-9]]
+Output: [1,2,3,6,9,8,7,4,5]  
   
   
 Solution:  
 This is a very simple and easy to understand solution. I traverse right and increment rowBegin, then traverse 
 down and decrement colEnd, then I traverse left and decrement rowEnd, and finally I traverse up and increment colBegin.
 The only tricky part is that when I traverse left or up I have to check whether the row or col still exists to prevent duplicates. 
-
 
   def spiralOrder(self, matrix):
         if not matrix: return []
