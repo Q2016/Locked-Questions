@@ -1,48 +1,37 @@
+Question:
+Given an integer array nums and an integer k, return true if nums has a continuous subarray of size at least two 
+whose elements sum up to a multiple of k, or false otherwise. An integer x is a multiple of k if there exists an integer 
+n such that x = n * k. 0 is always a multiple of k.
+
+Example 1:
+Input: nums = [23,2,4,6,7], k = 6
+Output: true
+Explanation: [2, 4] is a continuous subarray of size 2 whose elements sum up to 6.
+
 https://leetcode.com/problems/continuous-subarray-sum/discuss/485589/C%2B%2BPython-Easy-and-Concise
 
 
-Explanation:
-cur calculate the prefix sum remainder of input array A
-seen will record the first occurrence of the remainder.
-If we have seen the same remainder before,
-it means the subarray sum if a multiple of k
+Solution:
+This is one of those magics of remainder theorem: (a+(n*x))%x is same as (a%x)
+Idea: if sum(nums[i:j]) % k == 0 for some i < j, then sum(nums[:j]) % k == sum(nums[:i]) % k. So we just need to use a 
+dictionary to keep track of sum(nums[:i]) % k and the corresponding index i. 
+Once some later sum(nums[:i']) % k == sum(nums[:i]) % k and i' - i > 1, we return True.
 
-
-Complexity
-Time O(N)
-Space O(N)
-
-
-Python:
-
-    def checkSubarraySum(self, A, k):
-        seen, cur = {0: -1}, 0
-        for i, a in enumerate(A):
-            cur = (cur + a) % abs(k) if k else cur + a
-            if i - seen.setdefault(cur, i) > 1: return True
-        return False
-      
-      
-or:
-  
-  
-  class Solution(object):
     def checkSubarraySum(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: bool
-        """
-        count = 0
-        lookup = {0: -1}
-        for i, num in enumerate(nums):
-            count += num
-            if k:
-                count %= k
-            if count in lookup:
-                if i - lookup[count] > 1:
-                    return True
+
+        dic = {0:-1}
+        summ = 0
+        for i, n in enumerate(nums):
+            if k != 0:
+                summ = (summ + n) % k
             else:
-                lookup[count] = i
-        
+                summ += n
+            if summ not in dic:
+                dic[summ] = i
+            else:
+                if i - dic[summ] >= 2:
+                    return True
         return False
+                         
+Time complexity: O(n), space complexity: O(min(k, n)) if k != 0, else O(n).
+                         
