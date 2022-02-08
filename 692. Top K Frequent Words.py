@@ -1,44 +1,45 @@
-/*
-O(N) for hashmap, O(NlogK) for pq --- O(logK) each time
-S(K) for hashmap, S(K) for pq
-trick : whenever we have a new pair, push it to the pq first
-let the pq decide the order, and then pop the top if pq.size() > k
-Min-heap: return int a > int b (keep larger one)
-low-alphabetical order : string a < string b (keep lower one)
-*/
+Question:
+Given an array of strings words and an integer k, return the k most frequent strings. Return the answer sorted by the frequency 
+from highest to lowest. Sort the words with the same frequency by their lexicographical order.
+
+Example 1:
+Input: words = ["i","love","leetcode","i","love","coding"], k = 2
+Output: ["i","love"]
+Explanation: "i" and "love" are the two most frequent words.
+Note that "i" comes before "love" due to a lower alphabetical order.    
 
 
-class Solution {
-private:
-    struct MyComp {
-        bool operator() (const pair<int, string>& a, const pair<int, string>& b) {
-            if(a.first != b.first) {
-                return a.first > b.first;
-            }
-            else {
-                return a.second < b.second;
-            }
-        }
-    };
+Solution: Heap
+    
+import collections
+import heapq
+import functools
 
-    public:
-    vector<string> topKFrequent(vector<string>& words, int k) {
-        unordered_map<string, int> hashmap;
-        for(string& word : words) {
-            hashmap[word] += 1;
-        }
+@functools.total_ordering
+class Element:
+    def __init__(self, count, word):
+        self.count = count
+        self.word = word
         
-        priority_queue<pair<int, string>, vector<pair<int, string>>, MyComp> pq;
-        for(auto it = hashmap.begin(); it != hashmap.end(); ++it) {
-            pq.push(make_pair(it->second, it->first));
-            if(pq.size() > k) pq.pop();
-        }
+    def __lt__(self, other):
+        if self.count == other.count:
+            return self.word > other.word
+        return self.count < other.count
+    
+    def __eq__(self, other):
+        return self.count == other.count and self.word == other.word
+
+class Solution(object):
+    def topKFrequent(self, words, k):
+        counts = collections.Counter(words)   
+        freqs = []
+        heapq.heapify(freqs)
+        for word, count in counts.items():
+            heapq.heappush(freqs, (Element(count, word), word))
+            if len(freqs) > k:
+                heapq.heappop(freqs)
         
-        vector<string> res;
-        while(!pq.empty()) {
-            res.insert(res.begin(), pq.top().second);
-            pq.pop();
-        }
-        return res;
-    }
-};
+        res = []
+        for _ in range(k):
+            res.append(heapq.heappop(freqs)[1])
+        return res[::-1]
