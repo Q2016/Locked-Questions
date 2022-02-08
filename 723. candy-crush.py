@@ -10,67 +10,55 @@ then return the current board. You need to perform the above rules until the boa
 current board.
 
 Example:
+board =                        Output:
+[[110,  5, 112, 113, 114],             [[  0,  0,  0,  0,   0],
+ [210,211,   5, 213, 214],              [  0,  0,  0,  0,   0],
+ [310,311,   3, 313, 314],              [  0,  0,  0,  0,   0],
+ [410,411, 412,   5, 414],              [110,  0,  0,  0, 114],
+ [  5,  1, 512,   3,   3],              [210,  0,  0,  0, 214],
+ [610,  4,   1, 613, 614],              [310,  0,  0,113, 314],
+ [710,  1,   2, 713, 714],              [410,  0,  0,213, 414],
+ [810,  1,   2,   1,   1],              [610,211,112,313, 614],
+ [  1,  1,   2,   2,   2],              [710,311,412,613, 714],
+ [  4,  1,   4,   4,1014]]              [810,411,512,713,1014]]
 
-Input:
-board = 
-[[110,  5, 112, 113, 114],
- [210,211,   5, 213, 214],
- [310,311,   3, 313, 314],
- [410,411, 412,   5, 414],
- [  5,  1, 512,   3,   3],
- [610,  4,   1, 613, 614],
- [710,  1,   2, 713, 714],
- [810,  1,   2,   1,   1],
- [  1,  1,   2,   2,   2],
- [  4,  1,   4,   4,1014]]
-Output:
-[[  0,  0,  0,  0,   0],
- [  0,  0,  0,  0,   0],
- [  0,  0,  0,  0,   0],
- [110,  0,  0,  0, 114],
- [210,  0,  0,  0, 214],
- [310,  0,  0,113, 314],
- [410,  0,  0,213, 414],
- [610,211,112,313, 614],
- [710,311,412,613, 714],
- [810,411,512,713,1014]]
+Solution: Recursive
 
 Mark the crushed candidate directly on the board by negating the value. We check in group of 3, if they are the same absolute value, 
 we mark them for crushing step.
   
-  
-def candyCrush(board):
-  m = board.length;
-  n = board[0].length;
-  shouldContinue = False;
+   def candyCrush(board):
+     m = board.length;
+     n = board[0].length;
+     shouldContinue = False;
 
-  # Crush horizontally
-  for (int i = 0; i < m; i++):
-    for (int j = 0; j < n - 2; j++):
-      v = abs(board[i][j]);
-      if (v > 0 && v == abs(board[i][j + 1]) && v == abs(board[i][j + 2])):
-        board[i][j] = board[i][j + 1] = board[i][j + 2] = -v;
-        shouldContinue = True;
-      
-  # Crush vertically
-  for (int i = 0; i < m - 2; i++):
-    for (int j = 0; j < n; j++):
-      v = abs(board[i][j]);
-      if (v > 0 && v == abs(board[i + 1][j]) && v == abs(board[i + 2][j])):
-        board[i][j] = board[i + 1][j] = board[i + 2][j] = -v;
-        shouldContinue = True;
-      
-  # Drop vertically
-  for (int j = 0; j < n; j++):
-    r = m - 1;
-    for (int i = m - 1; i >= 0; i--):
-      if (board[i][j] >= 0):
-        board[r--][j] = board[i][j];
-      
-    for (int i = r; i >= 0; i--):
-      board[i][j] = 0;
-    
-  return candyCrush(board) if shouldContinue else board;
+     # Crush horizontally
+     for (int i = 0; i < m; i++):
+       for (int j = 0; j < n - 2; j++):
+         v = abs(board[i][j]);
+         if (v > 0 && v == abs(board[i][j + 1]) && v == abs(board[i][j + 2])):
+           board[i][j] = board[i][j + 1] = board[i][j + 2] = -v;
+           shouldContinue = True;
+
+     # Crush vertically
+     for (int i = 0; i < m - 2; i++):
+       for (int j = 0; j < n; j++):
+         v = abs(board[i][j]);
+         if (v > 0 && v == abs(board[i + 1][j]) && v == abs(board[i + 2][j])):
+           board[i][j] = board[i + 1][j] = board[i + 2][j] = -v;
+           shouldContinue = True;
+
+     # Drop vertically
+     for (int j = 0; j < n; j++):
+       r = m - 1;
+       for (int i = m - 1; i >= 0; i--):
+         if (board[i][j] >= 0):
+           board[r--][j] = board[i][j];
+
+       for (int i = r; i >= 0; i--):
+         board[i][j] = 0;
+
+     return candyCrush(board) if shouldContinue else board;
 
   
 Time complexity O((rc)^2), because it costs 3rc to scan the whole board then we call at most rc/3 times
