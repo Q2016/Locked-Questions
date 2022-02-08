@@ -10,11 +10,10 @@ Example 1:
 Input: N = 7, Output: 9, Explanation: We can at most get 9 A's on screen by pressing following key sequence: A, A, A, Ctrl A, Ctrl C, Ctrl V, Ctrl V
 
 
-Solution:
+Solution: DP
 This problem has many solutions:  # http://bookshadow.com/weblog/2017/07/30/leetcode-4-keys-keyboard/
 
     def maxA(self, N):
-
         dp = collections.defaultdict(lambda : collections.defaultdict(int))
         dp[0][0] = 0 #step, buffer
         for z in range(N):
