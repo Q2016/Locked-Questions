@@ -1,4 +1,12 @@
+Question:
+You are given an integer array nums that is sorted in non-decreasing order. Determine if it is possible to split nums into one or 
+more subsequences such that both of the following conditions are true: Each subsequence is a consecutive increasing sequence. 
+All subsequences have a length of 3 or more. Return true if you can split nums according to the above conditions, or false otherwise. 
 
+Example 1:
+Input: nums = [1,2,3,3,4,5], Output: true
+Explanation: nums can be split into the following subsequences:
+[1,2,3,3,4,5] --> 1, 2, 3 and 3, 4, 5  
 
 //
 // How to solve?
