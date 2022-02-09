@@ -1,33 +1,17 @@
-class Solution {
-public:
-    int findCircleNum(vector<vector<int>>& M) {
-        if (M.empty()) return 0;
-        int n = M.size();
-        vector<bool> visited(n, false);
-        int groups = 0;
-        for (int i = 0; i < visited.size(); i++) {
-            groups += !visited[i] ? dfs(i, M, visited), 1 : 0;
-        }
-        return groups;
-    }
+Question:
+There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, 
+and city b is connected directly with city c, then city a is connected indirectly with city c.
+A province is a group of directly or indirectly connected cities and no other cities outside of the group.
+You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly 
+connected, and isConnected[i][j] = 0 otherwise. Return the total number of provinces.
 
-private:
-    void dfs(int i, vector<vector<int>>& M, vector<bool>& visited) {
-        visited[i] = true;
-        for (int j = 0; j < visited.size(); j++) {
-            if (i != j && M[i][j] && !visited[j]) {
-                dfs(j, M, visited);
-            }
-        }
-    }
-};
-
-/*
-The following DFS and BFS algorithm share the same main function findCircleNum() (exactly the same!). The only difference between them is the helper function visitAllFriends(). DFS uses recursion while BFS uses a queue to mark direct & indirect friends as visited.
-
-I wrote with minimum difference for myself to compare and understand the major difference. Hope it helps!
-
-# DFS
+Example 1:
+Input: isConnected = [[1,1,0],                 1-------2
+		      [1,1,0],                     3
+Output: 2             [0,0,1]]
+	
+	
+Solution: DFS or BFS
 class Solution:
     # The main function is exactaly the same with BFS
     def findCircleNum(self, M: List[List[int]]) -> int:
@@ -41,7 +25,7 @@ class Solution:
         return res
 
     # This helper function's job is only to mark all direct & indirect friends as visited
-	# (not increment count at all since we've counted the root already) 
+    # (not increment count at all since we've counted the root already) 
     def visitAllFriends(self, student, M, visited):
         for s, r in enumerate(M[student]):
             if r == 1 and visited[s] == False:
@@ -60,7 +44,7 @@ class Solution:
                 self.visitAllFriends(student, M, visited)
         return res
      
-	# This helper function share the same job with DFS
+    # This helper function share the same job with DFS
     def visitAllFriends(self, student, M, visited):
         queue = []
         queue.append(student)
@@ -70,4 +54,4 @@ class Solution:
             for s, r in enumerate(M[tempStudent]):
                 if r == 1 and visited[s] == False:
                     queue.append(s)
-*/
+
