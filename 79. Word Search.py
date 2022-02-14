@@ -1,23 +1,32 @@
-class Solution {
-public:
-bool exist(vector<vector<char>>& board, string word) {
-    for (unsigned int i = 0; i < board.size(); i++) 
-        for (unsigned int j = 0; j < board[0].size(); j++) 
-            if (dfs(board, i, j, word))
-                return true;
-    return false;
-}
+Question:
+Given an m x n grid of characters board and a string word, return true if word exists in the grid. The word can be constructed from letters 
+of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
 
-bool dfs(vector<vector<char>>& board, int i, int j, string& word) {
-    if (!word.size())
-        return true;
-    if (i<0 || i>=board.size() || j<0 || j>=board[0].size() )  
-        return false;
-    char c = board[i][j];
-    board[i][j] = '*';
-    string s = word.substr(1);
-    bool ret = dfs(board, i-1, j, s) || dfs(board, i+1, j, s) || dfs(board, i, j-1, s) || dfs(board, i, j+1, s);
-    board[i][j] = c;
-    return ret;
-}
-};
+Example 1:
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+Output: true    
+
+    
+Solution:
+def exist(self, board, word):
+    if not board:
+        return False
+    for i in xrange(len(board)):
+        for j in xrange(len(board[0])):
+            if self.dfs(board, i, j, word):
+                return True
+    return False
+
+# check whether can find word, start at (i,j) position    
+def dfs(self, board, i, j, word):
+    if len(word) == 0: # all the characters are checked
+        return True
+    if i<0 or i>=len(board) or j<0 or j>=len(board[0]) or word[0]!=board[i][j]:
+        return False
+    tmp = board[i][j]  # first character is found, check the remaining part
+    board[i][j] = "#"  # avoid visit agian 
+    # check whether can find "word" along one direction
+    res = self.dfs(board, i+1, j, word[1:]) or self.dfs(board, i-1, j, word[1:]) \
+    or self.dfs(board, i, j+1, word[1:]) or self.dfs(board, i, j-1, word[1:])
+    board[i][j] = tmp
+    return res    
