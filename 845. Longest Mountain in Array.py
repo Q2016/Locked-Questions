@@ -1,15 +1,24 @@
+Question:
+You may recall that an array arr is a mountain array if and only if:
+arr.length >= 3
+There exists some index i (0-indexed) with 0 < i < arr.length - 1 such that:
+arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
+arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+Given an integer array arr, return the length of the longest subarray, which is a mountain. Return 0 if there is no mountain subarray.
+
+Example 1:
+Input: arr = [2,1,4,7,3,2,5]
+Output: 5
+Explanation: The largest mountain is [1,4,7,3,2] which has length 5.    
+
+
 Approach #1: Two Pointer [Accepted]
 Intuition
 
 Without loss of generality, a mountain can only start after the previous one ends.
-
 This is because if it starts before the peak, it will be smaller than a mountain starting 
 previous; and it is impossible to start after the peak.
-
-Algorithm
-
 For a starting index base, let's calculate the length of the longest mountain A[base], A[base+1], ..., A[end].
-
 If such a mountain existed, the next possible mountain will start at base = end; if it didn't, 
 then either we reached the end, or we have A[base] >= A[base+1] and we can start at base + 1.
 
