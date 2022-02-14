@@ -11,9 +11,8 @@ Input: arr = [2,1,4,7,3,2,5]
 Output: 5
 Explanation: The largest mountain is [1,4,7,3,2] which has length 5.    
 
-
-Approach #1: Two Pointer [Accepted]
-Intuition
+    
+Solution: Two Pointer
 
 Without loss of generality, a mountain can only start after the previous one ends.
 This is because if it starts before the peak, it will be smaller than a mountain starting 
