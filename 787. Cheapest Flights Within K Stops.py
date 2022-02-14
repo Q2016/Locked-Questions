@@ -1,76 +1,46 @@
-class Solution
-{
-public:
-    
-    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int K)
-    {        
-        vector<vector<int>> dp(K+2, vector<int>(n, INT_MAX));
-        
-        //dp[i][j] = Distance to reach j using atmost i edges from src
-        
-        for(int i = 0; i <= K+1; i++)
-        {
-            dp[i][src] = 0; // Dist to reach src always zero
-        }
-        
-        for(int i = 1; i <= K+1; i++)
-        {
-            for(auto &f: flights)
-            {
-                //Using indegree
-                int u = f[0];
-                int v = f[1];
-                int w = f[2];
-                
-                if(dp[i-1][u] != INT_MAX)
-                    dp[i][v] = min(dp[i][v], dp[i-1][u] + w);
-            }
-        }
-        
-        return (dp[K+1][dst] == INT_MAX)? -1: dp[K+1][dst];
-    }
-};
+Question:
+There are n cities connected by some number of flights. You are given an array flights where flights[i] = [fromi, toi, pricei] indicates 
+that there is a flight from city fromi to city toi with cost pricei. You are also given three integers src, dst, and k, return the cheapest price 
+from src to dst with at most k stops. If there is no such route, return -1.
 
-/*
-A simple solution is to start from u, go to all adjacent vertices and recur for adjacent vertices with k as k-1, source as adjacent vertex and destination as v.
+Example 1:
+Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 1
+Output: 200
+Explanation: The graph is shown.
+The cheapest price from city 0 to city 2 with at most 1 stop costs 200, as marked red in the picture.    
 
-but we can optimise it by using dynamic programming approach.
 
-DP EXPLANATION MEMORY EFFICEINT
+Solution:
+A good case to practice Dijkstra.
+To implement Dijkstra, we need a priority queue to pop out the lowest weight node for next search. In this case, the weight would be the 
+accumulated flight cost. So my node takes a form of (cost, src, k). cost is the accumulated cost, src is the current node's location, k is 
+stop times we left as we only have at most K stops. I also convert edges to an adjacent list based graph g.
+Use a vis array to maintain visited nodes to avoid loop. vis[x] record the remaining steps to reach x with the lowest cost. If vis[x] >= k, 
+then no need to visit that case (start from x with k steps left) as a better solution has been visited before (more remaining step and lower 
+cost as heappopped beforehand). And we should initialize vis[x] to 0 to ensure visit always stop at a negative k.
+Once k is used up (k == 0) or vis[x] >= k, we no longer push that node x to our queue. Once a popped cost is our destination, we get our 
+lowest valid cost. For Dijkstra, there is not need to maintain a best cost for each node since it's kind of greedy search. It always chooses 
+the lowest cost node for next search. So the previous searched node always has a lower cost and has no chance to be updated. The first time we 
+pop our destination from our queue, we have found the lowest cost to our destination.
 
-Actually Bellman Ford is a space optimized version of 2D Dynamic Programming Solution.
+def findCheapestPrice(n, flights, src, dst, K):
+	graph = collections.defaultdict(dict)
+	for s, d, w in flights:
+		graph[s][d] = w
+	pq = [(0, src, K+1)]
+	vis = [0] * n
+	while pq:
+		w, x, k = heapq.heappop(pq)
+		if x == dst:
+			return w
+		if vis[x] >= k:
+			continue
+		vis[x] = k
+		for y, dw in graph[x].items():
+			heapq.heappush(pq, (w+dw, y, k-1))
+	return -1
 
-To understand Bellman Ford you need to understand the 2D version first.
 
-dp[v, k] = Shortest path from src to v using atmost k edges
-
-dp[v, k] = {Minimum distance over all u belonging to all vertices which are coming towards v(in the indegree[v])} min(dp[u, k-1] + w(u->v)).
-dp[u, k-1] becoz we have to reach to u using atmost k-1 edges. As we have to reach v using atmost k edges.
-
-Similarly dp[u, k-1] = (p belongs to indegree[u]) min(dp[p, k-2] + w(p->u)).
-
-Why doesn't Space optimized version work for atmost K edges case?
-
-image
-
-Using above example.
-
-The space optimized version will depend on order of visiting the edges.
-
-Suppose the order in which we relax edges is:
-0->1
-1->2
-0->2
-
-So after 1 round of relaxation
-
-Distances will be 0->1 = 100
-0->2 = 200
-Which is wrong as using atmost 1 edge the distance from 0->2 should be 500.
-The 1D version is agnostic to the order in which we visit edges.
-
-Note: K Stops = K + 1 edges
-
-c++ dp code
-
-*/
+Python heapq doesn't support update heap node's weight. But if you implement your own heap structure and support that function, 
+you can maintain a n-size heap and time complexity is O((m + n)logn). m is number of edges and n is number of nodes. And it can be 
+improved to O(m + nlogn) with a Fibonacci heap where a delete min costs logn but an update cost costs constant time.    
