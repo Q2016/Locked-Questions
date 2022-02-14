@@ -1,34 +1,17 @@
+Question:
+Given two integers n and k, return all possible combinations of k numbers out of 1 ... n. 
+For example,
+If n = 4 and k = 2, a solution is: [[2,4],[3,4],[2,3],[1,2],[1,3],[1,4],]
+
+
 Solution:DFS
 
 This link is also interesting
 https://leetcode.com/problems/combinations/discuss/27006/A-template-to-those-combination-problems
 
-
-
-# Time:  O(k * C(n, k))
-# Space: O(k)
-
-# Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
-# 
-# For example,
-# If n = 4 and k = 2, a solution is:
-# 
-# [
-#   [2,4],
-#   [3,4],
-#   [2,3],
-#   [1,2],
-#   [1,3],
-#   [1,4],
-# ]
-
 class Solution(object):
     def combine(self, n, k):
-        """
-        :type n: int
-        :type k: int
-        :rtype: List[List[int]]
-        """
+
         result, combination = [], []
         i = 1
         while True:
@@ -47,11 +30,7 @@ class Solution(object):
 
 class Solution2(object):
     def combine(self, n, k):
-        """
-        :type n: int
-        :type k: int
-        :rtype: List[List[int]]
-        """
+
         def combineDFS(n, start, intermediate, k, result):
             if k == 0:
                 result.append(intermediate[:])
@@ -64,3 +43,8 @@ class Solution2(object):
         result = []
         combineDFS(n, 0, [], k, result)
         return result
+    
+    
+    
+Time:  O(k * C(n, k))
+Space: O(k)    
