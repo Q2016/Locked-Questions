@@ -1,14 +1,16 @@
-Approach 1: Dynamic Programming (Top-down)
-Intuition
+Question:
+You have two types of tiles: a 2 x 1 domino shape and a tromino shape. You may rotate these shapes.
+Given an integer n, return the number of ways to tile an 2 x n board.
+In a tiling, every square must be covered by a tile. Two tilings are different if and only if there are two 4-directionally adjacent 
+cells on the board such that exactly one of the tilings has both squares occupied by a tile.
 
+Solution: Dynamic Programming (Top-down)
 In this approach, we will use the two transition functions as the recurrence relation. Then we 
 will create a recursive solution from the top (f(n)) to the bottom 
 (base cases described in the algorithm section) since it's generally more intuitive to solve 
 dynamic programming problems in a top-down manner. Additionally, to avoid repeat calculations, we 
 will memoize the result for each subproblem by storing the calculated results in two maps (f_cache and p_cache). 
 Note that in the python implementation, this will be handled automatically by the @cache decorator.
-
-Algorithm
 
 We'll start from f(n) and then dive all the way down to the base cases, f(1), f(2), and p(2).
 Use the same definition for ff and pp from the Overview section
@@ -28,18 +30,14 @@ p(k) = p(k-1) + f(k-2)p(k)=p(k−1)+f(k−2)
 f(n) will be returned once all recursive calls are finished.
 
 
-
-
 class Solution:
     def numTilings(self, n: int) -> int:
         MOD = 1_000_000_007
-
         @cache  
         def p(n):  
             if n == 2:
                 return 1
             return (p(n - 1) + f(n - 2)) % MOD
-
         @cache  
         def f(n):  
             if n <= 2:
