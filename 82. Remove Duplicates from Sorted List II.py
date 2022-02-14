@@ -1,5 +1,13 @@
+Question:
+Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. 
+Return the linked list sorted as well.
 
-Approach 1: Sentinel Head + Predecessor
+Example 1:
+Input: head = [1,2,3,3,4,4,5]
+Output: [1,2,5]  
+
+
+Solution: Sentinel Head + Predecessor
   
 Solution from: with images
   https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/solution/
@@ -34,7 +42,5 @@ class Solution:
       
       
 Complexity Analysis
-
 Time complexity: O(N) since it's one pass along the input list.
-
 Space complexity: O(1) because we don't allocate any additional data structure.      
