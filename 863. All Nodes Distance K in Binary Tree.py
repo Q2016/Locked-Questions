@@ -1,47 +1,33 @@
-//Using recursion to find all of the son=>parent pair into a map.
-//Using dfs to find K distance node, visited nodes will be recorded.
-    
-class Solution {
-public:
-    vector<int> ans;   
-    map<TreeNode*, TreeNode*> parent;  // son=>parent  
-    set<TreeNode*> visit;    //record visied node
-    
-    void findParent(TreeNode* node){
-        if(!node ) return;
-        if( node->left ){
-            parent[node->left] = node;
-            findParent(node->left);
-        }
-        if( node->right){
-            parent[node->right] = node;
-            findParent(node->right);
-        }
-    }
-    
-    vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
-        if( !root ) return {};
-        
-        findParent(root);
-        dfs(target, K );
-        return ans;
-    }
-    void dfs( TreeNode* node, int K){
-        if( visit.find(node) != visit.end() )
-            return;
-        visit.insert(node);
-        if( K == 0 ){
-            ans.push_back(node->val);
-            return;
-        }
-        if( node->left ){
-            dfs(node->left, K-1);
-        }
-        if( node->right){
-            dfs(node->right, K-1);
-        }
-        TreeNode* p = parent[node];// you cant go up, that's why for findParent
-        if( p )
-            dfs(p, K-1);
-    }
-};
+Question:
+Given the root of a binary tree, the value of a target node target, and an integer k, return an array of the values of all 
+nodes that have a distance k from the target node. You can return the answer in any order.    
+
+
+Solution:
+If we know the parent of every node x, we know all nodes that are distance 1 from x. We can then perform a breadth first search 
+from the target node to find the answer.
+We first do a depth first search where we annotate every node with information about it's parent.
+After, we do a breadth first search to find all nodes a distance K from the target    
+
+class Solution(object):
+    def distanceK(self, root, target, K):
+        def dfs(node, par = None):
+            if node:
+                node.par = par
+                dfs(node.left, node)
+                dfs(node.right, node)
+
+        dfs(root)
+
+        queue = collections.deque([(target, 0)])
+        seen = {target}
+        while queue:
+            if queue[0][1] == K:
+                return [node.val for node, d in queue]
+            node, d = queue.popleft()
+            for nei in (node.left, node.right, node.par):
+                if nei and nei not in seen:
+                    seen.add(nei)
+                    queue.append((nei, d+1))
+
+        return []
