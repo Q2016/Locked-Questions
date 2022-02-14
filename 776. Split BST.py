@@ -1,5 +1,4 @@
-Problem Description
-
+Question:
 Given a Binary Search Tree (BST) with root node root, and a target value V, split the 
 tree into two subtrees where one subtree has nodes that are all smaller or equal to the 
 target value, while the other subtree has all nodes that are greater than the target value. 
@@ -12,7 +11,6 @@ node C should still have the parent P.
 You should output the root TreeNode of both subtrees after splitting, in any order.
 
 Example 1:
-
 Input: root = [4,2,6,1,3,5,7], V = 2
 Output: [[2,1],[4,3,6,null,null,5,7]]
 Explanation:
@@ -42,15 +40,9 @@ The BST is always valid and each node’s value is different.
 Solution
 Recursive, base case is when the root node is empty, return [None, None]. Then use the divide and conquer method to discuss the situation.
 
-Code
-
 class Solution(object):
     def splitBST(self, root, V):
-        """
-        :type root: TreeNode
-        :type V: int
-        :rtype: List[TreeNode]
-        """
+
         if not root:
             return [None, None]
         if root.val == V:
