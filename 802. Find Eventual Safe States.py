@@ -1,5 +1,20 @@
-Approach #2: Depth-First Search [Accepted]
-Intuition
+Question:
+There is a directed graph of n nodes with each node labeled from 0 to n - 1. The graph is represented by a 0-indexed 2D integer array 
+graph where graph[i] is an integer array of nodes adjacent to node i, meaning there is an edge from node i to each node in graph[i].
+A node is a terminal node if there are no outgoing edges. A node is a safe node if every possible path starting from that node leads to a terminal node.
+Return an array containing all the safe nodes of the graph. The answer should be sorted in ascending order.
+
+Example 1:
+Illustration of graph
+Input: graph = [[1,2],[2,3],[5],[0],[5],[],[]]
+Output: [2,4,5,6]
+Explanation: The given graph is shown above.
+Nodes 5 and 6 are terminal nodes as there are no outgoing edges from either of them.
+Every path starting at nodes 2, 4, 5, and 6 all lead to either node 5 or 6.
+
+
+
+Solution: Depth-First Search [Accepted]
 
 As in Approach #1, the crux of the problem is whether you reach a cycle or not.
 
@@ -7,8 +22,6 @@ Let us perform a "brute force": a cycle-finding DFS algorithm on each node indiv
 This is a classic "white-gray-black" DFS algorithm that would be part of any textbook on DFS. 
 We mark a node gray on entry, and black on exit. If we see a gray node during our DFS, it must 
 be part of a cycle. In a naive view, we'll clear the colors between each search.
-
-Algorithm
 
 We can improve this approach, by noticing that we don't need to clear the colors between each search.
 
