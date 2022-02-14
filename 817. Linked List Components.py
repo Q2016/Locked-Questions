@@ -1,9 +1,16 @@
-Take second example in the description:
-liked list: 0->1->2->3->4
-I highlighed the subset G in linked list with color red.
-The problem is just to count how many red part there are.
-One red part is one connected components.
-To do this, we just need to count tails of red parts.
+Question:
+You are given the head of a linked list containing unique integer values and an integer array nums that is a subset of the linked list values.
+Return the number of connected components in nums where two values are connected if they appear consecutively in the linked list.
+
+Example 1:
+Input: head = [0,1,2,3], nums = [0,1,3]
+Output: 2
+Explanation: 0 and 1 are connected, so [0, 1] and [3] are the two connected components.
+
+
+Solution::
+Take second example in the description: liked list: 0->1->2->3->4 I highlighed the subset G in linked list with color red.
+The problem is just to count how many red part there are. One red part is one connected components. To do this, we just need to count tails of red parts.
 
 
 
