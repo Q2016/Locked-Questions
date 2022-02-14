@@ -1,10 +1,23 @@
+Question:
+In a string composed of 'L', 'R', and 'X' characters, like "RXXLRXRXL", a move consists of either replacing one occurrence of "XL" with "LX", 
+or replacing one occurrence of "RX" with "XR". Given the starting string start and the ending string end, return True if and only if there 
+exists a sequence of moves to transform one string to the other.
+
+Example 1:
+Input: start = "RXXLRXRXL", end = "XRLXXRRLX"
+Output: true
+Explanation: We can transform start to end following these steps:
+RXXLRXRXL ->
+XRXLRXRXL ->
+XRLXRXRXL ->
+XRLXXRRXL ->
+XRLXXRRLX    
+    
+    
+Solution:    
+
 class Solution(object):
     def canTransform(self, start, end):
-        """
-        :type start: str
-        :type end: str
-        :rtype: bool
-        """
         if len(start) != len(end): return False
         
         A = [(s, idx) for idx, s in enumerate(start) if s == 'L' or s == 'R']
