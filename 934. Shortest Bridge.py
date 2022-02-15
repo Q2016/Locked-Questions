@@ -1,26 +1,41 @@
-//for nice images read votruebac
+Question:
+You are given an n x n binary matrix grid where 1 represents land and 0 represents water.
+An island is a 4-directionally connected group of 1's not connected to any other 1's. There are exactly two islands in grid.
+You may change 0's to 1's to connect the two islands to form one island. Return the smallest number of 0's you must flip to connect the two islands.    
 
-class Solution {
-public:
-    int paint(vector<vector<int>>& A, int i, int j) {
-        if (i < 0 || j < 0 || i == A.size() || j == A.size() || A[i][j] != 1) return 0;
-        A[i][j] = 2;
-        return 1 + paint(A, i + 1, j) + paint(A, i - 1, j) + paint(A, i, j + 1) + paint(A, i, j - 1);
-    }
-    bool expand(vector<vector<int>>& A, int i, int j, int cl) {
-        if (i < 0 || j < 0 || i == A.size() || j == A.size()) return false;
-        if (A[i][j] == 0) A[i][j] = cl + 1;
-        return A[i][j] == 1;
-    }  
-    int shortestBridge(vector<vector<int>>& A) {
-        for (int i = 0, found = 0; !found && i < A.size(); ++i)
-            for (int j = 0; !found && j < A[0].size(); ++j) found = paint(A, i, j);
 
-        for (int cl = 2; ; ++cl)
-            for (int i = 0; i < A.size(); ++i)
-                for (int j = 0; j < A.size(); ++j) 
-                    if (A[i][j] == cl && ((expand(A, i - 1, j, cl) || expand(A, i, j - 1, cl) || 
-                        expand(A, i + 1, j, cl) || expand(A, i, j + 1, cl))))
-                            return cl - 2;
-    }
-};
+Solution:
+Idea is straightforward.
+We get root of first island from "first" function
+We dfs root and add indexes to bfs
+We bfs and expand the first island in other words
+Finally return step number when facing other island
+Note: This can also be done with referenced array if you don't want to modify A.
+    
+class Solution:
+    def shortestBridge(self, A):
+        def dfs(i, j):
+            A[i][j] = -1
+            bfs.append((i, j))
+            for x, y in ((i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)):
+                if 0 <= x < n and 0 <= y < n and A[x][y] == 1:
+                    dfs(x, y)
+        def first():
+            for i in range(n):
+                for j in range(n):
+                    if A[i][j]:
+                        return i, j
+        n, step, bfs = len(A), 0, []
+        dfs(*first())
+        while bfs:
+            new = []
+            for i, j in bfs:
+                for x, y in ((i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)):
+                    if 0 <= x < n and 0 <= y < n:
+                        if A[x][y] == 1:
+                            return step
+                        elif not A[x][y]:
+                            A[x][y] = -1
+                            new.append((x, y))
+            step += 1
+            bfs = new
