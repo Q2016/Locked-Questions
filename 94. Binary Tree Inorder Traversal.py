@@ -1,25 +1,20 @@
-Complexity Analysis
+Question:
+Given the root of a binary tree, return the inorder traversal of its nodes' values.    
 
-Time complexity : O(n)O(n). The time complexity is O(n)O(n) because the recursive function is T(n) = 2 \cdot T(n/2)+1T(n)=2⋅T(n/2)+1.
 
-Space complexity : The worst case space required is O(n)O(n), and in the average case it's O(\log n)O(logn) where nn is number of nodes.
+https://leetcode.com/problems/binary-tree-inorder-traversal/discuss/283746/All-DFS-traversals-(preorder-inorder-postorder)-in-Python-in-1-line    
     
-class Solution {
-    public List < Integer > inorderTraversal(TreeNode root) {
-        List < Integer > res = new ArrayList < > ();
-        helper(root, res);
-        return res;
-    }
+def preorder(root):
+  return [root.val] + preorder(root.left) + preorder(root.right) if root else []
+def inorder(root):
+  return  inorder(root.left) + [root.val] + inorder(root.right) if root else []
+def postorder(root):
+  return  postorder(root.left) + postorder(root.right) + [root.val] if root else []
 
-    public void helper(TreeNode root, List < Integer > res) {
-        if (root != null) {
-            if (root.left != null) {
-                helper(root.left, res);
-            }
-            res.add(root.val);
-            if (root.right != null) {
-                helper(root.right, res);
-            }
-        }
-    }
-}  
+
+
+
+Complexity Analysis
+Time complexity : O(n). The time complexity is O(n) because the recursive function is T(n) = 2 T(n/2)+1.
+Space complexity : The worst case space required is O(n), and in the average case it's O(logn) where nn is number of nodes.
+    
