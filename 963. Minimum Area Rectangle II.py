@@ -1,12 +1,16 @@
-The key insight is that four points point1, point2, point3, point4 can form a rectangle if and only if
+Question:
+You are given an array of points in the X-Y plane points where points[i] = [xi, yi]. Return the minimum area of any rectangle formed from 
+these points, with sides not necessarily parallel to the X and Y axes. If there is not any such rectangle, return 0.
+Answers within 10-5 of the actual answer will be accepted.
 
+
+Solution:
+The key insight is that four points point1, point2, point3, point4 can form a rectangle if and only if
 the distance between point1 and point2 equals the distance between point3 and point4
 the midpoint of point1 and point2 equals the midpoint of point3 and point4.
 In the following implementation, I use a dictionary to store all pairs of points that have the same distance and midpoint.
 
-
 from collections import defaultdict
-
 
 class Solution:
     def minAreaFreeRect(self, points: List[List[int]]) -> float:
