@@ -1,6 +1,14 @@
+Question:
+The chess knight has a unique movement, it may move two squares vertically and one square horizontally, or two squares horizontally 
+and one square vertically (with both forming the shape of an L). The possible movements of chess knight are shown in this diagaram:
+A chess knight can move as indicated in the chess diagram below:
+We have a chess knight and a phone pad as shown below, the knight can only stand on a numeric cell (i.e. blue cell).
+Given an integer n, return how many distinct phone numbers of length n we can dial.
+You are allowed to place the knight on any numeric cell initially and then you should perform n - 1 jumps to dial a number of length n. 
+All jumps should be valid knight jumps.
 
 
-
+Solution:	
 We can think of this problem as the total number of unique paths the knight can travel making n 
 hops because to dial distinct numbers, the path taken by the knight must be unique.
 
@@ -86,13 +94,14 @@ Below is the recursion tree for paths(0, 0, 3).
 Note: The following tree diagram is not visually appealing with the old UI. I recommend to view this in the new UI 
   for a proper visual representation.
 
-                              1 (0,0,3)
+                                             1 (0,0,3)
 			               /		     \
 				          /               \
 			  	  6 (1,2,2)             8 (2,1,2)	
 			   	/   |    \                |   	\
-			   /	|	  \		          |  	 \
-	1 (0,0,1)  0 (3,1,1)  7 (2,0,1)   1 (0,0,1)  3 (0,2,1)
+			   /	|	  \		  |  	 \
+	              1 (0,0,1)  0 (3,1,1)  7 (2,0,1)    1 (0,0,1)  3 (0,2,1)
+			
 Since, 6 jumps are invalid, that leaves us with only two valid jumps e (i + 1, j + 2) and f (i + 2, j + 1) 
 from 1 (0, 0). In other words, from 1 the knight can jump only to 8 and 6.
 
@@ -207,6 +216,4 @@ private long paths(long[][][] M, int i, int j, int n) {
                 paths(M, i + 1, j - 2, n - 1) % max; // jump to h
    return M[n][i][j];
 }
-Any questions or feedback is welcome!
 
-P.S: The wysiwyg editor of leetcode sucks! :P
