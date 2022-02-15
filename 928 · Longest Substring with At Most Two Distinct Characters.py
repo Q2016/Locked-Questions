@@ -7,26 +7,14 @@ Input: “eceba”
 Output: 3
 Explanation:
 T is "ece" which its length is 3.
-
 Example 2
 Input: “aaa”
 Output: 3
   
-My solution:
-  
-  
-  
-  
-  
-  
+Solution:
 
-  
-  
-  
-  
 class Solution:
-    # @param s, a string
-    # @return an integer
+
     def lengthOfLongestSubstringTwoDistinct(self, s):
         longest, start, distinct_count, visited = 0, 0, 0, [0 for _ in xrange(256)]
         for i, char in enumerate(s):
@@ -42,8 +30,6 @@ class Solution:
   
             longest = max(longest, i - start + 1)
         return longest
-    
-if __name__ == "__main__":
-    print Solution().lengthOfLongestSubstringTwoDistinct("eceba")  
+
   
   
