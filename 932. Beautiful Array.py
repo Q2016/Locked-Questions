@@ -1,6 +1,11 @@
-Approach 1: Divide and Conquer
-Intuition
+Question:
+An array nums of length n is beautiful if:
+nums is a permutation of the integers in the range [1, n].
+For every 0 <= i < j < n, there is no index k with i < k < j where 2 * nums[k] == nums[i] + nums[j].
+Given the integer n, return any beautiful array nums of length n. There will be at least one valid answer for the given n.
 
+
+Solution: Divide and Conquer
 First, notice that the condition is equivalent to saying that A has no arithmetic subsequence. 
 We'll use the term "arithmetic-free" interchangeably with "beautiful".
 
