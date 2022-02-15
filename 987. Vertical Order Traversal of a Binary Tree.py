@@ -29,11 +29,14 @@ class Solution(object):
 Approach 2: Simple dfs
 https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/discuss/777584/Python-Simple-dfs-explained  
   
-First of all, I want to mention, that problem statement is not clear at all, I need to go to comments to understand, what order they expect us to return nodes in levels. So, we have X coordinate and Y coordinate, we need to group them by X coordinate. If we have the same X coordinate, we need to check:
+First of all, I want to mention, that problem statement is not clear at all, I need to go to comments to understand, what order they expect 
+us to return nodes in levels. So, we have X coordinate and Y coordinate, we need to group them by X coordinate. If we have the same X coordinate, 
+we need to check:
 
 First put nodes with higher Y coordinates, that ones, which are close to root
 If two nodes have the same Y coordinate also, we need to put small values before big values.
-Let us define dic, where we create our vertical layers, and self.min_l and self.max_l be minimal and maximal numbers of vertical layers. Let us start to traverse our graph, using dfs, with parameters:
+Let us define dic, where we create our vertical layers, and self.min_l and self.max_l be minimal and maximal numbers of vertical layers. Let us start 
+to traverse our graph, using dfs, with parameters:
 
 root is current node we are in now
 lvl_h is horizontal coordinate, that is X
@@ -45,7 +48,9 @@ Add lvl_v and root.val pair to our dictionary. We need to add pair to sort it af
 Finally, visit left and right children if it is possible.
 In the end, we need to sort each level, and add it to final list of lists.
 
-Complexity: Usual dfs traversal will take O(n) time. However we need to sort each level, before we give final result. Let us have w_1, ..., w_h nodes on each layer. then we need to do w_1 log w_1 + ... + w_h log w_h < n * log W operations, where W is width of the biggest layer. So, complexity is O(n log W), which potentially can be O(n log n), because the widest level can have upto n/2 nodes. Space complexity is O(n).
+Complexity: Usual dfs traversal will take O(n) time. However we need to sort each level, before we give final result. Let us have w_1, ..., w_h 
+    nodes on each layer. then we need to do w_1 log w_1 + ... + w_h log w_h < n * log W operations, where W is width of the biggest layer. So, 
+    complexity is O(n log W), which potentially can be O(n log n), because the widest level can have upto n/2 nodes. Space complexity is O(n).
 
 class Solution:
     def verticalTraversal(self, root):
