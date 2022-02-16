@@ -1,3 +1,9 @@
+Question:
+Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list 
+from position left to position right, and return the reversed list.
+
+
+Solution:
 
 For figure:
 https://leetcode.com/problems/reverse-linked-list-ii/solution/
@@ -6,12 +12,6 @@ Approach 2: Iterative Link Reversal.
 
 class Solution:
     def reverseBetween(self, head, m, n):
-        """
-        :type head: ListNode
-        :type m: int
-        :type n: int
-        :rtype: ListNode
-        """
 
         # Empty list
         if not head:
