@@ -1,25 +1,21 @@
-Recursive Solution
-Create a node TreeNode(pre[preIndex]) as the root.
-
-Becasue root node will be lastly iterated in post order,
-if root.val == post[posIndex],
-it means we have constructed the whole tree,
-
-If we haven't completed constructed the whole tree,
-So we recursively constructFromPrePost for left sub tree and right sub tree.
-
-And finally, we'll reach the posIndex that root.val == post[posIndex].
-We increment posIndex and return our root node.
-
-C++:
-
-    int preIndex = 0, posIndex = 0;
-    TreeNode* constructFromPrePost(vector<int>& pre, vector<int>& post) {
-        TreeNode* root = new TreeNode(pre[preIndex++]);
-        if (root->val != post[posIndex])
-            root->left = constructFromPrePost(pre, post);
-        if (root->val != post[posIndex])
-            root->right = constructFromPrePost(pre, post);
-        posIndex++;
-        return root;
-    }
+Question:
+Given two integer arrays, preorder and postorder where preorder is the preorder traversal of a binary tree of distinct values and postorder 
+is the postorder traversal of the same tree, reconstruct and return the binary tree.
+If there exist multiple answers, you can return any of them.    
+    
+ 
+Solution:  Recursive
+    
+class Solution:
+    def constructFromPrePost(self, pre, post):
+        if not pre or not post: return None
+        root = TreeNode(pre[0])
+        if len(post) == 1: return root
+        idx = pre.index(post[-2])
+        root.left = self.constructFromPrePost(pre[1: idx], post[:(idx - 1)])
+        root.right = self.constructFromPrePost(pre[idx: ], post[(idx - 1):-1])
+        return root
+    
+The first element in "pre" and the last element in "post" should both be the value of the root. The second to last of "post" should 
+be the value of right child of the root. So we can find the index to split "left" and "right" children in "pre". Don't forget to evaluate 
+if the length of "post" is larger than 1, since we used post[-2].    
