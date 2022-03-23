@@ -5,7 +5,10 @@ Return the number of land cells in grid for which we cannot walk off the boundar
 
 Example 1:
 
-Input: grid = [[0,0,0,0],[1,0,1,0],[0,1,1,0],[0,0,0,0]]
+Input: grid = [[0,0,0,0],
+               [1,0,1,0],
+               [0,1,1,0],
+               [0,0,0,0]]
 Output: 3
 Explanation: There are three 1s that are enclosed by 0s, and one 1 that is not enclosed because its on the boundary.    
 
@@ -34,9 +37,9 @@ class Solution {
     int numEnclaves(vector<vector<int>>& A) {
         for (auto i = 0; i < A.size(); ++i)
             for (auto j = 0; j < A[0].size(); ++j) 
-                if  (i * j == 0 || i == A.size() - 1 || j == A[i].size() - 1) dfs(A, i, j);
+                if  (i * j == 0 || i == A.size() - 1 || j == A[i].size() - 1) dfs(A, i, j); #flood fills the boundary 
 
-      return accumulate(begin(A), end(A), 0, [](int s, vector<int> &r)
+      return accumulate(begin(A), end(A), 0, [](int s, vector<int> &r) # sums the remaining '1's
         { return s + accumulate(begin(r), end(r), 0); });
     }
 };
