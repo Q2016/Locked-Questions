@@ -24,7 +24,7 @@ Output: true
 
   
   
-Solution: DFS
+Solution: DFS (Is it backtracking?)
 Use depth-first search to see if all paths end with the destination node.
 Time Complexity: O(N).
 Space Complexity: O(N).
@@ -33,10 +33,8 @@ class Solution:
     def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
    
         adjacency_list = [set() for i in range(n)]
-        
         for edge in edges:            
             adjacency_list[edge[0]].add(edge[1])
-            
         return self.helper(source, destination, adjacency_list, set())
         
                 
@@ -44,25 +42,19 @@ class Solution:
     def helper(self, node, destination, adjacency_list, visited):
         if node in visited:
             return False
-
         if node != destination and not adjacency_list[node]:
-            return False
-        
+            return False        
         if node == destination and len(adjacency_list[node]) > 0:
-            return False
-        
+            return False 
         if node == destination:
             return True
         
         visited.add(node)
-        
-        
+ 
         for neighbor in adjacency_list[node]:   
             if not self.helper(neighbor, destination, adjacency_list, visited):
-                return False
-            
+                return False            
         visited.remove(node)
-        
-        
+      
         return True
 
