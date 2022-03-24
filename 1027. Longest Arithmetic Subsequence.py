@@ -25,13 +25,18 @@ in the comments of
 https://leetcode.com/problems/longest-arithmetic-subsequence/discuss/274584/Same-as-LIS-problem-python-solution
   
 
+d[i][v] means the length ending with A[i] for a difference v
 
-    def longestArithSeqLength(self, A):
-        d = [collections.defaultdict(int) for _ in A]
+    def longestArithSeqLength(self, A: List[int]) -> int:
+        d = collections.defaultdict(dict)
+        n = len(A)
         res = 1
-        for i in range(0,len(A)):
+        for i in range(n):
             for j in range(i):
-                v = A[i]-A[j]
-                d[i][v]=max(d[j][v]+1,d[i][v])
-                res = max(d[i][v],res)
-        return res+1
+                v = A[i] - A[j]
+                # the default length is 1
+                if v not in d[j]: d[j][v] = 1
+                if v not in d[i]: d[i][v] = 0
+                d[i][v] = max(d[i][v] ,d[j][v] + 1) # i dont understand the '1'
+                res = max(res, d[i][v])
+        return res
