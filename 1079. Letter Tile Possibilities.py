@@ -9,7 +9,11 @@ Output: 8
 Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA".
 
 
-Solution: DFS + Set
+ 
+ 
+ 
+ 
+Solution: DFS + Set (reminds of directory construction problem)
 
 
 class Solution(object):
