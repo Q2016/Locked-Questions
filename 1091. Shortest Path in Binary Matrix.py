@@ -20,7 +20,8 @@ Example[[0,0,0,1,0,0,1,0],
 	[0,0,0,0,0,1,0,0]]
 
 Breadth-first search
-Here is a breadth-first-search implementation, for comparison:
+
+Good link with animation of BFS: https://www.youtube.com/watch?v=oDqjPvD54Ss
 
 from collections import deque
 
