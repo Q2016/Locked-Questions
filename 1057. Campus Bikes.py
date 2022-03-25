@@ -31,7 +31,7 @@ Worker 0 grabs Bike 0 at first. Worker 1 and Worker 2 share the same distance to
 to Bike 2, and Worker 2 will take Bike 1. So the output is [0,2,1].
 
 
-Solution: sorting
+Solution: sorting (What's the diffrent between I and II?)
 
     def assignBikes(workers, bikes):
     
