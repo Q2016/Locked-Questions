@@ -20,21 +20,33 @@ Explanation: The longest repeating substring is "aab", which occurs 3 times.
 
   
   
-Solution:----
+Solution: BS (makes sense, you use BS to pick string)
   
-class Solution:
-    def longestRepeatingSubstring(self, S: str) -> int:
-        ans = 0
-        for i in range(1, len(S)):
-            if ans >= len(S)-i: 
-                break 
-                
-            tmp = 0
-            for x, y in zip(S[i:],S[:-i]):
-                if x == y:
-                    tmp += 1 
-                    ans = max(ans, tmp)
-                else:
-                    tmp = 0 
-            
-        return ans
+function longestRepeatingSubstring(s) {
+  l = 0;
+  r = s.length - 1;
+  while (l < r) {
+    let mid = Math.floor(l + (r - l + 1) / 2);
+    if (verifyLengthOfLRS(s, mid)) {
+      l = mid;
+    } else {
+      r = mid - 1;
+    }
+  }
+  return l;
+}
+
+
+function verifyLengthOfLRS(s, mid) {
+  let arr = [];
+  for (let i = 0; i <= s.length - mid; i++) {
+    let j = i + mid - 1;
+    let sub = s.substring(i, j + 1);
+    if (arr.includes(sub)) {
+      return true;
+    }
+    arr.push(sub);
+  }
+  return false;
+}
+}
