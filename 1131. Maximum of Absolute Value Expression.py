@@ -28,14 +28,6 @@ where f(i) = p * x[i] + q * y[i] + i
 with p = 1 or -1, q = 1 or -1
 
 
-Explanation 2: Graph
-For 3 points on the plane, we always have |AO| - |BO| <= |AB|.
-When AO and BO are in the same direction, we have ||AO| - |BO|| = |AB|.
-
-We take 4 points for point O, left-top, left-bottom, right-top and right-bottom.
-Each time, for each point B, and find the smallest A point to O,
-the Manhattan distance |AB| >= |AO| - |BO|.
-
 
 Complexity
 Time O(N) for 4 passes
@@ -46,11 +38,11 @@ Space O(1)
 Python:
 
     def maxAbsValExpr(self, x, y):
-        res, n = 0, len(x)
+        result, n = 0, len(x)
         for p, q in [[1, 1], [1, -1], [-1, 1], [-1, -1]]:
             smallest = p * x[0] + q * y[0] + 0
             for i in xrange(n):
                 cur = p * x[i] + q * y[i] + i
-                res = max(res, cur - smallest)
-                smallest = min(smallest, cur)
+                result = max(result, cur - smallest) # what we are after
+                smallest = min(smallest, cur) # we find the smallest because  f(i)-f(j) :max of first & min of second term
         return res
