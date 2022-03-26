@@ -1,16 +1,18 @@
 Question:
 
 On an alphabet board, we start at position (0, 0), corresponding to character board[0][0].
-Here, board = ["abcde", "fghij", "klmno", "pqrst", "uvwxy", "z"], as shown in the diagram below.
-We may make the following moves:
-
+Here, board = ["abcde", 
+               "fghij", 
+               "klmno", 
+               "pqrst", 
+               "uvwxy", 
+               "z"], 
+as shown in the diagram below. We may make the following moves:
 'U' moves up, if the position exists on the board;
 'D' moves down
 'L' moves left
 'R' moves right
 '!' adds the character board[r][c] at our current position (r, c) to the answer.
-
-
 Return a sequence of moves that makes our answer equal to target in the minimum number of moves.
 
 Example 1:
