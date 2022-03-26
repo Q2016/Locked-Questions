@@ -22,16 +22,9 @@ Output: "DDR!UURRR!!DDD!"
   
 
   
-Solution:---  
-
-
-https://leetcode.com/problems/alphabet-board-path/discuss/345235/Python-Easy-Solution
-  
-Intuition
+Solution: 
 Calculate this difference of coordinates.
 
-
-Explanation
 Notice that moving down and moving right,
 may move into a square that doesn't exist.
 To avoid this, we put L U before R D.
