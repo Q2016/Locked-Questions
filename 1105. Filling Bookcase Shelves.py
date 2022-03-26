@@ -4,26 +4,51 @@ and height of the ith book. You are also given an integer shelfWidth.
 We want to place these books in order onto bookcase shelves that have a total width shelfWidth.
 Return the minimum possible height that the total bookshelf can be after placing shelves in this manner.	
 
+photo: https://leetcode.com/problems/filling-bookcase-shelves/
 
-
+		
+		
+		
+		
+		
+	
+	
 Solution: 2D knapsack problem
 	
-It's a kind of 2D knapsack problem.
-The core recurrence function is dp[i+1] = min(dp[k] + h for k in {j+1,...,i}).
+You can read about knapSack in Q2016/Cheat-sheet	
+	
+public int minHeightShelves(int[][] books, int shelf_width) {
+		int n = books.length;
+		// vidx, width, height
+		int[][] dp = new int[n + 1][shelf_width];
 
-j is the furthest index that {books[j+1],...,books[i]} can be placed in one row. It depends on the widths of those books. books[j] can't be placed into the same row with books[i] otherwise the width would exceed the shelf_width.
-k is each candidate index that {{books[k],...,books[i]}} are proposed to be placed in the same row.
-h is the maximum height among {books[k],...,books[i]}.
+		return minHeightShelves(books, 1, shelf_width - books[0][0], books[0][1], shelf_width, dp);
+	}
 
-def minHeightShelves(books, shelf_width):
-	dp = [0]
-	for i in range(len(books)):
-		w, j = books[i][0], i
-		while j >= 0 and w <= shelf_width:     # find out j, so w should be ahead of j
-			j -= 1
-			w += books[j][0] 
-		dp.append(min(dp[k]+max(books[x][1] for x in range(k,i+1)) for k in range(j+1,i+1)))
-	return dp[-1]
+	// using TopDown
+	public int minHeightShelves(int[][] books, int vidx, int currWidth, int currHt, int shelf_width, int[][] dp) {
+		if (vidx == books.length) {
+			return dp[vidx][currWidth] = currHt;
+		}
+		if (dp[vidx][currWidth] != 0) {
+			return dp[vidx][currWidth];
+		}
+		int currBookWidth = books[vidx][0];
+		int currBookHeight = books[vidx][1];
+
+		int sameShelf = (int) 1e8;
+		if (currWidth - currBookWidth >= 0) {
+			sameShelf = minHeightShelves(books, vidx + 1, currWidth - currBookWidth, Math.max(currHt, currBookHeight),
+					shelf_width, dp);
+		}
+		int nextShelf = (int) 1e8;
+		if (currBookWidth <= shelf_width) {
+			int temp = currHt;
+			nextShelf = minHeightShelves(books, vidx + 1, shelf_width - currBookWidth, currBookHeight, shelf_width, dp)
+					+ temp;
+		}
+		return dp[vidx][currWidth] = Math.min(sameShelf, nextShelf);
+	}
   
   
   
