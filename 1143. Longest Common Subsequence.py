@@ -19,11 +19,11 @@ Solution: DP
 If the two strings have no matching characters, so the last line always gets executed, the the time bounds are binomial coefficients, 
 which (if m=n) are close to 2^n.
 
-							lcs("AXYT", "AYZX")
+			 lcs("AXYT", "AYZX")
                            /              \
              lcs("AXY", "AYZX")            lcs("AXYT", "AYZ")
              /        \                      /              \ 
-    lcs("AX", "AYZX") lcs("AXY", "AYZ")   lcs("AXY", "AYZ") lcs("AXYT", "AY")
+ lcs("AX", "AYZX") lcs("AXY", "AYZ")   lcs("AXY", "AYZ") lcs("AXYT", "AY")
 
             
     class Solution:
