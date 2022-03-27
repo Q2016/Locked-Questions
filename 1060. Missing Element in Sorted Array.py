@@ -17,7 +17,7 @@ The missing numbers are [5,6,8,…], hence the third missing number is 8.
 
  
   
-Solution: Binary search
+Solution: Binary search (Check I think this problem is to be solved with Cyclic sort?)
  
 Seeing the word "sorted" reminds me that there must be some trick to play with. One common thought 
 of mine is binary lookup, which is used for quickly, in O(logN), to locate a specific element. And 
