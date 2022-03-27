@@ -52,6 +52,8 @@ public void flatten(TreeNode root) {
         return;
     flatten(root.right);
     flatten(root.left);
+    # if you check on paper below lines run for [6,5,4,3,2,1]
+    # These line are similar to the lines for reverse a link list: That's acually what it does
     root.right = prev;
     root.left = null;
     prev = root;
