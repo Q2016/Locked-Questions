@@ -23,9 +23,28 @@ Time O(N) for one pass
 Space O(2) for two options
 
 
-    def movesToMakeZigzag(self, A):
-        A = [float('inf')] + A + [float('inf')]
-        res = [0, 0]
-        for i in xrange(1, len(A) - 1):
-            res[i % 2] += max(0, A[i] - min(A[i - 1], A[i + 1]) + 1)
-        return min(res)
+There are two possible ways the array can satisfy the zigzag requirement: 
+1: start with a zig (increasing) 
+2. start with zag (decreasing). 
+There is a loop which goes through the whole list of numbers, in each step we keep track of the number of subtractions needed 
+to satisfy the requiremnets for both possible ways mentioned before. We also keep track of the last modified number. 
+
+class Solution(object):
+    def movesToMakeZigzag(self, nums):
+        
+        zig, zag = 0, 0
+        prev_zig, prev_zag = nums[0], nums[0]
+        
+        for i in range(1, len(nums)):
+            if i % 2 == 0:
+                zig += max(0, prev_zig - nums[i] + 1)
+                prev_zig = nums[i] 
+                zag += max(0, nums[i] - prev_zag + 1)
+                prev_zag = nums[i] - max(0, nums[i] - prev_zag + 1)
+            else:
+                zag += max(0, prev_zag - nums[i] + 1)
+                prev_zag = nums[i]
+                zig += max(0, nums[i] - prev_zig + 1)
+                prev_zig = nums[i] - max(0, nums[i] - prev_zig + 1)
+        
+        return min(zig, zag)
