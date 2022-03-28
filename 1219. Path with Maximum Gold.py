@@ -18,7 +18,7 @@ Path to get the maximum gold, 9 -> 8 -> 7.
   
   
   
-Solution: DFS
+Solution: Backtracking
 
 
 int dfs(vector<vector<int>>& g, int i, int j) {
