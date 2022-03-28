@@ -19,8 +19,10 @@ Then delete "bbb", get "dddaa"
 Finally delete "ddd", get "aa"     
 
 
-Solution: DP or Stack
+Solution: DP or Stack (Similar to 1047)
 
+These are other methods..     
+     
 class Solution {
 public:
      string removeDuplicates(string s, int k) {
