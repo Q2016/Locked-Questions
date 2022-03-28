@@ -10,11 +10,18 @@ Input: arr = [1,2,3,4], difference = 1
 Output: 4
 Explanation: The longest arithmetic subsequence is [1,2,3,4].        
 
+Input: arr = [1,5,7,8,5,3,4,2,1], difference = -2
+Output: 4
+Explanation: The longest arithmetic subsequence is [7,5,3,1].        
         
-Solution:  DP
         
-def longestSubsequence(self, arr: List[int], diff: int) -> int:
-        res = {}
-        for num in arr:
-            res[num] = res[num - diff] + 1 if (num - diff) in res else 1
-        return max(res.values())
+        
+        
+        
+Solution:  HashMap/dict
+        
+    def longestSubsequence(self, arr: List[int], difference: int) -> int:
+        count = {}
+        for a in arr:
+            count[a] = 1 + count.get(a - difference, 0)
+        return max(count.values())
