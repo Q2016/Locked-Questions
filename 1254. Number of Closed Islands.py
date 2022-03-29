@@ -16,6 +16,7 @@ Islands in gray are closed because they are completely surrounded by water (grou
 
 
 Solution: DFS
+This is similar to 1020. Number of Enclaves, Flood Fill
    
 Intuition
 The idea is simple. We want to perform a DFS on the matrix to find the connected component of 0s. 
