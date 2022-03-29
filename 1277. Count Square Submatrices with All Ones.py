@@ -2,10 +2,9 @@ Question:
 Given a m * n matrix of ones and zeros, return how many square submatrices have all ones.
 
 Example 1:
-Input: matrix =
-[[0,1,1,1],
-  [1,1,1,1],
-  [0,1,1,1]]
+Input: matrix =[[0,1,1,1],
+                [1,1,1,1],
+                [0,1,1,1]]
 Output: 15
 Explanation: 
 There are 10 squares of side 1.
@@ -14,12 +13,15 @@ There is  1 square of side 3.
 Total number of squares = 10 + 4 + 1 = 15.    
 
 
-Solution: Dp
+
+
+
+Solution: Dp (The link is awesome)
 
 The idea is to scan each cell in the matrix to update the placeholder result variable with the number of 
 squares that can be formed from the currently looking cell (when it is the bottom right corner cell of the any possible square).
 
-The main workhorse of this Dynamic Programming approach is Line 17. Let's try to understand that:
+The main workhorse of this Dynamic Programming approach is Line 17. Let's try to understand that: 
 
 images in https://leetcode.com/problems/count-square-submatrices-with-all-ones/discuss/643429/Python-DP-Solution-%2B-Thinking-Process-Diagrams-(O(mn)-runtime-O(1)-space)
 
