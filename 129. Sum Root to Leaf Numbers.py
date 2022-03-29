@@ -12,7 +12,7 @@ The root-to-leaf path 1->2 represents the number 12.
 The root-to-leaf path 1->3 represents the number 13.
 Therefore, sum = 12 + 13 = 25.
     
-Solution: Preorder?  
+Solution: Preorder 
 
 
 Python solutions (dfs+stack, bfs+queue, dfs recursively).
@@ -30,6 +30,11 @@ class Solution(object):
                 self.res += path
             self.dfs(root.left, path*10+root.val)
             self.dfs(root.right, path*10+root.val)
+            
+            
+            
+            
+            
             
     def sumNumbers2(self, root): # BFS with queue
         deque, res = collections.deque(), 0
