@@ -5,7 +5,16 @@ Each node has labels in the set {0, 1, ..., edges.length}.
 
 
 
-Solution: DP
+
+
+
+
+
+
+
+
+
+Solution: (Similar to 543. Diameter of Binary Tree)
 
 https://programmerall.com/article/64621125882/
 
