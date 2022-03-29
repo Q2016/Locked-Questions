@@ -17,26 +17,18 @@ Explanation: One shortest transformation sequence is "hit" -> "hot" -> "dot" -> 
 
 Solution: BFS
 
-https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/word-ladder.py
-
 class Solution(object):
     def ladderLength(self, beginWord, endWord, wordList):
-
-        distance, cur, visited, lookup = 0, [beginWord], set([beginWord]), set(wordList)
-
-        while cur:
-            next_queue = []
-
-            for word in cur:
-                if word == endWord:
-                    return distance + 1
-                for i in xrange(len(word)):
-                    for j in 'abcdefghijklmnopqrstuvwxyz':
-                        candidate = word[:i] + j + word[i + 1:]
-                        if candidate not in visited and candidate in lookup:
-                            next_queue.append(candidate)
-                            visited.add(candidate)
-            distance += 1
-            cur = next_queue
-
+        wordList = set(wordList)
+        queue = collections.deque([[beginWord, 1]])
+        while queue:
+            word, length = queue.popleft()
+            if word == endWord:
+                return length
+            for i in range(len(word)):
+                for c in 'abcdefghijklmnopqrstuvwxyz':
+                    next_word = word[:i] + c + word[i+1:]
+                    if next_word in wordList:
+                        wordList.remove(next_word)
+                        queue.append([next_word, length + 1])
         return 0
