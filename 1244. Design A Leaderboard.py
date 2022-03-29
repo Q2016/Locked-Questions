@@ -31,35 +31,17 @@ leaderboard.top(3);           // returns 141 = 51 + 51 + 39;
 Solution: Heap+Hashing
 
 
-time complexity O(K) + O(NlogK) = O(NlogK)
+Time complexity for init, reset, addScore is O(1), time complexity for top is O(n log k)
 
 class Leaderboard:
+  def __init__(self):
+    self.idToScore = Counter()
 
-    def __init__(self):
-        self.dic = defaultdict(int)
+  def addScore(self, playerId: int, score: int) -> None:
+    self.idToScore[playerId] += score
 
-    def addScore(self, playerId: int, score: int) -> None:
-        self.dic[playerId] += score
-        
+  def top(self, K: int) -> int:
+    return sum(score for _, score in self.idToScore.most_common(K))
 
-    def top(self, K: int) -> int:
-        hp = []
-        for score in self.dic.values():
-            heapq.heappush(hp, score)
-            if len(hp) > K:
-                heapq.heappop(hp)
-        res = 0
-        while hp:
-            res += heapq.heappop(hp)
-            
-# method2:heapify the whole list
-#         hp = list(self.dic.values())
-#         heapq.heapify(hp)
-#         res = sum(heapq.nlargest(K, hp))
-
-        return res
-            
-
-    def reset(self, playerId: int) -> None:
-        self.dic[playerId] = 0
-
+  def reset(self, playerId: int) -> None:
+    del self.idToScore[playerId]
