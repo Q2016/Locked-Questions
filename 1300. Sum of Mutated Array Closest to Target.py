@@ -14,7 +14,7 @@ Explanation: When using 3 arr converts to [3, 3, 3] which sums 9 and that's the 
 
 
 
-Solution: Binary Search
+Solution: Binary Search (I got this comments below, I think it will help)
 
 The value we are looking for is somewhere between 1 and maxValue (m).
 Now use Binary search to speed up the process.
