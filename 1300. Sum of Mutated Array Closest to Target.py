@@ -9,8 +9,20 @@ Input: arr = [4,9,3], target = 10
 Output: 3
 Explanation: When using 3 arr converts to [3, 3, 3] which sums 9 and that's the optimal answer.
 
-    
+  
+
+
+
+
 Solution: Binary Search
+
+The value we are looking for is somewhere between 1 and maxValue (m).
+Now use Binary search to speed up the process.
+
+go up if the sum is too small
+go down if the sum is too big
+When we are done with binary search, l and r are equal, but it might happen that we have not exactly reached the target.
+Check if l-1 (should get us below the target) leads to the sum closer to the target.
 
 class Solution(object):
     def getRes(self,arr,t):
@@ -18,11 +30,6 @@ class Solution(object):
         return sum(nums)
     
     def findBestValue(self, arr, target):
-        """
-        :type arr: List[int]
-        :type target: int
-        :rtype: int
-        """
         l = 1
         h = max(arr)
         
