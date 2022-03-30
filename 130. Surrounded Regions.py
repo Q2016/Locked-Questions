@@ -18,8 +18,22 @@ Explanation: Surrounded regions should not be on the border, which means that an
 of the board are not flipped to 'X'. Any 'O' that is not on the border and it is not connected to an 'O' on 
 the border will be flipped to 'X'. Two cells are connected if they are adjacent cells connected horizontally or vertically.
 
-Solution: DFS, BFS
 
+
+
+
+
+Solution: DFS (it's easier), BFS
+               
+Steps to Solve :
+1. Move over the boundary of board, and find O's 
+2. Every time we find an O, perform DFS from it's position
+3. In DFS convert all 'O' to '#'      (why?? so that we can differentiate which 'O' can be flipped and which cannot be)   
+4. After all DFSs have been performed, board contains three elements,#,O and X
+5. 'O' are left over elements which are not connected to any boundary O, so flip them to 'X'
+6. '#' are elements which cannot be flipped to 'X', so flip them back to 'O'
+ 
+ 
 class Solution(object):
     # DFS
     def solve1(self, board):
@@ -46,6 +60,10 @@ class Solution(object):
             self.dfs(board, i, j+1)
             self.dfs(board, i, j-1)
                 
+             
+             
+             
+             
     # BFS
     def solve(self, board):
         queue = collections.deque([])
