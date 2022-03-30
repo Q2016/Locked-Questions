@@ -1,7 +1,6 @@
 Question:
 Given an array of integers nums and a positive integer k, check whether it is possible to 
-divide this array into sets of k consecutive numbers.
-Return true if it is possible. Otherwise, return false.
+divide this array into sets of k consecutive numbers. Return true if it is possible. Otherwise, return false.
 
 Example 1:
 Input: nums = [1,2,3,3,4,4,5,6], k = 4
@@ -9,16 +8,49 @@ Output: true
 Explanation: Array can be divided into [1,2,3,4] and [3,4,5,6].
     
     
-Solution: Greedy Algo
+    
+    
+    
+    
+    
+    
+Solution: Greedy 
 
-Solution 1
-Count number of different cards to a map c
-Loop from the smallest card number.
-Everytime we meet a new card i, we cut off i - i + k - 1 from the counter.
+We can use a greedy approach and start with the smallest number and see if the numbers from that number + k exist and then keep 
+removing them from the numbers we have, if there is a case where it's not possible then we return false.
 
-Complexity:
-Time O(MlogM + MK), where M is the number of different cards.
-In Cpp and Java it's O(NlogM), which can also be improved.
+
+
+class Solution {
+public:
+    bool isPossibleDivide(vector<int>& nums, int k) 
+    {
+        if(nums.size()%k!=0)
+            return false;
+        map<int,int> count;
+        map<int,int>::iterator it;
+        int freq;
+        for(int &i:nums)  #Store the count of all numbers sorted.
+            count[i]++;
+        for(it=count.begin();it!=count.end();it++)	#Start with the smallest number.
+            if(it->second)		#If the count of smallest integer is non 0 check if next k numbers exist and have atleast same frequency.
+            {
+                freq=it->second;
+                for(int i=0;i<k;i++)	#Checks for the next k-1 numbers.
+                    #We are unable to find ith consecutive number to the smallest(starting number) with atleast same frequency.
+                    if(count[it->first+i]<freq) 
+                        return false;
+                    else
+                        count[it->first+i]-=freq;       #Reduce the count of the numbers used.
+            }
+        return true;
+    }
+};
+
+Complexity
+Space: O(n). Since we store the count of all the numbers.
+Time: O(nlogn). Since we use map which is sorted and each lookup is O(logn).    
+    
 
     def isPossibleDivide(self, A, k):
         c = collections.Counter(A)
@@ -31,42 +63,3 @@ In Cpp and Java it's O(NlogM), which can also be improved.
         return True
         
 
-Follow Up
-We just got lucky AC solution. Because k <= 10000.
-What if k is huge, should we cut off card on by one?
-
-
-Solution 2
-Count number of different cards to a map c
-Cur represent current open straight groups.
-In a deque start, we record the number of opened a straight group.
-Loop from the smallest card number.
-For example, A = [1,2,3,2,3,4], k = 3
-We meet one 1:
-opened = 0, we open a new straight groups starting at 1, push (1,1) to start.
-We meet two 2:
-opened = 1, we need open another straight groups starting at 1, push (2,1) to start.
-We meet two 3:
-opened = 2, it match current opened groups.
-We open one group at 1, now we close it. opened = opened - 1 = 1
-We meet one 4:
-opened = 1, it match current opened groups.
-We open one group at 2, now we close it. opened = opened - 1 = 0
-
-return if no more open groups.
-
-Complexity
-O(N+MlogM), where M is the number of different cards.
-Because I count and sort cards.
-In Cpp and Java it's O(NlogM), which can also be improved.
-
-    def isPossibleDivide(self, A, k):
-        c = collections.Counter(A)
-        start = collections.deque()
-        last_checked, opened = -1, 0
-        for i in sorted(c):
-            if opened > c[i] or opened > 0 and i > last_checked + 1: return False
-            start.append(c[i] - opened)
-            last_checked, opened = i, c[i]
-            if len(start) == k: opened -= start.popleft()
-        return opened == 0
