@@ -6,7 +6,15 @@ L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 You may not modify the values in the list's nodes. Only nodes themselves may be changed.	
 
 
-Solution:---
+
+
+
+
+
+
+
+
+Solution: (using tools developed before from 234.)
 
 https://leetcode.com/problems/reorder-list/discuss/1640597/PythonJavaC%2B%2B-2-Easy-Solutions-oror-Visualized-Explanation-oror-Beginner-Friendly
 
