@@ -23,3 +23,7 @@ BFS:127,133
 Dijkstra:1376
 
 c++: 1366, 1387
+
+Educational:
+
+Time complexity: 139
