@@ -11,12 +11,15 @@ Explanation: Leaf nodes in green with value (target = 2) are removed.
 After removing, new nodes become leaf nodes with value (target = 2) 
 
 
+
+
+
+
+
 Solution: Recursive
 
     def removeLeafNodes(self, root, target):
-        if root:
-            root.left = self.removeLeafNodes(root.left, target)
-            root.right = self.removeLeafNodes(root.right, target)
-            if root.val != target or root.left or root.right:
-                return root    
+        if root.left: root.left = self.removeLeafNodes(root.left, target)
+        if root.right: root.right = self.removeLeafNodes(root.right, target)
+        return None if root.left == root.right and root.val == target else root    
 
