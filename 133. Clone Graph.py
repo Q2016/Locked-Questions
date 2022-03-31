@@ -13,9 +13,9 @@ Explanation: There are 4 nodes in the graph.
 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
 
 
-Solution: DFS or BFS
+Solution: BFS (simpler), DFS
     
-DFS iteratively    
+BFS iteratively    
     def cloneGraph1(self, node):
         if not node:
             return node
