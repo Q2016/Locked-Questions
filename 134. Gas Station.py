@@ -18,41 +18,47 @@ Travel to station 3. The cost is 5. Your gas is just enough to travel back to st
 Therefore, return 3 as the starting index.
 
 
-Solution: ---
+Solution: 
     
-https://leetcode.com/problems/gas-station/discuss/1706142/JavaC%2B%2BPython-An-explanation-that-ever-EXISTS-till-now!!!!    
-
-Brute Force:
     
-        int n = gas.length;
-        for(int i = 0; i < n; i++){
-            int totalFuel = 0;
-            int stopCount = 0, j = i;
-            while(stopCount < n){
-                totalFuel += gas[j % n] - cost[j % n];
-                if(totalFuel < 0) break; // whenever we reach -ve
-                stopCount++;
-                j++;
-            if(stopCount == n && totalFuel >= 0) return i; // cover all the stops & our fuel left is 0 or more than that
-        return -1;
-
-Time Complexity O(N^2)
-Space Complexity O(1)
- 
-                
-Optimized: If we run out of fuel say at some ith gas station. All the gas station between ith and starting point are bad starting point as well.
-So, this means we can start trying at next gas station on the i + 1 station. So, hopefully now you understand how this O(N) solution will takes place.                
-    
-    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        n, total_surplus, surplus, start = len(gas), 0, 0, 0
+class Solution 
+{
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) 
+    {
+        # first of all we need to check whether we've sfficient fuel or not. 
+        int total_cost=0,total_fuel=0,n=cost.size();
+        for(int i=0;i<n;i++)
+        {
+            total_cost+=cost[i];
+            total_fuel+=gas[i];
+        }
+        # If the total fuel is lesser than the cost then definitely we can't cover the whole cicular tour.
+        if(total_fuel<total_cost)
+        {
+            return -1;
+        }
         
-        for i in range(n):
-            total_surplus += gas[i] - cost[i]
-            surplus += gas[i] - cost[i]
-            if surplus < 0:
-                surplus = 0
-                start = i + 1
-        return -1 if (total_surplus < 0) else start
+        
+        # If the total fuel is sufficient enough to cover the circular tour then definitely an answer exists
+        int curr_fuel=0,start=0;  # start with zero fuel.
+        for(int i=0;i<n;i++)
+        {
+            # If at any point our balance/ current fuel is negative that means we can't come to the i'th petrol pump 
+            # from the previous pump beacuse our fuel won't allow us to cover such distance. 
+            # So we'll make the i'th pump as the start point ans proceed. Simultaneously we'll make the current fuel 
+            # to be 0 as we're starting freshly.
+            if(curr_fuel<0)
+            {
+                start=i;
+                curr_fuel=0;
+            }
+            # at any station we'll fill petrol and pay the cost to go to the next station . so current fuel would be the following.
+            curr_fuel+=(gas[i]-cost[i]);
+        }
+        return start;
+    }
+};
 
     
 
