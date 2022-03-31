@@ -1,12 +1,26 @@
 Question:
-# Given an array of integers, every element appears three times except for one. Find that single one.
-# 
-# Note:
-# Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+Given an array of integers, every element appears three times except for one. Find that single one. 
+Note: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution:
 
+    def singleNumber(self, nums):
+        
+        return (sum(set(nums)) * 3 - sum(nums)) / 2
+    
 
     def singleNumber(self, A):
         one, two = 0, 0
@@ -30,10 +44,6 @@ Solution:
 
         return (collections.Counter(list(set(nums)) * 3) - collections.Counter(nums)).keys()[0]
 
-
-    def singleNumber(self, nums):
-        
-        return (sum(set(nums)) * 3 - sum(nums)) / 2
 
 
     def singleNumber(self, A):
