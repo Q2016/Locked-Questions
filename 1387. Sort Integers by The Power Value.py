@@ -19,7 +19,7 @@ Notice that 12 and 13 have the same power value and we sorted them in ascending 
 
 
 
-Solution: DP
+Solution: Brute force
 
 import heapq
 class Solution:
