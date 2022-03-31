@@ -17,7 +17,8 @@ Note: Your algorithm should have a linear runtime complexity. Could you implemen
     
 Solution:
 
-    def singleNumber(self, nums):
+    
+    def singleNumber(self, nums): #(i like this one)
         
         return (sum(set(nums)) * 3 - sum(nums)) / 2
     
