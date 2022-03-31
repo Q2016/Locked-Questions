@@ -13,8 +13,9 @@ card first will maximize your total score. The optimal strategy is to take the t
 giving a final score of 1 + 6 + 5 = 12.    
     
     
-Solution: Sliding window
 
+
+Solution: Sliding window (Cute question)
 
 Problem Translation: Find the smallest subarray sum of length len(cardPoints) - k
 
