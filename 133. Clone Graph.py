@@ -15,7 +15,7 @@ Explanation: There are 4 nodes in the graph.
 
 Solution: BFS (simpler), DFS
     
-BFS iteratively    
+BFS stack    
     def cloneGraph1(self, node):
         if not node:
             return node
@@ -31,7 +31,7 @@ BFS iteratively
         return m[node]
         
         
-BFS        
+BFS deque      
     def cloneGraph2(self, node): 
         if not node:
             return node
