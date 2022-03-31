@@ -17,19 +17,73 @@ As most of the voters ranked C second, team C is the second team and team B is t
 
 
 
-Solution: ---
+Solution: sort and dic
     
-Count the rank of vote for each candidate. Sort all teams according to the ranking system.
+Steps
+Create a ranking system for each char of each string in the array (hashmap), s.t.:
+
+	d = {
+		'A': [0, 0, 0],  # initialize array of size len(string)
+		'B': [0, 0, 0],
+		...
+	}
+For each char in the string, we add 1 to the position they are ranked,
+e.g. d['A'] = [3, 0, 1] means A is ranked first 3 times, second 0 times, and third once.
+
+Sort d.keys() based on their ranking values in dictionary, in descending order
+in case of equal votes, we alphabetically order the keys first using .sort()
+
+Join elements in the sorted list into a string
+
+Complexity
+time: O(N * S + N logN) ~ O(N logN)
+space: O(N * S) ~ O(N)
+where N = # votes and S = length of a word in the votes array
+max(S) is 26 chars so it would be constant O(1)
+
+Python3
+    def rankTeams(self, votes: List[str]) -> str:
+        d = {}
+
+        for vote in votes:
+            for i, char in enumerate(vote):
+                if char not in d:
+                    d[char] = [0] * len(vote)
+                d[char][i] += 1
+
+          #output for d: {'A': [5, 0, 0], 'B': [0, 2, 3], 'C': [0, 3, 2]}
+           
+        voted_names = sorted(d.keys()) 
+        # output for dict_keys(['A', 'B', 'C'])
+        # voted_names output: ['A', 'B', 'C']
+        
+        return "".join(sorted(voted_names, key=lambda x: d[x], reverse=True))
+
+       
+       
+       
+       
+Complexity
+Time O(NM) for iterating
+Time O(MMlogM) for sorting
+Space O(M^2)
+where N = votes.length and M = votes[0].length <= 26
 
 
-def rankTeams(votes: List[str]) -> str:
-    counter = {k:[0]*len(votes[0]) for k in votes[0]}
+C++
 
-    for val in votes:
-        for i,ch in enumerate(val):
-            counter[ch][i]-=1 # - as we need to sort in reverse
-    sorted_counter = sorted(counter.items(), key=lambda k:(k[1],k[0]))
-    ans = ""
-    for ch,_ in sorted_counter:
-        ans+=ch
-    return ans
+    string rankTeams(vector<string>& votes) {
+        vector<vector<int>> count(26, vector<int>(27));
+        for (char& c: votes[0])
+            count[c - 'A'][26] = c;
+
+        for (string& vote: votes)
+            for (int i = 0; i < vote.length(); ++i)
+                --count[vote[i] - 'A'][i];
+        sort(count.begin(), count.end());
+        string res;
+        for (int i = 0; i < votes[0].length(); ++i)
+            res += count[i][26];
+        return res;
+    }
+       
