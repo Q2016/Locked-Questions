@@ -16,7 +16,7 @@ Output: [[12,21,16],
     
     
     
-Solution: Prefix sum, simalar to LC 304
+Solution: Prefix sum (Identical to LC 304)
     
 Note:
 
