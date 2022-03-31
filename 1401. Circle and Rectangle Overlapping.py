@@ -4,6 +4,16 @@ Given a circle represented as (radius, x_center, y_center) and an axis-aligned r
 coordinates of the top-right corner of the rectangle.
 Return True if the circle and rectangle are overlapped otherwise return False.	
 
+
+
+
+
+
+
+
+
+
+
 Solution:---
 
 https://leetcode.com/problems/circle-and-rectangle-overlapping/discuss/563351/Python-O(1)-simple-geometry
