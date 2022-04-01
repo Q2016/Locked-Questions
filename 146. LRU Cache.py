@@ -1,149 +1,72 @@
 Question:
-# Design and implement a data structure for Least Recently Used (LRU) cache.
-# It should support the following operations: get and put.
-#
-# get(key) - Get the value (will always be positive) of the key if the key exists in the cache,
-# otherwise return -1.
-# put(key, value) - Set or insert the value if the key is not already present.
-# When the cache reached its capacity,
-# it should invalidate the least recently used item before inserting a new item.
-#
-# Follow up:
-# Could you do both operations in O(1) time complexity?
-#
-# Example:
-#
-# LRUCache cache = new LRUCache( 2 /* capacity */ );
-#
-# cache.put(1, 1);
-# cache.put(2, 2);
-# cache.get(1);       // returns 1
-# cache.put(3, 3);    // evicts key 2
-# cache.get(2);       // returns -1 (not found)
-# cache.put(4, 4);    // evicts key 1
-# cache.get(1);       // returns -1 (not found)
-# cache.get(3);       // returns 3    
+Question:
+Design and implement a data structure for Least Recently Used (LRU) cache.
+It should support the following operations: get and put.
+get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
+put(key, value) - Set or insert the value if the key is not already present.
+When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
+Follow up: Could you do both operations in O(1) time complexity?
+
+Example:
+LRUCache cache = new LRUCache( 2 /* capacity */ );
+cache.put(1, 1);
+cache.put(2, 2);
+cache.get(1);       // returns 1
+cache.put(3, 3);    // evicts key 2
+cache.get(2);       // returns -1 (not found)
+cache.put(4, 4);    // evicts key 1
+cache.get(1);       // returns -1 (not found)
+cache.get(3);       // returns 3    
+
+
+
 
 Solution:
 
-My solution:
+class Node:
+def __init__(self, k, v):
+    self.key = k
+    self.val = v
+    self.prev = None
+    self.next = None
 
 class LRUCache:
+def __init__(self, capacity):
+    self.capacity = capacity
+    self.dic = dict()
+    self.head = Node(0, 0)
+    self.tail = Node(0, 0)
+    self.head.next = self.tail
+    self.tail.prev = self.head
 
-    def __init__(self, capacity: int):
-        self.mydic={}
+def get(self, key):
+    if key in self.dic:
+        n = self.dic[key]
+        self._remove(n)
+        self._add(n)
+        return n.val
+    return -1
 
-    def get(self, key: int) -> int:
-        return self.mydic[key]
+def put(self, key, value):
+    if key in self.dic:
+        self._remove(self.dic[key])
+    n = Node(key, value)
+    self._add(n)
+    self.dic[key] = n
+    if len(self.dic) > self.capacity:
+        n = self.head.next
+        self._remove(n)
+        del self.dic[n.key]
 
-    def put(self, key: int, value: int) -> None:
-        self.mydic[key]=value
-        
-        
-        
+def _remove(self, node):
+    p = node.prev
+    n = node.next
+    p.next = n
+    n.prev = p
 
-https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/lru-cache.py
-  
-# Time:  O(1), per operation.
-# Space: O(k), k is the capacity of cache.
-
-
-
-class ListNode(object):
-    def __init__(self, key, val):
-        self.val = val
-        self.key = key
-        self.next = None
-        self.prev = None
-
-class LinkedList(object):
-    def __init__(self):
-        self.head = None
-        self.tail = None
-    
-    def insert(self, node):
-        node.next, node.prev = None, None  # avoid dirty node
-        if self.head is None:
-            self.head = node
-        else:
-            self.tail.next = node
-            node.prev = self.tail
-        self.tail = node
-            
-    def delete(self, node):
-        if node.prev:
-            node.prev.next = node.next
-        else:
-            self.head = node.next
-        if node.next:
-            node.next.prev = node.prev
-        else:
-            self.tail = node.prev
-        node.next, node.prev = None, None  # make node clean
-
-class LRUCache(object):
-
-    # @param capacity, an integer
-    def __init__(self, capacity):
-        self.list = LinkedList()
-        self.dict = {}
-        self.capacity = capacity
-        
-    def _insert(self, key, val):
-        node = ListNode(key, val)
-        self.list.insert(node)
-        self.dict[key] = node
-        
-
-    # @return an integer
-    def get(self, key):
-        if key in self.dict:
-            val = self.dict[key].val
-            self.list.delete(self.dict[key])
-            self._insert(key, val)
-            return val
-        return -1
-        
-
-    # @param key, an integer
-    # @param value, an integer
-    # @return nothing
-    def put(self, key, val):
-        if key in self.dict:
-            self.list.delete(self.dict[key])
-        elif len(self.dict) == self.capacity:
-            del self.dict[self.list.head.key]
-            self.list.delete(self.list.head)
-        self._insert(key, val)
- 
- 
-import collections
-class LRUCache2(object):
-    def __init__(self, capacity):
-        self.cache = collections.OrderedDict()
-        self.capacity = capacity
-
-    def get(self, key):
-        if key not in self.cache:
-            return -1
-        val = self.cache[key]
-        del self.cache[key]
-        self.cache[key] = val
-        return val
-
-    def put(self, key, value):
-        if key in self.cache:
-            del self.cache[key]
-        elif len(self.cache) == self.capacity:
-            self.cache.popitem(last=False)
-        self.cache[key] = value
-
-        
-if __name__ == "__main__":
-    cache = LRUCache(3)
-    cache.set(1, 1)
-    cache.set(2, 2)
-    cache.set(3, 3)
-    print cache.get(1)
-    cache.set(4, 4)
-    print cache.get(2)        
+def _add(self, node):
+    p = self.tail.prev
+    p.next = node
+    self.tail.prev = node
+    node.prev = p
+    node.next = self.tail
