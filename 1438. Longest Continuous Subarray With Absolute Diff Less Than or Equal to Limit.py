@@ -111,49 +111,23 @@ Space O(K)
     
     
 239. Sliding Window Maximum
-
-from collections import deque
-class Solution:
+Python
+class Solution(object):
     def maxSlidingWindow(self, nums, k):
-        # Checking for base case
-        if not nums:
-            return []
-        if k == 0:
-            return nums
-        # Defining Deque and result list
-        deq = deque()
-        result = []
-        # First traversing through K in the nums and only adding maximum value's index to the deque.
-        # Note: We are olny storing the index and not the value.
-        # Now, Comparing the new value in the nums with the last index value from deque,
-        # and if new valus is less, we don't need it
-        for i in range(k):
-            while len(deq) != 0:
-                if nums[i] > nums[deq[-1]]:
-                    deq.pop()
-                else:
-                    break
-            deq.append(i)
-        # Here we will have deque with index of maximum element for the first subsequence of length k.
-        # Now we will traverse from k to the end of array and do 4 things
-        # 1. Appending left most indexed value to the result
-        # 2. Checking if left most is still in the range of k (so it only allows valid sub sequence)
-        # 3. Checking if right most indexed element in deque is less than the new element found, if yes we will remove it
-        # 4. Append i at the end of the deque  (Not: 3rd and 4th steps are similar to previous for loop)
-        for i in range(k, len(nums)):
-            result.append(nums[deq[0]])
-            if deq[0] < i - k + 1:
-                deq.popleft()
-            while len(deq) != 0:
-                if nums[i] > nums[deq[-1]]:
-                    deq.pop()
-                else:
-                    break
-            deq.append(i)
-        #Adding the maximum for last subsequence
-        result.append(nums[deq[0]]) 
-        return result
+        if not nums: return []
+        res = []
+        dq = deque()  # store index
+        for i in xrange(len(nums)):
+            if dq and dq[0]<i-k+1:  # out of the window
+                dq.popleft()
+            while dq and nums[dq[-1]]<nums[i]:  # remove impossible candidate
+                dq.pop()
+            dq.append(i)
+            if i>k-2:
+                res.append(nums[dq[0]])
+        return res
     
+C++    
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
