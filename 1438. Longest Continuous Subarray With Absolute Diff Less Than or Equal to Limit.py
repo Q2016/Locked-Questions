@@ -77,7 +77,7 @@ Use heqp will be O(NlogN)
 Use TreeMap will be O(NlogK)
 Use deque will be O(N)
 
-Explanation
+Explanation (I ran this in spyder to get it)
 Update res[i],
 where res[i] means the maximum result you can get if the last element is A[i].
 I directly modify on the input A,
