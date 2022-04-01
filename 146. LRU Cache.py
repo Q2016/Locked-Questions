@@ -21,51 +21,58 @@ cache.get(3);       // returns 3
 
 
 Solution:
+Moving an element in an array or deque costs O(N) time (since all elems before/after the moved element need to be shifted).
+Moving an element in a doubly linked list is O(1) time, since there is a constant number of pointers we need to update for the move 
+(only the prev/next pointers of the moved element, the prev/next pointers of neighbors at its current position, and the prev/next 
+pointers of neighbors at its destination)
+In this solution, we constantly need to move elements around in this data structure, so to optimize for time complexity we use a 
+doubly linked list.
+
 
 class Node:
-def __init__(self, k, v):
-    self.key = k
-    self.val = v
-    self.prev = None
-    self.next = None
+    def __init__(self, k, v):
+        self.key = k
+        self.val = v
+        self.prev = None
+        self.next = None
 
 class LRUCache:
-def __init__(self, capacity):
-    self.capacity = capacity
-    self.dic = dict()
-    self.head = Node(0, 0)
-    self.tail = Node(0, 0)
-    self.head.next = self.tail
-    self.tail.prev = self.head
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.dic = dict()
+        self.head = Node(0, 0)
+        self.tail = Node(0, 0)
+        self.head.next = self.tail
+        self.tail.prev = self.head
 
-def get(self, key):
-    if key in self.dic:
-        n = self.dic[key]
-        self._remove(n)
+    def get(self, key):
+        if key in self.dic:
+            n = self.dic[key]
+            self._remove(n)
+            self._add(n)
+            return n.val
+        return -1
+
+    def put(self, key, value):
+        if key in self.dic:
+            self._remove(self.dic[key])
+        n = Node(key, value)
         self._add(n)
-        return n.val
-    return -1
+        self.dic[key] = n
+        if len(self.dic) > self.capacity:
+            n = self.head.next
+            self._remove(n)
+            del self.dic[n.key]
 
-def put(self, key, value):
-    if key in self.dic:
-        self._remove(self.dic[key])
-    n = Node(key, value)
-    self._add(n)
-    self.dic[key] = n
-    if len(self.dic) > self.capacity:
-        n = self.head.next
-        self._remove(n)
-        del self.dic[n.key]
+    def _remove(self, node):
+        p = node.prev
+        n = node.next
+        p.next = n
+        n.prev = p
 
-def _remove(self, node):
-    p = node.prev
-    n = node.next
-    p.next = n
-    n.prev = p
-
-def _add(self, node):
-    p = self.tail.prev
-    p.next = node
-    self.tail.prev = node
-    node.prev = p
-    node.next = self.tail
+    def _add(self, node):
+        p = self.tail.prev
+        p.next = node
+        self.tail.prev = node
+        node.prev = p
+        node.next = self.tail
