@@ -30,4 +30,4 @@ Time complexity: 139
 
 Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/
 
-Educational:1438 (sliding windows)
+Educational:1438 (deque)
