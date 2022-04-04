@@ -7,73 +7,49 @@ Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
 Output: [[1,6],[8,10],[15,18]]
 Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
     
+    
+    
+    
+    
 Solution:
 
+    
+First, we sort the list as described. Then, we insert the first interval into our merged list and continue considering each 
+interval in turn as follows: If the current interval begins after the previous interval ends, then they do not overlap and we 
+can append the current interval to merged. Otherwise, they do overlap, and we merge them by updating the end of the previous 
+interval if it is less than the end of the current interval.    
+    
+    
+    
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        
-        
-        start=10000
-        end=0
-        
-        
-        output=[]
+        intervals.sort(key =lambda x: x[0])
+        merged =[]
         for i in intervals:
-            
-            if i[0]<end:# condition for intersection
-                start=min(start,i[0])
-                end=max(end,i[1])
-            else: #if not intersect
-                output.append([start,end])# send it out of the way
-                start=i[0]
-                end=i[1]
-                
-                
-        return output
-      
-      
-      
-
-      
-https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/merge-intervals.py      
-# Time:  O(nlogn)
-# Space: O(1)
-#
-# Given a collection of intervals, merge all overlapping intervals.
-# 
-# For example,
-# Given [1,3],[2,6],[8,10],[15,18],
-# return [1,6],[8,10],[15,18].
-#
-
-# Definition for an interval.
-class Interval:
-    def __init__(self, s=0, e=0):
-        self.start = s
-        self.end = e
-        
-    def __repr__(self):
-        return "[{}, {}]".format(self.start, self.end)
-
-
-class Solution(object):
-    def merge(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: List[Interval]
-        """
-        if not intervals:
-            return intervals
-        intervals.sort(key=lambda x: x.start)
-        result = [intervals[0]]
-        for i in xrange(1, len(intervals)):
-            prev, current = result[-1], intervals[i]
-            if current.start <= prev.end: 
-                prev.end = max(prev.end, current.end)
+			# if the list of merged intervals is empty 
+			# or if the current interval does not overlap with the previous,
+			# simply append it.
+            if not merged or merged[-1][-1] < i[0]:
+                merged.append(i)
+			# otherwise, there is overlap,
+			#so we merge the current and previous intervals.
             else:
-                result.append(current)
-        return result
+                merged[-1][-1] = max(merged[-1][-1], i[-1])
+        return merged
+    
+    
+Time complexity:
+In python, use sort method to a list costs O(nlogn), where n is the length of the list.
+The for-loop used to merge intervals, costs O(n).
+O(nlogn)+O(n) = O(nlogn)
+So the total time complexity is O(nlogn).
+Space complexity
+The algorithm used a merged list and a variable i.
+In the worst case, the merged list is equal to the length of the input intervals list. So the space complexity is O(n), 
+where n is the length of the input list.
+      
+      
+      
 
+      
 
-if __name__ == "__main__":
-    print Solution().merge([Interval(1, 3), Interval(2, 6), Interval(8, 10), Interval(15,18)])      
