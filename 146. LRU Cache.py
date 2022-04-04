@@ -21,104 +21,59 @@ cache.get(3);       // returns 3
 
 
 Solution:
-Moving an element in an array or deque costs O(N) time (since all elems before/after the moved element need to be shifted).
-Moving an element in a doubly linked list is O(1) time, since there is a constant number of pointers we need to update for the move 
-(only the prev/next pointers of the moved element, the prev/next pointers of neighbors at its current position, and the prev/next 
-pointers of neighbors at its destination)
-In this solution, we constantly need to move elements around in this data structure, so to optimize for time complexity we use a 
-doubly linked list.
 
+def __init__(self, capacity):
+    self.dic = collections.OrderedDict()
+    self.remain = capacity
 
-class Node:
-    def __init__(self, k, v):
-        self.key = k
-        self.val = v
-        self.prev = None
-        self.next = None
-
-class LRUCache:
-    def __init__(self, capacity):
-        self.capacity = capacity
-        self.dic = dict()
-        self.head = Node(0, 0)
-        self.tail = Node(0, 0)
-        self.head.next = self.tail
-        self.tail.prev = self.head
-
-    def get(self, key):
-        if key in self.dic:
-            n = self.dic[key]
-            self._remove(n)
-            self._add(n)
-            return n.val
+def get(self, key):
+    if key not in self.dic:
         return -1
+    v = self.dic.pop(key) 
+    self.dic[key] = v   # set key as the newest one
+    return v
 
-    def put(self, key, value):
-        if key in self.dic:
-            self._remove(self.dic[key])
-        n = Node(key, value)
-        self._add(n)
-        self.dic[key] = n
-        if len(self.dic) > self.capacity:
-            n = self.head.next
-            self._remove(n)
-            del self.dic[n.key]
-
-    def _remove(self, node):
-        p = node.prev
-        n = node.next
-        p.next = n
-        n.prev = p
-
-    def _add(self, node):
-        p = self.tail.prev
-        p.next = node
-        self.tail.prev = node
-        node.prev = p
-        node.next = self.tail
+def set(self, key, value):
+    if key in self.dic:    
+        self.dic.pop(key)
+    else:
+        if self.remain > 0:
+            self.remain -= 1  
+        else:  # self.dic is full
+            self.dic.popitem(last=False) 
+    self.dic[key] = value
         
         
 C++:
-In this question we have to keep track of the most least recently used item in the cache. I have designed the cache using list and map in C++.
-We do it by following the steps below :-
-
-When we access an item in the cache it moves to the front of the list as it is the most recently used item.
-When we want to remove an item we remove it from the last of the list as it is the least recently used item in the cache.
-When we insert an item we insert it into the front of the list as it is the most recently used item.
-The idea is to store the keys in the map and its corrosponding values into the list...
-Note : splice() function here takes the element at the m[key] and places it at the beginning of the list...
-class LRUCache
-{
-    public:
-        list<pair<int,int>> l;
-        unordered_map<int,list<pair<int, int>>::iterator> m;
-        int size;
-        LRUCache(int capacity)
-        {
-            size=capacity;
+class LRUCache {
+private:
+    int capacity;
+    list<int> recent;
+    unordered_map<int, int> cache;
+    unordered_map<int, list<int>::iterator> pos;
+    void use(int key) {
+        if (pos.find(key) != pos.end()) {
+            recent.erase(pos[key]);
+        } else if (recent.size() >= capacity) {
+            int old = recent.back();
+            recent.pop_back();
+            cache.erase(old);
+            pos.erase(old);
         }
-        int get(int key)
-        {
-            if(m.find(key)==m.end())
-                return -1;
-            l.splice(l.begin(),l,m[key]);
-            return m[key]->second;
+        recent.push_front(key);
+        pos[key] = recent.begin();
+    }
+public:
+    LRUCache(int capacity): capacity(capacity) {}
+    int get(int key) {
+        if (cache.find(key) != cache.end()) {
+            use(key);
+            return cache[key];
         }
-        void put(int key, int value)
-        {
-            if(m.find(key)!=m.end())
-            {
-                l.splice(l.begin(),l,m[key]);
-                m[key]->second=value;
-                return;
-            }
-            if(l.size()==size)
-            {
-                auto d_key=l.back().first;
-                l.pop_back();
-                m.erase(d_key);
-            }
-            l.push_front({key,value});
-            m[key]=l.begin();
-        }
-};    
+        return -1;
+    }
+    void set(int key, int value) {
+        use(key);
+        cache[key] = value;
+    }
+};   
