@@ -24,7 +24,7 @@ https://leetcode.com/problems/the-k-strongest-values-in-an-array/discuss/674566/
     def getStrongest(self, arr: List[int], k: int) -> List[int]:
         arr.sort()
         i, j = 0, len(arr) - 1
-        median = arr[(len(arr) - 1) // 2]
+        median = arr[(len(arr) - 1) // 2] # from one of the 
         while len(arr) + i - j <= k:
             if median - arr[i] > arr[j] - median:
                 i = i + 1
