@@ -34,7 +34,7 @@ The process continues until we get the original list in sorted order.
         prev.next = None
         
         sorted_l1 = self.sortList(head)
-        sorted_l2 = self.sortList(slow)
+        sorted_l2 = self.sortList(slow) #middle
         
         return self.mergeTwoLists(sorted_l1, sorted_l2)
            
