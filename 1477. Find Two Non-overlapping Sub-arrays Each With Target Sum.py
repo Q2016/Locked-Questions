@@ -11,33 +11,34 @@ Explanation: Only two sub-arrays have sum = 3 ([3] and [3]). The sum of their le
 
 
     
-Solution: Sliding window
+Solution: O(N) Time, Two Pass Solution using HashMap
 
-class Solution:
-    def minSumOfLengths(self, arr: List[int], target: int) -> int:
-        INF = len(arr) + 1
-        best_at_i = [INF]*len(arr) # the ith index represents the smallest length subarray we've found ending <= i that sums to target
-        best = INF # output 
-        curr_sum = 0 # current sum between left and right
-        
-        left = 0
-        for right in range(len(arr)):
-            # update the running sum
-            curr_sum += arr[right]
-            
-            # arr is strictly positive, so shrink window until we're not above target
-            while curr_sum > target and left <= right:
-                curr_sum -= arr[left]
-                left += 1
-                
-            if curr_sum == target:
-                # we have a new shortest candidate to consider
-                best = min(best, best_at_i[left-1] + right - left + 1)
-                best_at_i[right] = min(best_at_i[right-1], right - left + 1)
-            else:
-                # best we've seen is the previous best (overlaps to end if right == 0)
-                best_at_i[right] = best_at_i[right-1]
-        
-        if best == INF:
-            return -1
-        return best
+Concept: First traverse through the array once and store the (key,value) pair as (sum(arr[0:i+1]),i) for 0<=i<size of arr. Put, (0,-1) 
+in hashmap as default. Now traverse through the array again, and for every i, find the minimum value of length of sub-array on the left or 
+starting with i whose value is equal to target. Find another sub-array starting with i+1, whose sum is target. Update the result with the 
+minimum value of the sum of both the sub-array. This is possible because all values are positive and the value of sum is strictly increasing.
+
+class Solution {
+    public int minSumOfLengths(int[] arr, int target) {
+        HashMap<Integer,Integer> hmap=new HashMap<>();
+        int sum=0,lsize=Integer.MAX_VALUE,result=Integer.MAX_VALUE;
+        hmap.put(0,-1);
+        for(int i=0;i<arr.length;i++){
+            sum+=arr[i];
+            hmap.put(sum,i); # stores key as sum upto index i, and value as i.
+        }
+        sum=0;
+        for(int i=0;i<arr.length;i++){
+            sum+=arr[i];
+            if(hmap.get(sum-target)!=null){
+                # stores minimum length of sub-array ending with index<= i with sum target. This ensures non- overlapping property.
+                lsize=Math.min(lsize,i-hmap.get(sum-target));      
+            }
+			#hmap.get(sum+target) searches for any sub-array starting with index i+1 with sum target.
+            if(hmap.get(sum+target)!=null&&lsize<Integer.MAX_VALUE){
+                result=Math.min(result,hmap.get(sum+target)-i+lsize); # updates the result only if both left and right sub-array exists.
+            }
+        }
+        return result==Integer.MAX_VALUE?-1:result;
+    }
+}
