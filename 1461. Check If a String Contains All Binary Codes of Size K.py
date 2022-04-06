@@ -7,6 +7,16 @@ Output: true
 Explanation: The binary codes of length 2 are "00", "01", "10" and "11". They can be all found as substrings at indices 0, 1, 3 and 2 respectively.  
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution: Set
 
 We just need to check every substring with length k until we get all the possible binary codes. 
