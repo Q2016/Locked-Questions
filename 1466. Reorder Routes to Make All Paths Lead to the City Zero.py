@@ -18,6 +18,12 @@ Explanation: Change the direction of edges show in red such that each node can r
 0  - 4 - 5	
 
 
+
+
+
+
+
+
 Solution: DFS
 	
 Start from node 0 (the capital) and dfs on the path and see if the path is
@@ -25,19 +31,28 @@ in the same direction as the traversal. If it is on the same direction that
 means we need to reverse it because it can never get to the capital.
 
 
+from collections import defaultdict
+
+class Solution:
     def minReorder(self, n: int, connections: List[List[int]]) -> int:
-        self.res = 0    
-        roads = set()
-        graph = collections.defaultdict(list)
+        graph = defaultdict(list)
+        
         for u, v in connections:
-            roads.add((u, v))
-            graph[v].append(u)
-            graph[u].append(v)
-        def dfs(u, parent):
-            self.res += (parent, u) in roads
-            for v in graph[u]:
-                if v == parent:
-                    continue
-                dfs(v, u)    
-        dfs(0, -1)
-        return self.res
+            graph[u].append((v, 1))
+            graph[v].append((u, 0))
+            
+        visited = {0}
+        res = [0]
+        self.dfs(0, graph, visited, res)
+        
+        return res[0]
+    
+    def dfs(self, city: int, graph: dict, visited: set, res: List[int]) -> None:
+        
+	visited.add(city)
+        
+        for neighbor, cost in graph[city]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                res[0] += cost
+                self.dfs(neighbor, graph, visited, res)
