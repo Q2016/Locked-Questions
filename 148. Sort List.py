@@ -3,7 +3,26 @@ Given the head of a linked list, return the list after sorting it in ascending o
 
 
 
-Solution:
+
+
+
+
+
+
+
+
+
+
+
+
+
+Solution: Merge Sort
+ 
+-Recursively split the original list into two halves. The split continues until there is only one node in the linked list (Divide phase). 
+To split the list into two halves, we find the middle of the linked list using the Fast and Slow pointer approach as mentioned in Find Middle Of 
+Linked List.
+-Recursively sort each sublist and combine it into a single sorted list. (Merge Phase). This is similar to the problem Merge two sorted linked lists
+The process continues until we get the original list in sorted order.
 
     def sortList(self, head):
         if head == None or head.next == None:
