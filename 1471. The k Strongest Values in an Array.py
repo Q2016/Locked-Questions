@@ -16,22 +16,23 @@ elements are [5, 1]. [1, 5] is also accepted answer.
 Please note that although |5 - 3| == |1 - 3| but 5 is stronger than 1 because 5 > 1.    
 
 
-Solution: ---
-
-https://leetcode.com/problems/the-k-strongest-values-in-an-array/discuss/674566/Python3-straightforward-2-lines-with-custom-sort
-
+Solution: 
+ 
+Median can be found in O(n) goldman's interview!
 
     def getStrongest(self, arr: List[int], k: int) -> List[int]:
         arr.sort()
-        i, j = 0, len(arr) - 1
-        median = arr[(len(arr) - 1) // 2] # from one of the 
-        while len(arr) + i - j <= k:
+        n = len(arr)
+        median, i, j = arr[(n - 1) // 2], 0, n - 1 
+        while k > 0:
             if median - arr[i] > arr[j] - median:
-                i = i + 1
+                i += 1
             else:
-                j = j - 1
-        return arr[:i] + arr[j + 1:]
+                j -= 1
+            k -= 1
+        return arr[: i] + arr[j + 1 :]
 
+       
 Complexity Analysis
 Time: O(n log n) for the sorting.
 Memory: only what's needed for the sorting (implementation-specific), and output.
