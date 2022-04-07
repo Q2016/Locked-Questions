@@ -21,15 +21,26 @@ return the root of the binary tree [4,5,2,#,#,3,1].
                                     
 Solution:
                                     
+Process level by level.
+
     def upsideDownBinaryTree(self, root):
 
-        if root is None or root.left is None:
+        if root is None:
+            return None
+        if root.left is None:
             return root
-        
-        newHead = self.upsideDownBinaryTree(root.left)
-        root.left.left = root.right
-        root.left.right = root
-        root.left = None
-        root.right = None
-        
-        return newHead                                    
+
+        new_root, prev_root = None, None
+        while root.left is not None:
+            if prev_root is None:
+                new_root = TreeNode(root.left.val)
+                new_root.left = root.right
+                new_root.right = TreeNode(root.val)
+            else:
+                new_root = TreeNode(root.left.val)
+                new_root.left = root.right
+                new_root.right = prev_root
+            prev_root = new_root
+            root = root.left
+
+        return new_root                                  
