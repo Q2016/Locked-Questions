@@ -1,8 +1,4 @@
-Question: Dont understand the question
-    
-    
-    
-    
+Question:
 Your country has an infinite number of lakes. Initially, all the lakes are empty, but when it rains over the nth lake, 
 the nth lake becomes full of water. If it rains over a lake which is full of water, there will be a flood. 
 Your goal is to avoid the flood in any lake. Given an integer array rains where:
@@ -24,69 +20,41 @@ After the sixth day, full lakes are [1,2].
 It is easy that this scenario is flood-free. [-1,-1,1,2,-1,-1] is another acceptable scenario.   
 
 
-greedy and heap
+Solution: Greedy and Heap
+    
+start by getting all the days that each river is rained on, in chronological order.
+then, go through each day. if a lake is rained on during a day, we get the next day that that river is going to be 
+rained on in the future. we put this day in our "closest" minheap so that the next time we have a dry day, we can just pop 
+from the minheap and fill up the lake that will be re-rained on nearest in the future.    
 
 
-
-Variables:
-
-dic stores the raining day for each lake in ascending order.
-to_empty is a Min-heap and records the lakes that are full and sorted in urgency order. Notably, lake i has the highest urgency means that lake i is currently full and will be rained in the most recent future among all other full lakes.
-full is a HashSet used to record the full lakes for efficient queries. lake in full could be replaced by lake in to_empty yet the time complexity is O(1) vs. O(n).
-Logics:
-We dry lakes in the order of urgency - Greedy.
-Iterating through days, when day i is raining on lake lake, if lake is already full, simply return []; else, push the next raining day for lake to to_empty to queue it for drying.
-When day i is sunny, dry the most urgent lake referring to to_empty. Remember to remove it from full.
-
-Python code is as follows:
 
 class Solution:
     def avoidFlood(self, rains: List[int]) -> List[int]:
-        dic = collections.defaultdict(list)
-        ret = [-1] * len(rains)
-        to_empty = [] # index
-        full = set([])
-        for day,lake in enumerate(rains):
-            dic[lake].append(day)
-        
-        for i in range(len(rains)):
-            lake = rains[i]
-            if lake:
-                if lake in full:
-                    return []
-                full.add(lake)
-                dic[lake].pop(0)
-                if dic[lake]:
-                    heapq.heappush(to_empty,dic[lake][0])
+        seen = set()
+        closest = []
+        locs = collections.defaultdict(collections.deque)
+        for i, lake in enumerate(rains):
+            locs[lake].append(i)
+        ret = []
+        for lake in rains:
+            if lake in seen:
+                return []
+            if not lake:
+                # get closest that's already seen
+                if not closest:
+                    # there's nothing filled that will be filled again later
+                    ret.append(1) 
+                    continue
+                nxt = heapq.heappop(closest)
+                ret.append(rains[nxt])
+                seen.remove(rains[nxt])
             else:
-                if to_empty:
-                    ret[i] = rains[heapq.heappop(to_empty)]
-                    full.remove(ret[i])
-                else:
-                    ret[i] = 1
-        return ret
-Or we can get rid of full and take advantage of dic, not big difference tho.
-
-class Solution:
-    def avoidFlood(self, rains: List[int]) -> List[int]:
-        dic = collections.defaultdict(list)
-        ret = [-1] * len(rains)
-        to_empty = [] # index
-        
-        for day,lake in enumerate(rains):
-            dic[lake].append(day)
-        
-        for i in range(len(rains)):
-            lake = rains[i]
-            if lake:
-                if dic[lake] and dic[lake][0] < i:
-                    return []
-                if dic[lake] and len(dic[lake])>1:
-                    heapq.heappush(to_empty,dic[lake][1])
-            else:
-                if to_empty:
-                    ret[i] = rains[heapq.heappop(to_empty)]
-                    dic[ret[i]].pop(0)
-                else:
-                    ret[i] = 1
+                seen.add(lake)
+                l = locs[lake]
+                l.popleft()
+                if l:
+                    nxt = l[0]
+                    heapq.heappush(closest, nxt)
+                ret.append(-1)
         return ret
