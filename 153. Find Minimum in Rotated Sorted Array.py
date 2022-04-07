@@ -16,6 +16,14 @@ Explanation: The original array was [1,2,3,4,5] rotated 3 times.
   
   
 Solution: BST
+In this question we would essentially apply a modified version of binary search where the condition that decides the search 
+direction would be different than in a standard binary search.
+We want to find the smallest element in a rotated sorted array. What if the array is not rotated? How do we check that?
+If the array is not rotated and the array is in ascending order, then last element > first element.
+In this modified version of binary search algorithm, we are looking for this point. In the above example notice the Inflection Point .
+All the elements to the left of inflection point > first element of the array.
+All the elements to the right of inflection point < first element of the array.
+
 
     def findMin(self, nums):
 
