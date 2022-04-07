@@ -16,7 +16,7 @@ https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questio
 
 BFS:127,133
 
-Dijkstra:1376
+Dijkstra:1376,  Bellman Ford:1514
 
 c++: 1366, 1387, 139, 142, 1438
 
