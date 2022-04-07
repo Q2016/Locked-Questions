@@ -8,9 +8,8 @@ Output: 6
 Explanation: [2,3] has the largest product 6.    
     
     
-Solution: DP    
+Solution: Kadane-like algorithm   
     
-#https://www.youtube.com/watch?v=lXVy6YWFcRM
 
     def maxProduct(self, nums: List[int]) -> int:
 
