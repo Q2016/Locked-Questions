@@ -14,15 +14,151 @@ Input: digits = "23"
 Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]	
 	
 	
-Solution: Combinations
+Solution: Iterative (educational)
 
+78. Subsets: Runtime: 16 ms, faster than 96.05%
+
+class Solution(object):
+    def subsets(self, nums):
+
+        res = []
+        self.dfs(nums, [], res)
+        return res
+    
+    def dfs(self, nums, path, res):
+        res.append(path)
+        for i in range(len(nums)):
+            self.dfs(nums[i+1:], path + [nums[i]], res)
+	
+90. Subsets II: Runtime: 20 ms, faster than 96.23%
+
+class Solution(object):
+    def subsetsWithDup(self, nums):
+
+        res = []
+        nums.sort()
+        self.dfs(nums, [], res)
+        return res
+    
+    def dfs(self, nums, path, res):
+        res.append(path)
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+            self.dfs(nums[i+1:], path + [nums[i]], res)
+	
+77. Combinations: Runtime: 676 ms, faster than 42.96%
+
+class Solution(object):
+    def combine(self, n, k):
+
+        res=[]
+        self.dfs(range(1, n+1), k, [], res)
+        return res
+    
+    def dfs(self, nums, k, path, res):
+        if len(path) == k:
+            res.append(path)
+            return
+        for i in range(len(nums)):
+            self.dfs(nums[i+1:], k, path+ [nums[i]], res)
+	
+39. Combination Sum: Runtime: 124 ms, faster than 30.77%
+
+class Solution(object):
+    def combinationSum(self, candidates, target):
+
+        res = []
+        candidates.sort()
+        self.dfs(candidates, target, [], res)
+        return res
+    
+    def dfs(self, candidates, target, path, res):
+        if target < 0:
+            return   #backtracking
+        if target == 0:
+            res.append(path)
+            return
+        for i in range(len(candidates)):
+            self.dfs(candidates[i:], target - candidates[i], path + [candidates[i]], res)  
+	
+40. Combination Sum II: Runtime: 36 ms, faster than 91.77%
+
+class Solution(object):
+    def combinationSum2(self, candidates, target):
+
+        res = []
+        candidates.sort()
+        self.dfs(candidates, target, [], res)
+        return res
+    
+    def dfs(self, candidates, target, path, res):
+        if target < 0:
+            return
+        
+        if target == 0:
+            res.append(path)
+        for i in range(len(candidates)):
+            if i > 0 and candidates[i] == candidates[i-1]:
+                continue
+                
+            if candidates[i]> target:
+                break
+                
+            self.dfs(candidates[i+1:], target - candidates[i], path + [candidates[i]], res)
+	
+46. Permutations: Runtime: 28 ms, faster than 79.64%
+
+class Solution(object):
+    def permute(self, nums):
+
+        res = []
+        self.dfs(nums, [], res)
+        return res
+    
+    def dfs(self, nums, path, res):
+        if len(nums) == 0:
+            res.append(path)
+            return
+        for i in range(len(nums)):
+            self.dfs(nums[:i] + nums[i+1:], path + [nums[i]], res)   
+	
+47. Permutations II: Runtime: 40 ms, faster than 92.96%
+
+class Solution(object):
+    def permuteUnique(self, nums):
+
+        res = []
+        nums.sort()
+        self.dfs(nums, [], res)
+        return res
+    
+    def dfs(self, nums, path, res):
+        if len(nums) == 0:
+            res.append(path)
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+            self.dfs(nums[:i] + nums[i+1:], path + [nums[i]], res)
+	
+17. Letter combination of a Phone Number::Runtime: 24 ms, faster than 43.40%
+
+class Solution(object):
     def letterCombinations(self, digits):
-        mapping = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', 
-                   '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
-        if len(digits) == 0:
-            return []
-        if len(digits) == 1:
-            return list(mapping[digits[0]])
-        prev = self.letterCombinations(digits[:-1])
-        additional = mapping[digits[-1]]
-        return [s + c for s in prev for c in additional]
+
+        dic = { "2": "abc", "3": "def", "4":"ghi", "5":"jkl", "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
+        
+        res=[]
+        if len(digits) ==0:
+            return res
+            
+        self.dfs(digits, 0, dic, '', res)
+        return res
+    
+    def dfs(self, nums, index, dic, path, res):
+        if index >=len(nums):
+            res.append(path)
+            return
+        string1 =dic[nums[index]]
+        for i in string1:
+            self.dfs(nums, index+1, dic, path + i, res)
