@@ -24,6 +24,8 @@ Educational:
 
 Time complexity: 139
 
+DFS: 17
+
 Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/
 
 Educational:1438 (deque)
