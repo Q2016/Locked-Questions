@@ -16,7 +16,7 @@ Explanation: The LCA of nodes 5 and 1 is 3.
 
     
     
- Solution:   Recursive Approach
+ Solution:   (refer to 235. repeatetive)
 
 Traverse the tree in a DFS manner. The moment you encounter either of the nodes p or q, return some boolean flag. 
 The flag helps to determine if we found the required nodes in any of the paths. The least common ancestor would then be 
