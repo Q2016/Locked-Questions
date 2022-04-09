@@ -9,22 +9,38 @@ Output: 2
 Explanation: The subarray [4,3] has the minimal length under the problem constraint.
 
 
-Solution: sliding window
+Solution: sliding window (Similar to 862. Hard)
+    
+Until now, we have kept the starting index of subarray fixed, and found the last position. Instead, we could move the starting 
+index of the current subarray as soon as we know that no better could be done with this index as the starting index. We could keep 2 pointer,
+one for the start and another for the end of the current subarray, and make optimal moves so as to keep the sum greater than ss as well 
+as maintain the lowest size possible.
 
-Similar to 862. Shortest Subarray with Sum at Least K
-The result is initialized as res = n + 1. One pass, remove the value from sum s by doing s -= A[j]. 
-If s <= 0, it means the total sum of A[i] + ... + A[j] >= sum that we want. 
-Then we update the res = min(res, j - i + 1). Finally we return the result res
+Algorithm
 
-    def minSubArrayLen(self, s, A):
-        i, res = 0, len(A) + 1
-        for j in xrange(len(A)):
-            s -= A[j]
-            while s <= 0:
-                res = min(res, j - i + 1)
-                s += A[i]
-                i += 1
-        return res % (len(A) + 1)
+Initialize left pointer to 0 and sum to 0
+Iterate over the nums:
+Add nums[i] to sum
+While sum is greater than or equal to s:
+Update ans=min(ans,i+1−left), where i+1−left is the size of current subarray
+It means that the first index can safely be incremented, since, the minimum subarray starting with this index with sum≥s has been achieved
+Subtract nums[left] from sum and increment left
+
+int minSubArrayLen(int s, vector<int>& nums)
+{
+    int n = nums.size();
+    int ans = INT_MAX;
+    int left = 0;
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += nums[i];
+        while (sum >= s) {
+            ans = min(ans, i + 1 - left);
+            sum -= nums[left++];
+        }
+    }
+    return (ans != INT_MAX) ? ans : 0;
+}
 
 Complexity
 Time O(N)
