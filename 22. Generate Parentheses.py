@@ -29,3 +29,11 @@ bracket if it would not exceed the number of opening brackets.
                 S.pop()
         backtrack()
         return ans
+
+    
+Complexity Analysis
+
+Our complexity analysis rests on understanding how many elements there are in generateParenthesis(n). 
+This analysis is outside the scope of this article, but it turns out this is the n-th Catalan number \dfrac{1}{n+1}\binom{2n}{n}, 
+which is bounded asymptotically by frac{4^n}{n\sqrt{n}}.
+
