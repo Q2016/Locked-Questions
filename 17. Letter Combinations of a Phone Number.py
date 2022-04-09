@@ -107,6 +107,25 @@ class Solution(object):
                 
             self.dfs(candidates[i+1:], target - candidates[i], path + [candidates[i]], res)
 	
+	
+	
+216. Combination Sum III	
+		
+def combinationSum3(self, k, n):
+        ret = []
+        self.dfs(list(range(1, 10)), k, n, [], ret)
+        return ret
+    
+    def dfs(self, nums, k, n, path, ret):
+        if k < 0 or n < 0:
+            return 
+        if k == 0 and n == 0:
+            ret.append(path)
+        for i in range(len(nums)):
+            self.dfs(nums[i+1:], k-1, n-nums[i], path+[nums[i]], ret)  	
+	
+		
+	
 46. Permutations: Runtime: 28 ms, faster than 79.64%
 
 class Solution(object):
