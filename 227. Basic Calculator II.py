@@ -9,43 +9,44 @@ Output: 7
 
 Solution:    
     
-https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/basic-calculator-ii.py
 
+class Solution {
+public:
+    int calculate(string s) {
+        int len = s.length();
+        if (len == 0) return 0;
+        stack<int> stack;
+        int currentNumber = 0;
+        char operation = '+';
+        for (int i = 0; i < len; i++) {
+            char currentChar = s[i];
+            if (isdigit(currentChar)) {
+                currentNumber = (currentNumber * 10) + (currentChar - '0');
+            }
+            if (!isdigit(currentChar) && !iswspace(currentChar) || i == len - 1) {
+                if (operation == '-') {
+                    stack.push(-currentNumber);
+                } else if (operation == '+') {
+                    stack.push(currentNumber);
+                } else if (operation == '*') {
+                    int stackTop = stack.top();
+                    stack.pop();
+                    stack.push(stackTop * currentNumber);
+                } else if (operation == '/') {
+                    int stackTop = stack.top();
+                    stack.pop();
+                    stack.push(stackTop / currentNumber);
+                }
+                operation = currentChar;
+                currentNumber = 0;
+            }
+        }
+        int result = 0;
+        while (stack.size() != 0) {
+            result += stack.top();
+            stack.pop();
+        }
+        return result;
+    }
+};
 
-    def calculate(self, s):
-        operands, operators = [], []
-        operand = ""
-        for i in reversed(xrange(len(s))):
-            if s[i].isdigit():
-                operand += s[i]
-                if i == 0  or not s[i-1].isdigit():
-                    operands.append(int(operand[::-1]))
-                    operand = ""
-            elif s[i] == ')' or s[i] == '*' or s[i] == '/':
-                operators.append(s[i])
-            elif s[i] == '+' or s[i] == '-':
-                while operators and \
-                      (operators[-1] == '*' or operators[-1] == '/'):
-                    self.compute(operands, operators)
-                operators.append(s[i])
-            elif s[i] == '(':
-                while operators[-1] != ')':
-                    self.compute(operands, operators)
-                operators.pop()
-                
-        while operators:
-            self.compute(operands, operators)
-            
-        return operands[-1]
-
-    def compute(self, operands, operators):
-        left, right = operands.pop(), operands.pop()
-        op = operators.pop()
-        if op == '+':
-            operands.append(left + right)
-        elif op == '-':
-            operands.append(left - right)
-        elif op == '*':
-            operands.append(left * right)
-        elif op == '/':
-            operands.append(left / right)
