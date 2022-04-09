@@ -9,7 +9,7 @@ Output: 2
 Explanation: The subarray [4,3] has the minimal length under the problem constraint.
 
 
-Solution: sliding window (Similar to 862. Hard)
+Solution: sliding window 
     
 Until now, we have kept the starting index of subarray fixed, and found the last position. Instead, we could move the starting 
 index of the current subarray as soon as we know that no better could be done with this index as the starting index. We could keep 2 pointer,
@@ -45,17 +45,3 @@ int minSubArrayLen(int s, vector<int>& nums)
 Complexity
 Time O(N)
 Space O(1)
-
-
-Similar Sliding window:
-
-1248. Count Number of Nice Subarrays
-1234. Replace the Substring for Balanced String
-1004. Max Consecutive Ones III
-930. Binary Subarrays With Sum
-992. Subarrays with K Different Integers
-904. Fruit Into Baskets
-862. Shortest Subarray with Sum at Least K
-
-
-
