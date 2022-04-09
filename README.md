@@ -26,7 +26,7 @@ Time complexity: 139
 
 DFS: 17
 
-Toplogical Sort:207
+Toplogical Sort:207, 210
 
 Trie:208
 
