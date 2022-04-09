@@ -6,7 +6,7 @@ Input: nums = [3,2,3]
 Output: [3]   
 
     
-Solution:
+Solution: (look at 169. repeatetive)
     
 For those who aren't familiar with Boyer-Moore Majority Vote algorithm,
 I found a great article (http://goo.gl/64Nams) that helps me to understand this fantastic algorithm!!
