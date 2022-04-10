@@ -6,7 +6,8 @@ Example 1:
 Input: [[0, 30],[5, 10],[15, 20]], Output: 2
   
   
-Solution:  
+Solution:  Two pointers
+  
 https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/meeting-rooms-ii.py
 
 
@@ -16,7 +17,7 @@ https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/meeting-rooms-ii
             starts.append(i.start)
             ends.append(i.end)
         starts.sort()
-        ends.sort()
+        ends.sort() # O(nlogn)
 
         s, e = 0, 0
         min_rooms, cnt_rooms = 0, 0
