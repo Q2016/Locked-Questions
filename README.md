@@ -34,4 +34,4 @@ Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recur
 
 1438 (deque)
 
-300 (DP)
+300 (DP), DP of Buying stocks is defined in 309
