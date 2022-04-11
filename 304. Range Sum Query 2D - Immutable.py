@@ -3,7 +3,20 @@ Given a 2D matrix matrix, handle multiple queries of the following type: Calcula
 the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).    
     
     
-Solution: Prefix sum
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: Prefix sum (1292. repeated)
 
 Sum(ABCD)=Sum(OD)−Sum(OB)−Sum(OC)+Sum(OA)
 
