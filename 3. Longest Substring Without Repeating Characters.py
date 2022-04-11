@@ -9,7 +9,14 @@ Explanation: The answer is "abc", with the length of 3.
 
     
     
-Solution: set
+    
+    
+    
+    
+    
+    
+    
+Solution: Two Pointers
     
     def lengthOfLongestSubstring(self, s):
         start = maxLength = 0
