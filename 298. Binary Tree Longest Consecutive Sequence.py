@@ -12,7 +12,6 @@ For example,
         \
          5
 Longest consecutive sequence path is 3-4-5, so return 3. 
-
    2
     \
      3
@@ -23,7 +22,14 @@ Longest consecutive sequence path is 3-4-5, so return 3.
 Longest consecutive sequence path is 2-3,not3-2-1, so return 2.
 
 
-Solution: BFS
+
+
+
+
+
+
+
+Solution: BFS (Not sure this is the best solution)
      
          
     def longestConsecutive(self, root):
