@@ -1,7 +1,10 @@
 Question:
 The board is made up of cells, where each cell has an initial state: live ~1 or dead~0. Each cell interacts with its eight neighbors
-using the following four rules: Any live cell with fewer than two live neighbors dies (under-population). Cell with two or three 
-live neighbors are not changed. Cell with more than three live neighbors dies. Dead cell with exactly three live neighbors becomes alive.
+using the following four rules: 
+-Any live cell with fewer than two live neighbors dies (under-population). 
+-Cell with two or three live neighbors are not changed. 
+-Cell with more than three live neighbors dies. 
+-Dead cell with exactly three live neighbors becomes alive.
 Return the next state.
 
 Example 1:
@@ -12,6 +15,8 @@ Input: board = [[0,1,0],    =>     [0,0,0]
    
 
 
+    
+    
 Solution: Brute force
 The key point is to understand that the change to a cell is only decided by its nearby 8 cell in the original grid.
 we should not use the updated cell to compute to change decision for other cell,therefore, the brute force way is to store 
