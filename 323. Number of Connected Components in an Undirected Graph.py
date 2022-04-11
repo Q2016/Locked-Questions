@@ -18,12 +18,13 @@ Note:
 You can assume that no duplicate edges will appear in edges. Since all edges are undirected, [0, 1] 
 is the same as [1, 0] and thus will not appear together in edges.
 
-Methodology
+Solution: BFS (261. Repeated)
+     
 Start from index 0 to n. For each index, use BFS to find all it’s related numbers and append them 
 to the visited set, if this index has no more related number then count + 1 and start from next 
 index, note that if the index is in visited set. we skip to next index.
 
-Code (BFS)
+
 
 def countComponents(self, n: int, edges: List[List[int]]) -> int:
         dist = collections.defaultdict(list)
