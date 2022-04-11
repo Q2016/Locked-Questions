@@ -10,7 +10,7 @@ round 2: ['wo','w1','1o','2']
 round 3: ['wor','wo1','w1r',...]
 
 
-Solution:
+Solution: (not sure)
 
     def generateAbbreviations(self, word: str):
         if not word:
