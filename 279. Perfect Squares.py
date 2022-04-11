@@ -4,27 +4,43 @@ is the square of an integer; in other words, it is the product of some integer w
 are perfect squares while 3 and 11 are not.    
 
 
+
+
+
+
+
+
+
+
+
+
+
 Solution : Dynamic Programming
-This problem is a classic dynamic programming problem that we can use previous information to construct current value by following formula:
-For any integer 0 < k ≤ n, D[k] = min(1 + D[k-l²]),
-where l is an integer and 0 < l < SQRT(k)
-Then our answer will be at D[n].
 
-
-    def numSquares(self, n):
-
-        # d[0] = 0 because n is a positive integer
-        distance = [0 for i in range(n+1)]
-
-        for i in range(1, n+1):
-            count = square = 1
-            min_distance = n
-            while square <= i:
-                check_distance = 1 + distance[i-square]
-                if check_distance < min_distance:
-                    min_distance = check_distance
-                count += 1
-                square = count * count
-            distance[i] = min_distance
-
-        return distance[n]
+class Solution 
+{
+public:
+    int numSquares(int n) 
+    {
+        if (n <= 0)
+        {
+            return 0;
+        }
+        
+        # cntPerfectSquares[i] = the least number of perfect square numbers 
+        # which sum to i. Note that cntPerfectSquares[0] is 0.
+        vector<int> cntPerfectSquares(n + 1, INT_MAX);
+        cntPerfectSquares[0] = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            # For each i, it must be the sum of some number (i - j*j) and 
+            # a perfect square number (j*j).
+            for (int j = 1; j*j <= i; j++)
+            {
+                cntPerfectSquares[i] = 
+                    min(cntPerfectSquares[i], cntPerfectSquares[i - j*j] + 1);
+            }
+        }
+        return cntPerfectSquares.back();
+    }
+};
