@@ -10,7 +10,7 @@ https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questio
 
 1087 why is the time complexity of DFS is o(n)
 
-1060, 1144, 1229, 1233, 1477, 1488, 1504, 1530, 173, 222, 247, 250, 254, 259, 267
+1060, 1144, 1229, 1233, 1477, 1488, 1504, 1530, 173, 222, 247, 250, 254, 259, 267, 285
 
 
 
