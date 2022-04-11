@@ -4,7 +4,20 @@ There is only one repeated number in nums, return this repeated number.
 You must solve the problem without modifying the array nums and uses only constant extra space.    
     
 
-Solution: bit manipulation
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: Finding cycle
+    
+bit manipulation
 A so-called O(1) space but essencially O(N) space algorithm using bit manipulation: use each bit of number seen as the seen array in solution 1.
 
 def findDuplicate(self, nums: List[int]) -> int:
