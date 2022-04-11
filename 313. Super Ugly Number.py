@@ -12,23 +12,40 @@ Explanation: [1,2,4,7,8,13,14,16,19,26,28,32] is the sequence of the first 12 su
   
   
 Solution:
-Instead of checking the numbers one by one, here we are generating the numbers from the already available ugly numbers and keeping a count.
-For example: primes = [2,3,5] and n = 16
-Here catch is there are multiple additions to heap like 6 = 2*3 and also 6 = 3*2
-so what we do is :
-for 2, we find multiples of 2 like 2*2 = 4
-for 3, we find multiples of 2 and 3 like 3*2 , 3*3 = 6,9
-for 5, we find multiples of 2, 3 and 5 like 5*2, 5*3, 5*5 = 10,15,25
+The idea is from Ugly Number II:
+An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5. Given an integer n, return the nth ugly number.	
 
-class Solution:
-    def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:
-        nums = primes.copy() # do a deep copy 
-        heapq.heapify(nums) #create a heap
-        p = 1
-        for i in range(n - 1):
-            p = heapq.heappop(nums) #take the smallest element
-            for prime in primes:
-                heapq.heappush(nums, p * prime) #add all those multiples with the smallest number
-                if p % prime == 0:
-					break
-        return p  
+public int nthUglyNumber(int n){
+	int i2=0, i3=0, i5=0;
+	int[] k = new int[n];
+	k[0] = 1;
+	for (int i=1; i<n; i++) {
+		k[i] = Math.min(k[i2]*2, Math.min(k[i3]*3, k[i5]*5));
+		if (k[i]%2 == 0) i2++;
+		if (k[i]%3 == 0) i3++;
+		if (k[i]%5 == 0) i5++;
+	}
+	return k[n-1];
+}
+
+Similarly, for this problem, just use loop to replace above i2, i3, i5.
+
+public int nthSuperUglyNumber(int n, int[] primes) {
+    int len = primes.length;
+    int[] index = new int[len]; //index[0]==0, ... index[len-1]==0
+    int[] res = new int[n];
+    res[0] = 1;
+    for(int i=1; i<n; i++) {
+        int min = Integer.MAX_VALUE;
+        for(int j=0; j<len; j++){
+            min = Math.min(res[index[j]]*primes[j], min);
+        }
+        res[i] = min;
+        for (int j=0; j<len; j++) {
+            if(res[i]%primes[j]==0) index[j]++;
+        }
+    }
+    return res[n-1];
+}
+
+Complexity: O(n*k): nth number, k number of primes
