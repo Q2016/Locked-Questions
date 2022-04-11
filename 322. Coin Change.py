@@ -8,26 +8,100 @@ Input: coins = [1,2,5], amount = 11
 Output: 3
 Explanation: 11 = 5 + 5 + 1
 
+    
+    
+    
+    
+    
+    
 
 Solution: Recursive Method
     
-The idea is very classic dynamic programming: think of the last step we take. 
-Suppose we have already found out the best way to sum up to amount a, then for the last step, 
-we can choose any coin type which gives us a remainder r where r = a-coins[i] for all i's. 
-For every remainder, go through exactly the same process as before until either the 
-remainder is 0 or less than 0 (meaning not a valid solution). With this idea, the only 
-remaining detail is to store the minimum number of coins needed to sum up to r so that 
-we don't need to recompute it over and over again.
+If you carefully observe the below 3 codes.
+You will see that the DP Memoization is dervied from the Recursion code just by changing 3 lines and same is the case for DP Tabulation 
+from Memoization.
 
-    def coinChange(self, coins, amount):
+Recursion
 
-        rs = [amount+1] * (amount+1)
-        rs[0] = 0
-        for i in xrange(1, amount+1):
-            for c in coins:
-                if i >= c:
-                    rs[i] = min(rs[i], rs[i-c] + 1)
+class Solution {
+public:
+    int recursion(vector<int> wt, int w, int n)
+    {
+        if (n == 0 || w == 0)
+            return (w == 0) ? 0 : INT_MAX - 1;
+        
+        if (wt[n - 1] > w) 
+            return 0 + recursion(wt, w - 0, n - 1);
+        else 
+            return min(0 + recursion(wt, w - 0, n - 1), 1 + recursion(wt, w - wt[n - 1], n));
+    }
+    
+    int coinChange(vector<int>& coins, int amount) 
+    {
+        int minCoins = recursion(coins, amount, coins.size());
+        return minCoins == INT_MAX - 1 ? -1 : minCoins;    
+    }
+};
 
-        if rs[amount] == amount+1:
-            return -1
-        return rs[amount]
+
+DP Memoization
+
+class Solution {
+public:
+    int dp[10000 + 1][12 + 1];  // New Line Added
+    
+    int memoization(vector<int>& wt, int w, int n)
+    {
+        if (n == 0 || w == 0)
+            return (w == 0) ? 0 : INT_MAX - 1;
+        
+        if (dp[w][n] != -1) // New Line Added
+            return dp[w][n];  // New Line Added
+			
+        if (wt[n - 1] > w) 
+            return dp[w][n] = 0 + memoization(wt, w - 0, n - 1);
+        else 
+            return dp[w][n] = min(0 + memoization(wt, w - 0, n - 1), 1 + memoization(wt, w - wt[n - 1], n));
+    }
+    
+    int coinChange(vector<int>& coins, int amount) 
+    {
+        memset(dp, -1, sizeof(dp)); // New Line Added
+        int minCoins = memoization(coins, amount, coins.size());
+        return minCoins == INT_MAX - 1 ? -1 : minCoins;    
+    }
+};
+
+
+DP Tabulation
+
+class Solution {
+public:
+    int dp[10000 + 1][12 + 1];
+    
+    int tabulation(vector<int> wt, int w, int n)
+    {
+        for (int i = 0; i < w + 1; i++)
+            for (int j = 0; j < n + 1; j++)
+                if (i == 0 || j == 0)
+                    dp[i][j] = (i == 0) ? 0 : INT_MAX - 1;
+        
+        for (int i = 1; i < w + 1; i++) {
+            for (int j = 1; j < n + 1; j++) {
+                if (wt[j - 1] > i) 
+                    dp[i][j] = 0 + dp[i - 0][j - 1];
+                else 
+                    dp[i][j] = min(0 + dp[i - 0][j - 1], 1 + dp[i - wt[j - 1]][j - 0]);
+            }
+        }
+        
+        return dp[w][n];
+    }
+    
+    int coinChange(vector<int>& coins, int amount) 
+    {
+        memset(dp, -1, sizeof(dp));
+        int minCoins = tabulation(coins, amount, coins.size());
+        return minCoins == INT_MAX - 1 ? -1 : minCoins;    
+    }
+};
