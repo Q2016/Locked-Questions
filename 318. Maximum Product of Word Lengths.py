@@ -8,6 +8,13 @@ Output: 16
 Explanation: The two words can be "abcw", "xtfn".
 
 	
+	
+	
+	
+	
+	
+	
+	
 Solution:
 
 Simple brute force solution is to test if every pair for similarity and take the product is they are not similar. Return the maximum product if 
