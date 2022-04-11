@@ -8,7 +8,12 @@ Explanation: The longest valid parentheses substring is "()".
   
 
   
-Solution:
+  
+  
+  
+  
+  
+Solution: Stack
 Great solution! We can actually compute the longest length on the fly.
 
 class Solution {
