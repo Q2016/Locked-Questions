@@ -105,3 +105,14 @@ public:
         return minCoins == INT_MAX - 1 ? -1 : minCoins;    
     }
 };
+
+Complexity:
+-First recursive approach, no memoization is used. each recursive call makes 2 other calls and those 2 calls each make their owen 2 recursive calls. 
+so the time and space complexity is O(2^N).
+
+-Second approach, since a 2d array is used to cache the results, we don't have to compute the same subproblem over and over again. 
+so the total number of recursive calls is the total number of all possible states in the problem which is amountno of coins.so the 
+space and time complexity are O(MN)
+
+-THIRD approach, a 2d array is being created which has a space complexity of O(MN) and time complexity is traversing w+1 rows and n+1 columns 
+which is O(MN).
