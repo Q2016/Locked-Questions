@@ -16,7 +16,7 @@ Output: [1,3,5,2,4]          1--->3--->5--->2--->4
     
     
     
-Soluion:    
+Soluion:   (replaces odd with even and reverse)
     
 public class Solution {
     public ListNode oddEvenList(ListNode head) {
