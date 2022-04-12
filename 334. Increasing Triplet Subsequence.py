@@ -3,7 +3,7 @@ Given an integer array nums, return true if there exists a triple of indices (i,
 nums[i] < nums[j] < nums[k]. If no such indices exists, return false.
 
 
-Solution:
+Solution: (Havent I seen this before? repeatetive?)
 
     def increasingTriplet(self, nums):
         min_num, a, b = float("inf"), float("inf"), float("inf")
