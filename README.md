@@ -4,13 +4,15 @@
 The link for Blind 75 LeetCode Questions
 https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
 
-
+For these questions I like to see their youtube:
 
 1066 Campus Bikes II
 
 1087 why is the time complexity of DFS is o(n)
 
-1060, 1144, 1229, 1233, 1477, 1488, 1504, 1530, 173, 222, 247, 250, 254, 259, 267, 285, 29, 294, 298, 31, 311, 314, 320, 325, 33, 333
+1060, 1144, 1229, 1233, 1477, 1488, 1504, 1530, 173, 222, 247, 250, 254, 259, 267, 285, 29, 294, 298, 31, 311, 
+
+314, 320, 325, 33, 333, 351, 353, 36, 361, 365, 366, 369, 370
 
 
 
