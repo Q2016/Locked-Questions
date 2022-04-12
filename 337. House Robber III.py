@@ -13,8 +13,13 @@ Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
                \      \
                  3      1  
         
+        
+        
+        
+        
 Solution: starting from DP --> Greedy (Educational about thinking process)
-  
+(It seems we need to keep track of parent as we traverse, the last question delves into this idea)
+
 Step I -- Think naively
 At first glance, the problem exhibits the feature of "optimal substructure": if we want to rob maximum amount 
 of money from current binary tree (rooted at root), we surely hope that we can do the same to its left and 
