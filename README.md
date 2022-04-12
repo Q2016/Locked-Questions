@@ -10,7 +10,7 @@ https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questio
 
 1087 why is the time complexity of DFS is o(n)
 
-1060, 1144, 1229, 1233, 1477, 1488, 1504, 1530, 173, 222, 247, 250, 254, 259, 267, 285, 29, 294, 298
+1060, 1144, 1229, 1233, 1477, 1488, 1504, 1530, 173, 222, 247, 250, 254, 259, 267, 285, 29, 294, 298, 31, 311, 314, 320, 325, 33
 
 
 
@@ -26,7 +26,7 @@ Time complexity: 139
 
 DFS: 17
 
-Toplogical Sort:207, 210
+Toplogical Sort:207, 210, 310
 
 Trie:208
 
@@ -34,4 +34,4 @@ Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recur
 
 1438 (deque)
 
-300 (DP), DP of Buying stocks is defined in 309
+300 (DP), DP of Buying stocks is defined in 309, 322
