@@ -9,7 +9,15 @@ Output: [[1,2],[1,4],[1,6]]
 Explanation: The first 3 pairs are returned from the sequence: [1,2],[1,4],[1,6],[7,2],[7,4],[11,2],[7,6],[11,4],[11,6]
 
 
+		
+		
+		
+		
+		
+		
+		
 Solution: BST or there is heap solution as well
+	
 It's helpful to visualize the input as an m×n matrix of sums, for example for nums1=[1,7,11], and nums2=[2,4,6]:
       2   4   6
    +------------
@@ -39,7 +47,9 @@ We use the same way of question 23 (which is also the same way of question 378):
 PriorityQueue to save the first column.
 poll one value, then push this value into result list.
 Then, push the next value of that row into PriorityQueue.
-	public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+	
+	
+public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         int cols = nums1.length, rows = nums2.length;
 
         List<List<Integer>> ans = new ArrayList<>();
