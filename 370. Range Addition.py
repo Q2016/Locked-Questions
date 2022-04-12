@@ -11,7 +11,30 @@ Explanation: Initial state: [ 0, 0, 0, 0, 0 ], After applying operation [1, 3, 2
 [ 0, 2, 5, 5, 3 ], After applying operation [0, 2, -2]: [-2, 0, 3, 5, 3 ]
 
 
-Solution:    
+    
+    
+    
+    
+    
+Solution: 
+
+There is only one read query on the entire range, and it occurs at the end of all update queries. Additionally, the order of processing update 
+queries is irrelevant. Therefore, we don’t have to process the entire range until the end of the updates.
+Cumulative sums operations apply the effects of past elements to the future elements in the sequence.
+Therefore, for every (start, end, val) updates, we only need to do two operations:
+
+arr[start] += val;
+arr[end + 1] -= val;
+At the end, we apply cumulative sum to the array: array[i] += array[i - 1].
+
+For each update query (start,end,val) on the array arr, the goal is to achieve the result: arri=arri+val∀i∈[start,end].
+
+Applying the final transformation, ensures two things:
+
+It carries over the +val increment over to every element arri∀i≥start.
+It carries over the −val increment (equivalently, a +val decrement) over to every element arrj∀j>end.    
+    
+    
 # O(N + K)
     def getModifiedArray(self, length, updates):
 
