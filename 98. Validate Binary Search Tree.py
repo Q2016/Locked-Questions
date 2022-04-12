@@ -27,5 +27,4 @@ class Solution(object):
             return True
         if root.val <= largerThan or root.val >= lessThan:
             return False
-        return self.isValidBST(root.left, min(lessThan, root.val), largerThan) and \
-               self.isValidBST(root.right, lessThan, max(root.val, largerThan))
+        return self.isValidBST(root.left, min(lessThan, root.val), largerThan) and self.isValidBST(root.right, lessThan, max(root.val, largerThan))
