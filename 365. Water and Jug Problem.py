@@ -9,11 +9,24 @@ Example 1:
 Input: jug1Capacity = 3, jug2Capacity = 5, targetCapacity = 4
 Output: true
 Explanation: The famous Die Hard example     
+Example 2:
+Input: jug1Capacity = 2, jug2Capacity = 6, targetCapacity = 5
+Output: false
+Example 3:
+Input: jug1Capacity = 1, jug2Capacity = 2, targetCapacity = 3
+Output: true
 
-
+ 
+ 
+ 
+ 
+ 
 Solution:    
 It took me a while to understand the GCD method. My first attempt to this problem was using BFS, which is very intuitive and easy to understand.
 The complexity is definitely much longer than GCD-based method.
+I upvoted this solution because this is a coding question, we need focus more on solving the problem by coding, not by math. 
+BFS is not slow for this question actually, though there is a faster math solution. Time complexity of BFS is O(x + y) which can be treated as 
+linear (Because there are only 2x + 2y possible states.). 
 
     def canMeasureWater(self, x, y, z):
 
