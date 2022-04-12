@@ -14,41 +14,38 @@ Output: ["JFK","MUC","LHR","SFO","SJC"]
      |             |>
     JFK           SJC
     
-Solution: Backtracking+ DFS
+Solution: Euler path
 
-from collections import defaultdict
-class Solution(object):
-    def findItinerary(self, tickets):
-        
-        if len(tickets) == 0:
-            return []
-        
-        tickets = sorted(tickets, key=lambda x:(x[0], x[1]))
-        self.visited = defaultdict(list)
-        self.adjacency_li = defaultdict(list)
-        
-        def createGraph(s, d):
-            self.adjacency_li[s].append(d)
-            self.visited[s].append(False)
-            return
+Actually, in this problem we are asked to find Euler path, smallest lexically. There is classical algorithm with complexity O(E). Starting from 
+the starting vertex v, we build a path by adding at each step an edge that has not yet been passed and is adjacent to the current vertex. The 
+vertices of the path are accumulated in stack S. When the moment comes when for the current node w all the incident edges have already passed, 
+we write the vertices from S in output until we meet the node where the incident has not passed yet edges. Then we continue our traversal of 
+the unattended edges. It can be written both with recursion or with stack, recursion version is shorter.
 
-        for ticket in tickets:
-            s = ticket[0]
-            d = ticket[1]
-            createGraph(s, d)
+Here is a link, where you can plunge deeper into this:
+http://www.graph-magics.com/articles/euler.php
 
-        def DFS(so):
+If you neves saw this problem and even if you know what Euler path is, I think it is almost impossible to invent this algorighm by yourself, 
+and this problem should be marked as hard.
+
+Complexity: time and space complexity of usual Euler Path Finding algorighm is O(E+V) = O(E), because we traverse each edge only once and number 
+of edges is more than number of vertixes - 1 in Eulerian graph. However as @ainkartik203 mentioned, here we sort our list for every node, so 
+complexity will be O(ElogE).
+
+class Solution:
+    def dfs(self, airport):
+        while self.adj_list[airport]:
+            candidate = self.adj_list[airport].pop()
+            self.dfs(candidate)
+        self.route.append(airport)
             
-            if len(self.output) ==len(tickets)+1:
-                return True
-            for i, dest in enumerate(self.adjacency_li[so]):
-                #print(self.output)
-                if self.visited[so][i]==False:
-                    self.output.append(dest)
-                    self.visited[so][i] = True
-                    ret = DFS(dest)
-                    if ret == True:
-                        return True
-                    self.output.pop()
-                    self.visited[so][i] = False
-            return False
+    def findItinerary(self, tickets):
+        self.route = []
+        self.adj_list = defaultdict(list)
+        for i,j in tickets:
+            self.adj_list[i].append(j)
+        for key in self.adj_list: 
+            self.adj_list[key] = sorted(self.adj_list[key], reverse=True)
+            
+        self.dfs("JFK")
+        return self.route[::-1]
