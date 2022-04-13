@@ -13,7 +13,24 @@ Explanation: Return a NestedInteger object containing a nested list with 2 eleme
          a. An integer containing value 789
 
 
-Solution: Parsing char by char
+            
+Solution:            
+            
+Python using eval:
+    
+def deserialize(self, s):
+    def nestedInteger(x):
+        if isinstance(x, int):
+            return NestedInteger(x)
+        lst = NestedInteger()
+        for y in x:
+            lst.add(nestedInteger(y))
+        return lst
+    return nestedInteger(eval(s))            
+            
+            
+            
+Parsing char by char
 Here I turned the input string into a list with sentinel for convenience.
 
     def deserialize(self, s):
