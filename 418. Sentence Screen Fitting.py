@@ -12,6 +12,11 @@ pie-I
 had--
 The character '-' signifies an empty space on the screen.
 
+
+
+
+
+
 Solution:
 
     def wordsTyping(sentence, rows, cols):
