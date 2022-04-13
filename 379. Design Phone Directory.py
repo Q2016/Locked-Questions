@@ -3,6 +3,18 @@ Design a Phone Directory which supports the following operations:
 get: Provide a number which is not assigned to anyone. check: Check if a number is available or not. release: Recycle or release a number.
 
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution:
     def __init__(self, maxNumbers):
         self.__curr = 0
