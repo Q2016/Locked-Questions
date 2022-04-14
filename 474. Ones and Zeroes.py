@@ -23,19 +23,16 @@ This problem is a variation on the 0-1 Knapsack Problem with a wrinkle: each ite
 but a constant value. If we were to naively attempt every single permutation of up to 600 strings, that 
 would be 2^600 permutations.
 
-But thankfully we're not tasked with keeping track of each permutation, but simply the maximum number of items. 
-This calls for the use of dynamic programming (DP) to reduce the overall complexity by instead only keeping track 
-of the best results of the various subproblems encountered while working our way to the eventual answer.
-
 For our DP array (dp), dp[i][j] will represent the largest number of items that can be added to yield i zeros and j ones. 
 Thus, our answer will ultimately be dp[M][N]. We'll naturally being doing a bottom-up DP approach, as we'll be starting 
 with no data and iterating through the input array (S), adding more data to dp as we go.
 
-Since each string in S will require us to iterate through the entirety of dp looking for data to update, we'll need to 
-do this iteration in a top-down fashion, to avoid interfering with our overall bottom-up approach, which would occur 
-if we were to update entries that will be the basis for later updates in the same pass.
+For each string, some number of 0s(lets call zeros) and 1s (lets call ones) are required. Obviously, if our balance of zeros and ones is less 
+than what is required by current string, we can't choose it. But in the case where our balance of zeros and ones is greater than the required, 
+we have two cases -
 
-Once we reach the end, we return dp[M][N].
+Either take the current string into our subset. The resultant count would be 1 + optimal solution that we had when our balance was i - zeros & j - ones.
+Or leave the current string meaning the resultant count will remain the same.
 
 
     def findMaxForm(self, S: List[str], M: int, N: int) -> int:
@@ -47,3 +44,7 @@ Once we reach the end, we return dp[M][N].
                 for j in range(N, ones - 1, -1):
                     dp[i][j] = max(dp[i][j], dp[i-zeros][j-ones] + 1)
         return dp[M][N]
+    
+    
+Time Complexity : O(L*M*N), where L is the length of strs
+Space Complexity : O(M*N)    
