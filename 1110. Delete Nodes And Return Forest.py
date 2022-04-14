@@ -4,7 +4,7 @@ Return the roots of the trees in the remaining forest.
 
 
 
-Solution: Preorder? (This question is very smailar to one of the easy questions?)
+Solution: Preorder? (This question is very smailar to one of the easy questions?, it's also similar to 450.)
 
 https://leetcode.com/problems/delete-nodes-and-return-forest/discuss/328853/JavaC%2B%2BPython-Recursion-Solution
 
