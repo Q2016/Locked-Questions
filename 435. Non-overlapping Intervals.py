@@ -8,6 +8,14 @@ Explanation: [1,3] can be removed and the rest of the intervals are non-overlapp
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
 Solution: Greedy
     
 A classic greedy case: interval scheduling problem.
