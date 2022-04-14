@@ -12,7 +12,12 @@ Output: 7 -> 8 -> 0 -> 7
 
 
 
-Solution:
+    
+    
+    
+    
+    
+Solution: Stack
     
     def addTwoNumbers(self, l1, l2):
 
