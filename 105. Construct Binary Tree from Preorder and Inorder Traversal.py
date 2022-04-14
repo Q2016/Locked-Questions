@@ -69,7 +69,7 @@ class Solution:
         return array_to_tree(0, len(preorder) - 1)
     
     
-Another solution from Tomass
+Another solution from StefanPochmann:
 
 Explanation/Discussion:
 
