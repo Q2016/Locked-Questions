@@ -10,7 +10,15 @@ Explanation: The largest subset with at most 5 0's and 3 1's is {"10", "0001", "
 Other valid but smaller subsets include {"0001", "1"} and {"10", "1", "0"}.
 {"111001"} is an invalid subset because it contains 4 1's, greater than the maximum of 3.    
 
+
+
+
+
+
+
+
 Solution: 2D Knapsack Problem
+
 This problem is a variation on the 0-1 Knapsack Problem with a wrinkle: each item has a 2-dimensional weight, 
 but a constant value. If we were to naively attempt every single permutation of up to 600 strings, that 
 would be 2^600 permutations.
