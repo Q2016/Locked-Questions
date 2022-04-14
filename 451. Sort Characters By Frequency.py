@@ -9,25 +9,50 @@ Explanation: 'e' appears twice while 'r' and 't' both appear once.
 So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.    
 
 
-Solution:
 
-    def frequencySort(self, s):
 
-        freq = collections.defaultdict(int)
-        for c in s:
-            freq[c] += 1
-            
-        counts = [""] * (len(s)+1)
-        for c in freq:
-            counts[freq[c]] += c
-            
-        result = ""
-        for count in reversed(xrange(len(counts)-1)):
-            for c in counts[count]:
-                result += c * count
+
+
+
+
+
+Solution: Counter & Bucket Sort (similar to 347.)
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        cnt = Counter(s)
+        n = len(s)
+        bucket = [[] for _ in range(n+1)]
+        for c, freq in cnt.items():
+            bucket[freq].append(c)
         
-        return result
+        ans = []
+        for freq in range(n, -1, -1):
+            for c in bucket[freq]:
+                ans.append(c * freq)
+        return "".join(ans)
 
+Since freq values are in range [0...n], so we can use Bucket Sort to achieve O(N) in Time Complexity.
+Time:  O(n)
+Space: O(n)    
+
+
+HashTable + Heap:
     
-# Time:  O(n)
-# Space: O(n)    
+def frequencySort(self, s: str) -> str:
+	# Count the occurence on each character
+	cnt = collections.Counter(s)
+	
+	# Build heap
+	heap = [(-v, k) for k, v in cnt.items()]
+	heapq.heapify(heap)
+	
+	# Build string
+	res = []
+	while heap:
+		v, k = heapq.heappop(heap)
+		res += [k] * -v
+	return ''.join(res)
+
+Time Complexity: O(nlogk), where k is the number of distinct character.
+Space Complexity: O(n)
