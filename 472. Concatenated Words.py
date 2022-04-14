@@ -12,8 +12,19 @@ Explanation: "catsdogcats" can be concatenated by "cats", "dog" and "cats";
 
 
 
-Solution:
 
+
+
+
+Solution: (similar to 139.)
+
+Do you still remember how did you solve this problem? https://leetcode.com/problems/word-break/
+
+If you do know one optimized solution for above question is using DP, this problem is just one more step further. We iterate through each word 
+and see if it can be formed by using other words.
+Of course it is also obvious that a word can only be formed by words shorter than it. So we can first sort the input by length of each word, 
+and only try to form one word by using words in front of it.    
+    
 class Solution(object):
     def findAllConcatenatedWordsInADict(self, words):
 
