@@ -13,7 +13,7 @@ Input: start = "AACCGGTT", end = "AACCGGTA", bank = ["AACCGGTA"]
 Output: 1  
 
 
-Solution: BFS (same as word ladder)
+Solution: BFS (same as 127. Word Ladder)
   
   
   class Solution(object):
