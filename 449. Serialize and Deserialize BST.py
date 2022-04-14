@@ -6,10 +6,19 @@ algorithm should work. You need to ensure that a binary search tree can be seria
 the original tree structure.    
 
 
+
+
+
+
+
+
+
+
+
 Solution:
 
-This solution uses 'deque' instead of 'list' as queue. And the performance is O( N )
-Similar question: Construct Binary Tree from Preorder and Inorder Traversal.
+This solution uses 'deque' instead of 'list' as queue. And the performance is O(N)
+Similar question: 105. Construct Binary Tree from Preorder and Inorder Traversal.
 
 class Codec:
 
