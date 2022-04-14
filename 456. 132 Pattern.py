@@ -8,7 +8,15 @@ Output: false
 Explanation: There is no 132 pattern in the sequence.
 
 
-Solution: 
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: (Educational, isnt it repeated?)
 https://leetcode.com/problems/132-pattern/discuss/94089/Java-solutions-from-O(n3)-to-O(n)-for-%22132%22-pattern-(updated-with-one-pass-slution)
 
 I. Naive O(n^3) solution
@@ -53,7 +61,8 @@ the minimum element of subarray nums[0, j). What about the right element nums[k]
 First note we are only interested in elements that are greater than arr[j], so it is sensible to maintain only those elements. Second, among 
 all these qualified elements, which one will be the most probable to fall into the range (nums[i], nums[j])? I would say it is the smallest 
 one (i.e., if the smallest one is out of the range, all others will also be out of range). So to sum up, the "useful" information for current 
-index j will be a collection of scanned elements that are greater than arr[j], and nums[k] will be chosen as the smallest one if the collection is not empty.
+index j will be a collection of scanned elements that are greater than arr[j], and nums[k] will be chosen as the smallest one if the collection 
+is not empty.
 
 public boolean find132pattern(int[] nums) {
     int[] arr = Arrays.copyOf(nums, nums.length);
