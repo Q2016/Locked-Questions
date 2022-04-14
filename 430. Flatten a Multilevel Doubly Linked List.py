@@ -27,12 +27,19 @@ prev  next   ------> prev  next ------>  prev  next
    child     <------   child   <------     child
 
 
+
+
+
+
+
 Solution:
 
+For picture: https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/	
+	
 Basic idea is straight forward:
 Start form the head , move one step each time to the next node. When meet with a node with child, say node p, follow its child 
 chain to the end and connect the tail node with p.next, by doing this we merged the child chain back to the main thread. 
-Return to p and proceed until find next node with child.Repeat until reach null
+Return to p and proceed until find next node with child. Repeat until reach null
 
 
     def flatten(self, head) :
