@@ -16,7 +16,7 @@ Explanation: There is no 132 pattern in the sequence.
     
     
     
-Solution: (Educational, isnt it repeated?)
+Solution: (Educational, isnt it repeated?, smart)
 https://leetcode.com/problems/132-pattern/discuss/94089/Java-solutions-from-O(n3)-to-O(n)-for-%22132%22-pattern-(updated-with-one-pass-slution)
 
 I. Naive O(n^3) solution
