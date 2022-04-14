@@ -10,6 +10,13 @@ showing the four bits relevant in this case).
 The answer will be:
 HammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2 + 2 = 6. 
 
+
+
+
+
+
+
+
 Solution :
 For each "column" or bit position, once you count the number of set bits you can figure out the number of pairs that will 
 contribute to the count using combination logic. Consider you have 10 numbers and only one of them is a 1 the rest are zeros. 
