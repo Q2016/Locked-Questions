@@ -20,6 +20,9 @@ Explanation: Both [2,1,3] and [3,1,2] can construct the secret signature "DI",
 but since we want to find the one with the smallest lexicographical permutation, you need to output [2,1,3]
 
 
+
+
+
 Solution: Stack
 Because of the second constraint, we could think that we want to have the permutation close to the increasing order like [1, 2, 3, 4, 5] 
 when the input is ‘IDDI’. The idea is that we consider ‘I’ as the border to separate the decreasing regions and increasing regions. 
