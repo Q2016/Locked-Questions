@@ -3,11 +3,16 @@ Given a string s and a non-empty string p, find all the start indices of p's ana
 English letters only and the length of
 
 Example 1:
-Input:
-s: "cbaebabacd" p: "abc", Output: [0, 6]
+Input: s: "cbaebabacd" p: "abc", Output: [0, 6]
 Explanation:
 The substring with start index = 0 is "cba", which is an anagram of "abc".
 The substring with start index = 6 is "bac", which is an anagram of "abc".
+
+
+
+
+
+
 
 
 Solution: Two pointers
@@ -15,7 +20,6 @@ Solution: Two pointers
     def findAnagrams(self, s, p):
 
         result = []
-
         cnts = [0] * 26
         for c in p:
             cnts[ord(c) - ord('a')] += 1
