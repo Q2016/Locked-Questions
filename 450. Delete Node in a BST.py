@@ -15,44 +15,60 @@ Please notice that another valid answer is [5,2,6,null,4,null,7] and it's also a
            2     4     7                2           7
 
 
+   
+   
+   
 Solution: Recursive
 
-Use the BST property to search the node and then delete if found the required node.
-So if the traget node has value less than root then we will surely get it in the left subtree...so just call ur recursive function for the left subtree.
-If the traget node has value greater than root then we will surely get it in the right subtree...so just call ur recursive function for the right subtree.
-And now comes the case when u have to do your work that is root itself is the required node to be deleted. Here again comes three cases:
-If left of root is null and u also have to delete the root node...then just simply return the right subtree.
-If right of root is null and u also have to delete the root node...then just simply return the left subtree.
-Both are not null then you have to not just delete the node but also maintain the BST structure.
-So now you have to think if you delete the root node then which node can optimally replace it so that all the nodes on left are still small and on right are larger.
-So that node will be the node just greater than the largest node in the left subtree which is the smallest node in the right subtree
-So point your pointer on the right subtree and then move it to the left most node of this subtree that will be your required node and so now replace the value of your root with this node value which will ensure that the key which u wanted to delete is deleted and the value there is the right value.
-Now you have to delete that node whose value is already present in the root...so now that work will be done by the recursion so now just pass that right subtree in which the value is present with that nodes value which will be now the target
+It will be easier if we consider some tree and try to understand, what we need to do in different cases.
 
-    def deleteNode(root, key):
-        if(root==null) 
-            return null;
+                                                        12
+                                                      /      \
+                                                  5             15
+                                               /     \           /  \
+                                             3        7         13    17 
+                                           /         /   \         \     \
+                                          1        6       9        14     20
+                                                       /    \            /
+                                                     8       11        18
+   
+  
+First we need to find our node in tree, so we just traverse it until root.val == key.
+Case 1: node do not have any children, like 1, 8, 11, 14, 6 or 18: then we just delete it and nothing else to do here.
+Case 2: node has left children, but do not have right, for example 3 or 20. In this case we can just delete this node and put connection betweeen 
+ its parent and its children: for example for 3, we put connection 5->1 and for 20 we put connection 17->18. Note, that the property of BST will 
+ be fulfilled, because for parent all left subtree will be less than its value and nothing will change for others nodes.
+Case 3: node has right children, but do not have left, for example 13 and 17. This case is almost like case 2: we just can delete node and reconnect 
+ its parent with its children.
+Case 4: node has both children, like 12, 5, 7, 9 or 15. In this case we can not just delete it. Let us consider node 5. We want to find succesor 
+ of this node: the node with next value, to do this we need to go one time to the right and then as left as possible. For node 5 our succesor will 
+ be 6: we go 5->7->6. How we can delete node 5 now? We swap nodes 5 and 6 (or just put value 6 to 5) and then we need to deal with new tree, where 
+ we need to delete node which I put in square. How to do it? Just understand, that this node do not have left children, so it is either Case 1 or 
+ Case 3, which we already can solve.
+
+
+Complexity: Complexity of finding node is O(h), Cases 1,2,3 is O(1). Complexity of Case 4 is O(h) as well, because we first find succesor and 
+then apply one of the Cases 1,3 only once. So, overall complexity is O(h). Space complexity is O(h) as well, because we use recursion and 
+potentially we can find our node in the bottom of tree.
+
+class Solution(object):
+    def deleteNode(self, root, key):
+        if not root: return None
         
-        if(key<root.val):                         
-            root.left = deleteNode(root.left, key);
-            return root;
-        
-        else if(key>root.val):
-            root.right = deleteNode(root.right, key);
-            return root;
-        
+        if root.val == key:
+            if not root.right: return root.left
+            
+            if not root.left: return root.right
+            
+            if root.left and root.right:
+                temp = root.right
+                while temp.left: temp = temp.left
+                root.val = temp.val
+                root.right = self.deleteNode(root.right, root.val)
+
+        elif root.val > key:
+            root.left = self.deleteNode(root.left, key)
         else:
-            if(root.left==null):
-                return root.right;
-            else if(root.right==null):
-                return root.left;
-            else:
-                TreeNode min = root.right;
-                while(min.left!=null):
-                    min = min.left;
-                
-                root.val = min.val;
-                root.right = deleteNode(root.right, min.val);
-                return root;
-
-
+            root.right = self.deleteNode(root.right, key)
+            
+        return root
