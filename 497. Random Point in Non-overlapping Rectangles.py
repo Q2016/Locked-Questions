@@ -1,9 +1,21 @@
 Question:
-You are given an array of non-overlapping axis-aligned rectangles rects where rects[i] = [ai, bi, xi, yi] indicates 
-that (ai, bi) is the bottom-left corner point of the ith rectangle and (xi, yi) is the top-right corner point of the ith 
-rectangle. Design an algorithm to pick a random integer point inside the space covered by one of the given rectangles. A 
-point on the perimeter of a rectangle is included in the space covered by the rectangle.
-Any integer point inside the space covered by one of the given rectangles should be equally likely to be returned.    
+You are given an array of non-overlapping rectangles rects[i] = [ai, bi, xi, yi] with 
+(ai, bi) bottom-left corner (xi, yi) top-right corner point. 
+-A point on the perimeter of a rectangle is included in the space covered by the rectangle.
+-Any integer point inside the space covered by one of the given rectangles should be equally likely to be returned.    
+Design an algorithm to pick a random integer point inside the space covered by one of the given rectangles. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Solution: Extention of problem 528. Random Pick with Weight
