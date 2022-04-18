@@ -19,34 +19,54 @@ Design an algorithm to pick a random integer point inside the space covered by o
 
 
 Solution: Extention of problem 528. Random Pick with Weight
-https://leetcode.com/problems/random-point-in-non-overlapping-rectangles/discuss/805232/Python-Short-solution-with-binary-search-explained
+The idea is simple;
 
-Here we have several rectangles and we need to choose point from these rectangles. We can do it in two steps: Choose rectangle. Note, that 
-the bigger number of points in these rectangle the more should be our changes. Imagine, we have two rectangles with 10 and 6 points. Then we 
-need to choose first rectangle with probability 10/16 and second with probability 6/16. Choose point inside this rectangle. We need to choose 
-coordinate x and coordinate y uniformly. When we initailze we count weights as (x2-x1+1)*(y2-y1+1) because we also need to use boundary. 
-Then we evaluate cumulative sums and normalize.
-For pick function, we use binary search to find the right place, using uniform distribution from [0,1] and then we use uniform discrete 
-distribution to choose coordinates x and y.
-
+Choose a rect, then choose a point inside it.
+The bigger the rectangle, the higher the probability of it getting chosen
+import random
 
 class Solution:
-    def __init__(self, rects):
-        w = [(x2-x1+1)*(y2-y1+1) for x1,y1,x2,y2 in rects]
-        self.weights = [i/sum(w) for i in accumulate(w)]
+
+    def __init__(self, rects: List[List[int]]):
         self.rects = rects
 
-    def pick(self):
-        n_rect = bisect.bisect(self.weights, random.random())
-        x1, y1, x2, y2 = self.rects[n_rect] 
-        return [random.randint(x1, x2),random.randint(y1, y2)]
+        
+        # I am more of a list comprehensions guy, but if you prefer to
+        # put more effort with the keyboard, here's an unrolled version.
+        
+        # self.weights = []
+        # for rect in rects:
+        #     x1, y1, x2, y2 = rect
+        #     area = (x2-x1+1)*(y2-y1+1)
+        #     self.weights.append(area)
+        
+        self.weights = [(x2-x1+1)*(y2-y1+1) for x1, y1, x2, y2 in rects]
+        
+            
+        # library functions are always faster
+        # it beats the runtime of using an extra variable 
+        # to calculate sum_of_weights in the loop above
+        # even if that means, we have to iterate once more.
+        # Such is the world of python :D
+        sum_of_weights = sum(self.weights)
+        
+        self.weights = [x/sum_of_weights for x in self.weights]
+            
 
-    
-    
-Complexity: 
-Time and space complexity of __init__ is O(n), where n is number of rectangles. 
-Time complexity of pick is O(log n), because we use binary search. 
-Space complexity of pick is O(1).
+    def pick(self) -> List[int]:
+        rect = random.choices(
+            population=self.rects,
+            weights=self.weights,
+            k=1
+        )[0]  # random.choices returns a list, we extract the first (and only) element.
+
+        x1, y1, x2, y2 = rect  # tuple unpacking
+        
+        rnd_x = random.randint(x1, x2)
+        rnd_y = random.randint(y1, y2)
+        return [rnd_x, rnd_y]
+        
+
 
 Remark: Note, that there is solution with O(1) time/space complexity for pick, using smart mathematical trick, 
 see my solution of problem 528: https://leetcode.com/problems/random-pick-with-weight/discuss/671439/Python-Smart-O(1)-solution-with-detailed-explanation
