@@ -7,6 +7,15 @@ Output: 2
 Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.    
 
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
 Solution:
 
  0    \
@@ -43,3 +52,5 @@ subtracting the old index to calculate the length of a subarray. A variable max_
                 table[count] = index
         
         return max_length
+
+Time O(n)      
