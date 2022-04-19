@@ -7,47 +7,42 @@ Output: "bab"
 Explanation: "aba" is also a valid answer.
 
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution: Dynamic Programming
-Optimization: Consider the case "ababa". If we already knew that "bab" is a palindrome, it is obvious that "ababa" must be a palindrome since the two 
-left and right end letters are the same. This yields a straight forward DP solution, which we first initialize the one and two letters palindromes, 
-and work our way up finding all three letters palindromes, and so on...
-steps:
-P(i, j) == P(i+1, j-1) && s[i] == s[j];
-Base cases :
-#One character
-P(i, i) = true;
-#Two character
-P(i, i+1) = s[i] == s[i+1];
 
+dp(i, j) represents whether s(i ... j) can form a palindromic substring, dp(i, j) is true when s(i) equals to s(j) and s(i+1 ... j-1) is 
+a palindromic substring. When we found a palindrome, check if it's the longest one. Time complexity O(n^2).
 
-        def longestPalindrome(string s):
+public String longestPalindrome(String s) {
+      int n = s.length();
+      String res = null;
 
-            n = len(s)
-            if (n == 0)
-                return ""
+      boolean[][] dp = new boolean[n][n];
 
-            # bool dp[i][j] will be 'True' if the string from index i to j is a palindrome.
-            # initialize dp matrix with 0=False
+      for (int i = n - 1; i >= 0; i--) {
+        for (int j = i; j < n; j++) {
+          dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
 
-            #Every Single character is palindrome
-            for i in range(n):
-                dp[i][i] = True
-            ans = ""
-            ans += s[0]
+          if (dp[i][j] && (res == null || j - i + 1 > res.length())) {
+            res = s.substring(i, j + 1);
+          }
+        }
+      }
 
-            for i in range(n - 1,-1):
-                for j in range(i + 1,n):
-                    if (s[i] == s[j]):
-                        #If it is of two character OR if its susbtring is palindrome.
-                        if (j - i == 1 or dp[i + 1][j - 1]):
-                            #Then it will also be a palindrome substring
-                            dp[i][j] = True
-                            #Check for Longest Palindrome substring
-                            if (len(ans) < j - i + 1):
-                                ans = s[i: j - i + 1]
-            return ans;
+      return res;
+}
 
 
 
 Time Complexity - O(N^2), 
-Space Complexity - O(N^2) (caching all substring)
+Space Complexity - O(N^2)
