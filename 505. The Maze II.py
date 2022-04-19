@@ -12,7 +12,7 @@ Input 3: destination coordinate (rowDest, colDest) = (4, 4), Output: 12         
                                                                                                        0 0 0 1 0
                                                                                                        1 1 0 1 1
                                                                                                        0 0 0 0 0
-Solution:  Bellman ford
+Solution:  Bellman ford (compare time complexity against backtracking)
 
     def shortestDistance(self, maze: List[List[int]], start: List[int], destination: List[int]) -> int:
         m,n = len(maze),len(maze[0])
