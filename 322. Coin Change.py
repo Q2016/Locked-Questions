@@ -15,7 +15,7 @@ Explanation: 11 = 5 + 5 + 1
     
     
 
-Solution: Recursive Method
+Solution: DP
     
 If you carefully observe the below 3 codes.
 You will see that the DP Memoization is dervied from the Recursion code just by changing 3 lines and same is the case for DP Tabulation 
