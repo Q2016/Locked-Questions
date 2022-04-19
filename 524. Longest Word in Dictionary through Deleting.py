@@ -8,6 +8,14 @@ Input: s = "abpcplea", dictionary = ["ale","apple","monkey","plea"]
 Output: "apple"    
 
     
+    
+    
+    
+    
+    
+    
+    
+    
 Solution: Sort
 
 If n is the length of our input string, m the length of our dictionary and w the average length of word in the dictionary, 
