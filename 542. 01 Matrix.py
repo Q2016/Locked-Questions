@@ -10,35 +10,68 @@ Output: [[0,0,0],
          [0,0,0]]    
 
 
-✔️ Solution: Dynamic Programming
+  
+  
+  
+  
+  
+  
+  
+✔️ Solution: Dynamic Programming or BFS (isnt it repeated?)
 
-For convinience, let's call the cell with value 0 as zero-cell, the cell has with value 1 as one-cell, the distance of the nearest 0 of a cell as distance.
-Firstly, we can see that the distance of all zero-cells are 0, so we skip zero-cells, we process one-cells only.
-In DP, we can only use prevous values if they're already computed. In this problem, a cell has at most 4 neighbors that are left, top, right, bottom. 
-If we use dynamic programming to compute the distance of the current cell based on 4 neighbors simultaneously, it's impossible because we are not sure if 
-distance of neighboring cells is already computed or not. That's why, we need to compute the distance one by one: Firstly, for a cell, we restrict it to only 
-2 directions which are left and top. Then we iterate cells from top to bottom, and from left to right, we calculate the distance of a cell based on its left 
-and top neighbors. Secondly, for a cell, we restrict it only have 2 directions which are right and bottom. Then we iterate cells from bottom to top, and 
-from right to left, we update the distance of a cell based on its right and bottom neighbors.      
+The distance of a cell from 0 can be calculated if we know the nearest distance for all the neighbors, in which case the distance is minimum distance 
+of any neightbor + 1. And, instantly, the words come to mind Dynamic Programming (DP)!!
+For each 1, the minimum path to 0 can be in any direction. So, we need to check all the 4 directions. In one iteration from top to bottom, we can 
+check left and top directions, and we need another iteration from bottom to top to check for right and bottom direction.
 
-    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
-        m, n = len(mat), len(mat[0])
+Algorithm
 
-        for r in range(m):
-            for c in range(n):
-                if mat[r][c] > 0:
-                    top = mat[r - 1][c] if r > 0 else math.inf
-                    left = mat[r][c - 1] if c > 0 else math.inf
-                    mat[r][c] = min(top, left) + 1
-        for r in range(m - 1, -1, -1):
-            for c in range(n - 1, -1, -1):
-                if mat[r][c] > 0:
-                    bottom = mat[r + 1][c] if r < m - 1 else math.inf
-                    right = mat[r][c + 1] if c < n - 1 else math.inf
-                    mat[r][c] = min(mat[r][c], bottom + 1, right + 1)
-        return mat
+Iterate over the matrix from top to bottom-left to right:
+Update dist[i][j]=min(dist[i][j],min(dist[i][j−1],dist[i−1][j])+1) i.e., minimum of the current dist and distance from top or left neighbor +1, 
+that would have been already calculated previously in the current iteration.
+Now, we need to do the back iteration in the similar manner: from bottom to top-right to left:
+Update dist[i][j]=min(dist[i][j],min(dist[i][j+1],dist[i+1][j])+1) i.e. minimum of current dist and distances calculated from bottom and right neighbors,
+that would be already available in current iteration.
+
+Implementation
         
-        
+class Solution {
+public:
+    vector<vector<int>> updateMatrix(vector<vector<int>>& matrix) {
+        int rows = matrix.size();
+        if (rows == 0) 
+            return matrix;
+        int cols = matrix[0].size();
+        vector<vector<int>> dist(rows, vector<int> (cols, INT_MAX - 100000));
+
+        //First pass: check for left and top
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (matrix[i][j] == 0) {
+                    dist[i][j] = 0;
+                } else {
+                    if (i > 0)
+                        dist[i][j] = min(dist[i][j], dist[i - 1][j] + 1);
+                    if (j > 0)
+                        dist[i][j] = min(dist[i][j], dist[i][j - 1] + 1);
+                }
+            }
+        }
+
+        //Second pass: check for bottom and right
+        for (int i = rows - 1; i >= 0; i--) {
+            for (int j = cols - 1; j >= 0; j--) {
+                if (i < rows - 1)
+                    dist[i][j] = min(dist[i][j], dist[i + 1][j] + 1);
+                if (j < cols - 1)
+                    dist[i][j] = min(dist[i][j], dist[i][j + 1] + 1);
+            }
+        }
+        return dist;
+    }
+};
+  
+  
 Complexity
 Time: O(M * N), where M is number of rows, N is number of columns in the matrix.
 Space: O(1)        
