@@ -11,8 +11,14 @@ Input:
 Output: 3
 Explanation: All the three 'B's are black lonely pixels.
   
+
   
-Solution:  
+  
+  
+  
+  
+  
+Solution:  (Second solution is similar to the tic-tac-toe)
 Two passes of the matrix. First pass: build the auxiliary table. Second pass: do the counting.  
 
 
