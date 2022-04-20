@@ -6,7 +6,18 @@ Example 1:
 Input: nums = [1,1,2,3,3,4,4,8,8]
 Output: 2
     
-Solution:
+
+
+
+
+
+
+
+
+
+
+Solution: BS
+	
 Suppose array is [1, 1, 2, 2, 3, 3, 4, 5, 5]
 we can observe that for each pair, 
 first element takes even position and second element takes odd position
