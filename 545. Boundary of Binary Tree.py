@@ -44,6 +44,12 @@ The right boundary are node 1,3,6,10. (10 is the right-most node).
 So order them in anti-clockwise without duplicate nodes we have [1,2,4,7,8,9,10,6,3].
 
 
+
+
+
+
+
+
 Solution: Preorder+DFS+Postorder
 This question applied various of knowledge of tree. To solve this question, we first use preorder 
 to get the left boundary node value, then we use dfs to find the leaves node value and append to 
