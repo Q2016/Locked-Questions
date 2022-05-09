@@ -33,7 +33,11 @@ Since the third round will generate the final winner, you need to output the ans
 
 
 
-Solution: Recursion
+
+
+
+
+Solution: Recursion (Nice solution)
     
     def findContestMatch(n):
         games=[ch]*n
