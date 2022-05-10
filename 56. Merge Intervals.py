@@ -13,7 +13,6 @@ Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
     
 Solution:
 
-    
 First, we sort the list as described. Then, we insert the first interval into our merged list and continue considering each 
 interval in turn as follows: If the current interval begins after the previous interval ends, then they do not overlap and we 
 can append the current interval to merged. Otherwise, they do overlap, and we merge them by updating the end of the previous 
@@ -26,16 +25,30 @@ class Solution:
         intervals.sort(key =lambda x: x[0])
         merged =[]
         for i in intervals:
-			# if the list of merged intervals is empty 
-			# or if the current interval does not overlap with the previous,
-			# simply append it.
-            if not merged or merged[-1][-1] < i[0]:
+	   # if the list of merged intervals is empty 
+	   # or if the current interval does not overlap with the previous,
+           # simply append it.
+           if not merged or merged[-1][-1] < i[0]:
                 merged.append(i)
-			# otherwise, there is overlap,
-			#so we merge the current and previous intervals.
-            else:
+		# otherwise, there is overlap,
+		#so we merge the current and previous intervals.
+           else:
                 merged[-1][-1] = max(merged[-1][-1], i[-1])
         return merged
+
+C++
+vector<Interval> merge(vector<Interval>& ins) {
+    if (ins.empty()) return vector<Interval>{};
+    vector<Interval> res;
+    sort(ins.begin(), ins.end(), [](Interval a, Interval b){return a.start < b.start;});
+    res.push_back(ins[0]);
+    for (int i = 1; i < ins.size(); i++) {
+        if (res.back().end < ins[i].start) res.push_back(ins[i]);
+        else
+            res.back().end = max(res.back().end, ins[i].end);
+    }
+    return res;
+}
     
     
 Time complexity:
