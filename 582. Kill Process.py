@@ -20,7 +20,14 @@ Explanation:
 Kill 5 will also kill 10.
 
 
-Solution: HashMap + DFS (didnt understand the solution)
+
+
+
+
+
+
+
+Solution: DFS 
 we can use a hashmap which stores a particular process value and the list of its direct children.
 And then treat it as a tree traversal problem.
 
@@ -33,8 +40,27 @@ And then treat it as a tree traversal problem.
         self.dfs(hm, kill, ret)
         return ret
     
-    def dfs(self, hm, node, ret):
+    def dfs(self, hm, node, ret):  # I dont trust this python code but It maybe helpfull
         ret.append(node)
         if node in hm:
             for child in hm.get(node):
                 self.dfs(hm, child, ret)
+           
+           
+           
+    vector<int> killProcess(vector<int>& pid, vector<int>& ppid, int kill) { # I trust this one
+        vector<int> res;
+        unordered_map<int, vector<int>> m;
+        for (int i = 0; i < pid.size(); ++i) {
+            m[ppid[i]].push_back(pid[i]);
+        }
+        helper(kill, m, res);
+        return res;
+    }
+
+    void helper(int kill, unordered_map<int, vector<int>>& m, vector<int>& res) {
+        res.push_back(kill);
+        for (int p : m[kill]) {
+            helper(p, m, res);
+        }
+    }           
