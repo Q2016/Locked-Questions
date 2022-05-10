@@ -16,7 +16,7 @@ Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
     
     
     
-Solution: Greedy
+Solution: Greedy (interesting that it works!)
 Looking from the start and selecting the locally optimum in the hope of reaching global optimum    
     
     bool canJump(vector<int>& nums) {
