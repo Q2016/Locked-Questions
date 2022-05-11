@@ -6,6 +6,16 @@ if there are infinite solutions for the equation. If there is exactly one soluti
 Example 1:
 Input: equation = "x+5-3+x=6+x-2", Output: "x=2"
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution: Regix
     
     def solveEquation(self, equation):
