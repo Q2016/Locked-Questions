@@ -3,6 +3,19 @@ We are given a m x n grid where we start at cell (0, 0) (top-left) and are requi
 We can only move to the right or to the bottom. We need to return total unique paths from start to end using these moves.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 Solution: Educational (DP)
 
 ❌ Solution - I (Brute-Force) [TLE]
@@ -17,7 +30,7 @@ If the series of moves leads us to the target cell (m-1, n-1), we return 1 denot
         if i == m-1 and j == n-1: return 1
         return self.uniquePaths(m, n, i+1, j) + self.uniquePaths(m, n, i, j+1)
 
-Time Complexity : O(2m+n)
+Time Complexity : O(2^(m+n))
 Space Complexity : O(m+n), required by implicit recursive stack
 
 ✔️ Solution - II (Dynamic Programming - Memoization)
