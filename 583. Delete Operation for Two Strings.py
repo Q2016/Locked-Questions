@@ -9,6 +9,13 @@ Explanation: You need one step to make "sea" to "ea" and another step to make "e
 
     
     
+    
+    
+    
+    
+    
+    
+    
 Solution:
 Find the longest common subsequence (LCS). Number of deletions will be : (word1.length - LCS) + (word2.length - LCS)
 
