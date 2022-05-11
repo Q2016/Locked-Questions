@@ -3,6 +3,18 @@ Given the coordinates of four points in 2D space p1, p2, p3 and p4, return true 
 The coordinate of a point pi is represented as [xi, yi]. The input is not given in any order.
 A valid square has four equal sides with positive length and four equal angles (90-degree angles).
 
+
+
+
+
+
+
+
+
+
+
+
+
 Solution:
 The idea is to calculate all the distance between each two points, and sort them. In this way, we get 4 edges and 2 diagonals of the square in order. 
 If the 4 edges equal to each other, that means it should be equilateral parallelogram. Finally, we check whether the 2 diagonals equal to 
