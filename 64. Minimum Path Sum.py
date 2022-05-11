@@ -10,7 +10,13 @@ Output: 7
 Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.  
 
   
-Solution:  DP
+  
+  
+  
+  
+  
+  
+Solution:  DP (The point is that we use grid for space optimization)
 https://leetcode.com/problems/minimum-path-sum/discuss/584967/Python-Grid-reduction-(Sounds-fancy-but-a-simple-method)-no-additional-space
 We are going to walk over the cells (the two for loops in the code). And each time we step on a cell, we are going to ask a question to ourself, 
 how can I get to this cell with minimum sum from the previous step? Well, for the first cell (0,0) we don't need to do anything, right?
