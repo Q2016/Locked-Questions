@@ -16,7 +16,8 @@ Output: [1,2,3,4]
 	
 	
 	
-Solution:	
+Solution: BST
+	
 We need to return k elements that are closest to x. The input array is sorted in ascending order. So, we will try to find the 
 starting point of these k elements i.e. the first element in this list of k elements which will make it easier to return the k elements. 
 Let's call this first element of the output list start. Obviously, start will lie between indices 0 and length - k where length is the 
