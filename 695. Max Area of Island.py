@@ -41,5 +41,24 @@ During the dfs, we set the value of each point in the island to 0.
                 area += dfs(grid, r, c);    
         return area;
     
+or
 
-The time complexity is O(mn).
+class Solution(object):
+    def maxAreaOfIsland(self, grid):
+        seen = set()
+        def area(r, c):
+            if not (0 <= r < len(grid) and 0 <= c < len(grid[0]) and (r, c) not in seen and grid[r][c]):
+                return 0
+            seen.add((r, c))
+            return (1 + area(r+1, c) + area(r-1, c) + area(r, c-1) + area(r, c+1))
+
+        return max(area(r, c)
+                   for r in range(len(grid))
+                   for c in range(len(grid[0])))
+
+
+Complexity Analysis
+
+Time Complexity: O(R*C), where R is the number of rows in the given grid, and C is the number of columns. We visit every square once.
+
+Space complexity: O(R*C), the space used by seen to keep track of visited squares, and the space used by the call stack during our recursion.
