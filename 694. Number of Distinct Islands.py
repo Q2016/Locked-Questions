@@ -11,6 +11,12 @@ Example 1:
 Given the above grid map, return 1.
 
 
+
+
+
+
+
+
 Solution: DFS
 Similar to 200. Number of Islands. The difference is to find the number of distinct islands
 To find the number of distince islands, we need to record the shape of each island. If two islands 
