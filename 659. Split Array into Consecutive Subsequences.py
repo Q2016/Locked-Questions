@@ -8,7 +8,12 @@ Input: nums = [1,2,3,3,4,5], Output: true
 Explanation: nums can be split into the following subsequences:
 [1,2,3,3,4,5] --> 1, 2, 3 and 3, 4, 5  
 
-
+Example 2:
+Input: nums = [1,2,3,3,4,4,5,5]
+Output: true
+Explanation: nums can be split into the following subsequences:
+[1,2,3,3,4,4,5,5] --> 1, 2, 3, 4, 5
+[1,2,3,3,4,4,5,5] --> 3, 4, 5
 
 
 
@@ -17,7 +22,7 @@ Explanation: nums can be split into the following subsequences:
 
 Solution: DP
   
-iven that the array consists of numbers in non-decreasing order, we can make the following observation:
+Given that the array consists of numbers in non-decreasing order, we can make the following observation:
 Anytime we encounter two adjacent elements with a difference of > 1, a new subsequence must start. In other words, these points 
 (of > 1 jump) can be treated as a break-point that separates the array into two segments that can be treated in isolation, since 
 no valid subsequence can cross over from the left segment to the right segment while maintaining the first condition 
