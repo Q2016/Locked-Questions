@@ -1,7 +1,9 @@
 Question:
 You are given an integer array nums with no duplicates. A maximum binary tree can be built recursively from nums using the following algorithm:
-Create a root node whose value is the maximum value in nums. Recursively build the left subtree on the subarray prefix to the left of the maximum value.
-Recursively build the right subtree on the subarray suffix to the right of the maximum value. Return the maximum binary tree built from nums.
+-Create a root node whose value is the maximum value in nums. 
+-Recursively build the left subtree on the subarray prefix to the left of the maximum value.
+-Recursively build the right subtree on the subarray suffix to the right of the maximum value. 
+-Return the maximum binary tree built from nums.
 
 Example 1:
 Input: nums = [3,2,1,6,0,5]
@@ -17,7 +19,11 @@ Explanation: The recursive calls are as follow:
         - Only one element, so child is a node with value 0.
         - Empty array, so no child.
          
-Solution: Devide and Conquer
+            
+            
+            
+            
+Solution: Devide and Conquer (Recursive)
    
 The idea is to use divide and conquer. Each time we create a node root for the maximum value 
 in the range. Then, we split it into a left range and a right range, which are the left subtree 
