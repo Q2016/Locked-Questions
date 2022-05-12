@@ -12,7 +12,12 @@ Explanation: There are two moves (to (1,2), (2,1)) that will keep the knight on 
 From each of those positions, there are also two moves that will keep the knight on the board.
 The total probability the knight stays on the board is 0.0625.    
 
-
+Example 1:
+Input: n = 3, k = 2, row = 0, column = 0
+Output: 0.06250
+Explanation: There are two moves (to (1,2), (2,1)) that will keep the knight on the board.
+From each of those positions, there are also two moves that will keep the knight on the board.
+The total probability the knight stays on the board is 0.0625.
 
 
 
@@ -21,8 +26,9 @@ The total probability the knight stays on the board is 0.0625.
 
 Solution: Dynamic Programming
 
-Let f[r][c][steps] be the probability of being on square (r, c) after steps steps. Based on how a knight moves, we have the following recursion:
-f[r][c][steps] = \sum_{dr, dc} f[r+dr][c+dc][steps-1] / 8.0 f[r][c][steps]=\sum_{dr, dc} f[r+dr][c+dc][steps−1]/8.0
+Let f[r][c][steps] be the probability of being on square (r, c) after a number of 'steps' steps. Based on how a knight moves, 
+we have the following recursion:
+f[r][c][steps] = \sum_{dr, dc} f[r+dr][c+dc][steps-1] / 8.0 
 where the sum is taken over the eight (dr, dc)(dr,dc) pairs (2, 1),(2,1), (2, -1),(2,−1), 
 (-2, 1),(−2,1), (-2, -1),(−2,−1), (1, 2),(1,2), (1, -2),(1,−2), (-1, 2),(−1,2), (-1, -2)(−1,−2).
 Instead of using a three-dimensional array f, we will use two two-dimensional ones dp and dp2, storing 
