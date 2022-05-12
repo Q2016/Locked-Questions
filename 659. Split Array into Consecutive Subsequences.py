@@ -17,6 +17,29 @@ Explanation: nums can be split into the following subsequences:
 
 Solution: DP
   
+iven that the array consists of numbers in non-decreasing order, we can make the following observation:
+Anytime we encounter two adjacent elements with a difference of > 1, a new subsequence must start. In other words, these points 
+(of > 1 jump) can be treated as a break-point that separates the array into two segments that can be treated in isolation, since 
+no valid subsequence can cross over from the left segment to the right segment while maintaining the first condition 
+(each subsequence consists of consecutively increasing elements).
+
+That is the approach we take here, checking each such segment for validity. The idea is to ensure that all elements in each such 
+segment can be accommodated inside a valid subsequence of length >= 3.
+
+How do we check each segment for validity?
+The idea is to linearly process all elements in the segment and keep track of how many subsequences (consisting of consecutive elements) 
+of lengths one and two can end at the present index. This also requires us to keep track of the total count (frequency) of each element 
+in this segment. Another important observation is that due to the nature of the input, all elements with the same value will be placed 
+consecutively in the segment.
+
+Instead of storing the frequency of each number directly, in order to optimize space usage, we store the frequency of the 
+difference of each number in the segment with the starting number (nums[start]) of each segment. This way we can store the frequency 
+of each number in an array of size equal to the total number of unique numbers present in the segment which can be at max the segment 
+length (noOfUniqueNumbers). Henceforth, we consider each element in terms of their difference, i.e., nums[i] is denoted by nums[i] - start. 
+This way we can store all the required values in arrays of size noOfUniqueNumbers. Otherwise, arrays of size nums[end] would have been required.  
+  
+  
+  
 class Solution {
 public:
     bool isPossible(vector<int> &nums) {
