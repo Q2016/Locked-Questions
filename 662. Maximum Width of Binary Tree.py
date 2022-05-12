@@ -8,6 +8,13 @@ the end-nodes are also counted into the length calculation.      1 [1,1]
 Example 1:                                           [4,3]   5   3[5,3]  9 [6,3]
 Input: root = [1,3,2,5,3,null,9], Output: 4, Explanation: The maximum width existing in the third level with the length 4 (5,3,null,9).    
 
+      
+      
+      
+      
+      
+      
+      
         
 Solution: BFS
 In this problem we need to find maximum width of binary tree, so we need to use some tree traversal algorithm. BFS or DFS? I prefer to use BFS, 
