@@ -13,6 +13,12 @@ From each of those positions, there are also two moves that will keep the knight
 The total probability the knight stays on the board is 0.0625.    
 
 
+
+
+
+
+
+
 Solution: Dynamic Programming
 
 Let f[r][c][steps] be the probability of being on square (r, c) after steps steps. Based on how a knight moves, we have the following recursion:
