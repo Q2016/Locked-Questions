@@ -15,6 +15,11 @@ Input: grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],
 Output: 6
 Explanation: The answer is not 11, because the island must be connected 4-directionally.    
 
+  
+  
+  
+  
+  
 Solution: DFS
 The solution is to search each island. Remember marking grid[r][c] = 2 as visited. The idea is to count the area of each island using dfs. 
 During the dfs, we set the value of each point in the island to 0. 
