@@ -12,13 +12,13 @@ For these questions I like to see their youtube:
 
 1060, 1144, 1229, 1233, 1477, 1488, 1504, 1530, 173, 222, 247, 250, 254, 259, 267, 285, 29, 294, 298, 31, 311, 
 
-314, 320, 325, 33, 333, 351, 353, 36, 361, 365, 366, 369, 370, 418, 426, 469, 484, 497, 528, 533
+314, 320, 325, 33, 333, 351, 353, 36, 361, 365, 366, 369, 370, 418, 426, 469, 484, 497, 528, 533, 621, 652
 
 Bits:477
 
 XOR:421
 
-String re:468
+String re:468, 640
 
 BFS:127,133,547
 
@@ -42,4 +42,5 @@ Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recur
 
 1438 (deque)
 
-300 (DP), DP of Buying stocks is defined in 309, 322
+DP: 300, DP of Buying stocks is defined in 309, 322, 62
+
