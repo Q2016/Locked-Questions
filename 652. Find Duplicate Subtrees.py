@@ -11,7 +11,13 @@ Example 1:                   4
 Input: root = [1,2,3,4,null,2,4,null,null,4], Output: [[2,4],[4]]    
 
         
-Solution: Postorder traversal       
+Solution: Postorder traversal     (read below link) 
+  
+  
+  https://leetcode.com/problems/find-duplicate-subtrees/discuss/106016/O(n)-time-and-space-lots-of-analysis
+    
+    
+    
 
     def findDuplicateSubtrees(self, root):
         def postOrderTraversal(node, lookup, result):
