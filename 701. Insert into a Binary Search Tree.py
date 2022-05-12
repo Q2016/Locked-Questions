@@ -12,6 +12,11 @@ Input: root = [4,2,7,1,3], val = 5
 Output: [4,2,7,1,3,5]	
 
 	
+	
+	
+	
+	
+	
 Solution: Recursive
 	
 If the root is empty, the new tree node can be returned as the root node. Otherwise compare root. val is related to the size of the target value:
@@ -22,9 +27,12 @@ problem becomes root. Insert the target value in right and recursively call the 
 
 
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        if root is None: return TreeNode(val) 
-        if root.val > val:  root.left = self.insertIntoBST(root.left, val)
-        else: root.right = self.insertIntoBST(root.right, val)
+        if root is None: 
+		return TreeNode(val) 
+        if root.val > val:  
+		root.left = self.insertIntoBST(root.left, val)
+        else: 
+		root.right = self.insertIntoBST(root.right, val)
         return root
 
 
