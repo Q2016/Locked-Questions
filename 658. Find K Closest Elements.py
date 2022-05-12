@@ -8,6 +8,14 @@ Input: arr = [1,2,3,4,5], k = 4, x = 3
 Output: [1,2,3,4]	
 
 
+	
+	
+	
+	
+	
+	
+	
+	
 Solution:	
 We need to return k elements that are closest to x. The input array is sorted in ascending order. So, we will try to find the 
 starting point of these k elements i.e. the first element in this list of k elements which will make it easier to return the k elements. 
