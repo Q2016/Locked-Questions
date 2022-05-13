@@ -8,9 +8,16 @@ Input: temperatures = [73,74,75,71,69,72,76,73]
 Output: [1,1,4,2,1,1,0,0]
 
     
-Solution:
     
-Monotonic Stack: A monotonic stack is simply a stack where the elements are always in sorted order.    
+    
+    
+    
+    
+    
+    
+Solution: Monotonic Stack
+    
+A monotonic stack is simply a stack where the elements are always in sorted order.    
 
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
