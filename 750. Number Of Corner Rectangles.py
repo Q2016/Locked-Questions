@@ -43,6 +43,11 @@ class Solution {
   }
 };
 
+
+Time:  O(n * m^2), n is the number of rows with 1s, m is the number of cols with 1s
+Space: O(1)
+
+
 we can reduce time by increasing space complexity:
  
 class Solution {
@@ -65,5 +70,5 @@ public:
 };
 
 
-Time:  O(n * m^2), n is the number of rows with 1s, m is the number of cols with 1s
-Space: O(n * m)
+Time:  O(n * m), n is the number of rows with 1s, m is the number of cols with 1s
+Space: O(m)
