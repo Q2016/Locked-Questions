@@ -16,6 +16,9 @@ Note that a sequence like "0000" -> "0001" -> "0002" -> "0102" -> "0202" would b
 because the wheels of the lock become stuck after the display becomes the dead end "0102".    
 
 
+
+
+
 Solution:
 By using BFS, we can generate all possible of locks, initialize with "0000".
 For each step, we can generates neighbors of current lock state (by turning clockwise or 
@@ -25,6 +28,7 @@ If we meet the target then the current steps is minimum number of turns to open 
 
 class Solution:
     def openLock(self, deadends: List[str], target: str) -> int:
+        
         def neighbors(code):
             for i in range(4):
                 x = int(code[i])
@@ -39,7 +43,7 @@ class Solution:
         
         while q:
             for _ in range(len(q)):
-                curr = q.popleft()
+                curr = q.popleft()   #  Never realized that pop(0) takes O(N) in Python!!!!
                 if curr == target:
                     return steps
                 for nei in neighbors(curr):
