@@ -4,10 +4,22 @@ times[i] = (ui, vi, wi), where ui is the source node, vi is the target node, and
 We will send a signal from a given node k. Return the time it takes for all the n nodes to receive the signal. If it is impossible 
 for all the n nodes to receive the signal, return -1.
 
-Solution:
+
+
+
+
+
+
+
+
+
+
+
+
+Solution: DFS, Dijkstra (Edjucational)
+    
 https://www.youtube.com/watch?v=EaphyqKU4PQ
 Approach #1: Depth-First Search [Accepted]
-Intuition
 
 Let's record the time dist[node] when the signal reaches the node. If some signal arrived earlier, we don't need to broadcast it anymore. 
 Otherwise, we should broadcast the signal.
@@ -16,8 +28,8 @@ Algorithm
 
 We'll maintain dist[node], the earliest that we arrived at each node. When visiting a node while elapsed time has elapsed, if this is the 
 currently-fastest signal at this node, let's broadcast signals from this node.
-
 To speed things up, at each visited node we'll consider signals exiting the node that are faster first, by sorting the edges.
+
 
 class Solution(object):
     def networkDelayTime(self, times, N, K):
@@ -39,11 +51,14 @@ class Solution(object):
         
         
 Complexity Analysis
-Time Complexity: O(N^N + E log E) where E is the length of times. We can only fully visit each node up to N−1 times, one per each other node. 
+
+Time Complexity: 
+O(N^N + E log E) where E is the length of times. We can only fully visit each node up to N−1 times, one per each other node. 
 Plus, we have to explore every edge and sort them. Sorting each small bucket of outgoing edges is bounded by sorting all of them, because of repeated use 
 of the inequality xlogx+ylogy≤(x+y)log(x+y).
 
-Space Complexity: O(N + E), the size of the graph O(E), plus the size of the implicit call stack in our DFS O(N).
+Space Complexity: 
+O(N + E), the size of the graph O(E), plus the size of the implicit call stack in our DFS O(N).
 
 
 Approach #2: Dijkstra's Algorithm [Accepted]
