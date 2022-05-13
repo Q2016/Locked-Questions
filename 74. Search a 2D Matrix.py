@@ -18,7 +18,7 @@ Output: true
   
   
   
-Solution: BST
+Solution: BST (look at 'high', as if a long 1d array, interesting how 'mid' is used)
 It is basically an advanced version of the binary search
 
 class Solution:
