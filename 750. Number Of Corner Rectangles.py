@@ -25,35 +25,44 @@ the count by 1. Then the number of rentangles formed by these two rows are
 count * (count - 1) / 2.
 
 
-https://sugarac.gitbooks.io/facebook-interview-handbook/content/number-of-corner-rectangles.html
-public int countCornerRectangles(int[][] grid) {
-        int ans = 0;
-        for (int i = 0; i < grid.length - 1; i++) {
-            for (int j = i + 1; j < grid.length; j++) {
-                int counter = 0;
-                for (int k = 0; k < grid[0].length; k++) {
-                    if (grid[i][k] == 1 && grid[j][k] == 1) counter++;
+class Solution {
+ public:
+  int countCornerRectangles(vector<vector<int>>& grid) {
+    int ans = 0;
+
+    for (int row1 = 0; row1 < grid.size() - 1; ++row1)
+      for (int row2 = row1 + 1; row2 < grid.size(); ++row2) {
+        int count = 0;
+        for (int j = 0; j < grid[0].size(); ++j)
+          if (grid[row1][j] && grid[row2][j])
+            ++count;
+        ans += count * (count - 1) / 2;
+      }
+
+    return ans;
+  }
+};
+
+we can reduce time by increasing space complexity:
+ 
+class Solution {
+public:
+    int countCornerRectangles(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size(), res = 0;
+        for (int i = 0; i < m - 1; i++) { 
+            vector<int> ones;
+            for (int k = 0; k < n; k++) if (grid[i][k]) ones.push_back(k);
+            for (int j = i + 1; j < m; j++) {
+                int cnt = 0;
+                for (int l = 0; l < ones.size(); l++) {
+                    if (grid[j][ones[l]]) cnt++;
                 }
-                if (counter > 0) ans += counter * (counter - 1) / 2;
-            }
+                res += cnt * (cnt - 1) / 2;
+            }           
         }
-        return ans;
+        return res;
     }
-
-
-https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/number-of-corner-rectangles.py
-class Solution(object):
-    def countCornerRectangles(self, grid):
-
-        rows = [[c for c, val in enumerate(row) if val]
-                for row in grid]
-        result = 0
-        for i in xrange(len(rows)):
-            lookup = set(rows[i])
-            for j in xrange(i):
-                count = sum(1 for c in rows[j] if c in lookup)
-                result += count*(count-1)/2
-        return result
+};
 
 
 Time:  O(n * m^2), n is the number of rows with 1s, m is the number of cols with 1s
