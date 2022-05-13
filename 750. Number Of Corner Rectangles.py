@@ -6,13 +6,16 @@ Note that only the corners need to have the value 1. Also, all four 1s used must
 Example 1:
 Input: grid = 
 [[1, 0, 0, 1, 0],
-[0, 0, 1, 0, 1],
-[0, 0, 0, 1, 0],
-[1, 0, 1, 0, 1]]
+ [0, 0, 1, 0, 1],
+ [0, 0, 0, 1, 0],
+ [1, 0, 1, 0, 1]]
 Output: 1
 Explanation: There is only one corner rectangle, with corners grid[1][2], grid[1][4], grid[3][2], grid[3][4].
 
 
+        
+        
+        
 
 Solution:        
         
