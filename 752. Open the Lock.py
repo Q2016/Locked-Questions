@@ -19,7 +19,7 @@ because the wheels of the lock become stuck after the display becomes the dead e
 
 
 
-Solution:
+Solution: BFS
 By using BFS, we can generate all possible of locks, initialize with "0000".
 For each step, we can generates neighbors of current lock state (by turning clockwise or 
 counter-clockwise of 4 circular wheels) and go to its neighbors if neighbor is not in our deadends.
