@@ -6,7 +6,41 @@ An axis-aligned plus sign of 1's of order k has some center grid[r][c] == 1 alon
 and made of 1's. Note that there could be 0's or 1's beyond the arms of the plus sign, only the relevant area of the plus sign is checked for 1's.
 
 
-Solution: Dynamic Programming [Accepted]
+
+
+
+
+
+
+
+
+
+
+Solution: Dynamic Programming (similar to longest contigous 1's problem)
+  
+  
+Approach #1: Brute Force [Time Limit Exceeded]
+Intuition and Algorithm
+
+For each possible center, find the largest plus sign that could be placed by repeatedly expanding it. We expect this algorithm to be O(N^3).
+
+class Solution(object):
+    def orderOfLargestPlusSign(self, N, mines):
+        banned = {tuple(mine) for mine in mines}
+        ans = 0
+        for r in xrange(N):
+            for c in xrange(N):
+                k = 0
+                while (k <= r < N-k and k <= c < N-k and
+                        (r-k, c) not in banned and
+                        (r+k, c) not in banned and
+                        (r, c-k) not in banned and
+                        (r, c+k) not in banned):
+                    k += 1
+                ans = max(ans, k)
+        return ans  
+  
+  
 How can we improve our bruteforce? One way is to try to speed up the inner loop involving k, the order of the candidate plus sign. 
 If we knew the longest possible arm length L_u, L_l, L_d, L_r in each direction from a center, we could know the order 
 min(L_u, L_l, L_d, L_r) of a plus sign at that center. We could find these lengths separately using dynamic programming.
