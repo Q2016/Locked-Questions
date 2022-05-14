@@ -7,7 +7,16 @@ Input: s = "aab"
 Output: "aba" 
  
  
-Solution: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Solution: Heap
 The idea is to build a max heap with freq. count
 a) At each step, we choose the element with highest freq (a, b) where b is the element, to append to result.
 b) Now that b is chosen. We cant choose b for the next loop. So we dont add b with decremented value count immediately into the heap. Rather we 
