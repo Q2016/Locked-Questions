@@ -37,7 +37,11 @@ The size of the BST will not exceed 50.
 The BST is always valid and each node’s value is different.
 
 
-Solution
+
+
+
+
+Solution: Preorder
 Recursive, base case is when the root node is empty, return [None, None]. Then use the divide and conquer method to discuss the situation.
 
 class Solution(object):
