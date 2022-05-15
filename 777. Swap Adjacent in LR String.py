@@ -11,7 +11,9 @@ RXXLRXRXL ->XRXLRXRXL ->XRLXRXRXL ->XRLXXRRXL ->XRLXXRRLX
     
     
 Solution:    
-
+for picture:
+https://leetcode.com/problems/swap-adjacent-in-lr-string/discuss/873004/Easy-to-understand-explanation-with-PICTURE
+	
 Key observations:
 There are three kinds of characters, ‘L’, ‘R’, ‘X’.
 Replacing XL with LX = move L to the left by one
