@@ -22,12 +22,11 @@ a) If player X also has a winning condition, return False
 b) If x_count != o_count , return False (Since player O always plays second, it has to meet this condition always)
 If player X has a winning condition, check the following:
 a) If x_count != o_count + 1, return False (Since player X plays the first move, if player X wins, the player X's count would be 1 more than player O)
+
+					    
 class Solution(object):
     def check_win_positions(self, board, player):
-	"""
-	Check if the given player has a win position.
-	Return True if there is a win position. Else return False.
-	"""
+
         #Check the rows
         for i in range(len(board)):
             if board[i][0] == board[i][1] == board[i][2] == player:
@@ -44,13 +43,11 @@ class Solution(object):
             return True
 						
         return False
-        
+     
+					    
+					    
     def validTicTacToe(self, board):
-        """
-        :type board: List[str]
-        :rtype: bool
-        """
-        
+
         x_count, o_count = 0, 0
         for i in range(len(board)):
             for j in range(len(board[0])):
