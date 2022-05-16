@@ -10,16 +10,11 @@ Explanation: There are three strings in words that are a subsequence of s: "a", 
     
 
     
+    
+    
+    
+    
+    
 Solution:    
-https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/number-of-matching-subsequences.py
 
-class Solution(object):
-    def numMatchingSubseq(self, S, words):
-
-        waiting = collections.defaultdict(list)
-        for word in words:
-            waiting[word[0]].append(iter(word[1:]))
-        for c in S:
-            for it in waiting.pop(c, ()):
-                waiting[next(it, None)].append(it)
-        return len(waiting[None])
+ https://leetcode.com/problems/number-of-matching-subsequences/discuss/1290406/C%2B%2BJavaPython-Next-Letter-Pointers-Picture-explain-O(N-%2B-S)
