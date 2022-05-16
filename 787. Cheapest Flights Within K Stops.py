@@ -10,7 +10,14 @@ Explanation: The graph is shown.
 The cheapest price from city 0 to city 2 with at most 1 stop costs 200, as marked red in the picture.    
 
 
-Solution:
+
+
+
+
+
+
+Solution: Dijkstra
+	
 A good case to practice Dijkstra.
 To implement Dijkstra, we need a priority queue to pop out the lowest weight node for next search. In this case, the weight would be the 
 accumulated flight cost. So my node takes a form of (cost, src, k). cost is the accumulated cost, src is the current node's location, k is 
@@ -30,14 +37,14 @@ def findCheapestPrice(n, flights, src, dst, K):
 	pq = [(0, src, K+1)]
 	vis = [0] * n
 	while pq:
-		w, x, k = heapq.heappop(pq)
-		if x == dst:
-			return w
-		if vis[x] >= k:
-			continue
-		vis[x] = k
-		for y, dw in graph[x].items():
-			heapq.heappush(pq, (w+dw, y, k-1))
+	   w, x, k = heapq.heappop(pq)
+	   if x == dst:
+		return w
+	   if vis[x] >= k:
+		continue
+	   vis[x] = k
+	   for y, dw in graph[x].items():
+		heapq.heappush(pq, (w+dw, y, k-1))
 	return -1
 
 
