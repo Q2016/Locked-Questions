@@ -1,7 +1,8 @@
 Question:
 There is a directed graph of n nodes with each node labeled from 0 to n - 1. The graph is represented by a 0-indexed 2D integer array 
 graph where graph[i] is an integer array of nodes adjacent to node i, meaning there is an edge from node i to each node in graph[i].
-A node is a terminal node if there are no outgoing edges. A node is a safe node if every possible path starting from that node leads to a terminal node.
+A node is a terminal node if there are no outgoing edges. A node is a safe node if every possible path starting from that node leads 
+to a terminal node.
 Return an array containing all the safe nodes of the graph. The answer should be sorted in ascending order.
 
 Example 1:
@@ -11,6 +12,14 @@ Output: [2,4,5,6]
 Explanation: The given graph is shown above.
 Nodes 5 and 6 are terminal nodes as there are no outgoing edges from either of them.
 Every path starting at nodes 2, 4, 5, and 6 all lead to either node 5 or 6.
+
+
+
+
+
+
+
+
 
 
 
@@ -34,6 +43,7 @@ In order to exit our search quickly when we find a cycle (and not paint other no
 we'll say the result of visiting a node is true if it is eventually safe, otherwise false. This allows 
 information that we've reached a cycle to propagate up the call stack so that we can terminate our search early.
 
+
 class Solution(object):
     def eventualSafeNodes(self, graph):
         WHITE, GRAY, BLACK = 0, 1, 2
@@ -51,5 +61,11 @@ class Solution(object):
                     return False
             color[node] = BLACK
             return True
-
-        return filter(dfs, range(len(graph)))
+        
+        #The filter() function extracts elements from an iterable (list, tuple etc.) for which a function returns True.
+        return filter(dfs, range(len(graph))) 
+    
+    
+Complexity Analysis
+Time Complexity: O(N + E), where N is the number of nodes in the given graph, and E is the total number of edges.
+Space Complexity: O(N) in additional space complexity.    
