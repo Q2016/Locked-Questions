@@ -22,6 +22,12 @@ gridNew = [ [8, 4, 8, 7],
             [3, 3, 3, 3] ]
 
 
+
+
+
+
+
+
 Solution: Row and Column Maximums [Accepted]
 The skyline looking from the top is col_maxes = [max(column_0), max(column_1), ...]. 
 Similarly, the skyline from the left is row_maxes [max(row_0), max(row_1), ...]
