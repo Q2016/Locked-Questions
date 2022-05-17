@@ -6,11 +6,20 @@ Example 1:
 Input: head = [1,2,3,3,4,4,5]
 Output: [1,2,5]  
 
-
-Solution: Sentinel Head + Predecessor
   
-Solution from: with images
-  https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/solution/
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+Solution: Sentinel Head (Has two loops but O(N) )
+  
+https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/solution/
 
 Sentinel Head
 
