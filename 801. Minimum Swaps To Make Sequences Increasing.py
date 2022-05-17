@@ -15,64 +15,113 @@ which are both strictly increasing.
 
 
 
+
+
+
+
 Solution:
-swap[n] means the minimum swaps to make the A[i] and B[i] sequences increasing for 0 <= i <= n,
-in condition that we swap A[n] and B[n]
-not_swap[n] is the same with A[n] and B[n] not swapped.
+    
+state
+whether we swap the element at index i to make A[0..i] and B[0..i] both increasing can uniquely identify a state, i.e. a node in the state graph.
+state function
+state(i, 0) is the minimum swaps to make A[0..i] and B[0..i] both increasing if we donot swap A[i] with B[i]
+state(i, 1) is the minimum swaps to make A[0..i] and B[0..i] both increasing if we do swap A[i] with B[i]
+goal state
+min{state(n - 1, 0), state(n - 1, 1)} where n = A.length
+state transition
+We define areBothSelfIncreasing: A[i - 1] < A[i] && B[i - 1] < B[i], areInterchangeIncreasing: A[i - 1] < B[i] && B[i - 1] < A[i].
+Since 'the given input always makes it possible', at least one of the two conditions above should be satisfied.
 
-@Acker help explain:
+if i == 0, 
+	        state(0, 0) = 0; 
+	        state(0, 1) = 1;
+			
+Generally speaking,
+	if areBothSelfIncreasing && areInterchangeIncreasing
+	        // Doesn't matter whether the previous is swapped or not.
+	        state(i, 0) = Math.min(state(i - 1, 0), state(i - 1, 1));
+	        state(i, 1) = Math.min(state(i - 1, 0), state(i - 1, 1)) + 1;
+	else if areBothSelfIncreasing
+	        // Following the previous action.
+	        state(i, 0) =  state(i - 1, 0);
+	        state(i, 1) =  state(i - 1, 1) + 1;
+	else if areInterchangeIncreasing
+	        // Opposite to the previous action.
+	        state(i, 0) = state(i - 1, 1);
+	        state(i, 1) = state(i - 1, 0) + 1;
+        
+        
+The complete code:          
+        
+        
+    public int minSwap(int[] A, int[] B) {
+        int n = A.length;
+        int[][] state = new int[n][2];
+        state[0][1] = 1;
+        
+        for (int i = 1; i < n; i++) {
+            boolean areBothSelfIncreasing = A[i - 1] < A[i] && B[i - 1] < B[i];
+            boolean areInterchangeIncreasing = A[i - 1] < B[i] && B[i - 1] < A[i];
+            
+            if (areBothSelfIncreasing && areInterchangeIncreasing) {
+                state[i][0] = Math.min(state[i - 1][0], state[i - 1][1]);
+                state[i][1] = Math.min(state[i - 1][0], state[i - 1][1]) + 1;
+            } else if (areBothSelfIncreasing) {
+                state[i][0] = state[i - 1][0];
+                state[i][1] = state[i - 1][1] + 1;
+            } else { // if (areInterchangeIncreasing)
+                state[i][0] = state[i - 1][1];
+                state[i][1] = state[i - 1][0] + 1;
+            }
+        }
+        
+        return Math.min(state[n - 1][0], state[n - 1][1]);
+    }
 
-A[i - 1] < A[i] && B[i - 1] < B[i].
-In this case, if we want to keep A and B increasing before the index i, can only have two choices.
--> 1.1 don't swap at (i-1) and don't swap at i, we can get not_swap[i] = not_swap[i-1]
--> 1.2 swap at (i-1) and swap at i, we can get swap[i] = swap[i-1]+1
-if swap at (i-1) and do not swap at i, we can not guarantee A and B increasing.
+Optimization
+Since current state depends on its previous state only, we may use variables to save states rather than the state array.
+Java 0.1
 
-A[i-1] < B[i] && B[i-1] < A[i]
-In this case, if we want to keep A and B increasing before the index i, can only have two choices.
--> 2.1 swap at (i-1) and do not swap at i, we can get notswap[i] = Math.min(swap[i-1], notswap[i] )
--> 2.2 do not swap at (i-1) and swap at i, we can get swap[i]=Math.min(notswap[i-1]+1, swap[i])
+    public int minSwap(int[] A, int[] B) {
+        int n = A.length, prevNotSwap = 0, prevSwap = 1;
+        
+        for (int i = 1; i < n; i++) {
+            boolean areBothSelfIncreasing = A[i - 1] < A[i] && B[i - 1] < B[i];
+            boolean areInterchangeIncreasing = A[i - 1] < B[i] && B[i - 1] < A[i];
+            
+            if (areBothSelfIncreasing && areInterchangeIncreasing) {
+                int newPrevNotSwap = Math.min(prevNotSwap, prevSwap);
+                prevSwap = Math.min(prevNotSwap, prevSwap) + 1;
+                prevNotSwap = newPrevNotSwap;
+            } else if (areBothSelfIncreasing) {
+                prevSwap++;
+            } else { // if (areInterchangeIncreasing)
+                int newPrevNotSwap = prevSwap;
+                prevSwap = prevNotSwap + 1;
+                prevNotSwap = newPrevNotSwap;
+            }
+        }
+        
+        return Math.min(prevSwap, prevNotSwap);
+    }
 
-
-Complexty
-Time O(N)
-Space O(N)
+Python
 
     def minSwap(self, A, B):
-        N = len(A)
-        not_swap, swap = [N] * N, [N] * N
-        not_swap[0], swap[0] = 0, 1
-        for i in range(1, N):
-            if A[i - 1] < A[i] and B[i - 1] < B[i]:
-                swap[i] = swap[i - 1] + 1
-                not_swap[i] = not_swap[i - 1]
-            if A[i - 1] < B[i] and B[i - 1] < A[i]:
-                swap[i] = min(swap[i], not_swap[i - 1] + 1)
-                not_swap[i] = min(not_swap[i], swap[i - 1])
-        return min(swap[-1], not_swap[-1])
-  
-  
-Complexty
-Time O(N)
-Space O(1)       
-        
-        
-    def minSwap(self, A, B):
-        N = len(A)
-        not_swap, swap = 0, 1
-        for i in range(1, N):
-            not_swap2 = swap2 = N
-            if A[i - 1] < A[i] and B[i - 1] < B[i]:
-                swap2 = swap + 1
-                not_swap2 = not_swap
-            if A[i - 1] < B[i] and B[i - 1] < A[i]:
-                swap2 = min(swap2, not_swap + 1)
-                not_swap2 = min(not_swap2, swap)
-            swap, not_swap = swap2, not_swap2
-        return min(swap, not_swap) 
-   
-   
-   
- 
-        
-        
+        n = len(A)
+        prevNotSwap = 0
+        prevSwap = 1
+        for i in range(1, n):
+            areBothSelfIncreasing = A[i - 1] < A[i] and B[i - 1] < B[i] 
+            areInterchangeIncreasing = A[i - 1] < B[i] and B[i - 1] < A[i]
+            if areBothSelfIncreasing and areInterchangeIncreasing:
+                newPrevNotSwap = min(prevNotSwap, prevSwap)
+                prevSwap = min(prevNotSwap, prevSwap) + 1
+                prevNotSwap = newPrevNotSwap
+            elif areBothSelfIncreasing:
+                prevSwap += 1 
+            else: # if areInterchangeIncreasing:
+                newPrevNotSwap = prevSwap
+                prevSwap = prevNotSwap + 1
+                prevNotSwap = newPrevNotSwap
+        return min(prevNotSwap, prevSwap)            
