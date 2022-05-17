@@ -8,7 +8,10 @@ building can also be increased. However, increasing the height of a building sho
 Return the maximum total sum that the height of the buildings can be increased by without changing the city's skyline from any cardinal direction.
 
 Example 1:
-Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+Input: grid = [[3,0,8,4],
+               [2,4,5,7],
+               [9,2,6,3],
+               [0,3,1,0]]
 Output: 35
 Explanation: The building heights are shown in the center of the above image.
 The skylines when viewed from each cardinal direction are drawn in red.
@@ -34,9 +37,7 @@ class Solution(object):
         row_maxes = [max(row) for row in grid]
         col_maxes = [max(col) for col in zip(*grid)]
 
-        return sum(min(row_maxes[r], col_maxes[c]) - val
-                   for r, row in enumerate(grid)
-                   for c, val in enumerate(row))
+        return sum(min(row_maxes[r], col_maxes[c]) - val for r, row in enumerate(grid) for c, val in enumerate(row))
                    
 
         
