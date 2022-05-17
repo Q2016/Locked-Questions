@@ -8,17 +8,25 @@ Output: 2
 Explanation: 0 and 1 are connected, so [0, 1] and [3] are the two connected components.
 
 
-Solution::
-Take second example in the description: liked list: 0->1->2->3->4 I highlighed the subset G in linked list with color red.
-The problem is just to count how many red part there are. One red part is one connected components. To do this, we just need to count tails of red parts.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: Two pointers
 
 
-
+class Solution(object):
     def numComponents(self, head, G):
-        setG = set(G)
-        res = 0
-        while head:
-            if head.val in setG and (head.next == None or head.next.val not in setG):
-                res += 1
-            head = head.next
-        return res
+
+        p, prev, count, G = head, False, 0, set(G)
+        while p:
+            if p.val in G and not prev:
+                count += 1
+            prev, p = p.val in G, p.next;
+        
+        return count
