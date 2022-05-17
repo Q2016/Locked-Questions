@@ -19,6 +19,14 @@ We can extend "e" and "o" in the word "hello" to get "heeellooo".
 We can't extend "helo" to get "heeellooo" because the group "ll" is not size 3 or more.
 
 
+
+
+
+
+
+
+
+
 Solution:
 To make the code more readable, a possible way is to define helper functions.
 
@@ -54,29 +62,25 @@ class Solution:
                     letters.append(l)
                     counts.append(1)
                 else:
-                    counts[-1] += 1
-                    
+                    counts[-1] += 1   
             return letters, counts
+        
         
         # check if a word is stretchy by comparing to compressed S
         def is_stretchy(w):
-            
             # S_letters, S_counts are the output of compress(S)
             nonlocal S_letters, S_counts
-            
             w_letters, w_counts = compress(w)
-            
             if w_letters != S_letters:
                 return False
-            
             for i in range(len(S_counts)):
                 if S_counts[i] < 3 and S_counts[i] != w_counts[i]:
                     return False
                 if S_counts[i] >= 3 and S_counts[i] < w_counts[i]:
                     return False
-                    
             return True
 
+        
         # main body
         S_letters, S_counts = compress(S)
         res = 0
