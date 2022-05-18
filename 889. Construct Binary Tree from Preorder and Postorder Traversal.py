@@ -5,6 +5,15 @@ If there exist multiple answers, you can return any of them.
     
  
 Solution:  Recursive
+
+The first element in "pre" and the last element in "post" should both be the value of the root. The second to last of "post" should 
+be the value of right child of the root. So we can find the index to split "left" and "right" children in "pre". Don't forget to evaluate 
+if the length of "post" is larger than 1, since we used post[-2].    
+
+Complexity:
+Time O(N), as we iterate both pre index and post index only once.
+Space O(height), depending on the height of constructed tree.
+
     
 class Solution:
     def constructFromPrePost(self, pre, post):
@@ -16,6 +25,17 @@ class Solution:
         root.right = self.constructFromPrePost(pre[idx: ], post[(idx - 1):-1])
         return root
     
-The first element in "pre" and the last element in "post" should both be the value of the root. The second to last of "post" should 
-be the value of right child of the root. So we can find the index to split "left" and "right" children in "pre". Don't forget to evaluate 
-if the length of "post" is larger than 1, since we used post[-2].    
+Another version:
+    
+    preIndex, posIndex = 0, 0
+    def constructFromPrePost(self, pre, post):
+        root = TreeNode(pre[self.preIndex])
+        self.preIndex += 1
+        if (root.val != post[self.posIndex]):
+            root.left = self.constructFromPrePost(pre, post)
+        if (root.val != post[self.posIndex]):
+            root.right = self.constructFromPrePost(pre, post)
+        self.posIndex += 1
+        return root
+    
+    
