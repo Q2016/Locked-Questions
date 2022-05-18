@@ -12,6 +12,12 @@ Output: 5
 Explanation: The largest mountain is [1,4,7,3,2] which has length 5.    
 
     
+    
+    
+    
+    
+    
+    
 Solution: Two Pointer
 
 Without loss of generality, a mountain can only start after the previous one ends.
@@ -57,3 +63,10 @@ class Solution(object):
             base = max(end, base + 1)
 
         return ans
+    
+    
+    
+Complexity Analysis
+
+Time Complexity: O(N), where NN is the length of A.
+Space Complexity: O(1).    
