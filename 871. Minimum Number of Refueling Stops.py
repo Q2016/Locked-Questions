@@ -19,6 +19,13 @@ We made 2 refueling stops along the way, so we return 2.
 
 
 
+
+
+
+
+
+
+
 Solution:
 Let's update dp as we consider each station in order. With no stations, clearly we can get a maximum distance of startFuel with 0 refueling stops.
 Now let's look at the update step. When adding a station station[i] = (location, capacity), any time we could reach this station with t refueling 
@@ -38,3 +45,10 @@ class Solution(object):
         for i, d in enumerate(dp):
             if d >= target: return i
         return -1  
+
+    
+Complexity Analysis
+
+Time Complexity: O(N^2), where N is the length of stations.
+
+Space Complexity: O(N), the space used by dp.    
