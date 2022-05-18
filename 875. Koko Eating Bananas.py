@@ -76,7 +76,7 @@ class Solution:
     
 Complexity Analysis
 
-Let nn be the length of the input array piles and mm be the maximum number of bananas in a single pile from piles.
+Let n be the length of the input array piles and m be the maximum number of bananas in a single pile from piles.
 
 Time complexity: O(n⋅log m)
 
