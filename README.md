@@ -12,7 +12,9 @@ For these questions I like to see their youtube:
 
 1060, 1144, 1229, 1233, 1477, 1488, 1504, 1530, 173, 222, 247, 250, 254, 259, 267, 285, 29, 294, 298, 31, 311, 
 
-314, 320, 325, 33, 333, 351, 353, 36, 361, 365, 366, 369, 370, 418, 426, 469, 484, 497, 528, 533, 621, 652, 659,713, 769,785
+314, 320, 325, 33, 333, 351, 353, 36, 361, 365, 366, 369, 370, 418, 426, 469, 484, 497, 528, 533, 621, 652, 659,713, 
+
+769,785, 838,835,833,801,794,723
 
 Bits:477
 
@@ -20,7 +22,7 @@ XOR:421
 
 String re:468, 640
 
-BFS:127,133,547,662, 742 (maybe related to Dijkstra, Bellman Ford), 752
+BFS:127,133,547,662, 742 (maybe related to Dijkstra, Bellman Ford), 752, DFS coloring (886)
 
 Dijkstra:1376,743,787  Bellman Ford:1514, 490, 505, 
 
@@ -44,5 +46,6 @@ Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recur
 
 DP: 300, DP of Buying stocks is defined in 309, 322, 62
 
-Heap: 692, 767
+Heap (Priority Que): 692, 767, 871
+
 
