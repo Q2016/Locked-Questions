@@ -10,6 +10,12 @@ Explanation: 3 boats (1, 2), (2) and (3)
 
     
     
+    
+    
+    
+    
+    
+    
 Solution: Greedy (Two Pointer)
 
 If the heaviest person can share a boat with the lightest person, then do so. Otherwise, 
