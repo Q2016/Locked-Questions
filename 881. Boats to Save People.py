@@ -28,7 +28,7 @@ Then, as described above, if the heaviest person can share a boat with the light
 
 class Solution(object):
     def numRescueBoats(self, people, limit):
-        people.sort()
+        people.sort() # nlog n
         i, j = 0, len(people) - 1
         ans = 0
         while i <= j:
@@ -37,3 +37,18 @@ class Solution(object):
                 i += 1
             j -= 1
         return ans
+
+    
+    
+Complexity Analysis
+
+Time Complexity: O(NlogN), where N is the length of people.
+
+Space Complexity: O(logN).
+
+Some extra space is used when we sort people in place. The space complexity of the sorting algorithm depends on which sorting algorithm is used; 
+the default algorithm varies from one language to another.
+In C++, the sort() function is implemented as a hybrid of Quick Sort, Heap Sort, and Insertion Sort, with worst-case space complexity of O(logn).
+In Java, Arrays.sort() is implemented using a variant of the Quick Sort algorithm which has a space complexity of O(logn).
+In python, the sort method sorts a list using the Timsort algorithm, which is a combination of Merge Sort and Insertion Sort and uses O(n) additional 
+space.    
