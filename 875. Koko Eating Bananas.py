@@ -10,14 +10,20 @@ Input: piles = [30,11,23,4,20], h = 5
 Output: 30
 
 
+    
+    
+    
+    
+    
+    
 Solution: Binary Search
 
 In the previous approach, we tried every smaller eating speed, before finding the first workable speed. We shall look for a more efficient way to 
 locate the minimum workable eating speed.
 Recall how we calculated the total time for Koko to finish eating all the piles in approach 1. We can observe two laws:
-If Koko can eat all the piles with a speed of nn, she can also finish the task with the speed of n + 1n+1. With a larger eating speed, Koko will 
+If Koko can eat all the piles with a speed of nn, she can also finish the task with the speed of n + 1. With a larger eating speed, Koko will 
 spend less or equal time on every pile. Thus, the overall time is guaranteed to be less than or equal to that of the speed nn.
-If Koko can't finish with a speed of nn, then she can't finish with the speed of n - 1n−1 either. With a smaller eating speed, Koko will spend more 
+If Koko can't finish with a speed of nn, then she can't finish with the speed of n - 1 either. With a smaller eating speed, Koko will spend more 
 or equal time on every pile, thus the overall time will be greater than or equal to that of the speed nn.
 Given the previous laws, the distribution will be:
 If the current speed is workable, the minimum workable speed should be on its left inclusively. If the current speed is not workable, that is, too 
@@ -66,3 +72,18 @@ class Solution:
         # Once the left and right boundaries coincide, we find the target value,
         # that is, the minimum workable eating speed.
         return right
+
+    
+Complexity Analysis
+
+Let nn be the length of the input array piles and mm be the maximum number of bananas in a single pile from piles.
+
+Time complexity: O(n⋅log m)
+
+The initial search space is from 1 to m, it takes logm comparisons to reduce the search space to 1.
+For each eating speed middlemiddle, we traverse the array and calculate the overall time Koko spends, which takes O(n) for each traversal.
+To sum up, the time complexity is O(n⋅logm).
+Space complexity: O(1)
+
+For each eating speed middlemiddle, we iterate over the array and calculate the total hours Koko spends, which costs constant space.
+Therefore, the overall space complexity is O(1).    
