@@ -26,7 +26,7 @@ We made 2 refueling stops along the way, so we return 2.
 
 
 
-Solution:Dynamic Programming
+Solution:Dynamic Programming (the more natural solution is priority Que)
 
 Intuition
 
