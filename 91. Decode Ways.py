@@ -17,6 +17,16 @@ Input: s = "12"
 Output: 2
 Explanation: "12" could be decoded as "AB" (1 2) or "L" (12).	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 Solution: DFS
 
 Method 1: (with figures in the link)
@@ -27,8 +37,8 @@ First, I build a tree of possible decodings I can do from a random string.
 
 The number of leaves in the tree essentially is the number of ways the string can be decoded.
 We are going to build our tree with DFS from our original string, trying to decode either as:
-A single digit (and call dfs again with remaining string)
-Both single digit and double digit, when the double digits are less than or equal to 26 (and call dfs again with remaining strings).
+	-A single digit (and call dfs again with remaining string)
+	-Both single digit and double digit, when the double digits are less than or equal to 26 (and call dfs again with remaining strings).
 Our base case is when we have only a single digit left in our string or when we have nothing left in the string. In that case, we return 1 
 back up the recursion stack.
 
@@ -45,16 +55,18 @@ and if that recursive call has been made before, it is just retrieved from memoi
 
 After you have got a hang of the thinking process, we will have to handle issues with zeros.
 Zeros can be in the middle or at the start.
-If it is at the start, there is no way to decode the string.
-If it is in the middle:
-If it can be paired with the digit before zero (and is less than or equal to 26, then we can keep on growing our subtrees)
-If it cannot be paired with the digit before zero, we have to destory that subtree. This might even render the whole string undecodable.
+	If it is at the start, there is no way to decode the string.
+	If it is in the middle:
+		If it can be paired with the digit before zero (and is less than or equal to 26, then we can keep on growing our subtrees)
+		If it cannot be paired with the digit before zero, we have to destory that subtree. This might even render the whole string undecodable.
+
+		
 class Solution:
     def numDecodings(self, s:str) -> int:
         if len(s) == 0 or s is None:
             return 0
 
-        @lru_cache(maxsize=None)
+        @lru_cache(maxsize=None) # decorator which essentially memoizes the function calls with argument-returned value pairs (explained above)
         def dfs(string):
             if len(string)>0:
                 if string[0] == '0':
@@ -71,6 +83,12 @@ class Solution:
         result_sum = dfs(s)
 
         return result_sum	
+
+
+Complexity
+
+Time: O(N), where N <= 100 is length of string s.
+Space: O(N)
 
 
 Second method:
