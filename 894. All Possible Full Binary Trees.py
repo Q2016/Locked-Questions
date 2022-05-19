@@ -4,6 +4,18 @@ Each element of the answer is the root node of one possible tree. You may return
 A full binary tree is a binary tree where each node has exactly 0 or 2 children.    
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution: Recursion
     
 Let FBT(N) be the list of all possible full binary trees with N nodes.
@@ -29,3 +41,10 @@ class Solution(object):
             Solution.memo[N] = ans
 
         return Solution.memo[N]
+
+    
+    
+Complexity Analysis
+
+Time Complexity: O(2^N)
+Space Complexity: O(2^N)    
