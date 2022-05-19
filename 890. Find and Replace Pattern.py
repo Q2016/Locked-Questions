@@ -18,6 +18,8 @@ Explanation: "mee" matches the pattern because there is a permutation {a -> m, b
 
 Solution: Two Maps (The code is clear)
 
+Could have been done with Counter as well.    
+
 
 class Solution(object):
     
@@ -32,3 +34,12 @@ class Solution(object):
             return True
 
         return filter(match, words)
+    
+    
+Complexity Analysis
+
+Time Complexity: O(N * K), where N is the number of words, and K is the length of each word.
+Space Complexity: O(N * K), the space used by the answer.    
+    
+    
+    
