@@ -17,8 +17,14 @@ Output: 3
   
   
   
-Solution: Sliding window
+Solution: Sliding window (it's not clear at first regarding the time complexity)
 
+-Let’s say we take substring between indexes curr_start and curr_end, both points to index 0 at the beginning.
+-Keep adding one character at a time to the substring by moving curr_end pointer to the right and make sure that condition of substring 
+ has at most 2 unique characters at a time is valid by adding the new character and if any point the condition is not valid then start 
+ moving curr_start pointer to the right till condition is valid again.
+-At each step, keep track of length of maximum substring by doing curr_end-curr_start.                            
+                          
 class Solution:
 
     def lengthOfLongestSubstringTwoDistinct(self, s):
@@ -37,5 +43,5 @@ class Solution:
             longest = max(longest, R - L + 1)
         return longest
 
-  
+  Time complexity: O(N)
   
