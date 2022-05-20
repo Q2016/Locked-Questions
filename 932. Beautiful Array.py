@@ -1,46 +1,53 @@
 Question:
-An array nums of length n is beautiful if:
-nums is a permutation of the integers in the range [1, n].
-For every 0 <= i < j < n, there is no index k with i < k < j where 2 * nums[k] == nums[i] + nums[j].
+An array nums of length n is beautiful if: nums is a permutation of the integers in the range [1, n].
+For every 0 <= i < j < n, there is 'no' index k with i < k < j where 2 * nums[k] == nums[i] + nums[j].
 Given the integer n, return any beautiful array nums of length n. There will be at least one valid answer for the given n.
 
+Example 1:
+Input: n = 4
+Output: [2,1,4,3]
 
-Solution: Divide and Conquer
-First, notice that the condition is equivalent to saying that A has no arithmetic subsequence. 
-We'll use the term "arithmetic-free" interchangeably with "beautiful".
 
-One way is to guess that we should divide and conquer. One reason for this is that the condition is 
-linear, so if the condition is satisfied by variables taking on values (1, 2, ..., n), it is satisfied 
-by those variables taking on values (a + b, a + 2*b, a + 3*b, ..., a + (n-1)*b) instead.
+    
+    
+    
+    
+    
+    
+    
 
-If we perform a divide and conquer, then we have two parts left and right, such that each part is 
-arithmetic-free, and we only want that a triple from both parts is not arithmetic. Looking at the conditions:
+Solution: Divide and Conquer (difficault)
+    
+In this problem we have n = 1000, which is too big to use dfs/backtracking, so we need to find some pattern. We need to avoid structures 
+like i < k < j with nums[i] + nums[j] = 2 * nums[k], which means that nums[i] and nums[j] has the same parity: they are both odd or even. 
+This lead us to the following idea: let us split all numbers into 2 groups: all odd numbers and then all even numbers.
 
-2*A[k] = A[i] + A[j]
-(i < k < j), i from left, j from right
-we can guess that because the left hand side 2*A[k] is even, we can choose left to have all odd 
-elements, and right to have all even elements.
+[ odd numbers ] [ even numbers ]
 
-Another way we could arrive at this is to try to place a number in the middle, like 5. We will have 
-4 and 6 say, to the left of 5, and 7 to the right of 6, etc. We see that in general, odd numbers move 
-towards one direction and even numbers towards another direction.
+Then if i, j, k lies in two different groups, we are OK, we will hever have forbidden pattern. Also, if we look at odd numbers, imagine n = 12, 
+then we have [1, 3, 5, 7, 9, 11] and if we subtract 1 to each number and divide each number by 2 then we have [0, 1, 2, 3, 4, 5]. Note, that is 
+linear transform: when we did this transformation, if we did not have forbidden pattern, we still do not have it! So, what we need to do is to 
+run function recursively for odd and even numbers and concatenate them.
 
-One final way we could arrive at this is to inspect possible answers arrived at by brute force. On 
-experimentation, we see that many answers have all the odd elements to one side, and all the even 
-elements to the other side, with only minor variation.
+Complexity
+From the first sight, time complexity is O(n log n), because we have recursion C(n) = C(n//2) + C((n+1)//2), which lead to O(n log n). 
+However it can be shown that it is O(n). Imagine case n = 105, then we have 105 -> (52, 53) -> (26, 26, 27, 27) -> (13, 13, 13, 13, 14, 14, 14, 14) 
+and if we use memoisation, no need to solve problem each time for 13, we can do it only once. On each level we will have at most two values in our 
+recursion tree. Space complexity is O(n).
 
-Algorithm
+Code
+class Solution:
+    def beautifulArray(self, N):
+        @lru_cache(None)
+        def dfs(N):
+            if N == 1: return (1,)
+            t1 = dfs((N+1)//2)
+            t2 = dfs(N//2)
+            return [i*2-1 for i in t1] + [i*2 for i in t2]
+        
+        return dfs(N)
 
-Looking at the elements 1, 2, ..., N, there are (N+1) / 2 odd numbers and N / 2 even numbers.
-
-We solve for elements 1, 2, ..., (N+1) / 2 and map these numbers onto 1, 3, 5, .... Similarly, 
-we solve for elements 1, 2, ..., N/2 and map these numbers onto 2, 4, 6, ....
-
-We can compose these solutions by concatenating them, since an arithmetic sequence never starts 
-and ends with elements of different parity.
-
-We memoize the result to arrive at the answer quicker.
-
+or without @lru_cache(None)
 
 class Solution:
     def beautifulArray(self, N):
@@ -52,3 +59,7 @@ class Solution:
                 memo[N] = [2*x-1 for x in odds] + [2*x for x in evens]
             return memo[N]
         return f(N)
+
+    
+    
+  
