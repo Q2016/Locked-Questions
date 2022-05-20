@@ -11,24 +11,30 @@ Example 2
 Input: “aaa”
 Output: 3
   
-Solution:
+  
+  
+  
+  
+  
+  
+Solution: Sliding window
 
 class Solution:
 
     def lengthOfLongestSubstringTwoDistinct(self, s):
-        longest, start, distinct_count, visited = 0, 0, 0, [0 for _ in xrange(256)]
-        for i, char in enumerate(s):
+        longest, L, distinct_count, visited = 0, 0, 0, [0 for _ in xrange(256)]
+        for R, char in enumerate(s):
             if visited[ord(char)] == 0:
                 distinct_count += 1
             visited[ord(char)] += 1
             
             while distinct_count > 2:
-                visited[ord(s[start])] -= 1
-                if visited[ord(s[start])] == 0:
+                visited[ord(s[L])] -= 1
+                if visited[ord(s[L])] == 0:
                     distinct_count -= 1
-                start += 1
+                L += 1
   
-            longest = max(longest, i - start + 1)
+            longest = max(longest, R - L + 1)
         return longest
 
   
