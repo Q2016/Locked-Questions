@@ -22,7 +22,7 @@ Solution: Iterative
 For figure:
 https://leetcode.com/problems/reverse-linked-list-ii/solution/
   
-Approach 2: Iterative Link Reversal.  
+
 
 class Solution:
     def reverseBetween(self, head, m, n):
@@ -30,7 +30,6 @@ class Solution:
         # Empty list
         if not head:
             return None
-
         # Move the two pointers until they reach the proper starting point
         # in the list.
         cur, prev = head, None
@@ -38,10 +37,8 @@ class Solution:
             prev = cur
             cur = cur.next
             m, n = m - 1, n - 1
-
         # The two pointers that will fix the final connections.
         tail, con = cur, prev
-
         # Iteratively reverse the nodes until n becomes 0.
         while n:
             third = cur.next
@@ -49,7 +46,6 @@ class Solution:
             prev = cur
             cur = third
             n -= 1
-
         # Adjust the final connections as explained in the algorithm
         if con:
             con.next = prev
