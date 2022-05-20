@@ -8,35 +8,44 @@ Output: 1
 Explanation: We flip the last digit to get 00111.    
 
 
-Solution:
-class Solution {
-public:
-    int minFlipsMonoIncr(string S, int res = INT_MAX) {
-        vector<int> f0(S.size() + 1), f1(S.size() + 1);
-        for (int i = 1, j = S.size() - 1; j >= 0; ++i, --j) {
-            f0[i] += f0[i - 1] + (S[i - 1] == '0' ? 0 : 1);
-            f1[j] += f1[j + 1] + (S[j] == '1' ? 0 : 1);
-        }
-        for (int i = 0; i <= S.size(); ++i) res = min(res, f0[i] + f1[i]);
-        return res;
-    }   
-};
 
-/*We need to split the array into left '0' and right '1' sub-arrays, so that sum of '1' -> '0' flips (left) and '0' -> '1' flips (right) is minimal.
+    
+    
+    
+    
+    
+    
+Solution: Similar to 122. Best Time to Buy and Sell Stock III
 
-Count of '0' -> '1' flips going left to right, and store it in f0.
-Count of '1' -> '0' flips going right to left, and store it in f1.
-Find a the smallest f0[i] + f1[i].
+Approach 1: Prefix Sums
 
-This reminds me of 122. Best Time to Buy and Sell Stock III. That problem has a DP solution with O(1) memory complexity, so we can try to apply it here. 
-We can go left to right, and virtually 'move' the split point every time we see that we need less '0' -> '1' than '1' -> '0' 
-flips (f1 = min(f0, f1 + 1 - (c - '0'))).
+Intuition
 
-int minFlipsMonoIncr(string S, int f0 = 0, int f1 = 0) {
-    for (auto c : S) {
-        f0 += c - '0';
-        f1 = min(f0, f1 + 1 - (c - '0'));
-    }
-    return f1;
-}
-*/
+For say a 5 digit string, the answer is either '00000', '00001', '00011', '00111', '01111', or '11111'. Let's try to calculate the cost of switching 
+to that answer. The answer has two halves, a left (zero) half, and a right (one) half.
+Evidently, it comes down to a question of knowing, for each candidate half: how many ones are in the left half, and how many zeros are in the right half.
+We can use prefix sums. Say P[i+1] = A[0] + A[1] + ... + A[i], where A[i] = 1 if S[i] == '1', else A[i] = 0. We can calculate P in linear time.
+Then if we want x zeros followed by N-x ones, there are P[x] ones in the start that must be flipped, plus (N-x) - (P[N] - P[x]) zeros that must be flipped. The last calculation comes from the fact that there are P[N] - P[x] ones in the later segment of length N-x, but we want the number of zeros.
+
+Algorithm
+
+For example, with S = "010110": we have P = [0, 0, 1, 1, 2, 3, 3]. Now say we want to evaluate having x=3 zeros.
+There are P[3] = 1 ones in the first 3 characters, and P[6] - P[3] = 2 ones in the later N-x = 3 characters.
+So, there is (N-x) - (P[N] - P[x]) = 1 zero in the later N-x characters.
+We take the minimum among all candidate answers to arrive at the final answer.
+
+class Solution(object):
+    def minFlipsMonoIncr(self, S):
+        P = [0]
+        for x in S:
+            P.append(P[-1] + int(x))
+
+        return min(P[j] + len(S)-j-(P[-1]-P[j])
+                   for j in xrange(len(P)))
+    
+
+    
+Complexity Analysis
+
+Time Complexity: O(N), where N is the length of S.
+Space Complexity: O(N).    
