@@ -26,7 +26,6 @@ https://leetcode.com/problems/reverse-linked-list-ii/solution/
 
 class Solution:
     def reverseBetween(self, head, m, n):
-
         # Empty list
         if not head:
             return None
