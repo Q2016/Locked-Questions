@@ -1,5 +1,5 @@
 Question:
-You have an initial power of power, an initial score of 0, and a bag of tokens where tokens[i] is the value of the ith token (0-indexed).
+You have an initial power, an initial score of 0, and a bag of tokens where tokens[i] is the value of the ith token.
 Your goal is to maximize your total score by potentially playing each token in one of two ways:
 If your current power is at least tokens[i], you may play the ith token face up, losing tokens[i] power and gaining 1 score.
 If your current score is at least 1, you may play the ith token face down, gaining tokens[i] power and losing 1 score.
@@ -8,7 +8,17 @@ Return the largest possible score you can achieve after playing any number of to
 
 
 
-Solution: Greedy
+
+
+
+
+
+
+
+
+
+
+Solution: Greedy (The conditions are important, the idea is easy)
 
 If we play a token face up, we might as well play the one with the smallest value. 
 Similarly, if we play a token face down, we might as well play the one with the largest value.
@@ -35,3 +45,37 @@ class Solution(object):
                 bns -= 1
 
         return ans
+
+    
+Complexity Analysis
+
+Time Complexity: O(NlogN), where N is the length of tokens.
+
+Space complexity : O(N) or O(logN) 
+The space complexity of the sorting algorithm depends on the implementation of each program language.
+    For instance, the sorted() function in Python is implemented with the Timsort algorithm whose space complexity is O(N).
+    In Java, the Arrays.sort() is implemented as a variant of quicksort algorithm whose space complexity is O(logN).
+ 
+
+
+Another solution: Two pointers
+    
+Looks simpler to use just one loop and play token face down only when you have at least one more token left:
+Java:
+        Arrays.sort(tokens);
+        if (tokens.length == 0 || power < tokens[0]) return 0;
+        int left = 0, right = tokens.length - 1, points = 0;
+        while (left <= right) {
+            if (power >= tokens[left]) {
+                points++;
+                power -= tokens[left];
+                left++;
+            } else {
+                if (right - left > 1) {
+                    power += tokens[right];
+                    right--;
+                    points--;
+                } else break;
+            }
+        }
+        return points;    
