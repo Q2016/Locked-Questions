@@ -6,13 +6,35 @@ Example 1:
 Input: arr = [3,1,3,6]
 Output: false
 
-Solution: Greedy
-If x is currently the array element with the least absolute value, it must pair with 2*x, as there does not exist any other x/2 to pair with it.
-Let's try to (virtually) "write" the final reordered array.
-Let's check elements in order of absolute value. When we check an element x and it isn't used, it must pair with 2*x. We will attempt to write x, 
-2x - if we can't, then the answer is false. If we write everything, the answer is true.
-To keep track of what we have not yet written, we will store it in a count.
+    
+    
+     
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: Greedy (sorting is key here)
+    
+Idea
 
+We greedily process elements starting from the smallest value, WHY smallest value but not an arbitrary value?
+    Because since it's the smallest values, let say x, there is only one choice to pair with x:
+        If x is a positive number, then it pairs with y = x*2, for example: x = 4 pair with y = 8.
+        If x is a non-positive number, then it pairs with y = x/2, for example: x = -8 pair with y = -4.
+        If there is no corresponding y then it's IMPOSSIBLE, return FALSE.
+    If it's an arbitrary value, let say x, there are two choices, either x/2 or x*2 is also a good pairing with x 
+    (no matter if x is a possible or negative number), if we choose x/2 or x*2 to pair with x, it maybe WRONG, because some other elements may 
+    need it to make pair.
+    For example: arr = [2, 4, 1, 8]
+        If we process x = 2 first, then there are 2 choices, either 4 or 1 can be paired with 2, if we choose 4 -> we got WRONG ANSWER.
+        Because 8 needs 4, so 2 should be paired with 1.
+So we need to sort our arr array first.
+When a pair of (x and y) match, we need to decrease their count. So we need to use a HashTable data structure to count the frequency of 
+elements in the arr array.
 
 class Solution(object):
     def canReorderDoubled(self, A):
@@ -24,3 +46,9 @@ class Solution(object):
             count[2*x] -= 1
 
         return True
+
+    
+Complexity Analysis
+
+Time Complexity: O(NlogN), where N is the length of A.
+Space Complexity: O(N).    
