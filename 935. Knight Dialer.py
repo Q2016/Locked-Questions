@@ -134,3 +134,6 @@ private long paths(long[][][] M, int i, int j, int n) {
    return M[n][i][j];
 }	
 
+Time complexity: O(N)
+
+There is an article save to computer about this google interview question.
