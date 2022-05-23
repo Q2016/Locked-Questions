@@ -4,6 +4,18 @@ In one move, we may choose two adjacent nodes and move one coin from one node to
 Return the minimum number of moves required to make every node have exactly one coin.    
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution: Depth First Search
 
 If the leaf of a tree has 0 coins (an excess of -1 from what it needs), then we should push a coin from its parent onto the leaf. If it has say, 
@@ -26,3 +38,11 @@ class Solution(object):
 
         dfs(root)
         return self.ans
+
+    
+    
+Complexity Analysis
+
+Time Complexity: O(N), where N is the number of nodes in the tree.
+
+Space Complexity: O(H), where H is the height of the tree.  
