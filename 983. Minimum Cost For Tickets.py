@@ -10,6 +10,13 @@ Return the minimum number of dollars you need to travel every day in the given l
  
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 Solution: 
  
 Approach 1: Dynamic Programming (Day Variant)
