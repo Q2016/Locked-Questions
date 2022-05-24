@@ -5,7 +5,58 @@ As a reminder, any shorter prefix of a string is lexicographically smaller. For 
 A leaf of a node is a node that has no children.
     
     
-Solution:    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: (sounds hard) 
+    
+Approach 1: Brute Force
+Intuition
+
+Let's create every possible string - then we can compare them and choose the best one.
+
+Algorithm
+
+In our depth first search, we will maintain A, the contents of a path from the root to this node.
+
+When we reach a leaf, we will reverse this path to create a candidate answer. If it is better than our current answer, we'll update our answer.    
+
+988. Smallest String Starting From Leaf
+
+class Solution(object):
+    def smallestFromLeaf(self, root):
+        self.ans = "~"
+
+        def dfs(node, A):
+            if node:
+                A.append(chr(node.val + ord('a')))
+                if not node.left and not node.right:
+                    self.ans = min(self.ans, "".join(reversed(A)))
+
+                dfs(node.left, A)
+                dfs(node.right, A)
+                A.pop()
+
+        dfs(root, [])
+        return self.ans 
+    
+Complexity Analysis
+
+Time Complexity: We use O(N) to traverse the array and maintain A. Then, our reversal and comparison 
+with the previous answer is O(L), where L is the size of the string we have when at the leaf. For example, for a 
+perfectly balanced tree, L = logN and the time complexity would be O(NlogN).
+
+Space Complexity: O(N).    
+    
+    
 https://leetcode.com/problems/smallest-string-starting-from-leaf/discuss/328119/Simple-Python-Solution%3A-top-down-DFS
 
 257. Binary Tree Paths
@@ -24,6 +75,7 @@ https://leetcode.com/problems/smallest-string-starting-from-leaf/discuss/328119/
         res = []
         dfs(root, "", res)
         return res
+    
 129. Sum Root to Leaf Numbers
 
     def sumNumbers(self, root: TreeNode) -> int:
@@ -40,6 +92,7 @@ https://leetcode.com/problems/smallest-string-starting-from-leaf/discuss/328119/
         bits, res = '', [0]
         dfs(root, bits, res)
         return res[0]
+    
 1022. Sum of Root To Leaf Binary Numbers
 
     def sumRootToLeaf(self, root: TreeNode) -> int:
@@ -56,26 +109,7 @@ https://leetcode.com/problems/smallest-string-starting-from-leaf/discuss/328119/
         bits, res = '', [0]
         dfs(root, bits, res)
         return res[0]
-988. Smallest String Starting From Leaf
-
-    def smallestFromLeaf(self, root: TreeNode) -> str:
-        def dfs(root, s):
-            s = s + chr(ord('a') + root.val)
-            if not root.left and not root.right:
-                if res[0] == None:
-                    res[0] = s[::-1]
-                else:
-                    res[0] = min(res[0], s[::-1])
-            if root.left:
-                dfs(root.left, s)
-            if root.right:
-                dfs(root.right, s)
-        
-        if not root:
-            return ''
-        res = [None]
-        dfs(root, '')
-        return res[0]
+    
 112. Path Sum
 
     def hasPathSum(self, root: TreeNode, s: int) -> bool:
@@ -95,6 +129,7 @@ https://leetcode.com/problems/smallest-string-starting-from-leaf/discuss/328119/
         res = [False]
         dfs(root, 0)
         return res[0]
+    
 113. Path Sum II
 
     def pathSum(self, root: TreeNode, s: int) -> List[List[int]]:
@@ -114,6 +149,7 @@ https://leetcode.com/problems/smallest-string-starting-from-leaf/discuss/328119/
         res = []
         dfs(root, [], 0)
         return res
+    
 437. Path Sum III (Similar problem: 560. Subarray Sum Equals K)
 
     def pathSum(self, root, s):
