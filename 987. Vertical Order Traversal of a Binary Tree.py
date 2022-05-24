@@ -6,7 +6,106 @@ from the leftmost column and ending on the rightmost column. There may be multip
 these nodes by their values. Return the vertical order traversal of the binary tree.
 
 
+
+
+
+
+
+
+
+
+
+
 Solution:
+    
+    
+There is a similar problem Binary Tree Vertical Order Traversal, which is different from this problem only in the following requirement.
+
+If two nodes are in the same row and column, the order should be from left to right.
+
+In this problem, if two nodes are in the same row and column, the order should be from small to large.
+
+The idea is to build a mapping from coordinates to nodes.
+
+BFS
+
+Build the mapping using a queue of pairs of nodes and corresponding coordinates.
+
+C++ (the main solution, python commands at the end can be helpful)
+
+class Solution {
+public:
+    vector<vector<int>> verticalTraversal(TreeNode* root) {
+        map<int, map<int, set<int>>> nodes;
+        queue<pair<TreeNode*, pair<int, int>>> todo;
+        todo.push({root, {0, 0}});
+        while (!todo.empty()) {
+            auto p = todo.front();
+            todo.pop();
+            TreeNode* node = p.first;
+            int x = p.second.first, y = p.second.second;
+            nodes[x][y].insert(node -> val);
+            if (node -> left) {
+                todo.push({node -> left, {x - 1, y + 1}});
+            }
+            if (node -> right) {
+                todo.push({node -> right, {x + 1, y + 1}});
+            }
+        }
+        vector<vector<int>> ans;
+        for (auto p : nodes) {
+            vector<int> col;
+            for (auto q : p.second) {
+                col.insert(col.end(), q.second.begin(), q.second.end());
+            }
+            ans.push_back(col);
+        }
+        return ans;
+    }
+};
+
+DFS
+
+Build the mapping recursively.
+
+class Solution {
+public:
+    vector<vector<int>> verticalTraversal(TreeNode* root) {
+        map<int, map<int, set<int>>> nodes;
+        traverse(root, 0, 0, nodes);
+        vector<vector<int>> ans;
+        for (auto p : nodes) {
+            vector<int> col;
+            for (auto q : p.second) {
+                col.insert(col.end(), q.second.begin(), q.second.end());
+            }
+            ans.push_back(col);
+        }
+        return ans;
+    }
+private:
+    void traverse(TreeNode* root, int x, int y, map<int, map<int, set<int>>>& nodes) {
+        if (root) {
+            nodes[x][y].insert(root -> val);
+            traverse(root -> left, x - 1, y + 1, nodes);
+            traverse(root -> right, x + 1, y + 1, nodes);
+        }
+    }
+};
+
+the time complexity will be o( n * log( x * y ) ),where n is the total number of nodes, x is width of the tree, y= height of the tree.
+and space complexity will be o(n + y) ==>n=Total number of nodes and y= height of the tree.
+
+see here is nested hashmap.basically,outer hashmap has (x-coordinate as key) and (the inner hashmap as value) , and inserting any x coordinate will take log(x) time (because number of keys in outer hashmap is x) and then accessing y-coordinate in the inner hasmap wil take log(y) time. hence for accessing a coordinate will take logx + log y= o( log( xy ) ) .
+also there are n nodes in tree hence there can be at max n coordinates hence time complexity will be o( n * log(xy) )
+for space complexity --> o(n)-->for map, and o(h)--->for recursion. hence o(n + h).
+    
+    
+    
+    
+    
+    
+    
 Approach 1: queue + hash map
 https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/discuss/231256/python-queue-%2B-hash-map  
 
