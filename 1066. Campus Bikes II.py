@@ -32,49 +32,14 @@ Both assignments lead to sum of the Manhattan distances as 4.
 
 
 
-Solution: Dijkstra? --->heap
+Solution: (This problem is solved with bit-mask)
+  
+https://www.youtube.com/watch?v=x9iOjex5CNE  
+  
+  
+  
+  
+  
 
-
-
-Code: Dijkstra on augmented path: 
-def assignBikes(self, workers, bikes):
-        distances = []     # distances[worker] is tuple of (distance, worker, bike) for each bike 
-        for i, (x, y) in enumerate(workers):
-            distances.append([])
-            for j, (x_b, y_b) in enumerate(bikes):
-                distance = abs(x - x_b) + abs(y - y_b)
-                distances[-1].append((distance, i, j))
-            distances[-1].sort(reverse = True)  # reverse so we can pop the smallest distance
-
-        result = [None] * len(workers)
-        used_bikes = set()
-        queue = [distances[i].pop() for i in range(len(workers))]   # smallest distance for each worker
-        heapq.heapify(queue)
-
-        while len(used_bikes) < len(workers):
-            _, worker, bike = heapq.heappop(queue)
-            if bike not in used_bikes:
-                result[worker] = bike
-                used_bikes.add(bike)
-            else:
-                heapq.heappush(queue, distances[worker].pop())  # bike used, add next closest bike
-        return result
-      
-      
-      
-      
-      O(n^2)
-      
-      class Solution:
-    def assignBikes(self, W: List[List[int]], B: List[List[int]]) -> List[int]:
-        ans, used = [-1] * len(W), set()
-        for d, w, b in sorted([abs(W[i][0] - B[j][0]) + abs(W[i][1] - B[j][1]), i, j] for i in range(len(W)) for j in range(len(B))):
-            if ans[w] == -1 and b not in used:
-                ans[w] = b
-                used.add(b)
-        return ans
-      
-      
-      
 
 
