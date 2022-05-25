@@ -12,28 +12,28 @@ Solution: Sort
 Time O (nlogn) 
 Space O (1)
   
+  
       def minAvailableDuration(self, slots1, slots2, duration):
-       
-        def cmpf(v1,v2):
-            return v1[0] - v2[0]
           
-        slots1.sort(cmp=cmpf)
-        slots2.sort(cmp=cmpf)
-        inx1 = inx2 = 0
-        while inx1 < len(slots1) and inx2 < len(slots2):
-            item1 = slots1[inx1]
-            item2 = slots2[inx2]
-            if item1[0] > item2[1]:
-                inx2 += 1
-            elif item1[1] < item2[0]:
-                inx1 += 1
+        slots1.sort()
+        slots2.sort()
+        
+        n1=len(slots1)
+        n2=len(slots2)
+        
+        i=j=0
+        
+        while i < n1 and j < n2:
+            s1, e1 = slots1[i]
+            s2, e2 = slots2[j]
+            
+            # calculate intersec of two slots
+            if min(e1, e2)-max(s1, s2)>=duration:
+                return max(s1, s2), max(s1, s2)+duration
+              
+            # move forward who has smaller ending time  
+            if e1 >= e2:
+                j += 1
             else:
-                ms = max(item1[0],item2[0])
-                me = min(item1[1],item2[1])
-                if me - ms >= duration:
-                    return [ms,ms+duration]
-                if item1[1] < item2[1]:
-                    inx1 += 1
-                else:
-                    inx2 += 1
+                i += 1
         return []
