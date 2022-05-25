@@ -16,7 +16,7 @@ For these questions I like to see their youtube:
 
 769, 785, 838, 835, 833, 801, 794, 723
 
-Bits:477
+Bits:477, 1066 (bit-mask)
 
 XOR:421
 
