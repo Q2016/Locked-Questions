@@ -29,14 +29,14 @@ It is easy that this scenario is flood-free. [-1,-1,1,2,-1,-1] is another accept
 
 
 
-Solution: Greedy and Heap
+Solution: Greedy and Heap (kind of hard)
     
 start by getting all the days that each river is rained on, in chronological order.
 then, go through each day. if a lake is rained on during a day, we get the next day that that river is going to be 
 rained on in the future. we put this day in our "closest" minheap so that the next time we have a dry day, we can just pop 
 from the minheap and fill up the lake that will be re-rained on nearest in the future.    
 
-
+https://www.youtube.com/watch?v=EcvhHoFaDoU
 
 class Solution:
     def avoidFlood(self, rains: List[int]) -> List[int]:
@@ -67,3 +67,6 @@ class Solution:
                     heapq.heappush(closest, nxt)
                 ret.append(-1)
         return ret
+
+    
+time : nlogn    
