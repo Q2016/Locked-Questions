@@ -10,76 +10,39 @@ Output: 2
 Explanation: Only two sub-arrays have sum = 3 ([3] and [3]). The sum of their lengths is 2
 
 
-    
-Solution: O(N) Time, Two Pass Solution using HashMap
+  
 
-Concept: First traverse through the array once and store the (key,value) pair as (sum(arr[0:i+1]),i) for 0<=i<size of arr. Put, (0,-1) 
-in hashmap as default. Now traverse through the array again, and for every i, find the minimum value of length of sub-array on the left or 
-starting with i whose value is equal to target. Find another sub-array starting with i+1, whose sum is target. Update the result with the 
-minimum value of the sum of both the sub-array. This is possible because all values are positive and the value of sum is strictly increasing.
 
-C++:
-class Solution {
-    public int minSumOfLengths(int[] arr, int target) {
-        HashMap<Integer,Integer> hmap=new HashMap<>();
-        int sum=0,lsize=Integer.MAX_VALUE,result=Integer.MAX_VALUE;
-        hmap.put(0,-1);
-        for(int i=0;i<arr.length;i++){
-            sum+=arr[i];
-            hmap.put(sum,i); # stores key as sum upto index i, and value as i.
-        }
-        sum=0;
-        for(int i=0;i<arr.length;i++){
-            sum+=arr[i];
-            if(hmap.get(sum-target)!=null){
-                # stores minimum length of sub-array ending with index<= i with sum target. This ensures non- overlapping property.
-                lsize=Math.min(lsize,i-hmap.get(sum-target));      
-            }
-	    #hmap.get(sum+target) searches for any sub-array starting with index i+1 with sum target.
-            if(hmap.get(sum+target)!=null&&lsize<Integer.MAX_VALUE){
-                result=Math.min(result,hmap.get(sum+target)-i+lsize); # updates the result only if both left and right sub-array exists.
-            }
-        }
-        return result==Integer.MAX_VALUE?-1:result;
-    }
-}
 
-Python:
-class Solution: 
-    def minSumOfLengths(self, arr: List[int], target: int) -> int:
-        n = len(arr)
-        
-        # 1st scan, getting better result (smaller length) as we scan
-        left = [inf] * n
-        s = 0 # pre sum
-        shortest = inf
-        m = {0: -1}  # sum -> index
-        for i in range(n):
-            s += arr[i]
-            if s - target in m:
-                shortest = min(shortest, i - m[s - target])
-            left[i] = shortest
-            m[s] = i
-            
-        # 2nd scan, getting better result (smaller length) as we scan
-        right = [inf] * n
-        s = 0 # pre sum (from right to left)
-        shortest = inf
-        m = {0: n}
-        for i in range(n)[::-1]:
-            s += arr[i]
-            if s - target in m:
-                shortest = min(shortest, abs(i - m[s - target]) )
-            right[i] = shortest
-            m[s] = i
-        
-        # combine
-        res = inf
-        for i in range(1 , n):
-            # Non-overlapping subarrays.
-            # Check adj results because during each scan,
-            # the length will only get smaller if possible
-            if left[i - 1] != inf and right[i] != inf:
-                res = min(res, left[i - 1] + right[i])
-        
-        return res if res != inf else -1	
+
+
+
+
+Solution: Dp
+	
+def minSumOfLengths(self, arr: List[int], target: int) -> int:
+	n=len(arr)
+	dp=[sys.maxsize]*n
+	
+	left=0
+	ans=sys.maxsize
+	running_sum=0
+	cur_shortest=sys.maxsize
+	
+	for right, num in enumerate(arr):
+		running_sum+=num
+		
+		while running_sum>target:
+			running_sum-=arr[left]
+			left+=1
+		if running_sum==target:
+			if left>0 and dp[left-1]<sys.maxsize:
+				ans=min(ans, dp[left-1]+right-left+1)
+			
+			cur_shortest=min(cur_shortst, right-left+1)
+			
+		dp[left]=cur_shortest
+	
+	return ans
+
+  
