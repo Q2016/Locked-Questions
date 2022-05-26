@@ -15,7 +15,53 @@ There is 1 rectangle of side 3x1.
 Total number of rectangles = 6 + 2 + 3 + 1 + 1 = 13.	
 
 
-Solution: Histogram model (Hard)
+
+
+
+
+
+
+Solution: 
+	
+https://www.youtube.com/watch?v=8miqwSN3EFo	
+	
+class Solution:
+	def numSubmat(self, mat: List[List[int]])->int:
+		m=len(mat)
+		n=len(mat[0])
+		
+		one_counts=[[0]*n for _ in range(m)]
+		
+		# pre calculating number of ones to the right of '1'
+		for i in range(m):
+			for j in range(n-1, -1, -1):
+				if mat[i][j]==1:
+					one_counts[i][j]+=1 + (one_counts[i][j+1] if j<n-1 else 1)
+					
+		ans=0
+		
+		for i in range(m):
+			for j in range(n):
+				if mat[i][j]==1:
+					min_width=sys.maxsize # length of the square from left to right
+					for k in range(i,m): # scanning all the rows
+						min_width=min(min_width, one_counts[k][j]) #for fixed column and different rows
+						ans +=min_width
+						
+		return ans
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+Histogram model (Hard)
 
 In the first step, stack mat row by row to get the "histogram model". For example,
 mat = [[1,0,1],    =>   mat = [[1,0,1],
