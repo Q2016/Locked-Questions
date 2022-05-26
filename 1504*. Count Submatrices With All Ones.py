@@ -51,7 +51,8 @@ class Solution:
 		return ans
 	
 	
-	
+time O(m^2 *n)
+space (m*n)
 	
 	
 	
