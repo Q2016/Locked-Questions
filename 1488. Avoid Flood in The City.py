@@ -20,6 +20,15 @@ After the sixth day, full lakes are [1,2].
 It is easy that this scenario is flood-free. [-1,-1,1,2,-1,-1] is another acceptable scenario.   
 
 
+
+
+
+
+
+
+
+
+
 Solution: Greedy and Heap
     
 start by getting all the days that each river is rained on, in chronological order.
