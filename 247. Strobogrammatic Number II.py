@@ -7,6 +7,16 @@ Given n = 2, return ["11","69","88","96"].
 
 
 
+
+
+
+
+
+
+
+
+
+
 Solution:
 
 A strobogrammatic number is a number that looks the same when rotated 180 degrees. So which are the strobogrammatic number? 
