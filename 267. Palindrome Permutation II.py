@@ -5,6 +5,24 @@ Example:
 Given s = "aabb", return ["abba", "baab"].
 Given s = "abc", return [].
 
+
+
+
+
+
+
+Solution: Backtracking (we should be able to use other solutions in here)
+    
+    
+    
+    
+
+
+
+
+
+
+
 Hint:
 If a palindromic permutation exists, we just need to generate the first half of the string.
 
