@@ -10,7 +10,14 @@ For example: Given binary tree,
           5   5   5
 return 4.    
 
-Solution: bottom-up Postorder (educational)
+
+
+
+
+
+
+
+Solution: bottom-up Postorder (educational, post-order makes sense since it starts from the leaves)
 
 In traverse, there are two points when judging whether a node is a uni-value tree:
 His left and right subtrees are uni-value trees;
