@@ -11,7 +11,12 @@ Follow up: Could you solve it in O(n^2) runtime?
 
 
 
-https://baihuqian.github.io/2018-07-28-3sum-smaller/
+    
+    
+    
+    
+    
+
 
 Solution: Sliding window
 Key observation: the answer does not change if numbers are swapped. Thus we can sort the numbers first and use a sliding window method.
@@ -20,6 +25,29 @@ we initialize two indices, left and right, pointing to the first and last elemen
 If nums[left] + nums[right] >= target - nums[i], then there are no combinations with i and k = right (because j = left is the smallest), 
 and we need to reduce right. Else, there are right - left pair of (j, k) when j = left, and we can add them to the number of combinations 
 and increment left.
+
+
+def threeSumSmaller(self, nums, target):
+    nums.sort()
+    n=len(nums)
+    ans=0
+    
+    for i in range(n-2):
+        left=i+1
+        right=n-1
+        
+        while left<right:
+            if nums[i]+nums[left]+nums[right]<target:
+                ans+=right-left
+                left+=1
+            else:
+                right-+1
+                
+    return ans
+
+time O(n^2)
+
+or
 
 class Solution(object):
     def threeSumSmaller(self, nums, target):
