@@ -6,24 +6,43 @@ Examples:
 input: 12
 output:[[2, 6],[2, 2, 3],[3, 4]]  
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: (Backtracking, it has similarity to the prime factors)    
 
 class Solution(object):
-    def __init__(self):
-        self.factors = dict()
 
     def getFactors(self, n):
 
         if n == 1:
             return []
-        elif n in self.factors:
-            return self.factors[n]
-        else:
-            res = list()
-            for f in range(2, int(sqrt(n)) + 1):
-                if n % f == 0:
-                    residue = n // f
-                    res.append([f, residue])
-                    for l in self.getFactors(residue):
-                        if l[0] >= f:
-                            res.append([f] + l)
-            return res
+        
+        index=2
+        product=1
+        temp=[]
+        result=[]
+        
+        def backtrack(temp, product, index):
+            if product>n:
+                return
+            
+            if product==n:
+                result.append([temp])
+        
+            for i in range(index, n/product):
+                if n % i == 0 and i!=n :
+                    temp.append(i)
+                    backtrack(temp, product * i, i)
+                    temp.pop()
+                    
+        backtrack(temp, product, index)
+        
+        return result
