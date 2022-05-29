@@ -21,8 +21,18 @@ Valid move: 6 - 5 - 4 - 1 - 9 - 2
 Line 1 - 9 is valid because it passes through key 5, which had been selected in the pattern.
 
 
-Solution:
+
+
+
+
+
+
+Solution: DFS
 https://medium.com/@rebeccahezhang/leetcode-351-android-unlock-patterns-d9bae4a8a958  
+or 
+read LeetCode — 351. Android Unlock Patterns.pdf
+
+
 
 We sum all the valid patterns when using m keys, m+1 keys, … n keys together to get the result.
 In each case, we use DFS to count the number of valid paths from the current number (1–9) to 
