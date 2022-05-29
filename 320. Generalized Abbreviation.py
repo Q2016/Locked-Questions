@@ -10,21 +10,26 @@ round 2: ['wo','w1','1o','2']
 round 3: ['wor','wo1','w1r',...]
 
 
-Solution: (not sure)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: backtracking
 
-    def generateAbbreviations(self, word: str):
-        if not word:
-            return [""]
-        ans = ['']
-        for i in range(len(word)):
-            temp = []
-            for item in ans:
-                temp.append(item + word[i])
-                if not item:
-                    temp.append('1')
-                elif item[-1].isdigit():
-                    temp.append(item[:-1] + str(int(item[-1]) + 1))
-                else:
-                    temp.append(item + '1')
-            ans = temp
-        return ans
+    def backtracking(self, word: str, asf: str, count:int, pos:int):
+        
+        if count>0:
+            backtracking(word, asf + count + word[pos], 0, pos+1)
+        else:
+            backtracking(word, asf + word[pos], 0, pos+1)
+            
+        backtracking(word, asf, count+1, pos+1)
+        
+        
+    def solution(self):
+        backtracking(word, "", 0, 0)
