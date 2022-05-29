@@ -7,7 +7,20 @@ Follow up:
 Derive your algorithm's runtime complexity.
 
 
-Solution: Bactracking (Check videos there seem to be other solution not this complicated)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Solution: Bactracking or Recursive
 
  
     def canWin(s):
@@ -34,3 +47,18 @@ I dont know how to derive this?
 T(N) = T(N-2) + T(N-3) + [T(2) + T(N-4)] + [T(3) + T(N-5)] + ... [T(N-5) + T(3)] + [T(N-4) + T(2)] + T(N-3) + T(N-2)
      = 2 * sum(T[i])  (i = 3..N-2)
 the runtime complexity will be expotential.   
+
+
+
+or
+
+    def canWin(s) :
+       n=len(s)
+       if s==None or n<2:
+          return False
+    
+       for i in range(n):
+          if (s[i]=='+' and s[i+1]=='+'):
+              nextState=s[:i]+'--'+s[i+2:]
+              if !canWin(nextState):
+                 return True
