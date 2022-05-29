@@ -17,7 +17,7 @@ Input: [3,9,20,null,null,15,7], Output: [[9],[3,15],[20],[7]]
    
    
    
-Solution: 
+Solution:  (refer to solution for 987)
 https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/discuss/231318/How-is-this-different-from-%22314.-Binary-Tree-Vertical-Order-Traversal%22/258772/
 
 The difference is the way of handling nodes that have same x and y coordinates (for picture above link):
