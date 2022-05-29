@@ -6,13 +6,29 @@ While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not 
 Given an array of integers nums, find the next permutation of nums. The replacement must be in place and use only constant extra memory.
 
 Example 1:
-Input: nums = [1,2,3]
-Output: [1,3,2]    
+[1,2,4,1] =>[1,4,1,2] : 1241<1412   
+[1,2,4,3] =>[1,3,2,4] : 1243<1324
+[4,3,2,1] =>[1,2,3,4] : 4321<1234 !
+[1,2,3,4] =>[1,2,4,3] : 1234<1243
     
     
     
-Solution:    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: 
+    https://www.youtube.com/watch?v=6qXO72FkqwM
 
+        
+sort  O(nlogn)        
+swap n/2 elements O(n)
+        
+        
 According to Wikipedia, a man named Narayana Pandita presented the following simple algorithm to solve this problem in the 14th century.
 - Find the largest index k such that nums[k] < nums[k + 1]. If no such index exists, just reverse nums and done.
 - Find the largest index l > k such that nums[k] < nums[l].
