@@ -29,30 +29,30 @@ Longest consecutive sequence path is 2-3,not3-2-1, so return 2.
 
 
 
-Solution: BFS (Not sure this is the best solution)
-     
+
+
+
+
+
+Solution: Pre-order
          
     def longestConsecutive(self, root):
+         findLongestConsecutiveSequence(root, 0, 0, max)
+         return max
+      
+    def findConsecutiveSequence(root, count, target, max):
+         if root==None:
+            return
+         elif root.val==target:
+            count++
+         else:
+            count=1
+            
+         max=math.max(max, count)
+         findConsecutiveSequence(root.left, count, root.val+1, max)
+         findConsecutiveSequence(root.right, count, root.val+1, max)
+         
+         
+         
+time and space O(n)         
 
-        if root is None:
-            return 0
-
-        stack = list()
-        stack.append((root, 1))
-        maxLen = 1
-        while len(stack) > 0:
-            node, pathLen = stack.pop()
-            if node.left is not None:
-                if node.val + 1 == node.left.val:
-                    stack.append((node.left, pathLen + 1))
-                    maxLen = max(maxLen, pathLen + 1)
-                else:
-                    stack.append((node.left, 1))
-            if node.right is not None:
-                if node.val + 1 == node.right.val:
-                    stack.append((node.right, pathLen + 1))
-                    maxLen = max(maxLen, pathLen + 1)
-                else:
-                    stack.append((node.right, 1))
-
-        return maxLen
