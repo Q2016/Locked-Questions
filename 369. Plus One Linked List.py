@@ -3,6 +3,21 @@ Given a non-negative integer represented as non-empty a singly linked list of di
 
 Example: Input: 1->2->3, Output: 1->2->4
 
+            
+            
+1234 not_nine=4 1235
+1249 not_nine=4 1250
+1294 not_nine=4 1295
+9999 not_nine=0 09999 19999 10000
+    
+    
+    
+    
+    
+    
+    
+    
+            
 
 Solution:
     
