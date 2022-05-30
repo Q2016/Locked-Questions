@@ -6,27 +6,28 @@ Example: Input: 1->2->3, Output: 1->2->4
 
 Solution:
     
-    def plusOne(self, head):
-
-        lst = []
-        cur = head 
-
-        while cur:
-        	lst.append(cur)
-        	cur = cur.next
-
-        carry = 1
-        for i in range(len(lst)-1,-1,-1):
-        	lst[i].val += carry
-        	if lst[i].val < 10:
-        		carry = 0
-        		break
-        	else:
-        		lst[i].val -= 10
-
-        if carry == 1:
-        	node = ListNode(1)
-        	node.next = head
-        	return node
+    def plusOne(self, head:ListNode)->ListNode:
+        dummy=ListNode(0)
+        dummy.next=head
+        not_nine=dummy
+        
+        while head:
+            if head.val !=9:
+                not_nine=head
+            head=head.next
+        
+        not_nine.val+=1
+        not_nine=not_nine.next
+        
+        while not_nine:
+            not_nine.val=0
+            not_nine=not_nine.next
+            
+        if dummy.val:
+            return dummy
         else:
-        	return head 
+            return dummy.next
+        
+
+time O(n)
+space O(1)
