@@ -17,31 +17,33 @@ The character '-' signifies an empty space on the screen.
 
 
 
-Solution:
 
+
+
+
+Solution:
+From this link: https://www.youtube.com/watch?v=1ChX4Cpz0bU
+    
+    
+    
     def wordsTyping(sentence, rows, cols):
-        block=" ".join(sentence)
-        l=len(block)
-        screen=rows*cols
-        "----- ----- ----- -----"
+        sentence=" ".join(sentence) # adding space between words
+        sentenceLen=len(sentence)
+        
         cursor=0
-        repeated=0
-        for i in range(rows):
-            if l<cols:
-                cursor+=cols-l+1 # +1 for space
-            elif l>cols and block[cols-1]==" ":
-                cursor+=l-cols+1
-            elif l>cols and block[cols-1]!=" ":
-                n=1
-                while block[cols-1-n]!=" ":
-                    n+=1
-                cursor+=l-cols+n+1
-            # for the else: no need to change the cursor
-            if cursor>screen:
-                return repeated 
-            repeated+=1
+        for row in range(rows):
+            cursor +=cols
+            if sentence[cursor%sentenceLen] == ' ':
+                cursor+=1
+            else:
+                while (cursor>=0 and sentence[cursor%sentenceLen] != ' '):
+                    cursor-=1
+                cursor+=1
+                
+         return cursor/sentenceLen
+                   
+        
+
             
 
 
-Others:
-https://www.youtube.com/watch?v=1ChX4Cpz0bU
