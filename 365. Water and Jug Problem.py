@@ -28,11 +28,35 @@ Output: true
  
 Solution: BFS
  
-It took me a while to understand the GCD method. My first attempt to this problem was using BFS, which is very intuitive and easy to understand.
-The complexity is definitely much longer than GCD-based method.
-I upvoted this solution because this is a coding question, we need focus more on solving the problem by coding, not by math. 
-BFS is not slow for this question actually, though there is a faster math solution. Time complexity of BFS is O(x + y) which can be treated as 
-linear (Because there are only 2x + 2y possible states.). 
+we have 6 different states we can attain :-
+1.Fill jug 1.
+2.Fill jug 2.
+3.Empty Jug 1.
+4.Empty jug 2
+5.pour from jug2 to jug1
+6.pour from jug1 to jug2.
+Use this 6 states on each node and add those nodes in queue which we havent already had.
+Here (0,0) is a little deviated from its right place. Please bear it.
+                     (0,0)
+                      / \
+                  (3,0)   (0,5)
+                   / \       |
+              (3,5)  (0,3)   (3,2)
+               |       |       |
+              ()     (3,3)   (0,2) 
+                       |       |
+                     (1,5)   (2,0)
+                               |
+                             (2,5)
+                               |
+                             (3,4) <---the answer
+
+
+
+We can store these unique combinations in a Set and use a queue for BFS but a little better option would be to
+Store unique total instead of just storing unique combinations in HashSet. Rest is just BFS.
+
+
 
     def canMeasureWater(self, jug1, jug2, target):
 
@@ -68,3 +92,6 @@ linear (Because there are only 2x + 2y possible states.).
                 visited.add(state);
                 
         return False;
+       
+Time complexity of BFS is O(x + y) which can be treated as linear (Because there are only 2x + 2y possible states.).        
+       
