@@ -58,14 +58,6 @@ traverse to the last left node that exists and then start to bounce back
 
             self.inorder_link(node.right)
           
-          
-          
-        
-        
-      
-      
-               
-          
-          
+           
 Time Complexity: O(N).
 Space Complexity: O(N).
