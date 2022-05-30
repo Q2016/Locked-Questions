@@ -12,36 +12,58 @@ to is the smallest element of the linked list. Specifically, we want to do the t
 left pointer of the tree node should point to its predecessor, and the right pointer should point to its successor. We should return the 
 pointer to the first element of the linked list.
 
-              ------>  ------>  ------>  ------>
-head -----> 1 <------2 <------3 <------4 <------5 --
-            |                                      |
-            <---------------------------------------
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution:
-Find the BST tree values in ascending order. Then use the BST tree values to build a Circular Doubly-Linked List.
+From this link:  https://www.youtube.com/watch?v=l1hSUOaXLxc 
+  
+In-order gives the list in sorted order
+Save the first and the last element since we need to link them
+traverse to the last left node that exists and then start to bounce back
+
+
 
     def treeToDoublyList(self, root: 'Node') -> 'Node':
         if not root:
             return None
-        node_values = []
-        self.get_node_values(root, node_values)
-        first_node = Node(node_values[0])
-        prev = first_node
-        for value in node_values[1:]:
-            new_node = Node(value)
-            new_node.left = prev
-            prev.right = new_node
-            prev = new_node         
-        prev.right = first_node
-        first_node.left = prev  
-        return first_node
         
-    def get_node_values(self, root, results):
-        if not root:
-            return        
-        self.get_node_values(root.left, results)        
-        results.append(root.val)
-        self.get_node_values(root.right, results)
+        self.first=None
+        self.last=None
+        
+        self.inorder_link(root)
+        
+        
+   def inorder_link(self, node):
+        if node:
+            self.inorder_link(node.left)
+
+            if not self.last:
+                self.first=node
+            else:
+                node.left=self.last
+                self.last.right=node
+
+            self.last=node
+
+            self.inorder_link(node.right)
+          
+          
+          
+        
+        
+      
+      
                
           
           
