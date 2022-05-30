@@ -15,7 +15,7 @@ Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without
 
 
 Solution:
-Visualization of the index k = mod(i, 3) * 3 + mod(j, 3) for valid Sudoku :
+Visualization of the index (mod(i, 3), mod(j, 3)) for valid Sudoku :
 
 0  0  0 | 1  1  1 | 2  2  2
 0  0  0 | 1  1  1 | 2  2  2
@@ -29,25 +29,33 @@ Visualization of the index k = mod(i, 3) * 3 + mod(j, 3) for valid Sudoku :
 6  6  6 | 7  7  7 | 8  8  8
 6  6  6 | 7  7  7 | 8  8  8    
 
-    def isValidSudoku(board)
-    
-        n=len(board)
+https://www.youtube.com/watch?v=TjFXEUCMqI8
 
+class Solution:
+    def isValidSudoku(self, board: List[List[str]])->bool:
         
-        used1[9][9] = {0} #check each row
-        used2[9][9] = {0} #check each column
-        used3[9][9] = {0} #check each sub-boxes
+        cols=collections.defaultdict(set)
+        rows=collections.defaultdict(set)
+        squares=collections.defaultdict(set) # key = (r/3, c/3)
         
-        for i in range(n):
-            for j in range(len(board[i])):
-                if (board[i][j] != '.'):
-                    num = int(board[i][j])
-                    k = mod(i, 3) * 3 + mod(j, 3) # This gives the index of the matrix below
-                    if (used1[i][num] or used2[j][num] or used3[k][num]):
-                        return false
-                    used1[i][num] = used2[j][num] = used3[k][num] = 1
-        
-        return true
+        for r in range(9):
+            for c in range(9):
+                if board[r][c]==".": # if empty we dont care
+                    continue
+                if (board[r][c] in rows[r] or 
+                    board[r][c] in cols[r] or 
+                    board[r][c] in squares[r//3,c//3]) : # it's a duplicate
+                    
+                    return False
+                
+                cols[c].add(board[r][c])
+                rows[c].add(board[r][c])
+                squares[(r//3,c//3)].add(board[r][c])
+                
+                
+        return True # there has been no duplicates
+                
+
     
 
 
