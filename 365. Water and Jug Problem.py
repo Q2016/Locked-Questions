@@ -21,19 +21,25 @@ Output: true
  
  
  
-Solution:    
+ 
+ 
+ 
+ 
+ 
+Solution: BFS
+ 
 It took me a while to understand the GCD method. My first attempt to this problem was using BFS, which is very intuitive and easy to understand.
 The complexity is definitely much longer than GCD-based method.
 I upvoted this solution because this is a coding question, we need focus more on solving the problem by coding, not by math. 
 BFS is not slow for this question actually, though there is a faster math solution. Time complexity of BFS is O(x + y) which can be treated as 
 linear (Because there are only 2x + 2y possible states.). 
 
-    def canMeasureWater(self, x, y, z):
+    def canMeasureWater(self, jug1, jug2, target):
 
-        if x > y:
-            temp = x;
-            x = y;
-            y = temp;
+        if jug1 > jug2: # jug1 smaller than jug2 always
+            temp = jug1;
+            jug1 = jug2;
+            jug2 = temp;
             
         if z > x + y:
             return False;
@@ -43,17 +49,17 @@ linear (Because there are only 2x + 2y possible states.).
         visited = set((0, 0));
         while len(queue) > 0:
             a, b = queue.pop(0);
-            if a + b == z:
+            if a + b == target:
                 return True;
             
             states = set()
             
-            states.add((x, b)) # fill jar x;
-            states.add((a, y)) # fill jar y;
+            states.add((jug1, b)) # fill jar x;
+            states.add((a, jug2)) # fill jar y;
             states.add((0, b)) # empty jar x;
             states.add((a, 0)) # empty jar y;
-            states.add((min(x, b + a), 0 if b < x - a else b - (x - a))) # pour jar y to x;
-            states.add((0 if a + b < y else a - (y - b), min(b + a, y))) # pour jar x to y;
+            states.add((min(jug1, b + a), 0 if b < jug1 - a else b - (jug1 - a))) # pour jar y to x;
+            states.add((0 if a + b < jug2 else a - (jug2 - b), min(b + a, jug2))) # pour jar x to y;
 
             for state in states:
                 if state in visited:
