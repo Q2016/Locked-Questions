@@ -16,7 +16,13 @@ Explanation: Initial state: [ 0, 0, 0, 0, 0 ], After applying operation [1, 3, 2
     
     
     
-Solution: 
+    
+    
+    
+    
+    
+    
+Solution: (Nice!)
 
 There is only one read query on the entire range, and it occurs at the end of all update queries. Additionally, the order of processing update 
 queries is irrelevant. Therefore, we don’t have to process the entire range until the end of the updates.
@@ -42,10 +48,10 @@ It carries over the −val increment (equivalently, a +val decrement) over to ev
         for i in range(len(updates)):
             start = updates[i][0]
             end = updates[i][1]
-            inc = updates[i][2]  
-            res[start] += inc
+            c = updates[i][2]  
+            res[start] += c
             if end + 1 < length:
-                res[end + 1] += -inc    
+                res[end + 1] += -c    # we subtract to neutralize previous +c
         for i in range(1, length):
             res[i] += res[i - 1]
         return res
@@ -59,8 +65,8 @@ It carries over the −val increment (equivalently, a +val decrement) over to ev
         for i in range(len(updates)):
             start = updates[i][0]
             end = updates[i][1]
-            inc = updates[i][2]
+            c = updates[i][2]
             
             for j in range(start, end + 1):
-                res[j] += inc      
+                res[j] += c      
         return res
