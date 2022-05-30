@@ -10,6 +10,13 @@ For the given grid:   0 E 0 0
 return 3. (Placing a bomb at (1,1) kills 3 enemies)
 
 
+
+
+
+
+
+
+
 Solution:
 First naive approach: just go through each location. If it’s 0, count ‘E’ in current row and column between ‘W’. If it’s E, 
 or W, do nothing and move forward. The problem here is: while we scan each element in the same row, we calculate how many ‘E’ 
