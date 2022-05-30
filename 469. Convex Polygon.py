@@ -1,6 +1,14 @@
 Problem:
 Given a list of points that form a polygon when joined sequentially, find if this polygon is convex.
 
+
+For each consecutive pair of edges of the polygon (each triplet of points), compute the z-component of 
+the cross product of the vectors defined by the edges pointing towards the points in increasing order. 
+Take the cross product of these vectors:
+
+The polygon is convex if the z-components of the cross products are either all positive or all negative. 
+Otherwise the polygon is nonconvex.
+
 Example 1:
 [[0,0],[0,1],[1,1],[1,0]], Answer: True
 
@@ -18,23 +26,29 @@ Example 1:
     
 Solution: (A cross B=axby-aybx so not sure about the formula below)
     
-Get the cross product of the sequential input edge a, b as tmp= (p1[0]-p0[0])*(p2[1]-p0[1])-(p2[0]-p0[0])*(p1[1]-p0[1]), then:
+Get the cross product of the sequential input edge a, b  then:
 if tmp == 0, a -> b 180° on the same line;
 elif tmp > 0, a -> b clockwise;
 else tmp < 0, a -> anticlockwise;
-Update instead of just maintaining the sequential cross product result, any of the two cross product shouldn't multiplies to minus:
     
+class Solution(object):
     def isConvex(self, points):
-        last, tmp = 0, 0
-        for i in xrange(2, len(points) + 3):
-            
-            p0=points[(i - 2) % len(points)] 
-            p1=points[i % len(points)]
-            p2 =points[(i - 1) % len(points)]
-            
-            tmp = (p1[0]-p0[0])*(p2[1]-p0[1])-(p2[0]-p0[0])*(p1[1]-p0[1])
-            if tmp:
-                if last * tmp < 0:
-                    return False
-                last = tmp
+
+        n = len(points)
+        zcrossproduct = None
+
+        for i in range(-2, n-2):
+            x = [ points[i][0], points[i+1][0], points[i+2][0] ]
+            y = [ points[i][1], points[i+1][1], points[i+2][1] ]
+
+            dx1 = x[1] - x[0]
+            dy1 = y[1] - y[0]
+
+            dx2 = x[2] - x[1]
+            dy2 = y[2] - y[1]
+
+            if not zcrossproduct:
+                zcrossproduct = dx1 * dy2 - dy1 * dx2
+            elif ( dx1 * dy2 - dy1 * dx2 ) * zcrossproduct < 0:
+                return False
         return True
