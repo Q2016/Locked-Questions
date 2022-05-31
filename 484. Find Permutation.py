@@ -14,32 +14,42 @@ but since we want to find the one with the smallest lexicographical permutation,
 
 
 
-Solution: Stack
-Because of the second constraint, we could think that we want to have the permutation close to the increasing order like [1, 2, 3, 4, 5] 
-when the input is ‘IDDI’. The idea is that we consider ‘I’ as the border to separate the decreasing regions and increasing regions. 
-And we store the numbers we want to add in the stack. We can think about the stack when we see questions related to the reverse string.
-We then put the number into the stack when we encounter ‘D’ because we need to reverse them. Once we encounter ‘I’, it means that the 
-reverse ends, so we pop out all the numbers in the stack. We start from 1 and put the current number into the stack. The first command 
-is ‘I’. It means that we want to have a number larger than 1. So we pop 1 out of the stack and add it into the output list. Then add the 
-current number 2 into the stack. The second command is ‘D’, so we add 3 into the stack. Now the stack contains [2, 3].
-The third command is also ‘D’, then we add 4 into the stack as well. Now the stack contains [2, 3, 4].
-The fourth command is ‘I’. Now we can stop the reversing. So we pop out all the numbers in the stack and add them into output. 
-After pop out all the numbers, the output is [1, 4, 3, 2]. After pop out all the numbers, we add 5 into the stack as well.
-In the end, we just need to pop out all the numbers in the stack and add them to the output list. We finally get [1, 4, 3, 2, 5].
 
+
+
+
+Solution: Stack (hard if one doesnt find the pattern!)
+        
+solution is from this link: https://www.youtube.com/watch?v=slFIq997BSE
+
+start with a stack that has [1,2,3,4,5,6,...] and 'result'=[] initially
+One has to figure out that a pattern emerges: the number that maps to 'I', you pop from the stack and append it to your 'result'
+You always need to add an extra number to the end of the stack
+After going through all 'I's and 'D's, append the remaining numbers in the stack
+ 
+example: IDDI                I D D I   
+        we start with stack=[1,2,3,4,   5] then above rules give: 
+                ans=[1,4,3,2] we add 5 at the end so ans=[1,4,3,2,5]
+        
+                
         def findPermutation(self, s: str) -> List[int]:
-            n = len(s) + 1
-            stack = [1]
-            cur = 1
-            output = []
-            for i in s:
-                cur += 1
-                if i == 'D':
-                    stack.append(cur)
-                else:
-                    while stack:
-                        output.append(stack.pop())
-                    stack.append(cur)
-            while stack:
-                output.append(stack.pop())
-        return output
+                ans=[]
+                stack=[]
+                
+                for i,c in enumerate(s):
+                    stack.append(i+1)
+                        
+                    if c=='I':
+                       while stack:
+                           ans.append(stack.pop())
+                                                                
+                stack.append(len(s)+1)
+                while stack:
+                    ans.append(stack.pop())
+                        
+                return ans
+                
+                
+                
+                
+
