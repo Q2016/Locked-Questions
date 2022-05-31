@@ -12,7 +12,7 @@ For these questions I like to see their youtube:
 
 Design: 173, 353
 
-497, 528, 533, 621, 652, 659,713, 
+533, 621, 659, 713, 
 
 769, 785, 838, 835, 833, 801, 794, 723
 
