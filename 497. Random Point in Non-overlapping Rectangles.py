@@ -54,11 +54,9 @@ class Solution:
             
 
     def pick(self) -> List[int]:
-        rect = random.choices(
-            population=self.rects,
-            weights=self.weights,
-            k=1
-        )[0]  # random.choices returns a list, we extract the first (and only) element.
+        
+        # random.choices returns a list, we extract the first (and only) element.
+        rect = random.choices(population=self.rects, weights=self.weights, k=1)[0]  
 
         x1, y1, x2, y2 = rect  # tuple unpacking
         
