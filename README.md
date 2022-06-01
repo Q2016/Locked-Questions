@@ -12,9 +12,9 @@ For these questions I like to see their youtube:
 
 Design: 173, 353
 
-533, 621, 659, 713, 
+533, 621, 
 
-769, 785, 838, 835, 833, 801, 794, 723
+835, 833, 801, 794, 723
 
 Bits:477, 1066 (bit-mask)
 
@@ -46,6 +46,6 @@ Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recur
 
 DP: 300, DP of Buying stocks is defined in 309, 322, 62
 
-Heap (Priority Que): 692, 767, 871
+Heap (Priority Que): 692, 767, 871, 659
 
 
