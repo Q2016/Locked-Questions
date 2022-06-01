@@ -17,39 +17,44 @@ Output: "RR.L"
 Explanation: The first domino expends no additional force on the second domino.  
   
   
-Solution:  
   
-We can calculate the net force applied on every domino. The forces we care about are how close a domino is to a leftward 'R', and to a 
-rightward 'L': the closer we are, the stronger the force.
-Scanning from left to right, our force decays by 1 every iteration, and resets to N if we meet an 'R', so that force[i] is higher 
-(than force[j]) if and only if dominoes[i] is closer (looking leftward) to 'R' (than dominoes[j]).
-Similarly, scanning from right to left, we can find the force going rightward (closeness to 'L').
-For some domino answer[i], if the forces are equal, then the answer is '.'. Otherwise, the answer is implied by whichever force is stronger.
-Example
-Here is a worked example on the string S = 'R.R...L': We find the force going from left to right is [7, 6, 7, 6, 5, 4, 0]. The force going 
-from right to left is [0, 0, 0, -4, -5, -6, -7]. Combining them (taking their vector addition), the combined force is [7, 6, 7, 2, 0, -2, -7], 
-for a final answer of RRRR.LL.  
-
+  
+  
+  
+  
+  
+  
+  
+  
+Solution:  Brute force
+  
+Link from: https://www.youtube.com/watch?v=evUFsOb_iLY
+    
+simulating second by second the movement  
+Another point is the use of deque  
+  
 class Solution(object):
     def pushDominoes(self, dominoes):
-        N = len(dominoes)
-        force = [0] * N
+      dom=list(dominoes)
+      q=deque()
+      
+      for i, d in enumerate(dom):
+        if d!=".": q.append((i,d))
+          
+      while q:
+        i, d =q.popleft()
+        
+        if d=="L" and i>0 and dom[i-1]==".":
+          q.append((i-1,"L"))
+          dom[i-1]="L"
+          
+        elif d=="R":
+          if i+1<len(dom) and dom[i+1]==".":
+            if i+2<len(dom) and dom[i+2]=="L":
+              q.popleft()
+            else:
+              q.append((i+1,"R"))
+              dom[i+1]="R"
+              
+      return "".join(dom) 
 
-        # Populate forces going from left to right
-        f = 0
-        for i in xrange(N):
-            if dominoes[i] == 'R': f = N
-            elif dominoes[i] == 'L': f = 0
-            else: f = max(f-1, 0)
-            force[i] += f
-
-        # Populate forces going from right to left
-        f = 0
-        for i in xrange(N-1, -1, -1):
-            if dominoes[i] == 'L': f = N
-            elif dominoes[i] == 'R': f = 0
-            else: f = max(f-1, 0)
-            force[i] -= f
-
-        return "".join('.' if f==0 else 'R' if f > 0 else 'L'
-                       for f in force)
