@@ -15,18 +15,26 @@ Note that [10, 5, 2] is not included as the product of 100 is not strictly less 
 
 
 
+
+
 Solution: Sliding window
-For each right, call opt(right) the smallest left so that the product of the subarray nums[left] * nums[left + 1] * ... * nums[right] 
-is less than k. opt is a monotone increasing function, so we can use a sliding window.
+
+
+Link from : https://www.youtube.com/watch?v=o8OCmqYFEok
+        
 
     def numSubarrayProductLessThanK(self, nums, k):
-        if k <= 1: return 0
-        prod = 1
-        ans = left = 0
-        for right, val in enumerate(nums):
-            prod *= val
-            while prod >= k:
-                prod /= nums[left]
-                left += 1
-            ans += right - left + 1
-        return ans    
+        left=0
+        ans=0
+        cur_prod=1
+        
+        for right, num in enumerate(nums):
+            cur_prod *=num
+            
+            while cur_prod >=k:
+                cur_prod//=nums[left]
+                left +=1
+                
+            ans +=right-left+1
+            
+        return ans
