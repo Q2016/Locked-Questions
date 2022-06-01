@@ -32,25 +32,39 @@ and it doesn't contain any element twice.
  3----2
 We cannot find a way to divide the set of nodes into two independent ubsets.
 
-Solution:
+
+
+
+
+
+
+
+
+
+Solution: Graph coloring
     
+  
+  Link from: https://www.youtube.com/watch?v=YNNLcENsB_4
+  
+  
 class Solution(object):
     def isBipartite(self, graph):
 
-        color = {}
+        seen = {} # A or B, 0 or 1
         for node in xrange(len(graph)):
-            if node in color:
-                continue
-            stack = [node]
-            color[node] = 0
-            while stack:
-                curr = stack.pop()
-                for neighbor in graph[curr]:
-                    if neighbor not in color:
-                        stack.append(neighbor)
-                        color[neighbor] = color[curr] ^ 1
-                    elif color[neighbor] == color[curr]:
-                        return False
+            if node not in seen:
+                seen[node]=0
+                stack = [node]
+    
+                while stack:
+                    cur = stack.pop()
+                    for neighbor in graph[cur]:
+                        if neighbor not in seen:
+                            stack.append(neighbor)
+                            seen[neighbor]=seen[cur]^1 # flip
+                        elif seen[neighbor]==seen[cur]:
+                            return False
+
         return True
 
     
