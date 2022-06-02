@@ -15,9 +15,19 @@ The number of positions that have a 1 in both images is 3 (shown in red).
 
 
 
+
+
+
+
+
+
+
+
+
+
 Solution:
     
-Brute force Shift and count
+Brute force Shift and count overlaps
 
 class Solution:
     def largestOverlap(self, A: List[List[int]], B: List[List[int]]) -> int:
