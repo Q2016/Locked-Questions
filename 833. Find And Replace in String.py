@@ -22,7 +22,7 @@ Explanation:
 
 
 
-Solution: (staright forward based on thedescription of the question)
+Solution: (staright forward based on the description of the question)
 
 class Solution:
     def findReplaceString(self,s:str, indices:List[int], sources:List[str], targets: List[str])->str:
