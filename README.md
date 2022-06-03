@@ -14,7 +14,7 @@ Design: 173, 353
 
 533, 621, 
 
-801, 794, 723
+794, 723
 
 Bits:477, 1066 (bit-mask)
 
@@ -44,7 +44,7 @@ Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recur
 
 1438 (deque)
 
-DP: 300, DP of Buying stocks is defined in 309, 322, 62
+DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801
 
 Heap (Priority Que): 692, 767, 871, 659
 
