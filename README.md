@@ -12,9 +12,7 @@ For these questions I like to see their youtube:
 
 Design: 173, 353
 
-533, 621, 
-
-794, 723
+533, 621, 794, 723
 
 Bits:477, 1066 (bit-mask)
 
