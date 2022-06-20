@@ -8,11 +8,7 @@ Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
 
     
     
-    
-    row 1: 0
-row 2: 01
-row 3: 0110
-row 4: 01101001
+
     
     
     
@@ -45,6 +41,8 @@ class Solution:
         
         output = []
         n = len(nums)
+        # k will be number of elemnts in each subset
+        # example: we start from subsets with 0 and 1 eleemnts etc 
         for k in range(n + 1):
             backtrack()
         return output
