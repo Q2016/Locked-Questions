@@ -32,3 +32,38 @@ class Solution(object):
                         wordList.remove(next_word)
                         queue.append([next_word, length + 1])
         return 0
+
+    
+    
+    
+Similar question:
+Given an int n. You can use only 2 operations:
+multiply by 2
+integer division by 3 (e.g. 10 / 3 = 3)
+Find the minimum number of steps required to generate n from 1.    
+    
+    
+    
+# using deque for removing first element from the queue in constant time (popleft)
+from collections import deque
+def num_steps(n):
+  # initialize queue with 1
+  queue = deque([1])
+  no_of_steps = 0
+
+  while(queue):
+    no_of_elements_to_remove = len(queue)
+
+    no_of_steps += 1
+
+    for i in range(no_of_elements_to_remove):
+      cur_number = queue.popleft()
+
+      muliply_by_2 = int(cur_number * 2) 
+      divide_by_3 = int(cur_number / 3)
+
+      if(muliply_by_2 == n or divide_by_3 == n): return no_of_steps
+
+      # append multiplication and division results to queue
+      queue.append(muliply_by_2)
+      if(divide_by_3 > 0): queue.append(divide_by_3)    
