@@ -32,7 +32,7 @@ Time complexity: 139
 
 DFS: 17 and Backtracking: 39, 526, 77
 
-Toplogical Sort:207, 210, 310
+Topological Sort:207, 210, 310
 
 Trie:208, 1233
 
