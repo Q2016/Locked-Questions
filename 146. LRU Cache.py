@@ -40,8 +40,13 @@ def set(self, key, value):
         if self.remain > 0:
             self.remain -= 1  
         else:  # self.dic is full
+            # You are removing an item from the list returned by .items(). You need to delete from the dictionary instead:
+            # OrderedDict.popitem() returns the first or last key-value, after deleting it. Setting last to False signals you 
+            # wanted to remove the first.
             self.dic.popitem(last=False) 
     self.dic[key] = value
+        
+        
         
         
 C++:
