@@ -18,7 +18,20 @@ Travel to station 3. The cost is 5. Your gas is just enough to travel back to st
 Therefore, return 3 as the starting index.
 
 
-Solution: 
+
+
+
+
+
+Solution: Greedy
+A more complicated version of this question:
+    
+Got a variation of the gas station problem with the following caveats
+The car can go backwards
+The solution is to return the maximum distance traveled, rather than simply a boolean    
+    
+    
+    
     
     
 class Solution 
