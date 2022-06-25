@@ -4,7 +4,7 @@
 The link for Blind 75 LeetCode Questions
 https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
 
-Subsequence, substring
+Subsequence, subarray, substring
 
 For these questions I like to see their youtube:
 
