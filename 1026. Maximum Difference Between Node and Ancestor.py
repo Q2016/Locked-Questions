@@ -16,6 +16,15 @@ Among all possible differences, the maximum value of 7 is obtained by |8 - 1| = 
 
 
 
+
+
+
+
+
+
+
+Brute force DFS recursion
+
 Solution: Maximum Minus Minimum (seems like a pre/post order)
 
 Given any two nodes on the same root-to-leaf path, they must have the required ancestor relationship.
