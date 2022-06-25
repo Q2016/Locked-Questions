@@ -12,12 +12,18 @@ Input: grid = [[0,0,0,0],
 Output: 3
 Explanation: There are three 1s that are enclosed by 0s, and one 1 that is not enclosed because its on the boundary.    
 
+  
+  
+  
+  
+  
+  
+  
+  
 Intuition:
 DFS Solution using flood-fill
 The first cycle does DFS for the boundary cells. flood the 1's at boundary with 0 
 The second cycle counts the remaining land.
-
-
 
 Solution: DFS
 
