@@ -21,6 +21,9 @@ The whole array is an arithmetic sequence with steps of length = 3.
 
 Solution: DP, similar to LIS (Longest Increasing Subsequence) problem   
 
+ 
+ https://www.youtube.com/watch?v=-NIlLdVKBFs
+ 
 in the comments of
 https://leetcode.com/problems/longest-arithmetic-subsequence/discuss/274584/Same-as-LIS-problem-python-solution
   
