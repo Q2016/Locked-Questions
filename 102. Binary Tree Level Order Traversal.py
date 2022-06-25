@@ -13,6 +13,16 @@ Example 1:
 Input: root = [3,9,20,null,null,15,7]
 Output: [[3],[9,20],[15,7]]    
 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+BFS should work right? 
+ 
 Solution: --
 
 level is a list of the nodes in the current level. Keep appending a list of the 
