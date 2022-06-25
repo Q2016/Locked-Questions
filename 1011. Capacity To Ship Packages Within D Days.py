@@ -24,7 +24,7 @@ Note that the cargo must be shipped in the order given, so using a ship of capac
 
 Asking for ordered partition with max sum or maximum sum with n(day) partition
 
-Solution: Binary search
+Solution: Binary search---> so basically brute force but optimized, sums are monotonic so BS works
 
 // for binary search look at: 
 //[Python/ Clear explanation] Powerful Ultimate Binary Search Template. Solved many problems.
