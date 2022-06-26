@@ -20,16 +20,17 @@ Output:
 Explanation: 
 Worker 1 grabs Bike 0 as they are closest (without ties), and Worker 0 is assigned Bike 1. So the output is [1, 0].
 
-Example 2:
-Input: 
-workers = [[0,0],[1,1],[2,0]], 
-bikes = [[1,0],[2,2],[2,1]]
-Output: 
-[0,2,1]
-Explanation: 
-Worker 0 grabs Bike 0 at first. Worker 1 and Worker 2 share the same distance to Bike 2, thus Worker 1 is assigned 
-to Bike 2, and Worker 2 will take Bike 1. So the output is [0,2,1].
 
+
+
+
+
+
+
+
+
+
+Calculate all distances  and then sort
 
 Solution: sorting (What's the diffrent between I and II?)
 
