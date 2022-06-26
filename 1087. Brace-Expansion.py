@@ -16,6 +16,16 @@ Output: ["abcd"]
 
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+Basically, whether DFS or backtracing, this question's point is that the options inside { } tells us the tree is not just binary but multi-child tree     
+    
 Solution: Recursion (Why is the time complexity o(n)? )
 it can also be solved using backtrackng or BFS (Breath-First-Search)  
     
