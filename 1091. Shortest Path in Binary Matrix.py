@@ -5,6 +5,18 @@ All the visited cells of the path are 0.
 All the adjacent cells of the path are 8-directionally connected. 
 The length of a clear path is the number of visited cells of this path.	
 
+Input: grid = [[0,0,0],  - -
+	       [1,1,0],      \
+	       [1,1,0]]       |
+Output: 4
+
+
+
+
+
+
+
+
 
 Solution: Optimized BFS (we can think about in terms of a tree with edges having weights) 
 
