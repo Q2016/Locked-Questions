@@ -2,15 +2,28 @@ Question:
 Given a matrix of integers A with R rows and C columns, find the maximum score of a 
 path starting at [0, 0] and ending at [R-1, C-1].
 The score of a path is the minimum value in that path. 
- [5, 4, 5] 5->4->5->6->6 in this path, the minimum value is 4, so the score is 4.
- [1, 2, 6]
- [7, 4, 6]
+ 
 A path moves some number of times from one visited cell to any neighbouring unvisited cell 
 in one of the 4 cardinal directions (north, east, west, south).
+ 
+ [5, 4, 5] 
+ [1, 2, 6]
+ [7, 4, 6]
+ 5->4->5->6->6 is this path with the minimum value of 4, so the score is 4.
+ 
+ 
+ 
+ 
 
+ 
+ 
+ 
+ 
+ 
+ 
+One brute-force is to try all paths and find the score of each. Can Greedy work? For example from 5 we have to choose between {4,1} we choose 4...
 
-
-
+Is the solution below BFS? I guess the Greedy part is done by heap 
 
 
 Solution: Heap
