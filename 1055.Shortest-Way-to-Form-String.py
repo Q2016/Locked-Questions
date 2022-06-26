@@ -23,6 +23,15 @@ Explanation: The target string can be constructed as follows "xz" + "y" + "xz".
 
 
 
+    
+    
+    
+    
+    
+    
+    
+I thought we can solve this using backtracking    
+    
 Solution: first solution is simple
 
 
