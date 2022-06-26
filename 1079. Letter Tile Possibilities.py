@@ -13,7 +13,14 @@ Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA"
  
  
  
-Solution: DFS + Set (reminds of directory construction problem)
+ 
+ 
+ 
+ 
+ 
+Also backtracking is one of the solutions 
+ 
+Solution: DFS + Set (reminds of directory construction problem) 
 
 
 class Solution(object):
