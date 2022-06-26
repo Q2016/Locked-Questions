@@ -30,7 +30,7 @@ c++: 1366, 1387, 139, 142, 1438
 
 Educational:
 
-Time complexity: 139
+Time complexity: 139, 113
 
 DFS: 17 and Backtracking: 39, 526, 77
 
