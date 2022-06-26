@@ -13,18 +13,18 @@ Input: n = 3, edges = [[0,1],[0,2]], source = 0, destination = 2
 Output: false
 Explanation: It is possible to reach and get stuck on both node 1 and node 2.
 
-Example 2:
-Input: n = 4, edges = [[0,1],[0,3],[1,2],[2,1]], source = 0, destination = 3
-Output: false
-Explanation: We have two possibilities: to end at node 3, or to loop over node 1 and node 2 indefinitely.
-
-Example 3:
-Input: n = 4, edges = [[0,1],[0,2],[1,3],[2,3]], source = 0, destination = 3
-Output: true
 
   
   
-Solution: DFS (Is it backtracking?)
+  
+  
+  
+  
+  
+
+  
+  
+Solution: DFS (Is it backtracking?, it's a premium question)
 Use depth-first search to see if all paths end with the destination node.
 Time Complexity: O(N).
 Space Complexity: O(N).
