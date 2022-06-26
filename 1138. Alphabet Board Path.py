@@ -16,11 +16,18 @@ as shown in the diagram below. We may make the following moves:
 Return a sequence of moves that makes our answer equal to target in the minimum number of moves.
 
 Example 1:
-
 Input: target = "leet"
 Output: "DDR!UURRR!!DDD!"
   
 
+  
+  
+  
+  
+  
+  
+  
+Brute-force  
   
 Solution: 
 Calculate this difference of coordinates.
