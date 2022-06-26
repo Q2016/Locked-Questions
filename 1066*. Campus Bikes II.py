@@ -17,6 +17,12 @@ We assign bike 0 to worker 0, bike 1 to worker 1. The Manhattan distance of both
 
 
 Solution: (This problem is solved with bit-mask)
+  
+  https://www.youtube.com/watch?v=x9iOjex5CNE
+    
+    
+    
+    
 
   To learn more about bit-mask: https://www.youtube.com/watch?v=685x-rzOIlY&list=PLb3g_Z8nEv1icFNrtZqByO1CrWVHLlO5g&index=3
 
