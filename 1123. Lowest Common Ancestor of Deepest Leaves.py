@@ -22,9 +22,13 @@ Note that nodes 6, 0, and 8 are also leaf nodes, but the depth of them is 2, but
 
 
 
+
+
+
+
+Obviously has to do with the depth of the tree
+
 Solution: Preorder
-
-
 
 class Solution {
 public:
