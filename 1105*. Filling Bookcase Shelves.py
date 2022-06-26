@@ -8,6 +8,10 @@ photo: https://leetcode.com/problems/filling-bookcase-shelves/
 
 		
 		
+we need to see the video of this problem, dont understand the question		
+		
+		
+		
 		
 		
 		
