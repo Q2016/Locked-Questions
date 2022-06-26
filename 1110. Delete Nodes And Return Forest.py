@@ -2,9 +2,19 @@ Question:
 Given the root of a binary tree, after deleting all nodes with a value in to_delete, we are left with a forest.
 Return the roots of the trees in the remaining forest. 
 
+Input: root = [1,2,3,4,5,6,7], to_delete = [3,5]
+Output: [[1,2,null,4],[6],[7]]
 
 
-Solution: Preorder? (This question is very smailar to one of the easy questions?, it's also similar to 450.)
+
+
+
+
+
+
+    
+
+Solution: Recursion Preorder? (This question is very smailar to one of the easy questions?, it's also similar to 450.)
 
 https://leetcode.com/problems/delete-nodes-and-return-forest/discuss/328853/JavaC%2B%2BPython-Recursion-Solution
 
@@ -24,3 +34,9 @@ def delNodes(self, root, to_delete):
     
     helper(root, True)
     return res
+
+                     
+                     
+Complexity
+Time O(N)
+Space O(H + N), where H is the height of tree.                     
