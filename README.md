@@ -20,11 +20,11 @@ Bits:477, 1066 (bit-mask)
 
 XOR:421
 
-String re:468, 640
+String re: 468, 640
 
-BFS:127,133,547,662, 934, 742 (maybe related to Dijkstra, Bellman Ford), 752, DFS coloring (886)
+BFS: 1091, 127, 133, 547, 662, 934, 742 (maybe related to Dijkstra, Bellman Ford), 752, DFS coloring (886)
 
-Dijkstra:1376,743,787  Bellman Ford:1514, 490, 505, 
+Dijkstra: 1376,743,787  Bellman Ford: 1514, 490, 505, 
 
 c++: 1366, 1387, 139, 142, 1438
 
