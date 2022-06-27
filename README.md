@@ -48,4 +48,4 @@ DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801, 1155*
 
 Heap (Priority Que): 692, 767, 871, 659
 
-
+bisect:1182
