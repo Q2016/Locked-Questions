@@ -13,13 +13,24 @@ Explanation: The triangle looks like:
 4 _1 8 3
 The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11 (underlined above).    
 
-# Note:
-# Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.
-#
+Note:
+Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.
 
 
 
-Solution: DP
+
+
+
+
+
+
+
+
+
+
+Reminds me of a similar question before this question
+
+Solution: DP 
 
 
 Given a triangle array, we need to return the path whose sum from top to bottom is minimum.
@@ -194,3 +205,20 @@ class Solution:
    
 Time Complexity: O(n²)
 Space Complexity: O(n)   
+   
+   
+   
+I think below that's from NeetCode is much simpler than Solution III (b): Bottom Up DP:
+
+from: https://www.youtube.com/watch?v=OM1MTokvxs4
+      
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+         dp=[0]*(len(traingle)+1)
+         
+         for row in triangle[::-1]:
+            for i,n in enumerate(row):
+               dp[i]=n+min(dp[i], dp[i+1])
+         
+         return dp[0]
+      
