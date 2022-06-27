@@ -17,7 +17,7 @@ There are 6 ways to get a sum of 7: 1+6, 2+5, 3+4, 4+3, 5+2, 6+1.
   
   
   
-Ofcourse backtrack as well   
+Ofcourse backtrack as well, it should be an easy DP since we can construct the tree which is basically the DP recursive equation.   
   
 Solution:  DP
 
