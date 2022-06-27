@@ -6,10 +6,23 @@ Return the minimum cost of connecting all the given sticks into one stick in thi
 
 Example 1:
 Input: sticks = [2,4,3]
-Output: 14 2+3=5 ,5+3=8  5+8???
+Output: 14 2+3=5, 5+4=9 => 5+9=14
+Example 2:
+Input: sticks = [1,8,3,5]
+Output: 30 1+3=4, 4+5=9, 9+8=17 => 4+9+17=30
 
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+Doing the above examples shows that the answer is found by a Greedy strategy    
+    
 Solution:  Heapify  
     
 Explain
