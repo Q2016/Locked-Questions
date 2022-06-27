@@ -21,7 +21,7 @@ Explanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]
   
 
 
-
+Given the night can move specific states it's like at each point there are graph like structure, so minimum distance is given by BFS
 
 Solution: BFS?
 https://goodtecher.com/leetcode-1197-minimum-knight-moves/
