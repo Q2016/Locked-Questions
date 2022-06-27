@@ -19,53 +19,33 @@ Then delete "bbb", get "dddaa"
 Finally delete "ddd", get "aa"     
 
 
-Solution: DP or Stack (Similar to 1047)
 
-These are other methods..     
+
+
+
+
+
+
+Solution: Stack or Two pointers (Similar to 1047)
+
+Stack:
      
-class Solution {
-public:
-     string removeDuplicates(string s, int k) {
-      for (auto i = 1, cnt = 1; i < s.size(); ++i) {
-        if (s[i] != s[i - 1]) cnt = 1;
-        else if (++cnt == k)
-          return removeDuplicates(s.substr(0, i - k + 1) + s.substr(i + 1), k);
-      }
-      return s;
-    }
-};
+Save the character c and its count to the stack.
+If the next character c is same as the last one, increment the count.
+Otherwise push a pair (c, 1) into the stack.
+I used a dummy element ('#', 0) to avoid empty stack.     
+     
+    def removeDuplicates(self, s, k):
+        stack = [['#', 0]]
+        for c in s:
+            if stack[-1][0] == c:
+                stack[-1][1] += 1
+                if stack[-1][1] == k:
+                    stack.pop()
+            else:
+                stack.append([c, 1])
+        return ''.join(c * k for c, k in stack)
 
-/*
-Approach 1: Brute-force
-Just keep removing duplicates until there is no more. When we find a duplicate, we call the same function recursively with that duplicate removed.
-
-string removeDuplicates(string s, int k) {
-  for (auto i = 1, cnt = 1; i < s.size(); ++i) {
-    if (s[i] != s[i - 1]) cnt = 1;
-    else if (++cnt == k)
-      return removeDuplicates(s.substr(0, i - k + 1) + s.substr(i + 1), k);
-  }
-  return s;
-}
-
-
-// stack
-
-class Solution {
-public:
-    string removeDuplicates(string S, int K) {
-        int i, j;
-        stack<int> st;
-        st.push(0);
-        for (i = 1, j = 1; j < S.size(); i++, j++) {
-            S[i] = S[j];
-            if (i == 0 || S[i] != S[i-1]) st.push(i);
-            else if (i - st.top() + 1 == K) {
-                i = st.top() - 1;
-                st.pop();
-            }
-        }
-        return S.substr(0, i);
-    }
-};
-*/
+Complexity
+Time O(N) for one pass
+Space O(N)
