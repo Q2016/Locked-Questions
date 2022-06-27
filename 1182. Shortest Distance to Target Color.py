@@ -11,6 +11,12 @@ The nearest 3 from index 1 is at index 4 (3 steps away).
 The nearest 2 from index 2 is at index 2 itself (0 steps away).
 The nearest 1 from index 6 is at index 3 (3 steps away).
 
+
+
+
+
+
+
   
 Solution: Hash map
   
