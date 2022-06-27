@@ -2,8 +2,26 @@ Question:
 
 Given a binary tree Populate each next pointer to point to its next right node. 
         
+Follow-up:
+You may only use constant extra space.
+The recursive approach is fine. You may assume implicit stack space does not count as extra space for this problem.        
         
-Solution: similar to 116       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+Solution: similar to 116  but now in constant space
+        
 If you have solved [https://leetcode.com/problems/populating-next-right-pointers-in-each-node/] 
 this question this is exactly same as this one except for one change.
 
