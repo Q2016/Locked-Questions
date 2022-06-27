@@ -6,16 +6,20 @@ Every even-indexed element is greater than adjacent elements, ie. A[0] > A[1] < 
 OR, every odd-indexed element is greater than adjacent elements, ie. A[0] < A[1] > A[2] < A[3] > A[4] < ...
 Return the minimum number of moves to transform the given array nums into a zigzag array.
 
-
 Example 1:
-
 Input: nums = [1,2,3]
 Output: 2
 Explanation: We can decrease 2 to 0 or 3 to 1.    
     
+    
+    
+    
+    
+    
+    
 
     
-Solution:    
+Solution: Brute-force   
 
 Approach 1: manipulating array    
     
