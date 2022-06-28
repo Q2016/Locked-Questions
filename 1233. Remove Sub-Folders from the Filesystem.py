@@ -7,7 +7,15 @@ Output: ["/a","/c/d","/c/f"]
 Explanation: Folders "/a/b/" is a subfolder of "/a" and "/c/d/e" is inside of folder "/c/d" in our filesystem.   
     
     
-    
+   
+   
+   
+   
+   
+   
+   
+   
+Sort by length as I thought    
     
 Solution: 
  
