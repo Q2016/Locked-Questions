@@ -15,6 +15,12 @@ Explanation:
 Islands in gray are closed because they are completely surrounded by water (group of 1s).	
 
 
+
+
+
+
+Lets' say we start from the origine, and explore points around, how different is seeing a '1' from a '0' in our treatment of points?
+
 Solution: DFS
 This is similar to 1020. Number of Enclaves, Flood Fill
    
