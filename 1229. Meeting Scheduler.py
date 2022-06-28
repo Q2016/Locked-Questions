@@ -1,16 +1,26 @@
 Question:
 Given the availability time slots arrays slots1 and slots2 of two people and a meeting duration duration, 
-return the earliest time slot that works for both of them and is of duration duration.
+return the earliest time slot that works for both of them and has a  duration as specified.
 
 Example 1:
 Input: slots1 = [[10,50],[60,120],[140,210]], slots2 = [[0,15],[60,70]], duration = 8
 Output: [60,68]
 
 
-Solution: Sort
   
-Time O (nlogn) 
-Space O (1)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Solution: Sort and Two-Pointers
+  
+https://www.youtube.com/watch?v=G70YMOpD5lg
   
   
       def minAvailableDuration(self, slots1, slots2, duration):
@@ -37,3 +47,8 @@ Space O (1)
             else:
                 i += 1
         return []
+      
+      
+      
+Time O (nlogn) 
+Space O (1)      
