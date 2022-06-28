@@ -42,9 +42,14 @@ Trie:208, 1233
 
 Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/
 
+- For dfs we have the time complexity as O(V+E)
+
+- For every DFS problem (top-down) first check if it can reduced to subproblems, this will make it a DP problem with reduced time complexity (bottom-up)
+
 1438 (deque)
 
-DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801, 1155*, Buttom Up & Top down 120,
+
+DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801, 1155*, Buttom Up & Top down 120, Hardest DP 1223,
 
 Heap (Priority Que): 692, 767, 871, 659
 
