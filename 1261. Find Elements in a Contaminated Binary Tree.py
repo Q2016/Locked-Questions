@@ -10,8 +10,33 @@ Implement the FindElements class:
 FindElements(TreeNode* root) Initializes the object with a contaminated binary tree and recovers it.
 bool find(int target) Returns true if the target value exists in the recovered binary tree.    
     
+    -1           0
+      \    =>     \
+       -1          2
     
-Solution:    
+    
+    
+Input
+["FindElements","find","find"]
+[[[-1,null,-1]],[1],[2]]
+Output
+[null,false,true]
+Explanation
+FindElements findElements = new FindElements([-1,null,-1]); 
+findElements.find(1); // return False 
+findElements.find(2); // return True     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution:  Simple DFS
+    
 
     def __init__(self, root: TreeNode):
         self.seen = set()
