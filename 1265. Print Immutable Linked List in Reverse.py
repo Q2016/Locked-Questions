@@ -100,7 +100,7 @@ Idea
 
 Split the list to  equal-size small list. Print each part in reverse order.
 Mathematical proof to use sqrt(n):
- = stack size and  = recursion depth, to minimize space do: min(k+n/k)
+ k = stack size and n/k = recursion depth, to minimize space do: min(k+n/k)
 We can solve the equation min(k+n/k) to calculate the minimum by taking the derivative and equating it to 0.  
 
 class Solution {
