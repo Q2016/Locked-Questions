@@ -5,6 +5,29 @@ where 1 means that on that cell there is a server and 0 means that it is no serv
 Two servers are said to communicate if they are on the same row or on the same column.
 Return the number of servers that communicate with any other server.    
 
+Input: grid = [[1,0],
+               [0,1]]
+Output: 0
+Explanation: No servers can communicate with others.
+Example 2:
+
+Input: grid = [[1,0],
+               [1,1]]
+Output: 3
+Explanation: All three servers can communicate with at least one other server.
+
+
+
+
+
+
+    
+    
+
+
+
+
+
 Solution: Counting
 
 class Solution:
