@@ -14,34 +14,20 @@ Explanation: When using 3 arr converts to [3, 3, 3] which sums 9 and that's the 
 
 
 
-Solution: Binary Search (I got this comments below, I think it will help)
 
-The value we are looking for is somewhere between 1 and maxValue (m).
-Now use Binary search to speed up the process.
 
-go up if the sum is too small
-go down if the sum is too big
-When we are done with binary search, l and r are equal, but it might happen that we have not exactly reached the target.
-Check if l-1 (should get us below the target) leads to the sum closer to the target.
 
-class Solution(object):
-    def getRes(self,arr,t):
-        nums = [t if num >= t else num for num in arr]
-        return sum(nums)
+
+Solution: 
     
-    def findBestValue(self, arr, target):
-        l = 1
-        h = max(arr)
-        
-        while l <= h:
-            mid = (h-l)//2 + l
-            curr = self.getRes(arr,mid)
-            if curr == target:
-                return mid
-            elif curr < target:
-                l = mid+1
-            else:
-                h = mid-1
-        if abs(self.getRes(arr,l) - target) < abs(self.getRes(arr,h) - target):
-            return l
-        return h
+Just sort, I have also seen Binary Search  solution
+    
+    def findBestValue(self, A, target):
+        A.sort(reverse=1)
+        maxA = A[0]
+        while A and target >= A[-1] * len(A):
+            target -= A.pop()
+        return int(round((target - 0.0001) / len(A))) if A else maxA
+
+    
+Time nlogn    
