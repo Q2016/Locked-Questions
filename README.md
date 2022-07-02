@@ -30,7 +30,7 @@ c++: 1366, 1387, 139, 142, 1438
 
 Educational:
 
-Time complexity: 139, 113
+Time complexity: 139, 113, learn master formula 1274
 
 DFS: 17 and Backtracking: 39, 526, 77
 
@@ -49,8 +49,10 @@ Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recur
 1438 (deque)
 
 
-DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801, 1155*, Buttom Up & Top down 120, Hardest DP 1223,
+DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801, 1155*, Buttom Up & Top down 120, Hardest DP 1223, 1277
 
 Heap (Priority Que): 692, 767, 871, 659
 
 bisect:1182
+
+Prefix-sum: 1292
