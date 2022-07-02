@@ -20,35 +20,62 @@ Explanation: From [0,0] to [4,4] we can count 3 ships within the range.
   
   
   
-Solution:  Recursion (divided and conquer)
+  
+  
+  
+  
+  
+Solution:  
+
+Divide the current searching region into 4 equal smaller regions. Do this recursively with the following base case:
+
+1. if the current search region is not valid or it has no ships in it, return 0;
+
+2. if the current search region is a single point, return 1.
+
+
+Runtime: T(N) = 4*T(N/4) + O(N^0); a = 4 > b^d = 4^0 = 1; case 3 of the master method, T(N) = O(N^(loga / logb)) = O(N).
+  
+  or O(logmn) => I dont know which one is correct?
+  
+
+One implementation pitfall is that since you compute the middle point using: bottomLeft + (topRight - bottomLeft) / 2, 
+when bottomLeft and topRight are off by 1, the middle point will be bottomLeft. To avoid non-ending recursion bug, recurse 
+on (bottomLeft, middle point) and (middle point + 1, topRight). For example, if bottomLeft is (1, 1) and topRight is (2, 2), middle 
+point will be (1, 1). Recurse on (bottomLeft, middle point) and (middle point + 1, topRight) leads to 2 base 
+case(single point(1, 1) and (2,2)); However, recurse on (bottomLeft, middle point + 1) and (middle point, topRight) leads to 
+recursing on the same region(1,1) and (2,2) again, causing stackoverflow.
+
+       
 
   
-class Solution(object):
-  def countShips(self, sea: 'Sea', topRight: 'Point', bottomLeft: 'Point') -> int:
-    if topRight.x < bottomLeft.x or topRight.y < bottomLeft.y:
-      return 0
-    if not sea.hasShips(topRight, bottomLeft):
-      return 0
+/**
+ * // This is Sea's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * class Sea {
+ *     public boolean hasShips(int[] topRight, int[] bottomLeft);
+ * }
+ */
 
-    # sea.hashShips(topRight, bottomLeft) == True
-    if topRight.x == bottomLeft.x and topRight.y == bottomLeft.y:
-      return 1
-
-    mx = (topRight.x + bottomLeft.x) // 2
-    my = (topRight.y + bottomLeft.y) // 2
-    ans = 0
-    # top right
-    ans += self.countShips(sea, topRight, Point(mx + 1, my + 1))
-    # bottom right
-    ans += self.countShips(sea, Point(topRight.x, my),
-                           Point(mx + 1, bottomLeft.y))
-    # top left
-    ans += self.countShips(sea, Point(mx, topRight.y),
-                           Point(bottomLeft.x, my + 1))
-    # bottom left
-    ans += self.countShips(sea, Point(mx, my), bottomLeft)
-    return ans
-      
-      
-Time: O(logMN)
-Space: O(logMN)      
+class Solution {
+    public int countShips(Sea sea, int[] topRight, int[] bottomLeft) {
+        return divideAndConquer(sea, topRight, bottomLeft);
+    }
+    private int divideAndConquer(Sea sea, int[] topRight, int[] bottomLeft) {
+        if(topRight[0] < bottomLeft[0] || topRight[1] < bottomLeft[1] || !sea.hasShips(topRight, bottomLeft)) {
+            return 0;
+        }
+        if(topRight[0] == bottomLeft[0] && topRight[1] == bottomLeft[1]) {
+            return 1;
+        }
+        int cnt = 0;
+        int midX = bottomLeft[0] + (topRight[0] - bottomLeft[0]) / 2;
+        int midY = bottomLeft[1] + (topRight[1] - bottomLeft[1]) / 2;
+                
+        cnt += divideAndConquer(sea, new int[]{midX, midY}, bottomLeft);
+        cnt += divideAndConquer(sea, new int[]{topRight[0], midY}, new int[]{midX + 1, bottomLeft[1]});
+        cnt += divideAndConquer(sea, new int[]{midX, topRight[1]}, new int[]{bottomLeft[0], midY + 1});
+        cnt += divideAndConquer(sea, topRight, new int[]{midX + 1, midY + 1});
+        return cnt;
+    }
+}  
