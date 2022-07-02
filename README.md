@@ -16,7 +16,7 @@ Design: 173, 353
 
 533, 621, 794, 723
 
-Bits:477, 1066 (bit-mask)
+Bits:477, 1066 (bit-mask), 137
 
 XOR:421
 
