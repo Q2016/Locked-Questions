@@ -55,4 +55,4 @@ Heap (Priority Que): 692, 767, 871, 659
 
 bisect:1182
 
-Prefix-sum: 1292
+Prefix-sum: 1292, 1423
