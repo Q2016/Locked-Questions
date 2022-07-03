@@ -9,6 +9,13 @@ Explanation: The substring "iii" contains 3 vowel letters.
 
 
   
+  
+  
+  
+  
+  
+  
+  
 Solution:
   
 Maintain a sliding window of size k, (i - k, i], and count in/out the vowels inside/outside during sliding;
