@@ -19,6 +19,17 @@ Explanation: All subarrays are:
 Therefore, the size of the longest subarray is 2.    
 
 
+
+
+
+
+
+
+
+
+
+
+
 Solution: Deques
     
 https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/discuss/609771/JavaC%2B%2BPython-Deques-O(N)
