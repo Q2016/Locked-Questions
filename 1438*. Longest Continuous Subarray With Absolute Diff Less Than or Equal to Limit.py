@@ -23,23 +23,38 @@ Solution: Deques
     
 https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/discuss/609771/JavaC%2B%2BPython-Deques-O(N)
 
+    https://www.youtube.com/watch?v=RInXJGHmy4c
+    
 Last week we learned, in 1425. Constrained Subsequence Sum how to get minimum in a subarray when sliding.
 This week, we need to get both the maximum and the minimum, at the same time.
 
-    def longestSubarray(self, A, limit):
-        maxd = collections.deque()
-        mind = collections.deque()
-        i = 0
-        for a in A:
-            while len(maxd) and a > maxd[-1]: maxd.pop()
-            while len(mind) and a < mind[-1]: mind.pop()
-            maxd.append(a)
-            mind.append(a)
-            if maxd[0] - mind[0] > limit:
-                if maxd[0] == A[i]: maxd.popleft()
-                if mind[0] == A[i]: mind.popleft()
-                i += 1
-        return len(A) - i
+    def longestSubarray(self, nums, limit):
+        maxdeq = collections.deque()
+        mindeq = collections.deque()
+        
+        left = 0
+        ans=0
+        
+        for right, num in enumerate(nums):
+            while len(maxdeq) and num > maxdeq[-1]: 
+                maxdeq.pop()
+            maxdeq.append(num)
+            
+            while len(mindeq) and num < mindeq[-1]: 
+                mindeq.pop()
+            mindeq.append(num)
+            
+            
+            while maxdeq[0] - mindeq[0] > limit:
+                if maxdeq[0] == nums[left]: 
+                    maxdeq.popleft()
+                if mindeq[0] == nums[i]: mindeq.popleft()
+                    mindeq.popleft()
+                left += 1
+        
+            ans=max(ans, right-left+1)
+        
+        return ans
 
 Time O(N)
 Space O(N)
