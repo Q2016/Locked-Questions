@@ -13,6 +13,7 @@ A customer with a card ID equal to id, checks out from the station stationName a
 
 double getAverageTime(string startStation, string endStation)
 Returns the average time it takes to travel from startStation to endStation.
+
 The average time is computed from all the previous traveling times from startStation to endStation that happened directly, meaning a check in 
 at startStation followed by a check out from endStation.
 The time it takes to travel from startStation to endStation may be different from the time it takes to travel from endStation to startStation.
@@ -69,18 +70,22 @@ getAverageTime(self, startStation, endStation): here we just look at dictionarie
 Complexity: time compexlty is O(1) for all 3 operations. Space complexity potentially is O(Q), where Q is toatl number of queries.
 
 class UndergroundSystem:
-    def __init__(self):
-        self.ids = {}
-        self.pairs = Counter()
-        self.freqs = Counter()
-        
-    def checkIn(self, id, stationName, t):
-        self.ids[id] = (stationName, t)
 
-    def checkOut(self, id, stationName, t):
-        Name2, t2 = self.ids.pop(id)
-        self.pairs[(Name2, stationName)] += t-t2
-        self.freqs[(Name2, stationName)] += 1
+    def __init__(self):
+        self.checkInMap = {}  # Uid - [StationName, Time]
+        self.routeTotalTime = defaultdict(int)
+        self.routeCount = defaultdict(int)
+
+    def checkIn(self, id: int, stationName: str, t: int) -> None:
+        self.checkInMap[id] = [stationName, t]
+
+    def checkOut(self, id: int, stationName: str, t: int) -> None:
+        checkIn = self.checkInMap.pop(id)  # Pop after using it which will not make HashTable big
+        routeName = (checkIn[0], stationName)
         
-    def getAverageTime(self, startStation, endStation):
-        return self.pairs[startStation, endStation]/self.freqs[startStation, endStation]  
+        self.routeTotalTime[routeName] += t - checkIn[1]
+        self.routeCount[routeName] += 1
+
+    def getAverageTime(self, startStation: str, endStation: str) -> float:
+        routeName = (startStation, endStation)
+        return self.routeTotalTime[routeName] / self.routeCount[routeName]
