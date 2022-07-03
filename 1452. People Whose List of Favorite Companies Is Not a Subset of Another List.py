@@ -28,8 +28,29 @@ Thanks to Python set library
             for j in range(len(A)):
                 if i == j:
                     continue
-                if not d[i] - d[j]:
+                if not d[i] - d[j]: # below
                     subSet = False
                     break
             if subSet: res.append(i)         
         return res  
+    
+it removes the elements from d[i] if it is also present in d[j], gives the remaining elements in d[i] as answer
+for example
+d[i]={1,2,5}
+d[j]={2,5,7,8}
+d[i]-d[j]={1}
+d[j]-d[i]={7,8}    
+
+Time complexity:
+    
+    Analysis:
+
+Let
+m = favoriteCompanies.size(),
+a = average size of all companies (favoriteCompanies[0].size() + favoriteCompanies[1].size() + .. + favoriteCompanies[m - 1].size()) / m,
+b = average size of company names.
+
+There needs O(m * a * b) time and O(m * a) space to create all sets, and there are O(m ^ 2) iterations due to the nested for loops, 
+and each check for subset relation cost time O(a). Therefore:
+
+Time: O(m * a * (m + b)), space: O(m * a).
