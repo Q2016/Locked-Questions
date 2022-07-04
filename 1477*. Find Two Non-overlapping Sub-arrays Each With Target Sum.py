@@ -18,7 +18,9 @@ Explanation: Only two sub-arrays have sum = 3 ([3] and [3]). The sum of their le
 
 
 
-Solution: Dp
+Solution: Dp+ Two Pointers
+
+https://www.youtube.com/watch?v=uV_JsPPLK9o	
 	
 def minSumOfLengths(self, arr: List[int], target: int) -> int:
 	n=len(arr)
