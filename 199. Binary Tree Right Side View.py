@@ -12,6 +12,15 @@ Output: [1,3,4]
             \         \
              5         4
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
 Solution: BFS
     
     def rightSideView(self, root):
