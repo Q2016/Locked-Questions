@@ -42,3 +42,6 @@ Solution: 3 pointers
                         l+=1                        
         return res
                 
+
+# Time:  O(n^2)
+# Space: O(1)         
