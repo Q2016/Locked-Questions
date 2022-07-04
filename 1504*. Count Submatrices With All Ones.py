@@ -21,7 +21,7 @@ Total number of rectangles = 6 + 2 + 3 + 1 + 1 = 13.
 
 
 
-Solution: 
+Solution: DP
 	
 https://www.youtube.com/watch?v=8miqwSN3EFo	
 	
