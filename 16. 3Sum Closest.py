@@ -7,6 +7,18 @@ Input: nums = [-1,2,1,-4], target = 1
 Output: 2
 Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).    
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution: 3 Pointers
 Similar to 3 Sum problem, use 3 pointers to point current element, next element and the last element. 
 If the sum is less than target, it means we have to add a larger element so next element move to the next. 
@@ -18,6 +30,7 @@ if it is less than minimum difference so far, then replace result with it, other
     def threeSumClosest(self, nums, target):
 
         nums, result, min_diff, i = sorted(nums), float("inf"), float("inf"), 0
+        
         while i < len(nums) - 2:
             if i == 0 or nums[i] != nums[i - 1]:
                 j, k = i + 1, len(nums) - 1
