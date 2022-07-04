@@ -7,16 +7,35 @@ Input: nums = [10,2]
 Output: "210"    
 
     
-Solution: ---    
+nums=[3,30,34,5,9]
+Output: "9534330"
     
-class LargerNumKey(str):
-    def __lt__(x, y):
-        return x+y > y+x
+    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: Greedy
+https://www.youtube.com/watch?v=WDx6Y4i4xJ8    
         
 class Solution:
     def largestNumber(self, nums):
-        largest_num = ''.join(sorted(map(str, nums), key=LargerNumKey))
-        return '0' if largest_num[0] == '0' else largest_num
+        
+        for i, n in enumerate(nums):
+            nums[i]=str(n)
+            
+        def compare(n1, n2):
+            if n1+n2>n2+n1:
+                return -1
+            else:
+                return 1
+            
+        nums=sorted(nums, key=cmp_to_key(compare))
+        return str(int("".join(nums)))
       
       
       
