@@ -4,7 +4,8 @@
 The link for Blind 75 LeetCode Questions
 https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
 
-Subsequence, subarray, substring
+Subsequence: Input: “apb” Output: “a,” “p,” “b,” “ap,” “pb,” “ab,” “apb,” and. “” 
+subarray/substring: For example, “is a rainy” is a substring of “Today is a rainy day.”
 
 For these questions I like to see their youtube:
 
