@@ -14,6 +14,13 @@ After day 1: [x, _, _, _, _]   // we can only make one bouquet.
 After day 2: [x, _, _, _, x]   // we can only make two bouquets.
 After day 3: [x, _, x, _, x]   // we can make 3 bouquets. The answer is 3.    
 
+    
+    
+    
+    
+    
+    
+    
 
     
     
