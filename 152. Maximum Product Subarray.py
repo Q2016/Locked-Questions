@@ -8,8 +8,22 @@ Output: 6
 Explanation: [2,3] has the largest product 6.    
     
     
-Solution: Kadane-like algorithm   
     
+    
+    
+    
+    
+    
+    
+    
+Solution: Kadane-like algorithm   
+
+    https://www.youtube.com/watch?v=lXVy6YWFcRM
+    
+keep track of max, we also keep track of min because multiplying a negative min by another negative number
+can give a max.
+
+
 
     def maxProduct(self, nums: List[int]) -> int:
 
