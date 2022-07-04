@@ -52,7 +52,7 @@ Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recur
 1438 (deque)
 
 
-DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801, 1155*, Buttom Up & Top down 120, Hardest DP 1223, 1277
+DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801, 1155*, Buttom Up & Top down 120, Hardest DP 1223, 1277, 1504
 
 Heap (Priority Que): 692, 767, 871, 659
 
