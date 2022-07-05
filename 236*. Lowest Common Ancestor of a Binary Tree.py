@@ -29,7 +29,7 @@ we return whenever, we find p or q i.e we find our left and right
     def lowestCommonAncestor(self, root, p, q):
 
         def dfs(cur):
-           if not cur:
+            if not cur:
               return None
             
             if cur==p or cur ==q:
