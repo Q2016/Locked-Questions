@@ -9,6 +9,19 @@ Output: 2
 Explanation: The subarray [4,3] has the minimal length under the problem constraint.
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+sliding window problems usually work when the array is sorted, here the gole is to shrink the size so we start from the biggest array and
+try to shrink it.
+
+    
 Solution: sliding window 
     
 Until now, we have kept the starting index of subarray fixed, and found the last position. Instead, we could move the starting 
