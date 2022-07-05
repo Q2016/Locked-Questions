@@ -5,7 +5,22 @@ indices i and j in the array such that abs(nums[i] - nums[j]) <= t and abs(i - j
 Example 1:
 Input: nums = [1,2,3,1], k = 3, t = 0
 Output: true    
+Example 3:
 
+Input: nums = [1,5,9,1,5,9], k = 2, t = 3
+Output: false
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 Solution:
     
 The idea is like the bucket sort algorithm. Suppose we have consecutive buckets covering the range of nums with each bucket 
