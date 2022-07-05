@@ -9,7 +9,14 @@ Output: [24,12,8,6]
 
     
     
-Solution: ---
+    
+    
+   
+
+    
+    
+    
+Solution: Prefix, Postfix
     
 We can simply calculate product of the whole array and for each element in nums, divide the product by nums[i]. 
 This effectively leaves us with product of whole array except self at each index. We need to take 
@@ -23,12 +30,19 @@ the index where there was 0 in nums, which will contain product of rest of array
 
 
     def productExceptSelf(self, nums):
-        prod, zero_cnt = reduce(lambda a, b: a*(b if b else 1), nums, 1), nums.count(0)
-        if zero_cnt > 1: return [0]*len(nums)
-        for i, c in enumerate(nums):
-            if zero_cnt: nums[i] = 0 if c else prod
-            else: nums[i] = prod // c
-        return nums
+        res=[1]*(len(nums))
+        
+        prefix=1
+        for i in range(len(nums)):
+            res[i]=prefix
+            prefix *=nums[i]
+            
+        postfix =1
+        for i in range(len(nums)-1,-1,-1):
+            res[i] *=posfix
+            postfix *=nums[i]
+        return res
+
     
 Time Complexity : O(N)
 Space Complexity : O(1)
