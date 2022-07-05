@@ -19,25 +19,29 @@ Output: [1,3,4]
         
         
         
-        
+Do a level order and pop the left most node        
         
 Solution: BFS
     
-    def rightSideView(self, root):
-        deque = collections.deque()
-        if root:
-            deque.append(root)
-        res = []
-        while deque:
-            size, val = len(deque), 0
-            for _ in range(size):
-                node = deque.popleft()
-                val = node.val # store last value in each level
-                if node.left:
-                    deque.append(node.left)
-                if node.right:
-                    deque.append(node.right)
-            res.append(val)
-        return res    
+   def rightSideView(self, root):
+      res=[]
+      q=collections.deque([root])
+      
+      while q:
+        rightSide=None
+        qLen=len(q)
+        
+        for i in range(qLen):
+          node=q.popleft()
+          if node:
+            rightSide=node
+            q.append(node.left)
+            q.append(node.right)
+            
+        if rightSide:
+          res.append(rightSide)
+          
+      return res
+ 
     
             
