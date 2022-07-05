@@ -6,6 +6,15 @@ how would you optimize?
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 Solution: Inorder
     
 To solve the problem, one could use the property of BST : inorder traversal of BST is an array sorted in the ascending order.    
