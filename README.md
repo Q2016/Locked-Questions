@@ -35,7 +35,7 @@ Educational:
 
 Time complexity: 139, 113, learn master formula 1274, 1414, 1452
 
-DFS: combinations 17 and Backtracking: 39, 526, 77
+DFS: combinations 17 and Backtracking: 39, 526, 77, 254
 
 Topological Sort:207, 210, 310
 
