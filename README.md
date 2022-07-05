@@ -39,6 +39,8 @@ DFS: combinations 17 and Backtracking: 39, 526, 77
 
 Topological Sort:207, 210, 310
 
+Bucket Sort:220
+
 Trie:208, 1233
 
 2D Knapsack:474
