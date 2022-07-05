@@ -24,7 +24,7 @@ Explanation: The LCA of nodes 5 and 1 is 3.
 Solution:   (refer to 235. not identical)
 https://www.youtube.com/watch?v=VG5w_VVAgH4
 
-we return whenever, we find p or q 
+we return whenever, we find p or q i.e we find our left and right
   
     def lowestCommonAncestor(self, root, p, q):
 
