@@ -16,7 +16,8 @@ Output: ["((()))","(()())","(())()","()(())","()()()"]
     
 one not optimum way is to use all substrings of the first exmaple above and check if each backtracked is valid or not and go on.    
 
-Solution:              
+Solution: Backtrack
+    
 Instead of adding '(' or ')' every time, let's only add them when we know it will remain a valid sequence. 
 We can do this by keeping track of the number of opening and closing brackets we have placed so far.
 We can start an opening bracket if we still have one (of n) left to place. And we can start a closing 
