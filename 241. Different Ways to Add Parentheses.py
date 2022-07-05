@@ -20,7 +20,18 @@ Explanation:
 (((2*3)-4)*5) = 10	
 
 
-Solution: DFS
+
+
+
+
+
+
+
+
+
+Solution: DFS 
+    
+we solved 22. using Backtracking    
 
 class Solution(object):
     def diffWaysToCompute(self, input):
