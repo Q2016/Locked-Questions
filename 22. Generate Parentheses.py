@@ -5,6 +5,16 @@ Example 1:
 Input: n = 3
 Output: ["((()))","(()())","(())()","()(())","()()()"]        
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+one not optimum way is to use all substrings of the first exmaple above and check if each backtracked is valid or not and go on.    
 
 Solution:              
 Instead of adding '(' or ')' every time, let's only add them when we know it will remain a valid sequence. 
