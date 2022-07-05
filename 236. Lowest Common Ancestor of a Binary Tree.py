@@ -15,31 +15,35 @@ Output: 3
 Explanation: The LCA of nodes 5 and 1 is 3.    
 
     
-    
- Solution:   (refer to 235. repeatetive)
+  
+  
+  
+  
+  
+  
+Solution:   (refer to 235. not identical)
+https://www.youtube.com/watch?v=VG5w_VVAgH4
 
-Traverse the tree in a DFS manner. The moment you encounter either of the nodes p or q, return some boolean flag. 
-The flag helps to determine if we found the required nodes in any of the paths. The least common ancestor would then be 
-the node for which both the subtree recursions return a True flag. It can also be the node 
-which itself is one of p or q and for which one of the subtree recursions returns a True flag.
-
+we return whenever, we find p or q 
+  
     def lowestCommonAncestor(self, root, p, q):
 
-        def recurse_tree(current_node):
+        def dfs(cur):
+           if not cur:
+              return None
+            
+            if cur==p or cur ==q:
+              return cur
+            
+            left=dfs(cur.left)
+            right=dfs(cur.right)
+            
+            # first case
+            if left and right:
+              return cur
+            
+            # second case
+            return left if left else right
+          
 
-            # If reached the end of a branch, return False.
-            if not current_node:
-                return False
-            left = recurse_tree(current_node.left)
-            right = recurse_tree(current_node.right)
-            # If the current node is one of p or q
-            mid = current_node == p or current_node == q
-            # If any two of the three flags left, right or mid become True.
-            if mid + left + right >= 2:
-                self.ans = current_node
-            # Return True if either of the three bool values is True.
-            return mid or left or right
 
-        # Traverse the tree
-        recurse_tree(root)
-        return self.ans
