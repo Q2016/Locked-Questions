@@ -12,6 +12,13 @@ Hints:things to consider:
 1 does each group allow duplicates, such as ["a", "a"]. 
 2 how to calculate unique hash key.
   
+  
+  
+  
+  
+  
+  
+Group by length and then pick two words and see if the number of shifts is consistent for all charachters of the two words  
 
 Solution: Dictionary
   
