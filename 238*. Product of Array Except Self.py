@@ -14,7 +14,7 @@ Output: [24,12,8,6]
    
 
     
-    
+It's more like a IQ test    
     
 Solution: Prefix, Postfix
     
