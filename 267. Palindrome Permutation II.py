@@ -9,7 +9,7 @@ Given s = "abc", return [].
 
 
 
-No solution for this yet
+No solution for this yet but very similar to interview from Bloomberg 
 
 Solution: Backtracking (we should be able to use other solutions in here)
     
