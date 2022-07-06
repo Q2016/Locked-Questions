@@ -16,8 +16,7 @@ truncated to 8, and -2.7335 would be truncated to -2. Return the quotient after 
     
     
     
-    
-    
+The O(n) is trivial but I dont understand the log(n), there's no video and it's time complexity      
     
 Solution: Bit 
     
@@ -42,22 +41,19 @@ first version O(n):
 
 Second improved version log(n):
 
-    def divide(self, dividend, divisor):
-        
-        dividend, divisor = abs(dividend), abs(divisor)
-        res = 0
-        
-        while dividend >= divisor:
-            temp=divisor
-            mul = 1
-            
-            while dividend >= temp:
-                dividend -= temp
-                output += mul
-                mul += mul # because we cant use multiply we use sum
-                temp+= temp
-                
-        if (dividend<0 and divisor>=0) or (divisor<0 and dividend>=0):
-            output = -output
-            
-        return output
+class Solution:
+# @return an integer
+def divide(self, dividend, divisor):
+    positive = (dividend < 0) is (divisor < 0)
+    dividend, divisor = abs(dividend), abs(divisor)
+    res = 0
+    while dividend >= divisor:
+        temp, i = divisor, 1
+        while dividend >= temp:
+            dividend -= temp
+            res += i
+            i <<= 1
+            temp <<= 1
+    if not positive:
+        res = -res
+    return min(max(-2147483648, res), 2147483647)
