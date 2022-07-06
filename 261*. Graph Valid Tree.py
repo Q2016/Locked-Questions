@@ -7,6 +7,17 @@ Input: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]
 Output: true
 
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 Solution:  BFS
 Similar to question 323. As a tree, the the number of edges must equal to the number of nodes - 1. we use BFS start from a 
 certain node and find all related to this node and append them to the visited set. 
