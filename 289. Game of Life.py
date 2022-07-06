@@ -17,6 +17,12 @@ Input: board = [[0,1,0],    =>     [0,0,0]
 
     
     
+    
+    
+    
+    
+    
+    
 Solution: Brute force
 The key point is to understand that the change to a cell is only decided by its nearby 8 cell in the original grid.
 we should not use the updated cell to compute to change decision for other cell,therefore, the brute force way is to store 
@@ -38,7 +44,7 @@ so when we count living cells nearby, we need to count those value equals to 1 a
         for i, row in enumerate(board):
             for j, ele in enumerate(row):
                 count = 0
-                for a in xrange(max(0, i - 1), min(i + 2, m)):
+                for a in xrange(max(0, i - 1), min(i + 2, m)): #curious limits
                     for b in xrange(max(0, j - 1), min(j + 2, n)):
                         if (a, b) != (i, j) and 1 <= board[a][b] <= 2:
                             count += 1
