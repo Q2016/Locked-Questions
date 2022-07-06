@@ -3,6 +3,20 @@ Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >
 For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5, 3, 4].
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+What else can we do other than swap if we have to do it in place? otherwise it's obvious that the solution is sorting
+
 Solution:
 The pattern is that numbers in odd positions are peaks. Simple method is to sort the array in increasing order and
 use two pointers, one from the beginning, one from the middle. Below is the inplace solution:
