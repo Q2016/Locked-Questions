@@ -31,6 +31,8 @@ def findDuplicate(self, nums: List[int]) -> int:
             
 Finding cycle
 
+https://www.youtube.com/watch?v=wjYnzkAhcNk
+
 Complexity: Time complexity is O(n), because we potentially can traverse all list. Space complexity is O(1), because we actually do 
 not use any extra space: our linked list is virtual.
 
