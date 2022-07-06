@@ -6,7 +6,9 @@ a win by flipping the middle "++" to become "+--+".
 Follow up:
 Derive your algorithm's runtime complexity.
 
-
+Input: s = "++++"
+Output: true
+Explanation: The starting player can guarantee a win by flipping the middle "++" to become "+--+".
 
 
 
