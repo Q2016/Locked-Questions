@@ -29,21 +29,27 @@ def findDuplicate(self, nums: List[int]) -> int:
             
             
             
-Finding cycle
+Finding cycle: Floyd's Algo
 
 https://www.youtube.com/watch?v=wjYnzkAhcNk
 
+fast pointer's speed is twice the slow pointer    
+    
 Complexity: Time complexity is O(n), because we potentially can traverse all list. Space complexity is O(1), because we actually do 
 not use any extra space: our linked list is virtual.
 
 class Solution:
     def findDuplicate(self, nums):
-        slow, fast = nums[0], nums[0]
+        slow, fast = 0,0
         while True:
-            slow, fast = nums[slow], nums[nums[fast]]
+            slow = nums[slow] 
+            fast= nums[nums[fast]] # this means speed 2*x
+            
             if slow == fast: break
            
-        slow = nums[0];
-        while slow != fast:
-            slow, fast = nums[slow], nums[fast]
-        return slow
+        slow2 = 0;
+        while True:
+            slow = nums[slow] 
+            slow2 = nums[slow2]
+            if slow==slow2:
+                return slow
