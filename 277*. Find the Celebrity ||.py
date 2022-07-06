@@ -4,6 +4,20 @@ him but he does not know any of them. You are given a helper function bool knows
 functionint findCelebrity(n), your function should minimize the number of calls to knows.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+I thought this was a BST, you wrong piss of crap :)
+
 Solution:
 One way to solve this problem is by taking each node, check if other nodes know this node, and 
 check if this node does not know any other nodes. If yes, this is the required celebrity. 
@@ -17,6 +31,7 @@ Otherwise, continue checking the other nodes.
                 if not knows(other, celeb) or knows(celeb, other):
                     return False
             return True
+        
         for i in range(n):
             if is_celeb(i):
                 return i
