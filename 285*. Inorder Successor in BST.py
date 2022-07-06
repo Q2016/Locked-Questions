@@ -24,7 +24,7 @@ Input: root = [5,3,6,2,4,null,null,1], p = 6, Output: null
 
 
 
-
+Didnt understand what the question is at the begining
 
 Solution: Inorder  (Left, Root, Right)
 
