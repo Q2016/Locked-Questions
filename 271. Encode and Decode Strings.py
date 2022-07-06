@@ -11,6 +11,10 @@ def encode(vector strs):                              def decode(string s) {
 Implement the encode and decode methods.
 
  
+  
+  
+We can just use the ord and use ASCII codes  
+  
 Solution:  
   
 class Codec:
