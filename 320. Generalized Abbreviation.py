@@ -17,7 +17,7 @@ round 3: ['wor','wo1','w1r',...]
     
     
     
-    
+Didnt come to my mind but I'm sure it can be done in a linear way as well.    
     
 Solution: backtracking
 
@@ -33,3 +33,8 @@ Solution: backtracking
         
     def solution(self):
         backtracking(word, "", 0, 0)
+
+        
+        
+Time: O(2^n)
+Space: O(2^n)        
