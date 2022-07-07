@@ -19,11 +19,17 @@ Example 1:
     
     
     
-    
+Starting from the end of the array and swap was correct    
     
 Solution: 
     https://www.youtube.com/watch?v=6qXO72FkqwM
 
+        
+                /\
+               /  \/
+          /\  /
+         /  \/
+        /
         
 sort  O(nlogn)        
 swap n/2 elements O(n)
