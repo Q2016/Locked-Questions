@@ -16,6 +16,14 @@ Explanation: As shown, the height of the tree is 1 when the root is the node wit
  
  
  
+ 
+ 
+ 
+ 
+ 
+The idea is that first connect the graph, then start removing leaves from outside toward inward, when
+the number of node is less than 2, we have the center.
+ 
 Solution: Topological Sorting + BFS
 Related to Course Schedule and Course Schedule II
 
