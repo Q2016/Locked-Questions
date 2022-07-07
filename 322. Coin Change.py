@@ -13,7 +13,11 @@ Explanation: 11 = 5 + 5 + 1
     
     
     
-    
+
+
+
+
+Identical to 279*. Perfect Squares
 
 Solution: DP
     
