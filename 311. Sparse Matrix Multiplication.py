@@ -36,5 +36,5 @@ Solution:
 
     
     
-# Time:  O(m * n * nB), A is m x n matrix, B is n x nB matrix
-# Space: O(m * nB)    
+Time:  O(m *nB* n), A is m x n matrix, B is n x nB matrix, last n is for the summation
+Space: O(m * nB)    
