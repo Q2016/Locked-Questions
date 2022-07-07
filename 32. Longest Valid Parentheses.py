@@ -11,29 +11,31 @@ Explanation: The longest valid parentheses substring is "()".
   
   
   
+
   
+  
+  
+  
+  
+It's interesting to know that there's a DP solution to this problem as well.  
   
 Solution: Stack
-Great solution! We can actually compute the longest length on the fly.
 
-class Solution {
-public:
-    int longestValidParentheses(string s) {
-        stack<int> stk;
-        stk.push(-1);
-        int ans = 0;
-        for (int i = 0; i < s.size(); i++) {
-            if (s[i] == '(') {
-                stk.push(i);
-            } else {
-                stk.pop();
-                if (stk.empty()) {
-                    stk.push(i);
-                } else {
-                    ans = max(ans, i - stk.top());
-                }
-            }
-        }
-        return ans;
-    }
-};  
+https://www.youtube.com/watch?v=OsmvjLStiqY
+
+class Solution:
+   def longest(s):
+      stack=[-1]
+      ans=0
+      
+      for i, c in enumerate(s):
+          if c =='(':
+              stack.append(i)
+          else:
+              if stack and stack[-1] !=-1 and s[stack[-1]] =='(':
+                stack.pop()
+                ans=max(ans, i-stack[-1])
+              else:
+                stack.append(i)
+      
+      return ans
