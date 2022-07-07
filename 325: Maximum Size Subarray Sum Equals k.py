@@ -17,7 +17,13 @@ Output: 4
   
   
   
+
+  
+Prefix or Two pointers  
+  
 Solution:
+  https://www.youtube.com/watch?v=ReZpa5vxRKc
+  
 Record the sum at each index location i. If sum – k has been found before at index j, 
 that means the sum of nums[j: i] is equal to k (because the sum of nums[:i] is the sum and the sum of 
 nums[:j] equals sum – k). Every time we see a previous sum – k found for location i, we can check if 
