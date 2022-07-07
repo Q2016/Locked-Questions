@@ -16,6 +16,9 @@ Explanation: The longest increasing subsequence is [2,3,7,101], therefore the le
     
     
     
+    
+It's subsequence to it's DFS and backtracking, it can be reduced to subproblems so it can be solved DP    
+    
 Solution: DP
 
 We need to find maximum increasing subsequence length. In the brute-force approach, we can model this problem as -
