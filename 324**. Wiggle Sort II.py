@@ -13,16 +13,32 @@ Explanation: [1,4,1,5,1,6] is also accepted.
     
     
     
-    
+There is no video link and it's a hard question 
     
     
 Solution:
+ 
+simple but not for interview:
+    
+Downside is it is O(n*logn) and O(N) space but it is the simplest solution.
+Just put sorted numbers in array
+Put largest numbers in odd indexes first
+Then put remaining numbers in even indexes
+So even < odd > even
+class Solution:
+    def wiggleSort(self, nums):
+        arr = sorted(nums)
+        for i in range(1, len(nums), 2): nums[i] = arr.pop() 
+        for i in range(0, len(nums), 2): nums[i] = arr.pop()     
+    
+    
+Main solution:    
+https://leetcode.com/problems/wiggle-sort-ii/discuss/77677/O(n)%2BO(1)-after-median-Virtual-Indexing    
+    
 Q:Whats the difference between the regular wiggle sort and this question. I do not understand?
 S:The other is nums[i-1] <= nums[i] >= nums[i + 1] where i is an odd number. This question is nums[i-1] < nums[i] > nums[i + 1] where i is an odd number.
 The difference is that, in this question, when two elements are equal, you have to move one of the two elements somewhere else, and the difficulty is 
 how to achieve moving all the duplicate elements to their correct positions in O(N) time such that the final array has a wiggle pattern.
-
-
 
 
 void wiggleSort(vector<int>& nums) {
