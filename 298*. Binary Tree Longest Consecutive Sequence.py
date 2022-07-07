@@ -31,8 +31,9 @@ Longest consecutive sequence path is 2-3,not3-2-1, so return 2.
 
 
 
+Pre-order makes sense beacuse output is sorted
 
-
+https://www.youtube.com/watch?v=oSYGjIq6ZM4
 
 Solution: Pre-order
          
@@ -54,5 +55,8 @@ Solution: Pre-order
          
          
          
-time and space O(n)         
+Complexity:         
+         
+time  O(n)   
+space O(n)         
 
