@@ -18,6 +18,9 @@ the rectangle defined by its upper left corner (row1, col1) and lower right corn
     
 Solution: Prefix sum (1292. repeated)
 
+    https://www.youtube.com/watch?v=KE8MQuwE2yA
+    
+    
 Sum(ABCD)=Sum(OD)−Sum(OB)−Sum(OC)+Sum(OA)
 
 O -----------
