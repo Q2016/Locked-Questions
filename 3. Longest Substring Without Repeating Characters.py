@@ -19,6 +19,8 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
     
 Solution: Two Pointers
     
+    https://www.youtube.com/watch?v=wiGpQwVHdE0
+    
     def lengthOfLongestSubstring(self, s):
         charSet=set()
         l=0
