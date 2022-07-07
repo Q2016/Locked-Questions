@@ -20,20 +20,19 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 Solution: Two Pointers
     
     def lengthOfLongestSubstring(self, s):
-        start = maxLength = 0
-        usedChar = {}
+        charSet=set()
+        l=0
+        res=0
         
-        for i in range(len(s)):
-            if s[i] in usedChar and start <= usedChar[s[i]]:
-                start = usedChar[s[i]] + 1
-            else:
-                maxLength = max(maxLength, i - start + 1)
+        for r in range(len(s)):
+            while s[r] in charSet:
+                charSet.remove(s[l])
+                l+=1
+            charSet.add(s[r])
+            res=max(res, r-l+1)
+         
+        return res
+            
 
-            usedChar[s[i]] = i
-
-        return maxLength
-
-
-    
-# Time:  O(n)
-# Space: O(1)    
+Time:  O(n)
+Space: O(n)    
