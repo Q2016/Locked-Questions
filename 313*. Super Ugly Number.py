@@ -15,9 +15,14 @@ Explanation: [1,2,4,7,8,13,14,16,19,26,28,32] is the sequence of the first 12 su
 
 
 
+
+
+
   
-  
-Solution:
+At each level you have different options so it's like a DFS or backtracking, but we can solve its subproblems so it's a DP
+
+Solution: DP
+	
 The idea is from Ugly Number II:
 An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5. Given an integer n, return the nth ugly number.	
 
@@ -46,7 +51,9 @@ public int nthSuperUglyNumber(int n, int[] primes) {
         for(int j=0; j<len; j++){
             min = Math.min(res[index[j]]*primes[j], min);
         }
+	    
         res[i] = min;
+	    
         for (int j=0; j<len; j++) {
             if(res[i]%primes[j]==0) index[j]++;
         }
