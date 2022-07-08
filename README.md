@@ -53,6 +53,7 @@ Time complexity of Fibonatci:https://www.geeksforgeeks.org/time-complexity-recur
 
 1438 (deque)
 
+Euler path: 332
 
 DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801, 1155*, Buttom Up & Top down 120, Hardest DP 1223, 1277, 1504, 221
 
