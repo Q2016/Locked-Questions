@@ -19,11 +19,38 @@ The Largest BST Subtree in this case is 5. The return value is the subtree's siz
 
 
 
-
+Doesnt have a video link not sure it's like 98.
 
 Solution: 
 
 Similar to 98. Validate Binary Search Tree at each 
+
+https://www.youtube.com/watch?v=s6ATEkipzow
+
+class Solution:
+     def isValidBST(self, root):
+          
+          def valid(node,left,right):
+               if not node:
+                    return True
+               if not (node.val<right and node.val>left):
+                    return False
+               
+               return (valid(node.left,left,node.val) and valid(node.right, node.val, right))
+          
+          return valid(root, float("-inf"), float("inf"))
+
+ Time complexity is O(n)    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+
 
 class Solution :
      def largestBSTSubtree(root):
