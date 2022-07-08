@@ -14,9 +14,9 @@ Output: [1,3,5,2,4]          1--->3--->5--->2--->4
     
     
     
+we need to draw this on a paper    
     
-    
-Soluion:   (replaces odd with even and reverse)
+Soluion:  
     
 class Solution:
     def oddEvenList(self, head):
@@ -30,11 +30,11 @@ class Solution:
         while even and even.next: # won't get in the loop at first if there's only one node in the linked list
             # both even and even.next are necessary condition because even might point to None, which has no attribute 'next'
             # AND, why these two, small discussion by myself as below
-            odd.next = odd.next.next
-            even.next = even.next.next
+            odd.next = odd.next.next     
+            even.next = even.next.next   
             # After these two ops, odd/even still points at its original place
             # Therefore, we move them to the next node repectively
-            odd = odd.next
+            odd = odd.next     
             even = even.next
         
         odd.next = eHead # the odd pointer currently points at the last node of the odd-node list
