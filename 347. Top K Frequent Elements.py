@@ -13,9 +13,9 @@ Output: [1,2]
     
     
     
+Heapify in python takes O(N), each pop() takes O(logn), then popping k elemnts takes O(klogn)    
     
-    
-Solution:   Heap  
+Solution:   Not Heap, it takes O(klogn), we use Bucket sort O(n)  
 
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         # O(1) time 
@@ -29,4 +29,10 @@ Solution:   Heap
         # convert it into an output array
         # O(N log k) time
         return heapq.nlargest(k, count.keys(), key=count.get) 
+        
+
+Bucket sort:
+    https://www.youtube.com/watch?v=YPTqKIgVk-k
+        
+        
         
