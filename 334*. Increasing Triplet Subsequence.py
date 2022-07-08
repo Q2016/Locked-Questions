@@ -37,7 +37,7 @@ def increasingTriplet(self, nums):
 
 Main Solution: (Havent I seen this before? repeatetive? maybe in the easy Leetcode question)
 
-But how do we know that this solves the ***subarray and not subsequence?
+But how do we know that this solves the subarray and not subsequence?
     
     def increasingTriplet(self, nums):
         smallest_num=second_smallest_num=sys.maxsize
