@@ -18,7 +18,9 @@ Explanation: The longest increasing subsequence is [2,3,7,101], therefore the le
     
     
 It's subsequence to it's DFS and backtracking, it can be reduced to subproblems so it can be solved DP    
-    
+It's known that LIS has an O(n^2) for DP but one can also solve it in O(nlogn) mentioned in 334.
+    https://www.youtube.com/watch?v=QBiEJul9bUk
+        
 Solution: DP
 
 We need to find maximum increasing subsequence length. In the brute-force approach, we can model this problem as -
