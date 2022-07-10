@@ -23,6 +23,9 @@ Returns [4, 5, 3], [2], [1].
 
 Solution: DFS (seems like based on max depth)
 
+https://www.youtube.com/watch?v=zwCZU5XGtnY          
+          
+          
     def findLeaves(self, root):
 
         def findLeavesHelper(node, result):
@@ -39,5 +42,5 @@ Solution: DFS (seems like based on max depth)
         return result
 
 
-# Time:  O(n)
-# Space: O(h)
+Time:  O(n)
+Space: O(h)
