@@ -23,28 +23,49 @@ counter.getHits(301);
 Follow up: What if the number of hits per second could be very large? Does your design scale?
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+The fact that we need to keep data for 5min is a hint for deque.  
+ 
 Solution:  
-https://github.com/ShiqinHuo/LeetCode-Python/blob/master/Python/design-hit-counter.py 
-
+https://www.youtube.com/watch?v=WkLuQeVsXtY
+  
+uses a bucket  
+  
 class HitCounter(object):
 
     def __init__(self):
-        self.__k = 300
-        self.__dq = deque()
-        self.__count = 0
+      self.time=[0]*300
+      self.count=[0]*300
 
-    def hit(self, timestamp): #Record a hit.
-        self.getHits(timestamp)
-        if self.__dq and self.__dq[-1][0] == timestamp:
-            self.__dq[-1][1] += 1
-        else:
-            self.__dq.append([timestamp, 1])
-        self.__count += 1
+    def hit(self, timestamp):
+      index=timestamp % 300
+      
+      if self.time[index] != timestamp:
+        self.time[index] = timestamp
+        self.count[index] = 1
+      else:
+        self.count[index] += 1
 
-    def getHits(self, timestamp): #Return the number of hits in the past 5 minutes. 
-        while self.__dq and self.__dq[0][0] <= timestamp - self.__k:
-            self.__count -= self.__dq.popleft()[1]
-        return self.__count
+    def getHits(self, timestamp):
+      ans=0
+      
+      for i in range(300):
+        if self.time[i] > timestamp - 300:
+          ans += self.count[i]
+          
+      return ans
+      
+      
 
-# Time:  O(1), amortized
-# Space: O(k), k is the count of seconds.      
+    
