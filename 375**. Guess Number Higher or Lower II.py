@@ -27,8 +27,60 @@ Explanation: The winning strategy is as follows:
 The worst case in all these scenarios is that you pay $16. Hence, you only need $16 to guarantee a win.
 
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+It's difficault to understand the question, sort of like a risk managment worst optimum case..     
+    
 Solution: Good example to understand Top down DP and Bottom up DP
 
+https://www.youtube.com/watch?v=7TnjypshYNU    
+    
+    
+Top down is easier
+
+class Solution:
+    def getMoneyAmount(self, n: int) -> int:
+        def dp(s,e):
+            if (s,e) in memo:
+                return memo[(s,e)]
+            
+            if s>=e:
+                return 0
+            ans =sys.maxsize
+            
+            for k in range(s, e+1):
+                next_step=max(dp(s,k-1),dp(k+1,e))
+                ans=min(ans, k+next_step)
+            
+            memo[(s,e)]=ans
+            
+            return ans
+        
+        memo={}
+        
+        return dp(1,n)
+    
+    
+    
+    
+    
+    
+    
 Solution 1: Top down DP
 
 class Solution:
