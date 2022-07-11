@@ -13,7 +13,36 @@ The possible combination ways are: (1, 1, 1, 1), (1, 1, 2), (1, 2, 1), (1, 3), (
 Therefore the output is 7.
 
 
+
+
+https://www.youtube.com/watch?v=dw2nMCxG0ik
+
+
+
+
+
+
 Solution:  Backtracking or DP
+    
+ https://www.youtube.com/watch?v=dw2nMCxG0ik
+    
+def combinationSum4(self, nums, target):
+    dp={0:1}
+    
+    for total in range(1, target+1):
+        dp[total]=0
+        for n in nums:
+            dp[total] +=dp.get(total-n, 0)
+            
+    return dp[target]
+    
+    
+    
+    
+    
+    
+    
+    
 I also solved other versions of this problem using backtracking. The backtracking method is Memory Limit Exceeded when our 
 target goes very large, but if this problem requires you output the combinations, the backtracking method is very useful. 
 (Only for positive number)
