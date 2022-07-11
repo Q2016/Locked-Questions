@@ -11,8 +11,6 @@ For these questions I like to see their youtube:
 
 1066 Campus Bikes II
 
-1087 why is the time complexity of DFS is O(n), similar DFS recursion with O(n) is 105
-
 Design: 173, 353
 
 533, 621, 794, 723
@@ -36,6 +34,8 @@ Educational:
 Time complexity: 139, 113, learn master formula 1274, 1414, 1452, 294
 
 Time complexity of this loop is O(logn) ----Interview question---  for (int k = 1; k <= n; k *= 2)
+
+1087 why is the time complexity of DFS is O(n), similar DFS recursion with O(n) is 105
 
 DFS: combinations 17 and Backtracking: 39, 526, 77, 254
 
