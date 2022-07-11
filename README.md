@@ -25,7 +25,7 @@ String re: 468, 640
 
 BST: 1482, 153, 285
 
-BFS: 1091, 127, 133, 547, 662, 934, 742 (maybe related to Dijkstra, Bellman Ford), 752, DFS coloring (886), 199, 261 
+BFS: 1091, 127, 133, 547, 662, 934, 742 (maybe related to Dijkstra, Bellman Ford), 752, DFS coloring (886), 199, 261, 397 
 
 Dijkstra: 1376,743,787  Bellman Ford: 1514, 490, 505, 
 
@@ -34,6 +34,8 @@ c++: 1366, 1387, 139, 142, 1438
 Educational:
 
 Time complexity: 139, 113, learn master formula 1274, 1414, 1452, 294
+
+Time complexity of this loop is O(logn) ----Interview question---  for (int k = 1; k <= n; k *= 2)
 
 DFS: combinations 17 and Backtracking: 39, 526, 77, 254
 
@@ -57,7 +59,7 @@ Euler path: 332
 
 DP: 300, DP of Buying stocks is defined in 309, 322, 62, 801, 1155*, Buttom Up & Top down 120, Hardest DP 1223, 1277, 1504, 221, 377
 
-Heap (Priority Que): 692, 767, 871, 659
+Heap (Priority Que): 692, 767, 871, 659, 378
 
 bisect:1182
 
