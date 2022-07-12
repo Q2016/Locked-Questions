@@ -14,7 +14,7 @@ Input: intervals = [[0,2],[3,4],[5,7]], toBeRemoved = [1,6] Output: [[0,1],[6,7]
     
     
     
-    
+ Very similar to 1288. Remove Covered Intervals (solve it)   
     
     
     
