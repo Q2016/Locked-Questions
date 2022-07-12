@@ -1,4 +1,4 @@
-Question:
+https://www.youtube.com/watch?v=4QAGxDIVpdMQuestion:
 Given an integer n, return the nth digit of the infinite integer sequence [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...].
 
 Example 1:
@@ -18,6 +18,31 @@ Explanation: The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, .
     
 Solution:    
 
+https://www.youtube.com/watch?v=4QAGxDIVpdM    
+    
+class Solution:
+    def findNthDigit(self, n):
+        len=1
+        count=9
+        
+        while n>len*count:
+            n -=len*count
+            len +=1
+            count *=10
+            
+        start_num=10**(len-1)
+        num, reminder=divmod(n, len)
+        
+        if remainder==0:
+            return int(str(start_num+num-1)[-1])
+        else:
+            return int(str(start_num+num)[remainder-1])
+        
+        
+        
+        
+
+    
 How many digits of size size can we have?
 
 1 * 9 (size 1, 1... 9)
