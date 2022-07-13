@@ -5,7 +5,10 @@ and next pointers in a doubly-linked list.        4
                                               2       5
                                             /   \
                                           1       3
-We want to transform this BST into a circular doubly linked list. Each node in a doubly linked list has a predecessor and successor. 
+We want to transform this BST into a circular doubly linked list. For the image:
+https://ttzztt.gitbooks.io/lc/content/string/convert-binary-search-tree-to-sorted-doubly-linked-list.html
+
+Each node in a doubly linked list has a predecessor and successor. 
 For a circular doubly linked list, the predecessor of the first element is the last element, and the successor of the last element is 
 the first element. The figure below shows the circular doubly linked list for the BST above. The "head" symbol means the node it points 
 to is the smallest element of the linked list. Specifically, we want to do the transformation in place. After the transformation, the 
@@ -23,7 +26,7 @@ pointer to the first element of the linked list.
     
     
     
-    
+No link    
     
 Solution:
 From this link:  https://www.youtube.com/watch?v=l1hSUOaXLxc 
