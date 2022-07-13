@@ -19,6 +19,8 @@ be reduced to O(n)
     
 Solution: Sliding window 
 
+https://www.youtube.com/watch?v=gqXU1UyA8pk
+
 class Solution:
     def characterReplacement(self, s, k):
         count={}
