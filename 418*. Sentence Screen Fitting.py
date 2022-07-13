@@ -22,27 +22,28 @@ The character '-' signifies an empty space on the screen.
 
 
 Solution:
-From this link: https://www.youtube.com/watch?v=1ChX4Cpz0bU
+From this link: https://www.youtube.com/watch?v=e987rKv1d7E
     
     
-    
+class Solution:    
     def wordsTyping(sentence, rows, cols):
-        sentence=" ".join(sentence) # adding space between words
-        sentenceLen=len(sentence)
+        s=' '.join(sentence)+' ' # tricky
+        n=len(s)
+        total_len=0
         
-        cursor=0
-        for row in range(rows):
-            cursor +=cols
-            if sentence[cursor%sentenceLen] == ' ':
-                cursor+=1
+        for _ in range(rows):
+            total_len +=cols
+            
+            if s[total_len%n]==' ': # tricky
+                total_len +=1
             else:
-                while (cursor>=0 and sentence[cursor%sentenceLen] != ' '):
-                    cursor-=1
-                cursor+=1
-                
-         return cursor/sentenceLen
-                   
+                while s[(total_len-1)%n] !=' ' and total_len>0: # tricky
+                    total_len -=1
         
+        return total_len//n
+
+                   
+Time complexity: O(rows*len of the longest word)        
 
             
 
