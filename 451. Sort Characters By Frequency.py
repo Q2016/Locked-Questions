@@ -18,6 +18,9 @@ So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid ans
 
 Solution: Counter & Bucket Sort (similar to 347.)
 
+	https://www.youtube.com/watch?v=trFw8IDw2Vg
+	
+	
 class Solution:
     def frequencySort(self, s: str) -> str:
         cnt = Counter(s)
