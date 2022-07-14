@@ -10,6 +10,18 @@ org: [1,2,3], seqs: [[1,2],[1,3]], Output:false
 Explanation: [1,2,3] is not the only one sequence that can be reconstructed, because [1,3,2] is also a valid sequence that can be reconstructed.
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+There is a link but very different from below
+
+https://www.youtube.com/watch?v=wggaoezAR34
+    
 Solution: Topological sort
 
     def sequenceReconstruction(self, org, seqs):
