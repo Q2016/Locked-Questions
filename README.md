@@ -37,6 +37,8 @@ Time complexity of this loop is O(logn) ----Interview question---  for (int k = 
 
 1087 why is the time complexity of DFS is O(n), similar DFS recursion with O(n) is 105
 
+Pre-order has time complexity of O(n)
+
 DFS: combinations 17 and Backtracking: 39, 526, 77, 254
 
 Topological Sort:207, 210, 310, 444
