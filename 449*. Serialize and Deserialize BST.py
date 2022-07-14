@@ -15,6 +15,13 @@ the original tree structure.
 
 
 
+Serialize and Deserialize Binary Tree - Preorder Traversal - Leetcode 297
+
+https://www.youtube.com/watch?v=u4JAi2JJhI8
+    
+Pre-order is famous to be a linear traversal O(n) 
+
+
 Solution:
 
 This solution uses 'deque' instead of 'list' as queue. And the performance is O(N)
@@ -48,3 +55,8 @@ class Codec:
                 return node
 
         return build(float('-infinity'), float('infinity'))
+
+    
+    
+    
+   
