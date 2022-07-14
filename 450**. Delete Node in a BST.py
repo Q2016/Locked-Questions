@@ -17,7 +17,15 @@ Please notice that another valid answer is [5,2,6,null,4,null,7] and it's also a
 
    
    
-   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+No link 
+ 
 Solution: Recursive
 
 It will be easier if we consider some tree and try to understand, what we need to do in different cases.
