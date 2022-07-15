@@ -16,8 +16,23 @@ Explanation: "catsdogcats" can be concatenated by "cats", "dog" and "cats";
 
 
 
-Solution: (similar to 139.)
-
+Solution: 
+  
+https://www.youtube.com/watch?v=Wl4ylFY9BV8    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+(similar to 139.)    
+    
 Do you still remember how did you solve this problem? https://leetcode.com/problems/word-break/
 
 If you do know one optimized solution for above question is using DP, this problem is just one more step further. We iterate through each word 
