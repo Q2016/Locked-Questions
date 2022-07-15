@@ -1,5 +1,5 @@
 Question:
-You are given an array of binary strings strs and two integers m and n. Return the size of the largest subset of strs 
+You are given an array of binary strings and two integers m and n. Return the size of the largest subset  
 such that there are at most m 0's and n 1's in the subset. A set x is a subset of a set y if all elements of x are also 
 elements of y.
 
@@ -17,7 +17,20 @@ Other valid but smaller subsets include {"0001", "1"} and {"10", "1", "0"}.
 
 
 
-Solution: 2D Knapsack Problem
+
+Solution: DP
+   https://www.youtube.com/watch?v=rPNV-gC3UoU 
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+ 2D Knapsack Problem
 
 This problem is a variation on the 0-1 Knapsack Problem with a wrinkle: each item has a 2-dimensional weight, 
 but a constant value. If we were to naively attempt every single permutation of up to 600 strings, that 
