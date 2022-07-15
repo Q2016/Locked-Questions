@@ -19,6 +19,9 @@ Hence, player 1 will never be the winner and you need to return false.
 	
 	
 	
+	
+No link	
+	
 Solution:
 Thus, for the turn of Player 1, we can add its score obtained to the total score and for Player 2's turn, we can substract its score from the 
 total score. At the end, we can check if the total score is greater than or equal to zero(equal score of both players), to predict that 
