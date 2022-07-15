@@ -17,7 +17,7 @@ Explanation: Flip the first zero will get the the maximum number of consecutive 
     
     
     
-No link    
+No link, comes to mind to use queue or two pointers     
     
 Solution: 
     
