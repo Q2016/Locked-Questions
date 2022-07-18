@@ -12,8 +12,17 @@ Input 3: destination coordinate (rowDest, colDest) = (4, 4), Output: 12         
                                                                                                        0 0 0 1 0
                                                                                                        1 1 0 1 1
                                                                                                        0 0 0 0 0
+
+          
+          
+          
+          
+          
 Solution:  Bellman ford (compare time complexity against backtracking)
 
+  Link uses Djikstra method --> time complexity of Djikstra is O(m*n log m*n)
+https://www.youtube.com/watch?v=g9YQyYi4IQQ
+  
     def shortestDistance(self, maze: List[List[int]], start: List[int], destination: List[int]) -> int:
         m,n = len(maze),len(maze[0])
         q = collections.deque()
