@@ -18,6 +18,8 @@ Implement pow(x, n), which calculates x raised to the power n.
 
 Solution: Recursive, Iterative
 
+    https://www.youtube.com/watch?v=g9YQyYi4IQQ
+    
 If we have very small value of x we can directly return 0, the smallest value of float is 1.175494 × 10^(-38).    
     
 Recursive:
