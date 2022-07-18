@@ -8,6 +8,16 @@ Input: tree = [2,1,3], node = 1, Output: 2, Explanation: 1's in-order successor 
 return value is of Node type.
 
 
+
+
+
+
+
+
+
+
+No link
+
 Solution: Similar to 285. Inorder Successor in BST (come back to this after undrestanding 285.)
 
     def inorderSuccessor(self, node: "Node") -> "Node":
