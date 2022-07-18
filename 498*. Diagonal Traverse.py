@@ -9,8 +9,19 @@ Output: [1,2,4,7,5,3,6,8,9]
     
     
     
+    
+    
+    
+    
+    
+    
+    
+I dont understand the extend    
+    
 Solution: Dictionary 
-
+https://www.youtube.com/watch?v=CxXZRBhujN0
+  
+  
 The key here is to realize that the sum of indices on all diagonals are equal.
 SO, if you can loop through the matrix, store each element by the sum of its indices 
 in a dictionary, you have a collection of all elements on shared diagonals.
