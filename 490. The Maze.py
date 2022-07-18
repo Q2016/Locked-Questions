@@ -18,7 +18,9 @@ Explanation: One possible way is : left -> down -> left -> down -> right -> down
         
 Solution:  Bellman ford  
 https://medium.com/tech-life-fun/leet-code-490-the-maze-graphical-explained-python3-solution-b4369bbf4050    
-        
+ https://www.youtube.com/watch?v=e_75Z90j0IM
+    
+    
     def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
 
         visited = []
