@@ -15,7 +15,9 @@ Output: [[0,0,0],
   
   
   
-  
+Instead of BFS from source to the target, we can do a BFS from target to the source
+
+https://www.youtube.com/watch?v=Ezj3VDOfd5I
   
 ✔️ Solution: Dynamic Programming or BFS (isnt it repeated?)
 
