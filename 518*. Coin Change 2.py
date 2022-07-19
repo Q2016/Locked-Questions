@@ -14,6 +14,38 @@ Explanation: there are four ways to make up the amount:
     
 Solution:  DP
     
+ https://www.youtube.com/watch?v=Mjy4hd2xgrs
+ 
+Time O(n*M)
+    
+class Solution:
+    def change(self, amount, coin):
+        cach={}
+        
+        def dfs(i,a):
+            if a==amount:
+                return 1
+            if a >amount:
+                return 0
+            if i==len(coins):
+                return 0
+            if (i,a) in cache:
+                return cache[(i, a)]
+            
+            cache[(i,a)]=dfs(i,a+coins[i])+dfs(i+1,a)
+            return cache[(i,a)]
+        return dfs(0,0)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 This is a classic knapsack problem. Honestly, I'm not good at knapsack problem, it's really tough for me.
 dp[i][j] : the number of combinations to make up amount j by using the first i types of coins
 State transition:
