@@ -10,6 +10,15 @@ Input: strs = ["aba","cdc","eae"]
 Output: 3
 
     
+    
+    
+    
+    
+    
+    
+    
+No link    
+    
 Solution:  Sort  
 https://leetcode.com/problems/longest-uncommon-subsequence-ii/discuss/99453/Python-Simple-Explanation
 
