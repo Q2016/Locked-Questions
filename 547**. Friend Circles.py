@@ -17,7 +17,7 @@ The 2nd student himself is in a friend circle. So return 2.
 
 
 
-No link
+No link, this is repeatative number of provinces
 
 Solution: DFS
 We are using the dfs to find the students’ friends and the student’s friends’ friends 
