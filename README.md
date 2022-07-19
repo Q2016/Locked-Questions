@@ -1,6 +1,8 @@
 # Medium Questions
 
 
+Repeated: 540, 542
+
 The link for Blind 75 LeetCode Questions
 https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
 
