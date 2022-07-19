@@ -27,26 +27,28 @@ All of the following outputs can be considered correct:
 ......
 and so on.    
 
+
+
+
+
+
+
+
+
 Solution:
+    
+    https://www.youtube.com/watch?v=lI0te2PoNio
 
-from random import randint
-
-class Solution(object):
-
-    def __init__(self, nums):
-
-        self.__nums = nums
-
-    def pick(self, target):
-        reservoir = -1
-        n = 0
-        for i in xrange(len(self.__nums)):
-            if self.__nums[i] != target:
-                continue
-            reservoir = i if randint(1, n+1) == 1 else reservoir
-            n += 1
-        return reservoir
-
-
-# Time:  O(n)
-# Space: O(1)
+class Solution:
+    def __init__(self, w):
+        self.w=w
+        self.pre_sum=[w[0]]
+        
+        for i in range(1, len(w)):
+            self.pre_sums.append(self.pre_sums[i-1]+self.w[i])
+            
+    def pickIndex(self):
+        rand=random.randint(1, self.presum[-1])
+        index=bisect.bisect_left(self.pre_sums, rand)
+        
+        return index
