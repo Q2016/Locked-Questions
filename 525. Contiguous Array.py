@@ -16,6 +16,11 @@ Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal numb
   
   
   
+  
+  
+  
+No link  
+  
 Solution:
 
  0    \
