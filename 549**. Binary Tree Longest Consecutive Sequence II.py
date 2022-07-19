@@ -18,6 +18,11 @@ Input:
 Output: 3, Explanation: The longest consecutive path is [1, 2, 3] or [3, 2, 1].
 
 
+                
+                
+                
+No link                
+                
 Solution: Recursive
 class Solution:
     def longestConsecutive(self, root: TreeNode) -> int:
@@ -44,3 +49,7 @@ class Solution:
         
 Time: O(N²), 
 Space: avg O(logN) worst O(N)
+
+    
+        
+        
