@@ -19,7 +19,7 @@ Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal numb
   
   
   
-No link  
+No link but I like this solution 
   
 Solution:
 
