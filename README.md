@@ -73,4 +73,4 @@ Divid & Conquer:395
 
 Monotonic Stack:402
 
-Union Find: 323
+Union Find: 323, 547
