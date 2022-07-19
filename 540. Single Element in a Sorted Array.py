@@ -14,7 +14,7 @@ Output: 2
 
 
 
-
+Repeated question
 
 Solution: BS
 	
