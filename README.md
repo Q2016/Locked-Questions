@@ -72,3 +72,5 @@ Prefix-sum: 1292, 1423
 Divid & Conquer:395
 
 Monotonic Stack:402
+
+Union Find: 323
