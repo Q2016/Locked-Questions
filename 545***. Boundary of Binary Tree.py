@@ -48,9 +48,14 @@ So order them in anti-clockwise without duplicate nodes we have [1,2,4,7,8,9,10,
 
 
 
-
+Sounds like a BFS and adding elements from left and right to both ends of an output array but I coudnt find the 
+solution not even in the link
 
 Solution: Preorder+DFS+Postorder
+  
+  https://www.youtube.com/watch?v=F76LIKzluKE
+  
+ 
 This question applied various of knowledge of tree. To solve this question, we first use preorder 
 to get the left boundary node value, then we use dfs to find the leaves node value and append to 
 the left boundary node value. At last, we use postorder to find the right boundary and append to 
