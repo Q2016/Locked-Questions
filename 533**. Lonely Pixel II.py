@@ -22,6 +22,16 @@ Rule 1, row R = 0 and column C = 1 both have exactly N = 3 black pixels.
 Rule 2, the rows have black pixel at column C = 1 are row 0, row 1 and row 2. They are exactly the same as row R = 0.
 
 
+
+
+
+
+
+
+
+
+No link
+
 Solution:
 Instead of MAP with two List, RowCountMap [N] indicates the number of rows having n 'b' plaids, and colcount [i] represents 
 the number of 'b' lattice having the column. n ^ 2 Trailed to initialize these two Lists, then compare the MAP according to 
