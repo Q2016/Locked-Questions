@@ -8,16 +8,43 @@ Input: nums = [23,2,4,6,7], k = 6
 Output: true
 Explanation: [2, 4] is a continuous subarray of size 2 whose elements sum up to 6.
 
-https://leetcode.com/problems/continuous-subarray-sum/discuss/485589/C%2B%2BPython-Easy-and-Concise
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+Solution: similar to 2-sum problem
 
-
+https://www.youtube.com/watch?v=OKcrLfR-8mE
+    
+class Solution:
+    def checkSubarraySum(self, nums):
+        reminder={0:-1}
+        total=0
+        
+        for i, n in enumerate(nums):
+            total+=n
+            r=total%k
+            if r not in remainder:
+                remainder[r]=i
+            elif i-remainder[r]>1:
+                return True
+        return False
     
     
     
     
     
     
-Solution: Dictionary & math
+    
+    
+    
+    
 This is one of those magics of remainder theorem: (a+(n*x))%x is same as (a%x)
 Idea: if sum(nums[i:j]) % k == 0 for some i < j, then sum(nums[:j]) % k == sum(nums[:i]) % k. So we just need to use a 
 dictionary to keep track of sum(nums[:i]) % k and the corresponding index i. 
