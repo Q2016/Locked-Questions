@@ -14,9 +14,18 @@ The second beautiful arrangement is [2,1]: - perm[1] = 2 is divisible by i = 1  
 
    
    
-   
+I dont understand this question   
    
 Solution: Backtracking
+   
+  https://www.youtube.com/watch?v=wPQ7LOe2jLA
+   
+   
+   
+   
+   
+   
+   
 The idea behind this approach is simple. We try to create all the permutations of numbers from 1 to N. We can fix one number at a particular 
 position and check for the divisibility criteria of that number at the particular position. But, we need to keep a track of the numbers which 
 have already been considered earlier so that they aren't reconsidered while generating the permutations. If the current number doesn't satisfy 
