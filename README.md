@@ -1,8 +1,6 @@
 # Medium Questions
 
-Top 5 Dynamic Programming Patterns for Coding Interviews - For Beginners:
-
-https://www.youtube.com/watch?v=mBNrRy2_hVs
+Top 5 Dynamic Programming Patterns for Coding Interviews - For Beginners: https://www.youtube.com/watch?v=mBNrRy2_hVs
 
 Repeated: 540, 542, 549
 
