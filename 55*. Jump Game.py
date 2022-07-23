@@ -15,8 +15,10 @@ Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
     
     
 Has a tree structure and with cash can be O(n^2). But there is an O(n) with greedy.    
-    
-
+  
+Solution:
+    https://www.youtube.com/watch?v=Yan0cv2cLy8
+        
 class Solution:
     def canJump(self, nums):
         goal=len(nums)+1
