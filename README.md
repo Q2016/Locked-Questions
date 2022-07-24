@@ -2,6 +2,8 @@
 
 Top 5 Dynamic Programming Patterns for Coding Interviews - For Beginners: https://www.youtube.com/watch?v=mBNrRy2_hVs
 
+sort by first element: intervals.sort(key=lambda i:i[0])
+
 Repeated: 540, 542, 549
 
 The link for Blind 75 LeetCode Questions
