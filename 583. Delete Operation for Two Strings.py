@@ -17,6 +17,8 @@ Explanation: You need one step to make "sea" to "ea" and another step to make "e
     
     
 Solution:
+    https://www.youtube.com/watch?v=tpALbrFWg5U
+    
 Find the longest common subsequence (LCS). Number of deletions will be : (word1.length - LCS) + (word2.length - LCS)
 
     def minDistance(word1, word2):
