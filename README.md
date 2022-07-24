@@ -2,7 +2,9 @@
 
 Top 5 Dynamic Programming Patterns for Coding Interviews - For Beginners: https://www.youtube.com/watch?v=mBNrRy2_hVs
 
-sort by first element: intervals.sort(key=lambda i:i[0])
+# usefull commands
+sort by first element: intervals.sort(key=lambda i:i[0]), 
+queue.extend(node_dic[parent_node])
 
 Repeated: 540, 542, 549
 
