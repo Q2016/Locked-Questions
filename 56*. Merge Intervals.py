@@ -11,15 +11,32 @@ Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
     
     
     
+    
+    
+    
+    
 Solution:
-
+https://www.youtube.com/watch?v=44H3cEC2fFM
+    
 class Solution:
+    def merge(self, intervals):
+        intervals.sort(key=lambda i:i[0])
+        output=[intervals[0]]
+        
+        for start, end in intervals[1:]:
+            lastEnd=output[-1][1]
+            
+            if start<=lastEnd:
+                output[-1][1]=max(lastEnd, end)
+            else:
+                output.append([start, end])
+                
+        return out
+             
 
     
     
 Time complexity:
-In python, use sort method to a list costs O(nlogn), where n is the length of the list.
-The for-loop used to merge intervals, costs O(n).
 O(nlogn)+O(n) = O(nlogn)
 So the total time complexity is O(nlogn).
 Space complexity
