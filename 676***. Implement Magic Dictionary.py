@@ -17,6 +17,14 @@ magicDictionary.search("hell"); // return False
 magicDictionary.search("leetcoded"); // return False    
 
 
+
+
+
+
+
+
+No link
+
 Solution: Dictionary
 The basic idea here is very simple: we construct a dictionary, whose key is the length of the given words, and the value is a list containing 
 the words with the same length specified in the key. And when we search a word (say word "hello") in the magic dictionary, we only need to 
