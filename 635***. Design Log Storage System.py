@@ -24,7 +24,7 @@ need to return all logs start from 2016:01:01:01 to 2017:01:01:23, where log 3 i
           
           
           
-          
+No link          
           
 Solution:         
         
