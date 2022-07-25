@@ -83,3 +83,5 @@ Divid & Conquer:395
 Monotonic Stack:402
 
 Union Find: 323, 547
+
+Regex: 640
