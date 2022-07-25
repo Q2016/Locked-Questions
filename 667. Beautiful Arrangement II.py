@@ -8,8 +8,23 @@ Input: n = 3, k = 1
 Output: [1,2,3]
 Explanation: The [1,2,3] has three different positive integers ranging from 1 to 3, and the [1,1] has exactly 1 distinct integer: 1    
 
-        
+    
+
+
+
+
+
+Intitially, you think you need to look at all the configuration but it has a trick.
+
 Solution:
+        
+        https://www.youtube.com/watch?v=A8-_z6gurGc
+
+                
+                
+                
+                
+                
 When k = n-1, a valid construction is [1, n, 2, n-1, 3, n-2, ....]. One way to see this is, we need 
 to have a difference of n-1, which means we need 1 and n adjacent; then, we need a difference of n-2, etc.
 Also, when k = 1, a valid construction is [1, 2, 3, ..., n]. So we have a construction when n-k is tiny, 
