@@ -15,7 +15,8 @@ Output: [[1,2,3],
          
          
          
-Solution:
+Solution: repeated
+         
     def generateMatrix(n):
         #result [n, n]
         cnt = 1;
