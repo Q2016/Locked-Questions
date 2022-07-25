@@ -14,7 +14,7 @@ Input: equation = "x+5-3+x=6+x-2", Output: "x=2"
     
     
     
-    
+No link    
     
 Solution: Regix
     
