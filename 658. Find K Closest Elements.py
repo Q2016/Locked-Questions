@@ -14,10 +14,35 @@ Output: [1,2,3,4]
 	
 	
 	
-	
-	
+One intuitive way of solving this is to use BST to find the number and then use left/right pointers to add values.
+But the stanadard solution is shorter but harder to understand. Complexity is same both methods.
+
+The idea of the latter solution is that, we dont search for the target value but the target window.
+
 Solution: BST
+	https://www.youtube.com/watch?v=o-YDQzHoaKM
+		
+class Solution:
+    def findClosestElements(self, arr, k, x):
+	l, r=0,len(arr)-k
 	
+	while l<r:
+	    m=(l+r)//2
+	    if x-arr[m]>arr[m+k]-x:# uses examples to find out
+	       l=m+1
+	    else:
+		r=m
+	    
+	return arr[l:l+k]
+	
+		
+		
+		
+		
+		
+		
+		
+		
 We need to return k elements that are closest to x. The input array is sorted in ascending order. So, we will try to find the 
 starting point of these k elements i.e. the first element in this list of k elements which will make it easier to return the k elements. 
 Let's call this first element of the output list start. Obviously, start will lie between indices 0 and length - k where length is the 
