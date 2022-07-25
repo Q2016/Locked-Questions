@@ -11,6 +11,16 @@ Input: obstacleGrid = [[0,0,0],
 Output: 2, Explanation: There is one obstacle in the middle of the 3x3 grid above. There are two ways to reach the bottom-right corner:
 1. Right -> Right -> Down -> Down    2. Down -> Down -> Right -> Right    
 
+
+
+
+
+
+
+
+
+No link, but I think very similar
+
 Solution:
 Well, this problem is similar to Unique Paths. The introduction of obstacles only changes the boundary conditions and make some points 
 unreachable (simply set to 0). Denote the number of paths to arrive at point (i, j) to be P[i][j], the state equation is 
