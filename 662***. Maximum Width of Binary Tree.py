@@ -1,6 +1,8 @@
 Question:
-Given the root of a binary tree, return the maximum width of the given tree. The maximum width of a tree is the maximum width among all levels.
-The width of one level is defined as the length between the end-nodes (the leftmost and rightmost non-null nodes), where the null nodes between 
+Given the root of a binary tree, return the maximum width of the given tree. 
+The maximum width of a tree is the maximum width among all levels.
+The width of one level is defined as the length between the end-nodes (the leftmost and rightmost non-null nodes), 
+where the null nodes between 
 the end-nodes are also counted into the length calculation.      1 [1,1]
                                                                 / \
                                                        [2,2]   3    2 [3,2] -----> brackets are for the solution below
@@ -12,9 +14,10 @@ Input: root = [1,3,2,5,3,null,9], Output: 4, Explanation: The maximum width exis
       
       
       
+ 
+
       
-      
-      
+No link, dont understand it      
         
 Solution: BFS
 In this problem we need to find maximum width of binary tree, so we need to use some tree traversal algorithm. BFS or DFS? I prefer to use BFS, 
