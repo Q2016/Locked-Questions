@@ -16,7 +16,33 @@ We can only move to the right or to the bottom. We need to return total unique p
 
 
 
-Solution: Educational (DP)
+Solution: 
+  https://www.youtube.com/watch?v=IlEsdxuD4lY
+    
+class Solution:
+    def uniquePaths(self, m, n):
+        row=[1]*n
+        
+        for i in range(m-1):
+            newRow=[1]*n
+            for j in range(n-2, -1, -1):
+                newRow[j]=newRow[j+1]+row[j]
+            row=newRow
+        
+        return row[0]
+    
+Time O(n*m)
+Space O(n)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    Educational (DP)
 
 ❌ Solution - I (Brute-Force) [TLE]
 Let's start with brute-force solution. For a path to be unique, at atleast 1 of move must differ at some cell within that path.
