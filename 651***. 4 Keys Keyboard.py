@@ -6,6 +6,15 @@ Now, you can only press the keyboard for N times (with the above four keys), fin
 Example 1:
 Input: N = 7, Output: 9, Explanation: We can at most get 9 A's on screen by pressing following key sequence: A, A, A, Ctrl A, Ctrl C, Ctrl V, Ctrl V
 
+            
+            
+            
+            
+            
+            
+            
+            
+No link            
 
 Solution: DP
 This problem has many solutions:  # http://bookshadow.com/weblog/2017/07/30/leetcode-4-keys-keyboard/
