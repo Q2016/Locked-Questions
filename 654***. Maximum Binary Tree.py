@@ -21,8 +21,15 @@ Explanation: The recursive calls are as follow:
          
             
             
-            
-            
+   
+
+
+
+
+
+
+No link
+
 Solution: Devide and Conquer (Recursive)
    
 The idea is to use divide and conquer. Each time we create a node root for the maximum value 
