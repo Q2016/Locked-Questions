@@ -15,7 +15,54 @@ Explanation: It is possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3
  
  
  
-Solution: Naive Backtracking
+Solution: DP
+
+class Solution:
+ https://www.youtube.com/watch?v=hNovJsUbNjo
+ Time is O(N^2*K*8)
+ Space is O(N^2*K*8)
+ Top down
+ 
+ def knightProbability(self, N, K, r ,c):
+    
+    def dp(cur_k, cur_r, cur_c):
+
+       if (cur_k, cur_r, cur_c) in memo:
+          return memo[(cur_k, cur_r, cur_c)]
+       if cur_k==K:
+          return 1
+       ans=0
+       for d in moves:
+          new_r=cur_r+d[0]
+          new_c=cur_c+d[1]
+
+         if 0<=new_r<N and 0<=new_c<N:
+            ans+=0.125*dp(cur_k+1, new_r, new_c)  # All probabilities are independent
+
+       memo[(cur_k, cur_r, cur_c)]= ans
+
+       return ans
+     
+    memo={}
+    moves=((-2,-1),(-2,1),(-1,2),(1,2),(2,1),(2,-1),(1,-2),(-1,-2))
+    return dp(0, r, c)
+    
+    
+Bottom up:
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Naive Backtracking
+ 
 Our goal is to break the given array into k subsets of equal sums. Firstly, we will check if the array sum can be evenly divided into k 
 parts by ensuring that totalArraySum % k is equal to 0. 
 Now, if the array sum can be evenly divided into k parts, as previously mentioned, 
