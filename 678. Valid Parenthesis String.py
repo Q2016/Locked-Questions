@@ -9,7 +9,17 @@ Left parenthesis '(' must go before the corresponding right parenthesis ')'.
 Example 1:
 Input: s = "(*))", Output: true  
 
+  
+  
+  
+  
+  
+  
+The link is not good but it points out some interesting examples like s=(*)(  
+  
 Solution: Greedy
+ 
+ https://www.youtube.com/watch?v=QhPdNS143Qg
 
 When checking whether the string is valid, we only cared about the "balance": the number of extra, open left brackets as we parsed through 
 the string. For example, when checking whether '(()())' is valid, we had a balance of 1, 2, 1, 2, 1, 0 as we parse through the string: 
@@ -32,7 +42,10 @@ what our choices are. Also, we can never have less than 0 open left brackets. At
             lo = max(lo, 0)
 
         return lo == 0
-      
+
+ Example:
+ s=(*)(  
+ lo=1 hi=-1, lo=0 hi=-2, lo=-1 hi=-1, lo=0 hi=-2 
        
 Complexity Analysis
 Time Complexity: O(N), where NN is the length of the string. We iterate through the string once.
