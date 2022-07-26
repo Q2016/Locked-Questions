@@ -14,6 +14,8 @@ Output: [2,3]
 
     
     
+Union find    
+    https://www.youtube.com/watch?v=FXWRE67PLL0
     
     
 Solution: DFS
