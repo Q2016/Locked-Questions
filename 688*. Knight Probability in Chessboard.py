@@ -24,7 +24,54 @@ The total probability the knight stays on the board is 0.0625.
 
 
 
-Solution: Dynamic Programming
+Solution: DP
+
+     https://www.youtube.com/watch?v=hNovJsUbNjo
+ 
+Time is O(N^2*K*8)
+ Space is O(N^2*K*8)
+ Top down
+    
+    
+class Solution:
+ 
+ def knightProbability(self, N, K, r ,c):
+    
+    def dp(cur_k, cur_r, cur_c):
+
+       if (cur_k, cur_r, cur_c) in memo:
+          return memo[(cur_k, cur_r, cur_c)]
+       if cur_k==K:
+          return 1
+       ans=0
+       for d in moves:
+          new_r=cur_r+d[0]
+          new_c=cur_c+d[1]
+
+         if 0<=new_r<N and 0<=new_c<N:
+            ans+=0.125*dp(cur_k+1, new_r, new_c)  # All probabilities are independent
+
+       memo[(cur_k, cur_r, cur_c)]= ans
+
+       return ans
+     
+    memo={}
+    moves=((-2,-1),(-2,1),(-1,2),(1,2),(2,1),(2,-1),(1,-2),(-1,-2))
+    return dp(0, r, c)
+    
+    
+Bottom up:
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    Dynamic Programming
 
 Let f[r][c][steps] be the probability of being on square (r, c) after a number of 'steps' steps. Based on how a knight moves, 
 we have the following recursion:
