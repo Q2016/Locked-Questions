@@ -20,7 +20,51 @@ Explanation: The answer is not 11, because the island must be connected 4-direct
   
   
   
+  
+  
+  
+  
+  
+very similar to the number of islands problem, we just return something different
+  
 Solution: DFS
+  
+  https://www.youtube.com/watch?v=iJGr1OtmH0c 
+    
+class Solution:
+  def maxAreaOfIsland(self, grid):
+    ROWS, COLS=len(grid), len(grid[0])
+    visit=set()
+    
+    def dfs(r, c):
+      if (r<0 or r==ROWS or c<0 or c==COLS or grid[r][c]==0 or (r,c) in visit):
+          return 0
+      visit.add((r,c))
+      return (1+dfs(r+1, c)+
+                dfs(r-1, c)+
+                dfs(r, c+1)+
+                dfs(r, c-1))
+              
+    area=0
+    for r in range(ROWS):
+        for c in range(COLS):
+            area=max(area, dfs(r,c))
+    
+    return area
+      
+  
+    
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
 The solution is to search each island. Remember marking grid[r][c] = 2 as visited. The idea is to count the area of each island using dfs. 
 During the dfs, we set the value of each point in the island to 0. 
 
