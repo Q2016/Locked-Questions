@@ -5,6 +5,18 @@ smallest value in the cyclic list. If there are multiple suitable places for ins
 After the insertion, the cyclic list should remain sorted.
 
 
+
+
+
+
+
+
+
+
+
+
+No link
+
 Solution:
 No head: prev.val <= val <= cur.val
 prev.val > cur.val and (val < cur.val or prev.val < cur): cur is either the min or the max with not all nodes with the same value
