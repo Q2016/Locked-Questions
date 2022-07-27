@@ -15,7 +15,33 @@ Note that "i" comes before "love" due to a lower alphabetical order.
 
 
 
-Solution: Heap
+No link
+
+Solution: 
+    
+from collections import Counter
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        counts = Counter(words)
+        result = sorted(counts, key=lambda word: (-counts[word], word))
+        return result[:k]    
+
+# or:
+
+    def topKFrequent(self, words, k):
+        d = {}
+        for word in words:
+            d[word] = d.get(word, 0) + 1
+        
+        ret = sorted(d, key=lambda word: (-d[word], word)) 
+        return ret[:k]    
+    
+    
+   
+
+    
+    
+    Heap
     
 import collections
 import heapq
