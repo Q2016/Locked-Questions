@@ -7,6 +7,13 @@ and if you access the array out of bounds, ArrayReader.get will return -1.
 Example 1:
 Input: array= [-1,0,3,5,9,12], target = 9, Output: 4
 
+  
+  
+  
+  
+  
+  
+No link  
 
 Solution: BST
  
