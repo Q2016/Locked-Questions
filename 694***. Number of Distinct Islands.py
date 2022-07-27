@@ -15,7 +15,7 @@ Given the above grid map, return 1.
 
 
 
-
+No link
 
 Solution: DFS
 Similar to 200. Number of Islands. The difference is to find the number of distinct islands
