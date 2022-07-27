@@ -15,7 +15,57 @@ Explanation: It is possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3
  
  
  
-Solution: Naive Backtracking
+ 
+ 
+The argument for the question, is that we can solve it with Backtracking but there are various types.
+Time O(k^n)  we have k buckets that we need to fill in, this is Naive Backtracking 
+or 
+Time O(k* 2^n) define a target value=sum(nums)//k then create the recursive tree, prune values that are above target value
+ 
+Solution: Backtracking
+ https://www.youtube.com/watch?v=mBk4I0X46oI
+ 
+ 
+class Solution:
+ def canPartitionKSubsets(self, nums, k):
+    target=sum(nums)/k
+    used=[False]*len(nums)
+
+    def backtrack(i, k, subsetSum):
+       if k==0:
+           return True
+
+        if subsetSum==target:
+           return backtrack(0, k-1, 0)
+
+        for j in range(i, len(nums)):
+           if used[j] and subsetSum+nums[j]>target:
+             continue
+
+           used[j]=True
+           if backtrack(j+1, k, subsetSum+nums[j]):
+               return True
+           used[j]=False
+           
+       return False
+  
+ return backtrack(0, k, 0)
+  
+  
+  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Naive Backtracking
  
 Our goal is to break the given array into k subsets of equal sums. Firstly, we will check if the array sum can be evenly divided into k 
 parts by ensuring that totalArraySum % k is equal to 0. 
