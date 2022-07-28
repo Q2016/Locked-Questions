@@ -15,9 +15,13 @@ Explanation: The 10 and -5 collide resulting in 10. The 5 and 10 never collide.
     
     
     
+    
+    
+The link gives a good understanding of the condition but it over complicates it by a=0 in the video, the code below is better    
 
 Solution: Stack
-
+https://www.youtube.com/watch?v=LN7KjRszjk4
+    
 A row of asteroids is stable if no further collisions will occur. After adding a new asteroid 
 to the right, some more collisions may happen before it becomes stable again, and all of those 
 collisions (if they happen) must occur right to left. This is the perfect situation for using a stack.
