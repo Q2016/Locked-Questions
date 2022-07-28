@@ -20,7 +20,8 @@ We could return these lists in any order, for example the answer [['Mary', 'mary
 
 
 
-Solution: DFS
+Solution: DFS and union find
+    https://www.youtube.com/watch?v=E8EKDyGtRN0
 Actually, what we need to find in this problem are connected components of graph. So, let us do it in two steps: Construct our graph, 
 iterating over accounts: for each name: look at emails E1, ..., Ek, then it is enough to connect E1 with each of the others.
 Perform dfs to find connected components, which we keep as comps with correspondences between number of component and list of emails in this 
