@@ -22,7 +22,7 @@ myCalendar.book(20, 30); // return True, The event can be booked, as the first e
                                                                                                                       
                                                                                                                       
                                                                                                                       
-                                                                                                                      
+One important point about construction of the tree is that we need a key to tell us when to go to the right and when to go to the left                                                                                                                      
                                                                                                                       
 Solution: BST (below this one)
 
