@@ -17,7 +17,14 @@ myCalendar.book(15, 25); // return False, It can not be booked because time 15 i
 myCalendar.book(20, 30); // return True, The event can be booked, as the first event takes every time less than 20, but not including 20.    
     
     
-Solution: BST
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+Solution: BST (below this one)
 
 # Brute force O(n^2)                                                                                                                     
 class MyCalendar(object):
@@ -31,7 +38,9 @@ class MyCalendar(object):
         self.calendar.append((start, end))
         return True
 
-# Balanced Tree O(nlogn)       
+# Balanced Tree O(nlogn)    
+  https://www.youtube.com/watch?v=YZdIwAEtgIY                                                                                                                      
+                                                                                                                      
 # If we maintained our events in sorted order, we could check whether an event could be booked in O(logN) time 
 # (where N is the number of events already booked) by binary searching for where the event should be placed. We would also 
 # have to insert the event in our sorted structure.                                        
