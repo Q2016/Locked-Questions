@@ -13,9 +13,31 @@ Output: [1,1,4,2,1,1,0,0]
     
     
     
-    
+The optimized solution uses an extra space of a stack, at each element open/reuse a stack first at the current element and append until finding
+larger than the first. Then pop all and reuse the stack for the next element in the loop.
+ 
+Not actually, we use the stack to not go back but dont we repeat the outer loop? basically spill over "res"?    
     
 Solution: Monotonic Stack
+    https://www.youtube.com/watch?v=cTBiBSnjO3c
+    
+    
+class Solution:
+    def dailyTemperatures(self, temperatures):
+        res=[0]*len(temperatures)
+        stack=[] # pair [temp, index]
+        
+        for i, t in enumerate(temperatures):
+            while stack and t>stack[-1][0]:
+                stackT, stackInd=stack.pop()
+                res[stackInd]=(i-stackInd)
+            stack.append([t,i])
+        return res
+    
+    
+    
+    
+    
     
 A monotonic stack is simply a stack where the elements are always in sorted order.    
 
