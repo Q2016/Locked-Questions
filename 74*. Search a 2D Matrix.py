@@ -16,9 +16,50 @@ Output: true
   
   
   
+The time complexity is O(log m+ log n) first on the last column then on the selected row from previous output  
   
+Solution: 
+ https://www.youtube.com/watch?v=Ber2pi2C0j0
   
-Solution: BST (look at 'high', as if a long 1d array, interesting how 'mid' is used)
+class Solution:
+   def searchMatrix(self, matrix, target):
+       ROWS, COLS=len(matrix), len(matrix[0])
+
+       top, bot =0, ROWS-1
+       while top<=bot:
+           row =(top+bot)//2
+           if target> matrix[row][-1]:
+              top=row+1
+           elif target <matrix[row][0]:
+              bot=row-1
+           else:
+              break
+             
+       if not (top<=bot):
+          return False
+       row=(top+bot)//2
+       l,r =0, COLS-1
+       while l<=r:
+           m=(l+r)//2
+           if target>matrix[row][m]:
+               l=m+1
+           elif target>matrix[row][m]:
+               r=m-1
+           else:
+               return True
+            
+       return False
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ BST (look at 'high', as if a long 1d array, interesting how 'mid' is used)
 It is basically an advanced version of the binary search
 
 class Solution:
