@@ -34,7 +34,7 @@ String re: 468, 640
 
 BST: 1482, 153, 285
 
-BFS: 1091, 127, 133, 547, 662, 934, 742 (maybe related to Dijkstra, Bellman Ford), 752, DFS coloring (886), 199, 261, 397, 433 
+BFS: 1091, 127, 133, 547, 662, 934, 742 (maybe related to Dijkstra, Bellman Ford and 743), 752, DFS coloring (886), 199, 261, 397, 433 
 
 Dijkstra: 1376,743,787  Bellman Ford: 1514, 490, 505, 
 
