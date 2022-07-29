@@ -15,7 +15,10 @@ Explanation: There is only one corner rectangle, with corners grid[1][2], grid[1
 
         
         
-        
+  
+  
+  
+No link  
 
 Solution:        
         
