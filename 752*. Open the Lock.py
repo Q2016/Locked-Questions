@@ -19,7 +19,43 @@ because the wheels of the lock become stuck after the display becomes the dead e
 
 
 
-Solution: BFS
+
+Decision tree, but how do we know we get the shortest? we apply BFS, some tircks with mod for adding 1+9%10 works but counter clockwise
+1-9%Null so what we do is 1-9+10%2
+
+Solution: 
+    https://www.youtube.com/watch?v=Pzg3bCDY87w
+        
+class Solution:
+    def openLock(self, deadends, target):
+        if "0000" in deadends:
+            return -1
+        
+        def children(lock):
+            res=[]
+            for i in range(4):
+                digit=str((int(lock[i])+1)% 10)
+                lock=lock[:i]+digit+lock[i+1:]
+                
+        q=deque()
+        q.append(["0000",0]) # [lock, turns]
+        visit=set(deadends)
+        while q:
+            lock, turns=q.popleft()
+            if lock==target:
+                return turns
+            for child in cildren(lock):
+                if child not in visit:
+                    visit.add(child)
+                    q.append([child, turns+1])
+        return -1
+    
+    
+    
+    
+    
+    
+    BFS
 By using BFS, we can generate all possible of locks, initialize with "0000".
 For each step, we can generates neighbors of current lock state (by turning clockwise or 
 counter-clockwise of 4 circular wheels) and go to its neighbors if neighbor is not in our deadends.
@@ -57,10 +93,5 @@ class Solution:
     
     
 Complexity
-Time: O(N^2 * A^N + D), where N is number of dials (4 in our case), A is number of 
-alphabet (10 in our case), D is size of deadends.
-There are 10^4 possible combinations => O(A^N)
-To get neighbors, for each combination, we are looping 4 times (which is N) and in each 
-iteration, there are substring operations which costs O(N) => O(N^2)
-Total O(D) to create the hashset
-Space: O(A^N), in worst case equal to number of combinations.    
+worst possible casse we have to visit all the combinations so in n=4 we have O(10000) 
+Space will ve also O(10000) for the visited variable
