@@ -85,3 +85,5 @@ Monotonic Stack:402
 Union Find: 323, 547, 684
 
 Regex: 640
+
+Quicksort: 75
