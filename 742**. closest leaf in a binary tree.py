@@ -22,6 +22,10 @@ The leaf node with value 3 (and not the leaf node with value 6) is nearest to th
 
 
 
+
+
+No linnk
+
 Solution: Graph BFS
 Tree is a special kind of graph. And this is actually a problem of graph. We could use defination of leaf to mark the leaves and then do 
 a BFS starting from the target node to find the closest leaf. To build a graph from this tree, we could create a new class GraphNode which has 
