@@ -14,9 +14,40 @@ Output: [0,0,1,1,2,2]
     
     
     
+Bucket sort in linear time since limited number but we are interested in Quick sort partitioning: I uses two pointers for this purpose    
+    
+Solution: 
+    
+    https://www.youtube.com/watch?v=4xbWSRZHqac
+    
+class Solution:
+    def sortColors(self, nums):
+        # we modify nums in-place
+        l, r=0, len(nums)-1
+        i=0
+        
+        def swap(i,j):
+            tmp=nums[i]
+            nums[i]=nums[j]
+            nums[j]=tmp
+        
+        while i<=r:
+            if nums[i]==0:
+                swap(l,i)
+                l+=1
+            elif nums[i]==2
+                swap(i,r)
+                r+=1
+                i-=1 # the trick
+            i+=1
+                
     
     
-Solution: Dutch Partitioning
+    
+    
+    
+    
+    Dutch Partitioning
 
 https://en.wikipedia.org/wiki/Dutch_national_flag_problem    
     
